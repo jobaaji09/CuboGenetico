@@ -1,7 +1,7 @@
  
-namespace Aumbrales.Test{
+namespace CuboGenetico.Test{
     
-    public class TestAumbralesMain {
+    public class TestCuboGeneticoMain {
         
         
         public static int main (string[] args) {

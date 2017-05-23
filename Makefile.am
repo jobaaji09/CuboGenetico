@@ -27,10 +27,10 @@ lib_libtest_la_LIBADD = 	\
 	@GEE_LIBS@		\
 	@GIO_LIBS@		
 
-#libbase
+#libcubo
 noinst_LTLIBRARIES += lib/libcubo.la
 
-lib_libcubo_la_SOURCES =lib/cubo/Cubo.vala	
+lib_libcubo_la_SOURCES =lib/cubo/Cubo3x3.vala	
 
 lib_libcubo_la_VALAFLAGS =		\
 	$(COMMON_VALAFLAGS)		\
@@ -46,18 +46,17 @@ lib_libcubo_la_CFLAGS =		\
 
 lib_libcubo_la_LIBADD =		\
 	@GEE_LIBS@		\
-	@GIO_LIBS@		\
-	@SQLITE_LIBS@	
+	@GIO_LIBS@	
 
 
-#AUmbrales
+#CuboGenetico
 bin_PROGRAMS = CuboGenetico
 CUBOGENESOURCES =		\
-	src/CuboGenetico.vala
+	src/mx/unam/ciencias/hoc/CuboGenetico.vala
 
 CuboGenetico_SOURCES = 		\
 	$(CUBOGENESOURCES)	\
-	src/CuboGenetico-main.vala	\
+	src/mx/unam/ciencias/hoc/CuboGenetico-main.vala	\
 	vapi/cubo.vapi
 
 CuboGenetico_VALAFLAGS =	        \
@@ -85,7 +84,7 @@ TESTSOURCES =			\
 
 test_test_cubogenetico_SOURCES =			\
 	$(TESTSOURCES)				\
-	test/test-aumbrales-main.vala		\
+	test/test-cubogeneico-main.vala		\
 	vapi/test.vapi				\
 	vapi/cubo.vapi
 

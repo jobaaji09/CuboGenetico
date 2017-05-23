@@ -1,0 +1,61 @@
+/**
+ * Clase que representa un cubo magico de 3x3x3 
+ */
+namespace CuboGenetico.Cubo{
+    public class Cubo3x3 : GLib.Object{
+		
+		private int[,] inicial;
+		private int[,] actual;
+        /**
+         * Constructor para un Cubo 3x3x3.
+         */
+		
+		public Cubo3x3(int[,] cubo){
+			this.inicial =cubo;
+			this.actual = new int[6,9];
+		    for(int i=0;i<6;i++){
+				for(int j=0;j<9;j++){
+					this.actual[i,j] = cubo[i,j];
+				}
+			}
+			
+		}
+
+		public void r(){
+			int i = this.actual[0,2];
+			int j = this.actual[1,2];
+			int k = this.actual[2,2];
+			this.actual[0,2] = this.actual[3,2];
+			this.actual[1,2] = this.actual[4,2];
+			this.actual[2,2] = this.actual[5,2];
+
+			int l = this.actual[0,8];
+			int m = this.actual[1,8];
+			int n = this.actual[2,8];
+			this.actual[0,8] = i;
+			this.actual[1,8] = j;
+			this.actual[2,8] = k;
+
+			this.actual[3,2] = this.actual[5,6];
+			this.actual[4,2] = this.actual[4,6]; 
+			this.actual[5,2] = this.actual[3,6];
+
+			this.actual[5,6] = n;
+			this.actual[4,6] = m; 
+			this.actual[3,6] = l;
+			
+			
+		}
+
+		public void to_string(){
+			for(int i =0;i<6;i++){
+				for(int j = 0;j<9;j++){
+					stdout.printf("%d",this.actual[i,j]);
+				}
+				stdout.printf("\n");
+			}
+		}
+
+		
+	}
+}

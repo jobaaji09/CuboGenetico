@@ -26,9 +26,36 @@ namespace CuboGenetico{
 				}
 			}
 			var c = new Cubo.Cubo3x3(cu);
-		    //c.r();
+		    c.r();
 		    c.u();
-			
+			c.rprima();
+			c.uprima();
+
+			c.r();
+			c.u();
+			c.rprima();
+			c.uprima();
+
+			c.r();
+			c.u();
+			c.rprima();
+			c.uprima();
+
+			c.r();
+		    c.u();
+			c.rprima();
+			c.uprima();
+
+			c.r();
+			c.u();
+			c.rprima();
+			c.uprima();
+
+			c.r();
+			c.u();
+			c.rprima();
+			c.uprima();
+
 			c.dibuja();
 			return 0;
 		}

@@ -43,10 +43,21 @@ namespace CuboGenetico.Cubo{
 			this.actual[4,2] = this.actual[4,6]; 
 			this.actual[5,2] = this.actual[3,6];
 
-			this.actual[5,6] = n;
+			this.actual[3,6] = n;
 			this.actual[4,6] = m; 
-			this.actual[3,6] = l;
-			
+			this.actual[5,6] = l;
+
+			i = this.actual[0,3];
+			this.actual[0,3] = this.actual[2,3];
+			this.actual[2,3] =this.actual[2,5];
+			this.actual[2,5] = this.actual[0,5];
+			this.actual[0,5] = i;
+
+			i = this.actual[0,4];
+			this.actual[0,4] = this.actual[1,3];
+			this.actual[1,3] = this.actual[2,4];
+			this.actual[2,4] = this.actual[1,5];
+			this.actual[1,5] = i;
 			
 		}
 
@@ -72,10 +83,21 @@ namespace CuboGenetico.Cubo{
 			this.actual[4,2] = j; 
 			this.actual[5,2] = k;
 
-			this.actual[5,6] = n;
+			this.actual[3,6] = n;
 			this.actual[4,6] = m; 
-			this.actual[3,6] = l;
-			
+			this.actual[5,6] = l;
+
+			i = this.actual[0,3];
+			this.actual[0,3] = this.actual[0,5];
+			this.actual[0,5] =this.actual[2,5];
+			this.actual[2,5] = this.actual[2,3];
+			this.actual[2,3] = i;
+
+			i = this.actual[0,4];
+			this.actual[0,4] = this.actual[1,5];
+			this.actual[1,5] = this.actual[2,4];
+			this.actual[2,4] = this.actual[1,3];
+			this.actual[1,3] = i;
 			
 		}
 
@@ -163,7 +185,17 @@ namespace CuboGenetico.Cubo{
 			this.actual[3,7] = m; 
 			this.actual[3,8] = n;
 			
-			
+			i = this.actual[0,6];
+			this.actual[0,6] = this.actual[2,6];
+			this.actual[2,6] =this.actual[2,8];
+			this.actual[2,8] = this.actual[0,8];
+			this.actual[0,8] = i;
+
+			i = this.actual[0,7];
+			this.actual[0,7] = this.actual[1,6];
+			this.actual[1,6] = this.actual[2,7];
+			this.actual[2,7] = this.actual[1,8];
+			this.actual[1,8] = i;
 		}
 		/**
 		 * Gira la cara superior 90 grados sentido antihorario
@@ -190,7 +222,18 @@ namespace CuboGenetico.Cubo{
 			this.actual[3,6] = l;
 			this.actual[3,7] = m; 
 			this.actual[3,8] = n;
-			
+
+			i = this.actual[0,6];
+			this.actual[0,6] = this.actual[0,8];
+			this.actual[0,8] =this.actual[2,8];
+			this.actual[2,8] = this.actual[2,6];
+			this.actual[2,6] = i;
+
+			i = this.actual[0,7];
+			this.actual[0,7] = this.actual[1,8];
+			this.actual[1,8] = this.actual[2,7];
+			this.actual[2,7] = this.actual[1,6];
+			this.actual[1,6] = i;
 			
 		}
 

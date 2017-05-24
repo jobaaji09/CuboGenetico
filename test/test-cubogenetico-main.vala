@@ -6,8 +6,8 @@ namespace CuboGenetico.Test{
         
         public static int main (string[] args) {
             GLib.Test.init(ref args);
-            GLib.TestSuite.get_root().add_suite(new TestCiudad().get_suite());
-			GLib.TestSuite.get_root().add_suite(new TestSolucion().get_suite());
+            GLib.TestSuite.get_root().add_suite(
+				new TestCubo3x3().get_suite());
             return GLib.Test.run();
         }
         

@@ -80,11 +80,11 @@ CuboGenetico_LDADD =		\
 TESTS = test/test-cubogenetico
 
 TESTSOURCES =			\
-	test/test-cubo.vala
+	test/test-cubo3x3.vala
 
 test_test_cubogenetico_SOURCES =			\
 	$(TESTSOURCES)				\
-	test/test-cubogeneico-main.vala		\
+	test/test-cubogenetico-main.vala		\
 	vapi/test.vapi				\
 	vapi/cubo.vapi
 

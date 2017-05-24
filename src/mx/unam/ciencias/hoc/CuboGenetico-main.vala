@@ -1,6 +1,31 @@
 namespace CuboGenetico{
     class Main : GLib.Object {
 
+		/**
+		 * recibe el nombre de el archivo donde esta la entrada del programa
+		 */
+		public static void archivo(string arc){
+			var file = File.new_for_path (arc);
+			if (!file.query_exists ()) {
+				stderr.printf ("File '%s' doesn't exist.\n", file.get_path ());
+				
+			}
+			
+			try {
+				// Open file for reading and wrap returned FileInputStream into a
+				// DataInputStream, so we can read line by line
+				var dis = new DataInputStream (file.read ());
+				string line;
+				// Read lines until end of file (null) is reached
+				while ((line = dis.read_line (null)) != null) {
+					stdout.printf ("%s\n", line);
+				}
+			} catch (Error e) {
+				error ("%s", e.message);
+			}
+			
+		}
+		
 		public static int main(string[] args){
 			var cu = new int[6,9];
 			for(int i=0;i<6;i++){
@@ -25,37 +50,11 @@ namespace CuboGenetico{
 					}
 				}
 			}
+			archivo(args[1]);
 			var c = new Cubo.Cubo3x3(cu);
-		    c.r();
-		    c.u();
-			c.rprima();
-			c.uprima();
-
-			c.r();
-			c.u();
-			c.rprima();
-			c.uprima();
-
-			c.r();
-			c.u();
-			c.rprima();
-			c.uprima();
-
-			c.r();
-		    c.u();
-			c.rprima();
-			c.uprima();
-
-			c.r();
-			c.u();
-			c.rprima();
-			c.uprima();
-
-			c.r();
-			c.u();
-			c.rprima();
-			c.uprima();
-
+		    int[] g ={1,1,3,3,5,5,7,7,9,9,11,11};
+			c.giraCaras(g);
+			c.reset();
 			c.dibuja();
 			return 0;
 		}

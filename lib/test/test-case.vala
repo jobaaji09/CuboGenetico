@@ -19,7 +19,7 @@
  * Author:
  *    Julien Peeters <contact@julienpeeters.fr>
  */
-namespace Aumbrales.Test {
+namespace CuboGenetico.Test {
 
     /**
      * Base class for test cases.

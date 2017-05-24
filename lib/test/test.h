@@ -12,36 +12,36 @@
 G_BEGIN_DECLS
 
 
-#define AUMBRALES_TEST_TYPE_TEST_CASE (aumbrales_test_test_case_get_type ())
-#define AUMBRALES_TEST_TEST_CASE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), AUMBRALES_TEST_TYPE_TEST_CASE, AumbralesTestTestCase))
-#define AUMBRALES_TEST_TEST_CASE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), AUMBRALES_TEST_TYPE_TEST_CASE, AumbralesTestTestCaseClass))
-#define AUMBRALES_TEST_IS_TEST_CASE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), AUMBRALES_TEST_TYPE_TEST_CASE))
-#define AUMBRALES_TEST_IS_TEST_CASE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), AUMBRALES_TEST_TYPE_TEST_CASE))
-#define AUMBRALES_TEST_TEST_CASE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), AUMBRALES_TEST_TYPE_TEST_CASE, AumbralesTestTestCaseClass))
+#define CUBO_GENETICO_TEST_TYPE_TEST_CASE (cubo_genetico_test_test_case_get_type ())
+#define CUBO_GENETICO_TEST_TEST_CASE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TEST_TYPE_TEST_CASE, CuboGeneticoTestTestCase))
+#define CUBO_GENETICO_TEST_TEST_CASE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TEST_TYPE_TEST_CASE, CuboGeneticoTestTestCaseClass))
+#define CUBO_GENETICO_TEST_IS_TEST_CASE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TEST_TYPE_TEST_CASE))
+#define CUBO_GENETICO_TEST_IS_TEST_CASE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TEST_TYPE_TEST_CASE))
+#define CUBO_GENETICO_TEST_TEST_CASE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TEST_TYPE_TEST_CASE, CuboGeneticoTestTestCaseClass))
 
-typedef struct _AumbralesTestTestCase AumbralesTestTestCase;
-typedef struct _AumbralesTestTestCaseClass AumbralesTestTestCaseClass;
-typedef struct _AumbralesTestTestCasePrivate AumbralesTestTestCasePrivate;
+typedef struct _CuboGeneticoTestTestCase CuboGeneticoTestTestCase;
+typedef struct _CuboGeneticoTestTestCaseClass CuboGeneticoTestTestCaseClass;
+typedef struct _CuboGeneticoTestTestCasePrivate CuboGeneticoTestTestCasePrivate;
 
-struct _AumbralesTestTestCase {
+struct _CuboGeneticoTestTestCase {
 	GObject parent_instance;
-	AumbralesTestTestCasePrivate * priv;
+	CuboGeneticoTestTestCasePrivate * priv;
 };
 
-struct _AumbralesTestTestCaseClass {
+struct _CuboGeneticoTestTestCaseClass {
 	GObjectClass parent_class;
-	void (*set_up) (AumbralesTestTestCase* self);
-	void (*tear_down) (AumbralesTestTestCase* self);
+	void (*set_up) (CuboGeneticoTestTestCase* self);
+	void (*tear_down) (CuboGeneticoTestTestCase* self);
 };
 
-typedef void (*AumbralesTestTestCaseTestMethod) (void* user_data);
+typedef void (*CuboGeneticoTestTestCaseTestMethod) (void* user_data);
 
-GType aumbrales_test_test_case_get_type (void) G_GNUC_CONST;
-AumbralesTestTestCase* aumbrales_test_test_case_construct (GType object_type, const gchar* name);
-void aumbrales_test_test_case_add_test (AumbralesTestTestCase* self, const gchar* name, AumbralesTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify);
-void aumbrales_test_test_case_set_up (AumbralesTestTestCase* self);
-void aumbrales_test_test_case_tear_down (AumbralesTestTestCase* self);
-GTestSuite* aumbrales_test_test_case_get_suite (AumbralesTestTestCase* self);
+GType cubo_genetico_test_test_case_get_type (void) G_GNUC_CONST;
+CuboGeneticoTestTestCase* cubo_genetico_test_test_case_construct (GType object_type, const gchar* name);
+void cubo_genetico_test_test_case_add_test (CuboGeneticoTestTestCase* self, const gchar* name, CuboGeneticoTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify);
+void cubo_genetico_test_test_case_set_up (CuboGeneticoTestTestCase* self);
+void cubo_genetico_test_test_case_tear_down (CuboGeneticoTestTestCase* self);
+GTestSuite* cubo_genetico_test_test_case_get_suite (CuboGeneticoTestTestCase* self);
 
 
 G_END_DECLS

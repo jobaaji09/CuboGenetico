@@ -30,114 +30,114 @@
 #include <gobject/gvaluecollector.h>
 
 
-#define AUMBRALES_TEST_TYPE_TEST_CASE (aumbrales_test_test_case_get_type ())
-#define AUMBRALES_TEST_TEST_CASE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), AUMBRALES_TEST_TYPE_TEST_CASE, AumbralesTestTestCase))
-#define AUMBRALES_TEST_TEST_CASE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), AUMBRALES_TEST_TYPE_TEST_CASE, AumbralesTestTestCaseClass))
-#define AUMBRALES_TEST_IS_TEST_CASE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), AUMBRALES_TEST_TYPE_TEST_CASE))
-#define AUMBRALES_TEST_IS_TEST_CASE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), AUMBRALES_TEST_TYPE_TEST_CASE))
-#define AUMBRALES_TEST_TEST_CASE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), AUMBRALES_TEST_TYPE_TEST_CASE, AumbralesTestTestCaseClass))
+#define CUBO_GENETICO_TEST_TYPE_TEST_CASE (cubo_genetico_test_test_case_get_type ())
+#define CUBO_GENETICO_TEST_TEST_CASE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TEST_TYPE_TEST_CASE, CuboGeneticoTestTestCase))
+#define CUBO_GENETICO_TEST_TEST_CASE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TEST_TYPE_TEST_CASE, CuboGeneticoTestTestCaseClass))
+#define CUBO_GENETICO_TEST_IS_TEST_CASE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TEST_TYPE_TEST_CASE))
+#define CUBO_GENETICO_TEST_IS_TEST_CASE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TEST_TYPE_TEST_CASE))
+#define CUBO_GENETICO_TEST_TEST_CASE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TEST_TYPE_TEST_CASE, CuboGeneticoTestTestCaseClass))
 
-typedef struct _AumbralesTestTestCase AumbralesTestTestCase;
-typedef struct _AumbralesTestTestCaseClass AumbralesTestTestCaseClass;
-typedef struct _AumbralesTestTestCasePrivate AumbralesTestTestCasePrivate;
+typedef struct _CuboGeneticoTestTestCase CuboGeneticoTestTestCase;
+typedef struct _CuboGeneticoTestTestCaseClass CuboGeneticoTestTestCaseClass;
+typedef struct _CuboGeneticoTestTestCasePrivate CuboGeneticoTestTestCasePrivate;
 
-#define AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR (aumbrales_test_test_case_adaptor_get_type ())
-#define AUMBRALES_TEST_TEST_CASE_ADAPTOR(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR, AumbralesTestTestCaseAdaptor))
-#define AUMBRALES_TEST_TEST_CASE_ADAPTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR, AumbralesTestTestCaseAdaptorClass))
-#define AUMBRALES_TEST_TEST_CASE_IS_ADAPTOR(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR))
-#define AUMBRALES_TEST_TEST_CASE_IS_ADAPTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR))
-#define AUMBRALES_TEST_TEST_CASE_ADAPTOR_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR, AumbralesTestTestCaseAdaptorClass))
+#define CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR (cubo_genetico_test_test_case_adaptor_get_type ())
+#define CUBO_GENETICO_TEST_TEST_CASE_ADAPTOR(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR, CuboGeneticoTestTestCaseAdaptor))
+#define CUBO_GENETICO_TEST_TEST_CASE_ADAPTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR, CuboGeneticoTestTestCaseAdaptorClass))
+#define CUBO_GENETICO_TEST_TEST_CASE_IS_ADAPTOR(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR))
+#define CUBO_GENETICO_TEST_TEST_CASE_IS_ADAPTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR))
+#define CUBO_GENETICO_TEST_TEST_CASE_ADAPTOR_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR, CuboGeneticoTestTestCaseAdaptorClass))
 
-typedef struct _AumbralesTestTestCaseAdaptor AumbralesTestTestCaseAdaptor;
-typedef struct _AumbralesTestTestCaseAdaptorClass AumbralesTestTestCaseAdaptorClass;
-#define _aumbrales_test_test_case_adaptor_unref0(var) ((var == NULL) ? NULL : (var = (aumbrales_test_test_case_adaptor_unref (var), NULL)))
-typedef struct _AumbralesTestTestCaseAdaptorPrivate AumbralesTestTestCaseAdaptorPrivate;
+typedef struct _CuboGeneticoTestTestCaseAdaptor CuboGeneticoTestTestCaseAdaptor;
+typedef struct _CuboGeneticoTestTestCaseAdaptorClass CuboGeneticoTestTestCaseAdaptorClass;
+#define _cubo_genetico_test_test_case_adaptor_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_test_test_case_adaptor_unref (var), NULL)))
+typedef struct _CuboGeneticoTestTestCaseAdaptorPrivate CuboGeneticoTestTestCaseAdaptorPrivate;
 #define _g_free0(var) (var = (g_free (var), NULL))
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
-typedef struct _AumbralesTestTestCaseParamSpecAdaptor AumbralesTestTestCaseParamSpecAdaptor;
+typedef struct _CuboGeneticoTestTestCaseParamSpecAdaptor CuboGeneticoTestTestCaseParamSpecAdaptor;
 
-struct _AumbralesTestTestCase {
+struct _CuboGeneticoTestTestCase {
 	GObject parent_instance;
-	AumbralesTestTestCasePrivate * priv;
+	CuboGeneticoTestTestCasePrivate * priv;
 };
 
-struct _AumbralesTestTestCaseClass {
+struct _CuboGeneticoTestTestCaseClass {
 	GObjectClass parent_class;
-	void (*set_up) (AumbralesTestTestCase* self);
-	void (*tear_down) (AumbralesTestTestCase* self);
+	void (*set_up) (CuboGeneticoTestTestCase* self);
+	void (*tear_down) (CuboGeneticoTestTestCase* self);
 };
 
-struct _AumbralesTestTestCasePrivate {
+struct _CuboGeneticoTestTestCasePrivate {
 	GTestSuite* suite;
-	AumbralesTestTestCaseAdaptor** adaptors;
+	CuboGeneticoTestTestCaseAdaptor** adaptors;
 	gint adaptors_length1;
 	gint _adaptors_size_;
 };
 
-typedef void (*AumbralesTestTestCaseTestMethod) (void* user_data);
-struct _AumbralesTestTestCaseAdaptor {
+typedef void (*CuboGeneticoTestTestCaseTestMethod) (void* user_data);
+struct _CuboGeneticoTestTestCaseAdaptor {
 	GTypeInstance parent_instance;
 	volatile int ref_count;
-	AumbralesTestTestCaseAdaptorPrivate * priv;
+	CuboGeneticoTestTestCaseAdaptorPrivate * priv;
 };
 
-struct _AumbralesTestTestCaseAdaptorClass {
+struct _CuboGeneticoTestTestCaseAdaptorClass {
 	GTypeClass parent_class;
-	void (*finalize) (AumbralesTestTestCaseAdaptor *self);
+	void (*finalize) (CuboGeneticoTestTestCaseAdaptor *self);
 };
 
-struct _AumbralesTestTestCaseAdaptorPrivate {
+struct _CuboGeneticoTestTestCaseAdaptorPrivate {
 	gchar* _name;
-	AumbralesTestTestCaseTestMethod test;
+	CuboGeneticoTestTestCaseTestMethod test;
 	gpointer test_target;
 	GDestroyNotify test_target_destroy_notify;
-	AumbralesTestTestCase* test_case;
+	CuboGeneticoTestTestCase* test_case;
 };
 
-struct _AumbralesTestTestCaseParamSpecAdaptor {
+struct _CuboGeneticoTestTestCaseParamSpecAdaptor {
 	GParamSpec parent_instance;
 };
 
 
-static gpointer aumbrales_test_test_case_parent_class = NULL;
-static gpointer aumbrales_test_test_case_adaptor_parent_class = NULL;
+static gpointer cubo_genetico_test_test_case_parent_class = NULL;
+static gpointer cubo_genetico_test_test_case_adaptor_parent_class = NULL;
 
-GType aumbrales_test_test_case_get_type (void) G_GNUC_CONST;
-static gpointer aumbrales_test_test_case_adaptor_ref (gpointer instance);
-static void aumbrales_test_test_case_adaptor_unref (gpointer instance);
-static GParamSpec* aumbrales_test_test_case_param_spec_adaptor (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags) G_GNUC_UNUSED;
-static void aumbrales_test_test_case_value_set_adaptor (GValue* value, gpointer v_object) G_GNUC_UNUSED;
-static void aumbrales_test_test_case_value_take_adaptor (GValue* value, gpointer v_object) G_GNUC_UNUSED;
-static gpointer aumbrales_test_test_case_value_get_adaptor (const GValue* value) G_GNUC_UNUSED;
-static GType aumbrales_test_test_case_adaptor_get_type (void) G_GNUC_CONST G_GNUC_UNUSED;
-#define AUMBRALES_TEST_TEST_CASE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), AUMBRALES_TEST_TYPE_TEST_CASE, AumbralesTestTestCasePrivate))
+GType cubo_genetico_test_test_case_get_type (void) G_GNUC_CONST;
+static gpointer cubo_genetico_test_test_case_adaptor_ref (gpointer instance);
+static void cubo_genetico_test_test_case_adaptor_unref (gpointer instance);
+static GParamSpec* cubo_genetico_test_test_case_param_spec_adaptor (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags) G_GNUC_UNUSED;
+static void cubo_genetico_test_test_case_value_set_adaptor (GValue* value, gpointer v_object) G_GNUC_UNUSED;
+static void cubo_genetico_test_test_case_value_take_adaptor (GValue* value, gpointer v_object) G_GNUC_UNUSED;
+static gpointer cubo_genetico_test_test_case_value_get_adaptor (const GValue* value) G_GNUC_UNUSED;
+static GType cubo_genetico_test_test_case_adaptor_get_type (void) G_GNUC_CONST G_GNUC_UNUSED;
+#define CUBO_GENETICO_TEST_TEST_CASE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), CUBO_GENETICO_TEST_TYPE_TEST_CASE, CuboGeneticoTestTestCasePrivate))
 enum  {
-	AUMBRALES_TEST_TEST_CASE_DUMMY_PROPERTY
+	CUBO_GENETICO_TEST_TEST_CASE_DUMMY_PROPERTY
 };
-AumbralesTestTestCase* aumbrales_test_test_case_construct (GType object_type, const gchar* name);
-void aumbrales_test_test_case_add_test (AumbralesTestTestCase* self, const gchar* name, AumbralesTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify);
-static AumbralesTestTestCaseAdaptor* aumbrales_test_test_case_adaptor_new (const gchar* name, AumbralesTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify, AumbralesTestTestCase* test_case);
-static AumbralesTestTestCaseAdaptor* aumbrales_test_test_case_adaptor_construct (GType object_type, const gchar* name, AumbralesTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify, AumbralesTestTestCase* test_case);
-static void _vala_array_add1 (AumbralesTestTestCaseAdaptor*** array, int* length, int* size, AumbralesTestTestCaseAdaptor* value);
-static const gchar* aumbrales_test_test_case_adaptor_get_name (AumbralesTestTestCaseAdaptor* self);
-static void aumbrales_test_test_case_adaptor_set_up (AumbralesTestTestCaseAdaptor* self, void* fixture);
-static void _aumbrales_test_test_case_adaptor_set_up_gtest_fixture_func (void* fixture, gpointer self);
-static void aumbrales_test_test_case_adaptor_run (AumbralesTestTestCaseAdaptor* self, void* fixture);
-static void _aumbrales_test_test_case_adaptor_run_gtest_fixture_func (void* fixture, gpointer self);
-static void aumbrales_test_test_case_adaptor_tear_down (AumbralesTestTestCaseAdaptor* self, void* fixture);
-static void _aumbrales_test_test_case_adaptor_tear_down_gtest_fixture_func (void* fixture, gpointer self);
-void aumbrales_test_test_case_set_up (AumbralesTestTestCase* self);
-static void aumbrales_test_test_case_real_set_up (AumbralesTestTestCase* self);
-void aumbrales_test_test_case_tear_down (AumbralesTestTestCase* self);
-static void aumbrales_test_test_case_real_tear_down (AumbralesTestTestCase* self);
-GTestSuite* aumbrales_test_test_case_get_suite (AumbralesTestTestCase* self);
-#define AUMBRALES_TEST_TEST_CASE_ADAPTOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR, AumbralesTestTestCaseAdaptorPrivate))
+CuboGeneticoTestTestCase* cubo_genetico_test_test_case_construct (GType object_type, const gchar* name);
+void cubo_genetico_test_test_case_add_test (CuboGeneticoTestTestCase* self, const gchar* name, CuboGeneticoTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify);
+static CuboGeneticoTestTestCaseAdaptor* cubo_genetico_test_test_case_adaptor_new (const gchar* name, CuboGeneticoTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify, CuboGeneticoTestTestCase* test_case);
+static CuboGeneticoTestTestCaseAdaptor* cubo_genetico_test_test_case_adaptor_construct (GType object_type, const gchar* name, CuboGeneticoTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify, CuboGeneticoTestTestCase* test_case);
+static void _vala_array_add1 (CuboGeneticoTestTestCaseAdaptor*** array, int* length, int* size, CuboGeneticoTestTestCaseAdaptor* value);
+static const gchar* cubo_genetico_test_test_case_adaptor_get_name (CuboGeneticoTestTestCaseAdaptor* self);
+static void cubo_genetico_test_test_case_adaptor_set_up (CuboGeneticoTestTestCaseAdaptor* self, void* fixture);
+static void _cubo_genetico_test_test_case_adaptor_set_up_gtest_fixture_func (void* fixture, gpointer self);
+static void cubo_genetico_test_test_case_adaptor_run (CuboGeneticoTestTestCaseAdaptor* self, void* fixture);
+static void _cubo_genetico_test_test_case_adaptor_run_gtest_fixture_func (void* fixture, gpointer self);
+static void cubo_genetico_test_test_case_adaptor_tear_down (CuboGeneticoTestTestCaseAdaptor* self, void* fixture);
+static void _cubo_genetico_test_test_case_adaptor_tear_down_gtest_fixture_func (void* fixture, gpointer self);
+void cubo_genetico_test_test_case_set_up (CuboGeneticoTestTestCase* self);
+static void cubo_genetico_test_test_case_real_set_up (CuboGeneticoTestTestCase* self);
+void cubo_genetico_test_test_case_tear_down (CuboGeneticoTestTestCase* self);
+static void cubo_genetico_test_test_case_real_tear_down (CuboGeneticoTestTestCase* self);
+GTestSuite* cubo_genetico_test_test_case_get_suite (CuboGeneticoTestTestCase* self);
+#define CUBO_GENETICO_TEST_TEST_CASE_ADAPTOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR, CuboGeneticoTestTestCaseAdaptorPrivate))
 enum  {
-	AUMBRALES_TEST_TEST_CASE_ADAPTOR_DUMMY_PROPERTY
+	CUBO_GENETICO_TEST_TEST_CASE_ADAPTOR_DUMMY_PROPERTY
 };
-static void aumbrales_test_test_case_adaptor_set_name (AumbralesTestTestCaseAdaptor* self, const gchar* value);
-static void aumbrales_test_test_case_adaptor_finalize (AumbralesTestTestCaseAdaptor* obj);
-static void aumbrales_test_test_case_finalize (GObject* obj);
+static void cubo_genetico_test_test_case_adaptor_set_name (CuboGeneticoTestTestCaseAdaptor* self, const gchar* value);
+static void cubo_genetico_test_test_case_adaptor_finalize (CuboGeneticoTestTestCaseAdaptor* obj);
+static void cubo_genetico_test_test_case_finalize (GObject* obj);
 static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func);
 static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify destroy_func);
 
@@ -146,12 +146,12 @@ static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify 
          * Creates a new test case with a given name.
          * @param name the name of the test case.
          */
-AumbralesTestTestCase* aumbrales_test_test_case_construct (GType object_type, const gchar* name) {
-	AumbralesTestTestCase * self = NULL;
+CuboGeneticoTestTestCase* cubo_genetico_test_test_case_construct (GType object_type, const gchar* name) {
+	CuboGeneticoTestTestCase * self = NULL;
 	const gchar* _tmp0_ = NULL;
 	GTestSuite* _tmp1_ = NULL;
 	g_return_val_if_fail (name != NULL, NULL);
-	self = (AumbralesTestTestCase*) g_object_new (object_type, NULL);
+	self = (CuboGeneticoTestTestCase*) g_object_new (object_type, NULL);
 	_tmp0_ = name;
 	_tmp1_ = g_test_create_suite (_tmp0_);
 	self->priv->suite = _tmp1_;
@@ -164,46 +164,46 @@ AumbralesTestTestCase* aumbrales_test_test_case_construct (GType object_type, co
          * @param name the name of the test.
          * @param test the test method.
          */
-static gpointer _aumbrales_test_test_case_adaptor_ref0 (gpointer self) {
-	return self ? aumbrales_test_test_case_adaptor_ref (self) : NULL;
+static gpointer _cubo_genetico_test_test_case_adaptor_ref0 (gpointer self) {
+	return self ? cubo_genetico_test_test_case_adaptor_ref (self) : NULL;
 }
 
 
-static void _vala_array_add1 (AumbralesTestTestCaseAdaptor*** array, int* length, int* size, AumbralesTestTestCaseAdaptor* value) {
+static void _vala_array_add1 (CuboGeneticoTestTestCaseAdaptor*** array, int* length, int* size, CuboGeneticoTestTestCaseAdaptor* value) {
 	if ((*length) == (*size)) {
 		*size = (*size) ? (2 * (*size)) : 4;
-		*array = g_renew (AumbralesTestTestCaseAdaptor*, *array, (*size) + 1);
+		*array = g_renew (CuboGeneticoTestTestCaseAdaptor*, *array, (*size) + 1);
 	}
 	(*array)[(*length)++] = value;
 	(*array)[*length] = NULL;
 }
 
 
-static void _aumbrales_test_test_case_adaptor_set_up_gtest_fixture_func (void* fixture, gpointer self) {
-	aumbrales_test_test_case_adaptor_set_up ((AumbralesTestTestCaseAdaptor*) self, fixture);
+static void _cubo_genetico_test_test_case_adaptor_set_up_gtest_fixture_func (void* fixture, gpointer self) {
+	cubo_genetico_test_test_case_adaptor_set_up ((CuboGeneticoTestTestCaseAdaptor*) self, fixture);
 }
 
 
-static void _aumbrales_test_test_case_adaptor_run_gtest_fixture_func (void* fixture, gpointer self) {
-	aumbrales_test_test_case_adaptor_run ((AumbralesTestTestCaseAdaptor*) self, fixture);
+static void _cubo_genetico_test_test_case_adaptor_run_gtest_fixture_func (void* fixture, gpointer self) {
+	cubo_genetico_test_test_case_adaptor_run ((CuboGeneticoTestTestCaseAdaptor*) self, fixture);
 }
 
 
-static void _aumbrales_test_test_case_adaptor_tear_down_gtest_fixture_func (void* fixture, gpointer self) {
-	aumbrales_test_test_case_adaptor_tear_down ((AumbralesTestTestCaseAdaptor*) self, fixture);
+static void _cubo_genetico_test_test_case_adaptor_tear_down_gtest_fixture_func (void* fixture, gpointer self) {
+	cubo_genetico_test_test_case_adaptor_tear_down ((CuboGeneticoTestTestCaseAdaptor*) self, fixture);
 }
 
 
-void aumbrales_test_test_case_add_test (AumbralesTestTestCase* self, const gchar* name, AumbralesTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify) {
-	AumbralesTestTestCaseAdaptor* adaptor = NULL;
+void cubo_genetico_test_test_case_add_test (CuboGeneticoTestTestCase* self, const gchar* name, CuboGeneticoTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify) {
+	CuboGeneticoTestTestCaseAdaptor* adaptor = NULL;
 	const gchar* _tmp0_ = NULL;
-	AumbralesTestTestCaseTestMethod _tmp1_ = NULL;
+	CuboGeneticoTestTestCaseTestMethod _tmp1_ = NULL;
 	void* _tmp1__target = NULL;
 	GDestroyNotify _tmp1__target_destroy_notify = NULL;
-	AumbralesTestTestCaseAdaptor* _tmp2_ = NULL;
-	AumbralesTestTestCaseAdaptor** _tmp3_ = NULL;
+	CuboGeneticoTestTestCaseAdaptor* _tmp2_ = NULL;
+	CuboGeneticoTestTestCaseAdaptor** _tmp3_ = NULL;
 	gint _tmp3__length1 = 0;
-	AumbralesTestTestCaseAdaptor* _tmp4_ = NULL;
+	CuboGeneticoTestTestCaseAdaptor* _tmp4_ = NULL;
 	GTestSuite* _tmp5_ = NULL;
 	const gchar* _tmp6_ = NULL;
 	const gchar* _tmp7_ = NULL;
@@ -217,18 +217,18 @@ void aumbrales_test_test_case_add_test (AumbralesTestTestCase* self, const gchar
 	test = NULL;
 	test_target = NULL;
 	test_target_destroy_notify = NULL;
-	_tmp2_ = aumbrales_test_test_case_adaptor_new (_tmp0_, _tmp1_, _tmp1__target, _tmp1__target_destroy_notify, self);
+	_tmp2_ = cubo_genetico_test_test_case_adaptor_new (_tmp0_, _tmp1_, _tmp1__target, _tmp1__target_destroy_notify, self);
 	adaptor = _tmp2_;
 	_tmp3_ = self->priv->adaptors;
 	_tmp3__length1 = self->priv->adaptors_length1;
-	_tmp4_ = _aumbrales_test_test_case_adaptor_ref0 (adaptor);
+	_tmp4_ = _cubo_genetico_test_test_case_adaptor_ref0 (adaptor);
 	_vala_array_add1 (&self->priv->adaptors, &self->priv->adaptors_length1, &self->priv->_adaptors_size_, _tmp4_);
 	_tmp5_ = self->priv->suite;
-	_tmp6_ = aumbrales_test_test_case_adaptor_get_name (adaptor);
+	_tmp6_ = cubo_genetico_test_test_case_adaptor_get_name (adaptor);
 	_tmp7_ = _tmp6_;
-	_tmp8_ = g_test_create_case (_tmp7_, (gsize) 0, adaptor, _aumbrales_test_test_case_adaptor_set_up_gtest_fixture_func, _aumbrales_test_test_case_adaptor_run_gtest_fixture_func, _aumbrales_test_test_case_adaptor_tear_down_gtest_fixture_func);
+	_tmp8_ = g_test_create_case (_tmp7_, (gsize) 0, adaptor, _cubo_genetico_test_test_case_adaptor_set_up_gtest_fixture_func, _cubo_genetico_test_test_case_adaptor_run_gtest_fixture_func, _cubo_genetico_test_test_case_adaptor_tear_down_gtest_fixture_func);
 	g_test_suite_add (_tmp5_, _tmp8_);
-	_aumbrales_test_test_case_adaptor_unref0 (adaptor);
+	_cubo_genetico_test_test_case_adaptor_unref0 (adaptor);
 	(test_target_destroy_notify == NULL) ? NULL : (test_target_destroy_notify (test_target), NULL);
 	test = NULL;
 	test_target = NULL;
@@ -239,26 +239,26 @@ void aumbrales_test_test_case_add_test (AumbralesTestTestCase* self, const gchar
 /**
          * Sets up the test.
          */
-static void aumbrales_test_test_case_real_set_up (AumbralesTestTestCase* self) {
+static void cubo_genetico_test_test_case_real_set_up (CuboGeneticoTestTestCase* self) {
 }
 
 
-void aumbrales_test_test_case_set_up (AumbralesTestTestCase* self) {
+void cubo_genetico_test_test_case_set_up (CuboGeneticoTestTestCase* self) {
 	g_return_if_fail (self != NULL);
-	AUMBRALES_TEST_TEST_CASE_GET_CLASS (self)->set_up (self);
+	CUBO_GENETICO_TEST_TEST_CASE_GET_CLASS (self)->set_up (self);
 }
 
 
 /**
          * Tears down the test.
          */
-static void aumbrales_test_test_case_real_tear_down (AumbralesTestTestCase* self) {
+static void cubo_genetico_test_test_case_real_tear_down (CuboGeneticoTestTestCase* self) {
 }
 
 
-void aumbrales_test_test_case_tear_down (AumbralesTestTestCase* self) {
+void cubo_genetico_test_test_case_tear_down (CuboGeneticoTestTestCase* self) {
 	g_return_if_fail (self != NULL);
-	AUMBRALES_TEST_TEST_CASE_GET_CLASS (self)->tear_down (self);
+	CUBO_GENETICO_TEST_TEST_CASE_GET_CLASS (self)->tear_down (self);
 }
 
 
@@ -266,7 +266,7 @@ void aumbrales_test_test_case_tear_down (AumbralesTestTestCase* self) {
          * Returns the test suite.
          * @return the test suite.
          */
-GTestSuite* aumbrales_test_test_case_get_suite (AumbralesTestTestCase* self) {
+GTestSuite* cubo_genetico_test_test_case_get_suite (CuboGeneticoTestTestCase* self) {
 	GTestSuite* result = NULL;
 	GTestSuite* _tmp0_ = NULL;
 	g_return_val_if_fail (self != NULL, NULL);
@@ -281,19 +281,19 @@ static gpointer _g_object_ref0 (gpointer self) {
 }
 
 
-static AumbralesTestTestCaseAdaptor* aumbrales_test_test_case_adaptor_construct (GType object_type, const gchar* name, AumbralesTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify, AumbralesTestTestCase* test_case) {
-	AumbralesTestTestCaseAdaptor* self = NULL;
+static CuboGeneticoTestTestCaseAdaptor* cubo_genetico_test_test_case_adaptor_construct (GType object_type, const gchar* name, CuboGeneticoTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify, CuboGeneticoTestTestCase* test_case) {
+	CuboGeneticoTestTestCaseAdaptor* self = NULL;
 	const gchar* _tmp0_ = NULL;
-	AumbralesTestTestCaseTestMethod _tmp1_ = NULL;
+	CuboGeneticoTestTestCaseTestMethod _tmp1_ = NULL;
 	void* _tmp1__target = NULL;
 	GDestroyNotify _tmp1__target_destroy_notify = NULL;
-	AumbralesTestTestCase* _tmp2_ = NULL;
-	AumbralesTestTestCase* _tmp3_ = NULL;
+	CuboGeneticoTestTestCase* _tmp2_ = NULL;
+	CuboGeneticoTestTestCase* _tmp3_ = NULL;
 	g_return_val_if_fail (name != NULL, NULL);
 	g_return_val_if_fail (test_case != NULL, NULL);
-	self = (AumbralesTestTestCaseAdaptor*) g_type_create_instance (object_type);
+	self = (CuboGeneticoTestTestCaseAdaptor*) g_type_create_instance (object_type);
 	_tmp0_ = name;
-	aumbrales_test_test_case_adaptor_set_name (self, _tmp0_);
+	cubo_genetico_test_test_case_adaptor_set_name (self, _tmp0_);
 	_tmp1_ = test;
 	_tmp1__target = test_target;
 	_tmp1__target_destroy_notify = test_target_destroy_notify;
@@ -319,21 +319,21 @@ static AumbralesTestTestCaseAdaptor* aumbrales_test_test_case_adaptor_construct 
 }
 
 
-static AumbralesTestTestCaseAdaptor* aumbrales_test_test_case_adaptor_new (const gchar* name, AumbralesTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify, AumbralesTestTestCase* test_case) {
-	return aumbrales_test_test_case_adaptor_construct (AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR, name, test, test_target, test_target_destroy_notify, test_case);
+static CuboGeneticoTestTestCaseAdaptor* cubo_genetico_test_test_case_adaptor_new (const gchar* name, CuboGeneticoTestTestCaseTestMethod test, void* test_target, GDestroyNotify test_target_destroy_notify, CuboGeneticoTestTestCase* test_case) {
+	return cubo_genetico_test_test_case_adaptor_construct (CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR, name, test, test_target, test_target_destroy_notify, test_case);
 }
 
 
-static void aumbrales_test_test_case_adaptor_set_up (AumbralesTestTestCaseAdaptor* self, void* fixture) {
-	AumbralesTestTestCase* _tmp0_ = NULL;
+static void cubo_genetico_test_test_case_adaptor_set_up (CuboGeneticoTestTestCaseAdaptor* self, void* fixture) {
+	CuboGeneticoTestTestCase* _tmp0_ = NULL;
 	g_return_if_fail (self != NULL);
 	_tmp0_ = self->priv->test_case;
-	aumbrales_test_test_case_set_up (_tmp0_);
+	cubo_genetico_test_test_case_set_up (_tmp0_);
 }
 
 
-static void aumbrales_test_test_case_adaptor_run (AumbralesTestTestCaseAdaptor* self, void* fixture) {
-	AumbralesTestTestCaseTestMethod _tmp0_ = NULL;
+static void cubo_genetico_test_test_case_adaptor_run (CuboGeneticoTestTestCaseAdaptor* self, void* fixture) {
+	CuboGeneticoTestTestCaseTestMethod _tmp0_ = NULL;
 	void* _tmp0__target = NULL;
 	g_return_if_fail (self != NULL);
 	_tmp0_ = self->priv->test;
@@ -342,15 +342,15 @@ static void aumbrales_test_test_case_adaptor_run (AumbralesTestTestCaseAdaptor* 
 }
 
 
-static void aumbrales_test_test_case_adaptor_tear_down (AumbralesTestTestCaseAdaptor* self, void* fixture) {
-	AumbralesTestTestCase* _tmp0_ = NULL;
+static void cubo_genetico_test_test_case_adaptor_tear_down (CuboGeneticoTestTestCaseAdaptor* self, void* fixture) {
+	CuboGeneticoTestTestCase* _tmp0_ = NULL;
 	g_return_if_fail (self != NULL);
 	_tmp0_ = self->priv->test_case;
-	aumbrales_test_test_case_tear_down (_tmp0_);
+	cubo_genetico_test_test_case_tear_down (_tmp0_);
 }
 
 
-static const gchar* aumbrales_test_test_case_adaptor_get_name (AumbralesTestTestCaseAdaptor* self) {
+static const gchar* cubo_genetico_test_test_case_adaptor_get_name (CuboGeneticoTestTestCaseAdaptor* self) {
 	const gchar* result;
 	const gchar* _tmp0_ = NULL;
 	g_return_val_if_fail (self != NULL, NULL);
@@ -360,7 +360,7 @@ static const gchar* aumbrales_test_test_case_adaptor_get_name (AumbralesTestTest
 }
 
 
-static void aumbrales_test_test_case_adaptor_set_name (AumbralesTestTestCaseAdaptor* self, const gchar* value) {
+static void cubo_genetico_test_test_case_adaptor_set_name (CuboGeneticoTestTestCaseAdaptor* self, const gchar* value) {
 	const gchar* _tmp0_ = NULL;
 	gchar* _tmp1_ = NULL;
 	g_return_if_fail (self != NULL);
@@ -371,42 +371,42 @@ static void aumbrales_test_test_case_adaptor_set_name (AumbralesTestTestCaseAdap
 }
 
 
-static void aumbrales_test_test_case_value_adaptor_init (GValue* value) {
+static void cubo_genetico_test_test_case_value_adaptor_init (GValue* value) {
 	value->data[0].v_pointer = NULL;
 }
 
 
-static void aumbrales_test_test_case_value_adaptor_free_value (GValue* value) {
+static void cubo_genetico_test_test_case_value_adaptor_free_value (GValue* value) {
 	if (value->data[0].v_pointer) {
-		aumbrales_test_test_case_adaptor_unref (value->data[0].v_pointer);
+		cubo_genetico_test_test_case_adaptor_unref (value->data[0].v_pointer);
 	}
 }
 
 
-static void aumbrales_test_test_case_value_adaptor_copy_value (const GValue* src_value, GValue* dest_value) {
+static void cubo_genetico_test_test_case_value_adaptor_copy_value (const GValue* src_value, GValue* dest_value) {
 	if (src_value->data[0].v_pointer) {
-		dest_value->data[0].v_pointer = aumbrales_test_test_case_adaptor_ref (src_value->data[0].v_pointer);
+		dest_value->data[0].v_pointer = cubo_genetico_test_test_case_adaptor_ref (src_value->data[0].v_pointer);
 	} else {
 		dest_value->data[0].v_pointer = NULL;
 	}
 }
 
 
-static gpointer aumbrales_test_test_case_value_adaptor_peek_pointer (const GValue* value) {
+static gpointer cubo_genetico_test_test_case_value_adaptor_peek_pointer (const GValue* value) {
 	return value->data[0].v_pointer;
 }
 
 
-static gchar* aumbrales_test_test_case_value_adaptor_collect_value (GValue* value, guint n_collect_values, GTypeCValue* collect_values, guint collect_flags) {
+static gchar* cubo_genetico_test_test_case_value_adaptor_collect_value (GValue* value, guint n_collect_values, GTypeCValue* collect_values, guint collect_flags) {
 	if (collect_values[0].v_pointer) {
-		AumbralesTestTestCaseAdaptor* object;
+		CuboGeneticoTestTestCaseAdaptor* object;
 		object = collect_values[0].v_pointer;
 		if (object->parent_instance.g_class == NULL) {
 			return g_strconcat ("invalid unclassed object pointer for value type `", G_VALUE_TYPE_NAME (value), "'", NULL);
 		} else if (!g_value_type_compatible (G_TYPE_FROM_INSTANCE (object), G_VALUE_TYPE (value))) {
 			return g_strconcat ("invalid object type `", g_type_name (G_TYPE_FROM_INSTANCE (object)), "' for value type `", G_VALUE_TYPE_NAME (value), "'", NULL);
 		}
-		value->data[0].v_pointer = aumbrales_test_test_case_adaptor_ref (object);
+		value->data[0].v_pointer = cubo_genetico_test_test_case_adaptor_ref (object);
 	} else {
 		value->data[0].v_pointer = NULL;
 	}
@@ -414,8 +414,8 @@ static gchar* aumbrales_test_test_case_value_adaptor_collect_value (GValue* valu
 }
 
 
-static gchar* aumbrales_test_test_case_value_adaptor_lcopy_value (const GValue* value, guint n_collect_values, GTypeCValue* collect_values, guint collect_flags) {
-	AumbralesTestTestCaseAdaptor** object_p;
+static gchar* cubo_genetico_test_test_case_value_adaptor_lcopy_value (const GValue* value, guint n_collect_values, GTypeCValue* collect_values, guint collect_flags) {
+	CuboGeneticoTestTestCaseAdaptor** object_p;
 	object_p = collect_values[0].v_pointer;
 	if (!object_p) {
 		return g_strdup_printf ("value location for `%s' passed as NULL", G_VALUE_TYPE_NAME (value));
@@ -425,78 +425,78 @@ static gchar* aumbrales_test_test_case_value_adaptor_lcopy_value (const GValue* 
 	} else if (collect_flags & G_VALUE_NOCOPY_CONTENTS) {
 		*object_p = value->data[0].v_pointer;
 	} else {
-		*object_p = aumbrales_test_test_case_adaptor_ref (value->data[0].v_pointer);
+		*object_p = cubo_genetico_test_test_case_adaptor_ref (value->data[0].v_pointer);
 	}
 	return NULL;
 }
 
 
-static GParamSpec* aumbrales_test_test_case_param_spec_adaptor (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags) {
-	AumbralesTestTestCaseParamSpecAdaptor* spec;
-	g_return_val_if_fail (g_type_is_a (object_type, AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR), NULL);
+static GParamSpec* cubo_genetico_test_test_case_param_spec_adaptor (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags) {
+	CuboGeneticoTestTestCaseParamSpecAdaptor* spec;
+	g_return_val_if_fail (g_type_is_a (object_type, CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR), NULL);
 	spec = g_param_spec_internal (G_TYPE_PARAM_OBJECT, name, nick, blurb, flags);
 	G_PARAM_SPEC (spec)->value_type = object_type;
 	return G_PARAM_SPEC (spec);
 }
 
 
-static gpointer aumbrales_test_test_case_value_get_adaptor (const GValue* value) {
-	g_return_val_if_fail (G_TYPE_CHECK_VALUE_TYPE (value, AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR), NULL);
+static gpointer cubo_genetico_test_test_case_value_get_adaptor (const GValue* value) {
+	g_return_val_if_fail (G_TYPE_CHECK_VALUE_TYPE (value, CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR), NULL);
 	return value->data[0].v_pointer;
 }
 
 
-static void aumbrales_test_test_case_value_set_adaptor (GValue* value, gpointer v_object) {
-	AumbralesTestTestCaseAdaptor* old;
-	g_return_if_fail (G_TYPE_CHECK_VALUE_TYPE (value, AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR));
+static void cubo_genetico_test_test_case_value_set_adaptor (GValue* value, gpointer v_object) {
+	CuboGeneticoTestTestCaseAdaptor* old;
+	g_return_if_fail (G_TYPE_CHECK_VALUE_TYPE (value, CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR));
 	old = value->data[0].v_pointer;
 	if (v_object) {
-		g_return_if_fail (G_TYPE_CHECK_INSTANCE_TYPE (v_object, AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR));
+		g_return_if_fail (G_TYPE_CHECK_INSTANCE_TYPE (v_object, CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR));
 		g_return_if_fail (g_value_type_compatible (G_TYPE_FROM_INSTANCE (v_object), G_VALUE_TYPE (value)));
 		value->data[0].v_pointer = v_object;
-		aumbrales_test_test_case_adaptor_ref (value->data[0].v_pointer);
+		cubo_genetico_test_test_case_adaptor_ref (value->data[0].v_pointer);
 	} else {
 		value->data[0].v_pointer = NULL;
 	}
 	if (old) {
-		aumbrales_test_test_case_adaptor_unref (old);
+		cubo_genetico_test_test_case_adaptor_unref (old);
 	}
 }
 
 
-static void aumbrales_test_test_case_value_take_adaptor (GValue* value, gpointer v_object) {
-	AumbralesTestTestCaseAdaptor* old;
-	g_return_if_fail (G_TYPE_CHECK_VALUE_TYPE (value, AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR));
+static void cubo_genetico_test_test_case_value_take_adaptor (GValue* value, gpointer v_object) {
+	CuboGeneticoTestTestCaseAdaptor* old;
+	g_return_if_fail (G_TYPE_CHECK_VALUE_TYPE (value, CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR));
 	old = value->data[0].v_pointer;
 	if (v_object) {
-		g_return_if_fail (G_TYPE_CHECK_INSTANCE_TYPE (v_object, AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR));
+		g_return_if_fail (G_TYPE_CHECK_INSTANCE_TYPE (v_object, CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR));
 		g_return_if_fail (g_value_type_compatible (G_TYPE_FROM_INSTANCE (v_object), G_VALUE_TYPE (value)));
 		value->data[0].v_pointer = v_object;
 	} else {
 		value->data[0].v_pointer = NULL;
 	}
 	if (old) {
-		aumbrales_test_test_case_adaptor_unref (old);
+		cubo_genetico_test_test_case_adaptor_unref (old);
 	}
 }
 
 
-static void aumbrales_test_test_case_adaptor_class_init (AumbralesTestTestCaseAdaptorClass * klass) {
-	aumbrales_test_test_case_adaptor_parent_class = g_type_class_peek_parent (klass);
-	((AumbralesTestTestCaseAdaptorClass *) klass)->finalize = aumbrales_test_test_case_adaptor_finalize;
-	g_type_class_add_private (klass, sizeof (AumbralesTestTestCaseAdaptorPrivate));
+static void cubo_genetico_test_test_case_adaptor_class_init (CuboGeneticoTestTestCaseAdaptorClass * klass) {
+	cubo_genetico_test_test_case_adaptor_parent_class = g_type_class_peek_parent (klass);
+	((CuboGeneticoTestTestCaseAdaptorClass *) klass)->finalize = cubo_genetico_test_test_case_adaptor_finalize;
+	g_type_class_add_private (klass, sizeof (CuboGeneticoTestTestCaseAdaptorPrivate));
 }
 
 
-static void aumbrales_test_test_case_adaptor_instance_init (AumbralesTestTestCaseAdaptor * self) {
-	self->priv = AUMBRALES_TEST_TEST_CASE_ADAPTOR_GET_PRIVATE (self);
+static void cubo_genetico_test_test_case_adaptor_instance_init (CuboGeneticoTestTestCaseAdaptor * self) {
+	self->priv = CUBO_GENETICO_TEST_TEST_CASE_ADAPTOR_GET_PRIVATE (self);
 	self->ref_count = 1;
 }
 
 
-static void aumbrales_test_test_case_adaptor_finalize (AumbralesTestTestCaseAdaptor* obj) {
-	AumbralesTestTestCaseAdaptor * self;
-	self = G_TYPE_CHECK_INSTANCE_CAST (obj, AUMBRALES_TEST_TEST_CASE_TYPE_ADAPTOR, AumbralesTestTestCaseAdaptor);
+static void cubo_genetico_test_test_case_adaptor_finalize (CuboGeneticoTestTestCaseAdaptor* obj) {
+	CuboGeneticoTestTestCaseAdaptor * self;
+	self = G_TYPE_CHECK_INSTANCE_CAST (obj, CUBO_GENETICO_TEST_TEST_CASE_TYPE_ADAPTOR, CuboGeneticoTestTestCaseAdaptor);
 	g_signal_handlers_destroy (self);
 	_g_free0 (self->priv->_name);
 	(self->priv->test_target_destroy_notify == NULL) ? NULL : (self->priv->test_target_destroy_notify (self->priv->test_target), NULL);
@@ -507,77 +507,77 @@ static void aumbrales_test_test_case_adaptor_finalize (AumbralesTestTestCaseAdap
 }
 
 
-static GType aumbrales_test_test_case_adaptor_get_type (void) {
-	static volatile gsize aumbrales_test_test_case_adaptor_type_id__volatile = 0;
-	if (g_once_init_enter (&aumbrales_test_test_case_adaptor_type_id__volatile)) {
-		static const GTypeValueTable g_define_type_value_table = { aumbrales_test_test_case_value_adaptor_init, aumbrales_test_test_case_value_adaptor_free_value, aumbrales_test_test_case_value_adaptor_copy_value, aumbrales_test_test_case_value_adaptor_peek_pointer, "p", aumbrales_test_test_case_value_adaptor_collect_value, "p", aumbrales_test_test_case_value_adaptor_lcopy_value };
-		static const GTypeInfo g_define_type_info = { sizeof (AumbralesTestTestCaseAdaptorClass), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) aumbrales_test_test_case_adaptor_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (AumbralesTestTestCaseAdaptor), 0, (GInstanceInitFunc) aumbrales_test_test_case_adaptor_instance_init, &g_define_type_value_table };
+static GType cubo_genetico_test_test_case_adaptor_get_type (void) {
+	static volatile gsize cubo_genetico_test_test_case_adaptor_type_id__volatile = 0;
+	if (g_once_init_enter (&cubo_genetico_test_test_case_adaptor_type_id__volatile)) {
+		static const GTypeValueTable g_define_type_value_table = { cubo_genetico_test_test_case_value_adaptor_init, cubo_genetico_test_test_case_value_adaptor_free_value, cubo_genetico_test_test_case_value_adaptor_copy_value, cubo_genetico_test_test_case_value_adaptor_peek_pointer, "p", cubo_genetico_test_test_case_value_adaptor_collect_value, "p", cubo_genetico_test_test_case_value_adaptor_lcopy_value };
+		static const GTypeInfo g_define_type_info = { sizeof (CuboGeneticoTestTestCaseAdaptorClass), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) cubo_genetico_test_test_case_adaptor_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (CuboGeneticoTestTestCaseAdaptor), 0, (GInstanceInitFunc) cubo_genetico_test_test_case_adaptor_instance_init, &g_define_type_value_table };
 		static const GTypeFundamentalInfo g_define_type_fundamental_info = { (G_TYPE_FLAG_CLASSED | G_TYPE_FLAG_INSTANTIATABLE | G_TYPE_FLAG_DERIVABLE | G_TYPE_FLAG_DEEP_DERIVABLE) };
-		GType aumbrales_test_test_case_adaptor_type_id;
-		aumbrales_test_test_case_adaptor_type_id = g_type_register_fundamental (g_type_fundamental_next (), "AumbralesTestTestCaseAdaptor", &g_define_type_info, &g_define_type_fundamental_info, 0);
-		g_once_init_leave (&aumbrales_test_test_case_adaptor_type_id__volatile, aumbrales_test_test_case_adaptor_type_id);
+		GType cubo_genetico_test_test_case_adaptor_type_id;
+		cubo_genetico_test_test_case_adaptor_type_id = g_type_register_fundamental (g_type_fundamental_next (), "CuboGeneticoTestTestCaseAdaptor", &g_define_type_info, &g_define_type_fundamental_info, 0);
+		g_once_init_leave (&cubo_genetico_test_test_case_adaptor_type_id__volatile, cubo_genetico_test_test_case_adaptor_type_id);
 	}
-	return aumbrales_test_test_case_adaptor_type_id__volatile;
+	return cubo_genetico_test_test_case_adaptor_type_id__volatile;
 }
 
 
-static gpointer aumbrales_test_test_case_adaptor_ref (gpointer instance) {
-	AumbralesTestTestCaseAdaptor* self;
+static gpointer cubo_genetico_test_test_case_adaptor_ref (gpointer instance) {
+	CuboGeneticoTestTestCaseAdaptor* self;
 	self = instance;
 	g_atomic_int_inc (&self->ref_count);
 	return instance;
 }
 
 
-static void aumbrales_test_test_case_adaptor_unref (gpointer instance) {
-	AumbralesTestTestCaseAdaptor* self;
+static void cubo_genetico_test_test_case_adaptor_unref (gpointer instance) {
+	CuboGeneticoTestTestCaseAdaptor* self;
 	self = instance;
 	if (g_atomic_int_dec_and_test (&self->ref_count)) {
-		AUMBRALES_TEST_TEST_CASE_ADAPTOR_GET_CLASS (self)->finalize (self);
+		CUBO_GENETICO_TEST_TEST_CASE_ADAPTOR_GET_CLASS (self)->finalize (self);
 		g_type_free_instance ((GTypeInstance *) self);
 	}
 }
 
 
-static void aumbrales_test_test_case_class_init (AumbralesTestTestCaseClass * klass) {
-	aumbrales_test_test_case_parent_class = g_type_class_peek_parent (klass);
-	g_type_class_add_private (klass, sizeof (AumbralesTestTestCasePrivate));
-	((AumbralesTestTestCaseClass *) klass)->set_up = (void (*)(AumbralesTestTestCase*)) aumbrales_test_test_case_real_set_up;
-	((AumbralesTestTestCaseClass *) klass)->tear_down = (void (*)(AumbralesTestTestCase*)) aumbrales_test_test_case_real_tear_down;
-	G_OBJECT_CLASS (klass)->finalize = aumbrales_test_test_case_finalize;
+static void cubo_genetico_test_test_case_class_init (CuboGeneticoTestTestCaseClass * klass) {
+	cubo_genetico_test_test_case_parent_class = g_type_class_peek_parent (klass);
+	g_type_class_add_private (klass, sizeof (CuboGeneticoTestTestCasePrivate));
+	((CuboGeneticoTestTestCaseClass *) klass)->set_up = (void (*)(CuboGeneticoTestTestCase*)) cubo_genetico_test_test_case_real_set_up;
+	((CuboGeneticoTestTestCaseClass *) klass)->tear_down = (void (*)(CuboGeneticoTestTestCase*)) cubo_genetico_test_test_case_real_tear_down;
+	G_OBJECT_CLASS (klass)->finalize = cubo_genetico_test_test_case_finalize;
 }
 
 
-static void aumbrales_test_test_case_instance_init (AumbralesTestTestCase * self) {
-	AumbralesTestTestCaseAdaptor** _tmp0_ = NULL;
-	self->priv = AUMBRALES_TEST_TEST_CASE_GET_PRIVATE (self);
-	_tmp0_ = g_new0 (AumbralesTestTestCaseAdaptor*, 0 + 1);
+static void cubo_genetico_test_test_case_instance_init (CuboGeneticoTestTestCase * self) {
+	CuboGeneticoTestTestCaseAdaptor** _tmp0_ = NULL;
+	self->priv = CUBO_GENETICO_TEST_TEST_CASE_GET_PRIVATE (self);
+	_tmp0_ = g_new0 (CuboGeneticoTestTestCaseAdaptor*, 0 + 1);
 	self->priv->adaptors = _tmp0_;
 	self->priv->adaptors_length1 = 0;
 	self->priv->_adaptors_size_ = self->priv->adaptors_length1;
 }
 
 
-static void aumbrales_test_test_case_finalize (GObject* obj) {
-	AumbralesTestTestCase * self;
-	self = G_TYPE_CHECK_INSTANCE_CAST (obj, AUMBRALES_TEST_TYPE_TEST_CASE, AumbralesTestTestCase);
-	self->priv->adaptors = (_vala_array_free (self->priv->adaptors, self->priv->adaptors_length1, (GDestroyNotify) aumbrales_test_test_case_adaptor_unref), NULL);
-	G_OBJECT_CLASS (aumbrales_test_test_case_parent_class)->finalize (obj);
+static void cubo_genetico_test_test_case_finalize (GObject* obj) {
+	CuboGeneticoTestTestCase * self;
+	self = G_TYPE_CHECK_INSTANCE_CAST (obj, CUBO_GENETICO_TEST_TYPE_TEST_CASE, CuboGeneticoTestTestCase);
+	self->priv->adaptors = (_vala_array_free (self->priv->adaptors, self->priv->adaptors_length1, (GDestroyNotify) cubo_genetico_test_test_case_adaptor_unref), NULL);
+	G_OBJECT_CLASS (cubo_genetico_test_test_case_parent_class)->finalize (obj);
 }
 
 
 /**
      * Base class for test cases.
      */
-GType aumbrales_test_test_case_get_type (void) {
-	static volatile gsize aumbrales_test_test_case_type_id__volatile = 0;
-	if (g_once_init_enter (&aumbrales_test_test_case_type_id__volatile)) {
-		static const GTypeInfo g_define_type_info = { sizeof (AumbralesTestTestCaseClass), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) aumbrales_test_test_case_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (AumbralesTestTestCase), 0, (GInstanceInitFunc) aumbrales_test_test_case_instance_init, NULL };
-		GType aumbrales_test_test_case_type_id;
-		aumbrales_test_test_case_type_id = g_type_register_static (G_TYPE_OBJECT, "AumbralesTestTestCase", &g_define_type_info, G_TYPE_FLAG_ABSTRACT);
-		g_once_init_leave (&aumbrales_test_test_case_type_id__volatile, aumbrales_test_test_case_type_id);
+GType cubo_genetico_test_test_case_get_type (void) {
+	static volatile gsize cubo_genetico_test_test_case_type_id__volatile = 0;
+	if (g_once_init_enter (&cubo_genetico_test_test_case_type_id__volatile)) {
+		static const GTypeInfo g_define_type_info = { sizeof (CuboGeneticoTestTestCaseClass), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) cubo_genetico_test_test_case_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (CuboGeneticoTestTestCase), 0, (GInstanceInitFunc) cubo_genetico_test_test_case_instance_init, NULL };
+		GType cubo_genetico_test_test_case_type_id;
+		cubo_genetico_test_test_case_type_id = g_type_register_static (G_TYPE_OBJECT, "CuboGeneticoTestTestCase", &g_define_type_info, G_TYPE_FLAG_ABSTRACT);
+		g_once_init_leave (&cubo_genetico_test_test_case_type_id__volatile, cubo_genetico_test_test_case_type_id);
 	}
-	return aumbrales_test_test_case_type_id__volatile;
+	return cubo_genetico_test_test_case_type_id__volatile;
 }
 
 

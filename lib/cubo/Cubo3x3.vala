@@ -1,5 +1,7 @@
 /**
- * Clase que representa un cubo magico de 3x3x3 
+ * Clase que representa un cubo magico de 3x3x3
+ * Author:
+ *    Jonathan Barragan <jonathan.barragan.j@ciencias.unam.mx>
  */
 namespace CuboGenetico.Cubo{
     public class Cubo3x3 : GLib.Object{
@@ -20,11 +22,82 @@ namespace CuboGenetico.Cubo{
 			}
 			
 		}
+		/**
+		 *Regresa el estado actual del cubo
+		 */
+		public int[,] getActual(){
+			return this.actual;
+		}
+
+		/**
+		 * regresa el cubo al estado inicial
+		 */
+		public void reset(){
+			for(int i =0;i<6;i++){
+				for(int j=0;j<9;j++){
+					this.actual[i,j] = this.inicial[i,j];
+				}
+			}
+		}
+		/**
+		 *Giramos mas de una cara dado la lista de giros
+		 */
+		public void giraCaras(int[] giros){
+			foreach(int i in giros){
+				this.giraCara(i);
+			}
+		}
+		/**
+		 * Gira una cara del cubo dado i
+		 * R=1 ,L=3 ,U=5 ,D=7 ,F=9  ,B =11 
+		 * R'=2,L'=4,U'=6,D'=8,F'=10,B'=12
+		 */
+		public void giraCara(int i){
+			switch (i) {
+			case 1:
+				this.r();
+				break;
+			case 2:
+				this.rprima();
+				break;
+			case 3:
+				this.l();
+				break;
+			case 4:
+				this.lprima();
+				break;
+			case 5:
+				this.u();
+				break;
+			case 6:
+				this.uprima();;
+				break;
+
+			case 7:
+				this.d();
+				break;
+			case 8:
+				this.dprima();
+				break;
+			case 9:
+				this.f();
+				break;
+			case 10:
+				this.fprima();
+				break;
+			case 11:
+				this.b();
+				break;
+			case 12:
+				this.bprima();
+				break;
+			}
+		}
 
 		/**
 		 *Gira la cara derecha 90 grados sentido horario
 		 */
-		public void r(){
+		private void r(){
 			int i = this.actual[0,2];
 			int j = this.actual[1,2];
 			int k = this.actual[2,2];
@@ -64,7 +137,7 @@ namespace CuboGenetico.Cubo{
 		/**
 		 * Gira la cara derecha 90 grados sentido antihorario
 		 */
-		public void rprima(){
+		private void rprima(){
 			int i = this.actual[0,2];
 			int j = this.actual[1,2];
 			int k = this.actual[2,2];
@@ -104,7 +177,7 @@ namespace CuboGenetico.Cubo{
 		/**
 		 * Gira la cara izquierda 90 grados sentido horario
 		 */
-		public void l(){
+		private void l(){
 			int i = this.actual[0,0];
 			int j = this.actual[1,0];
 			int k = this.actual[2,0];
@@ -123,17 +196,29 @@ namespace CuboGenetico.Cubo{
 			this.actual[4,0] = j; 
 			this.actual[5,0] = k;
 
-			this.actual[5,8] = l;
-			this.actual[4,8] = m; 
 			this.actual[3,8] = n;
-			
+			this.actual[4,8] = m; 
+			this.actual[5,8] = l;
+
+			i = this.actual[3,3];
+			this.actual[3,3] = this.actual[5,3];
+			this.actual[5,3] =this.actual[5,5];
+			this.actual[5,5] = this.actual[3,5];
+			this.actual[3,5] = i;
+
+			i = this.actual[3,4];
+			this.actual[3,4] = this.actual[4,3];
+			this.actual[4,3] = this.actual[5,4];
+			this.actual[5,4] = this.actual[4,5];
+			this.actual[4,5] = i;
+				
 			
 		}
 
 		/**
 		 * Gira la cara izquierda 90 grados sentido antihorario
 		 */
-		public void lprima(){
+		private void lprima(){
 			int i = this.actual[0,0];
 			int j = this.actual[1,0];
 			int k = this.actual[2,0];
@@ -156,13 +241,23 @@ namespace CuboGenetico.Cubo{
 			this.actual[4,8] = m; 
 			this.actual[3,8] = n;
 			
-			
+			i = this.actual[3,3];
+			this.actual[3,3] = this.actual[3,5];
+			this.actual[3,5] =this.actual[5,5];
+			this.actual[5,5] = this.actual[5,3];
+			this.actual[5,3] = i;
+
+			i = this.actual[3,4];
+			this.actual[3,4] = this.actual[4,5];
+			this.actual[4,5] = this.actual[5,4];
+			this.actual[5,4] = this.actual[4,3];
+			this.actual[4,3] = i;
 		}
 
 		/**
 		 * Gira la cara superior 90 grados sentido horario
 		 */
-		public void u(){
+		private void u(){
 			int i = this.actual[0,0];
 			int j = this.actual[0,1];
 			int k = this.actual[0,2];
@@ -200,7 +295,7 @@ namespace CuboGenetico.Cubo{
 		/**
 		 * Gira la cara superior 90 grados sentido antihorario
 		 */
-		public void uprima(){
+		private void uprima(){
 			int i = this.actual[0,0];
 			int j = this.actual[0,1];
 			int k = this.actual[0,2];
@@ -240,7 +335,7 @@ namespace CuboGenetico.Cubo{
 		/**
 		 * Gira la cara frontal 90 grados sentido horario
 		 */
-		public void f(){
+		private void f(){
 			int i = this.actual[0,3];
 			int j = this.actual[1,3];
 			int k = this.actual[2,3];
@@ -262,14 +357,25 @@ namespace CuboGenetico.Cubo{
 			this.actual[3,5] = l;
 			this.actual[4,5] = m; 
 			this.actual[5,5] = n;
-			
+
+			i = this.actual[0,0];
+			this.actual[0,0] = this.actual[2,0];
+			this.actual[2,0] =this.actual[2,2];
+			this.actual[2,2] = this.actual[0,2];
+			this.actual[0,2] = i;
+
+			i = this.actual[0,1];
+			this.actual[0,1] = this.actual[1,0];
+			this.actual[1,0] = this.actual[2,1];
+			this.actual[2,1] = this.actual[1,2];
+			this.actual[1,2] = i;
 			
 		}
 
 		/**
 		 * Gira la cara frontal 90 grados sentido antihorario
 		 */
-		public void fprima(){
+		private void fprima(){
 			int i = this.actual[0,3];
 			int j = this.actual[1,3];
 			int k = this.actual[2,3];
@@ -291,14 +397,25 @@ namespace CuboGenetico.Cubo{
 			this.actual[3,5] = n;
 			this.actual[4,5] = m; 
 			this.actual[5,5] = l;
-			
+
+			i = this.actual[0,0];
+			this.actual[0,0] = this.actual[0,2];
+			this.actual[0,2] =this.actual[2,2];
+			this.actual[2,2] = this.actual[2,0];
+			this.actual[2,0] = i;
+
+			i = this.actual[0,1];
+			this.actual[0,1] = this.actual[1,2];
+			this.actual[1,2] = this.actual[2,1];
+			this.actual[2,1] = this.actual[1,0];
+			this.actual[1,0] = i;
 			
 		}
 
 		/**
 		 * Gira la cara posterior 90 grados sentido horario
 		 */
-		public void b(){
+		private void b(){
 			int i = this.actual[0,5];
 			int j = this.actual[1,5];
 			int k = this.actual[2,5];
@@ -320,14 +437,25 @@ namespace CuboGenetico.Cubo{
 			this.actual[3,3] = n;
 			this.actual[4,3] = m; 
 			this.actual[5,3] = l;
-			
+
+			i = this.actual[3,6];
+			this.actual[3,6] = this.actual[5,6];
+			this.actual[5,6] =this.actual[5,8];
+			this.actual[5,8] = this.actual[3,8];
+			this.actual[3,8] = i;
+
+			i = this.actual[3,7];
+			this.actual[3,7] = this.actual[4,6];
+			this.actual[4,6] = this.actual[5,7];
+			this.actual[5,7] = this.actual[4,8];
+			this.actual[4,8] = i;
 			
 		}
 
 		/**
 		 * Gira la cara posterior 90 grados sentido antihorario
 		 */
-		public void bprima(){
+		private void bprima(){
 			int i = this.actual[0,5];
 			int j = this.actual[1,5];
 			int k = this.actual[2,5];
@@ -349,14 +477,25 @@ namespace CuboGenetico.Cubo{
 			this.actual[3,3] = l;
 			this.actual[4,3] = m; 
 			this.actual[5,3] = n;
-			
+
+			i = this.actual[3,6];
+			this.actual[3,6] = this.actual[3,8];
+			this.actual[3,8] =this.actual[5,8];
+			this.actual[5,8] = this.actual[5,6];
+			this.actual[5,6] = i;
+
+			i = this.actual[3,7];
+			this.actual[3,7] = this.actual[4,8];
+			this.actual[4,8] = this.actual[5,7];
+			this.actual[5,7] = this.actual[4,6];
+			this.actual[4,6] = i;
 			
 		}
 
 		/**
 		 * Gira la cara inferior 90 grados sentido horario
 		 */
-		public void d(){
+		private void d(){
 			int i = this.actual[2,0];
 			int j = this.actual[2,1];
 			int k = this.actual[2,2];
@@ -379,13 +518,25 @@ namespace CuboGenetico.Cubo{
 			this.actual[5,7] = m; 
 			this.actual[5,8] = n;
 			
+			i = this.actual[3,0];
+			this.actual[3,0] = this.actual[5,0];
+			this.actual[5,0] =this.actual[5,2];
+			this.actual[5,2] = this.actual[3,2];
+			this.actual[3,2] = i;
+
+			i = this.actual[3,1];
+			this.actual[3,1] = this.actual[4,0];
+			this.actual[4,0] = this.actual[5,1];
+			this.actual[5,1] = this.actual[4,2];
+			this.actual[4,2] = i;
+			
 			
 		}
 
 		/**
 		 * Gira la cara inferior 90 grados sentido antihorario
 		 */
-		public void dprima(){
+		private void dprima(){
 			int i = this.actual[2,0];
 			int j = this.actual[2,1];
 			int k = this.actual[2,2];
@@ -407,6 +558,18 @@ namespace CuboGenetico.Cubo{
 			this.actual[5,6] = l;
 			this.actual[5,7] = m; 
 			this.actual[5,8] = n;
+
+			i = this.actual[3,0];
+			this.actual[3,0] = this.actual[3,2];
+			this.actual[3,2] =this.actual[5,2];
+			this.actual[5,2] = this.actual[5,0];
+			this.actual[5,0] = i;
+
+			i = this.actual[3,1];
+			this.actual[3,1] = this.actual[4,2];
+			this.actual[4,2] = this.actual[5,1];
+			this.actual[5,1] = this.actual[4,0];
+			this.actual[4,0] = i;
 			
 			
 		}

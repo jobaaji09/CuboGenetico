@@ -34,18 +34,10 @@ struct _CuboGeneticoCuboCubo3x3Class {
 GType cubo_genetico_cubo_cubo3x3_get_type (void) G_GNUC_CONST;
 CuboGeneticoCuboCubo3x3* cubo_genetico_cubo_cubo3x3_new (gint* cubo, int cubo_length1, int cubo_length2);
 CuboGeneticoCuboCubo3x3* cubo_genetico_cubo_cubo3x3_construct (GType object_type, gint* cubo, int cubo_length1, int cubo_length2);
-void cubo_genetico_cubo_cubo3x3_r (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_rprima (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_l (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_lprima (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_u (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_uprima (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_f (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_fprima (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_b (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_bprima (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_d (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_dprima (CuboGeneticoCuboCubo3x3* self);
+gint* cubo_genetico_cubo_cubo3x3_getActual (CuboGeneticoCuboCubo3x3* self, int* result_length1, int* result_length2);
+void cubo_genetico_cubo_cubo3x3_reset (CuboGeneticoCuboCubo3x3* self);
+void cubo_genetico_cubo_cubo3x3_giraCaras (CuboGeneticoCuboCubo3x3* self, gint* giros, int giros_length1);
+void cubo_genetico_cubo_cubo3x3_giraCara (CuboGeneticoCuboCubo3x3* self, gint i);
 void cubo_genetico_cubo_cubo3x3_to_string (CuboGeneticoCuboCubo3x3* self);
 void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self);
 

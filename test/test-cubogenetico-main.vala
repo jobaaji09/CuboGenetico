@@ -8,7 +8,9 @@ namespace CuboGenetico.Test{
             GLib.Test.init(ref args);
             GLib.TestSuite.get_root().add_suite(
 				new TestCubo3x3().get_suite());
-            return GLib.Test.run();
+			GLib.TestSuite.get_root().add_suite(
+				new TestCodificacion().get_suite());
+			return GLib.Test.run();
         }
         
     }

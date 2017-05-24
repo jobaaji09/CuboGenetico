@@ -70,7 +70,7 @@ namespace CuboGenetico.Cubo{
 				this.u();
 				break;
 			case 6:
-				this.uprima();;
+				this.uprima();
 				break;
 
 			case 7:
@@ -588,15 +588,29 @@ namespace CuboGenetico.Cubo{
 		 *Dibuja un cubo 3x3x3 D2 en un svg 
 		 **/
 		public void dibuja(){
-			var w  =900;
-			var h = 600;
+			var w  =1200;
+			var h = 900;
 			string s = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
 			+"<svg width=\""+w.to_string()+"\" height=\""+h.to_string()+"\">\n"
 			+"<g>\n";
 			s+="<rect width='"+w.to_string()+"' height='"+h.to_string()+"' fill='black'/>\n";
 			for(int i =0;i<6;i++){
 				for(int j =0;j<9;j++){
-					s+= cuadro(j,i,this.actual[i,j]);
+					if(i<3 && j<3){
+						s+= cuadro(j+3,i+3,this.actual[i,j]);
+					}else if(i<3 &&j<6){
+						s+= cuadro(j+3,i+3,this.actual[i,j]);
+					}else if(i<3 && j<9){
+						s+= cuadro(j-3,i,this.actual[i,j]);
+					}else if(i>=3 && j<3){
+						s+= cuadro(j+3,i+3,this.actual[i,j]);
+					}else if(i>=3 && j<6){
+						s+= cuadro(j-3,i,this.actual[i,j]);
+					}else if(i>=3 && j<9){
+						s+= cuadro(j+3,i,this.actual[i,j]);
+
+					}
+					
 				}
 			}
 			

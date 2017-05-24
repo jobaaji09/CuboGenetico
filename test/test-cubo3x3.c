@@ -34,6 +34,7 @@ struct _CuboGeneticoTestTestCubo3x3Class {
 };
 
 struct _CuboGeneticoTestTestCubo3x3Private {
+	CuboGeneticoCuboCubo3x3* c;
 	gint* cu;
 	gint cu_length1;
 	gint cu_length2;
@@ -69,6 +70,10 @@ static void _cubo_genetico_test_test_cubo3x3_test_llpddp_cubo_genetico_test_test
 CuboGeneticoTestTestCubo3x3* cubo_genetico_test_test_cubo3x3_construct (GType object_type) {
 	CuboGeneticoTestTestCubo3x3 * self = NULL;
 	gint* _tmp0_ = NULL;
+	gint* _tmp39_ = NULL;
+	gint _tmp39__length1 = 0;
+	gint _tmp39__length2 = 0;
+	CuboGeneticoCuboCubo3x3* _tmp40_ = NULL;
 	self = (CuboGeneticoTestTestCubo3x3*) cubo_genetico_test_test_case_construct (object_type, "TestCubo3x3");
 	cubo_genetico_test_test_case_add_test ((CuboGeneticoTestTestCase*) self, "test_rrpuup", _cubo_genetico_test_test_cubo3x3_test_rrpuup_cubo_genetico_test_test_case_test_method, g_object_ref (self), g_object_unref);
 	cubo_genetico_test_test_case_add_test ((CuboGeneticoTestTestCase*) self, "test_llpddp", _cubo_genetico_test_test_cubo3x3_test_llpddp_cubo_genetico_test_test_case_test_method, g_object_ref (self), g_object_unref);
@@ -234,6 +239,12 @@ CuboGeneticoTestTestCubo3x3* cubo_genetico_test_test_cubo3x3_construct (GType ob
 			}
 		}
 	}
+	_tmp39_ = self->priv->cu;
+	_tmp39__length1 = self->priv->cu_length1;
+	_tmp39__length2 = self->priv->cu_length2;
+	_tmp40_ = cubo_genetico_cubo_cubo3x3_new (_tmp39_, _tmp39__length1, _tmp39__length2);
+	_g_object_unref0 (self->priv->c);
+	self->priv->c = _tmp40_;
 	return self;
 }
 
@@ -244,274 +255,258 @@ CuboGeneticoTestTestCubo3x3* cubo_genetico_test_test_cubo3x3_new (void) {
 
 
 void cubo_genetico_test_test_cubo3x3_test_rrpuup (CuboGeneticoTestTestCubo3x3* self) {
-	CuboGeneticoCuboCubo3x3* c = NULL;
-	gint* _tmp0_ = NULL;
-	gint _tmp0__length1 = 0;
-	gint _tmp0__length2 = 0;
-	CuboGeneticoCuboCubo3x3* _tmp1_ = NULL;
 	gint* g = NULL;
-	gint* _tmp2_ = NULL;
+	gint* _tmp0_ = NULL;
 	gint g_length1 = 0;
 	gint _g_size_ = 0;
-	CuboGeneticoCuboCubo3x3* _tmp3_ = NULL;
-	gint* _tmp4_ = NULL;
-	gint _tmp4__length1 = 0;
+	CuboGeneticoCuboCubo3x3* _tmp1_ = NULL;
+	gint* _tmp2_ = NULL;
+	gint _tmp2__length1 = 0;
 	gint* act = NULL;
-	CuboGeneticoCuboCubo3x3* _tmp5_ = NULL;
-	gint _tmp6_ = 0;
-	gint _tmp7_ = 0;
-	gint* _tmp8_ = NULL;
+	CuboGeneticoCuboCubo3x3* _tmp3_ = NULL;
+	gint _tmp4_ = 0;
+	gint _tmp5_ = 0;
+	gint* _tmp6_ = NULL;
 	gint act_length1 = 0;
 	gint act_length2 = 0;
+	CuboGeneticoCuboCubo3x3* _tmp21_ = NULL;
 	g_return_if_fail (self != NULL);
-	_tmp0_ = self->priv->cu;
-	_tmp0__length1 = self->priv->cu_length1;
-	_tmp0__length2 = self->priv->cu_length2;
-	_tmp1_ = cubo_genetico_cubo_cubo3x3_new (_tmp0_, _tmp0__length1, _tmp0__length2);
-	c = _tmp1_;
-	_tmp2_ = g_new0 (gint, 24);
-	_tmp2_[0] = 1;
-	_tmp2_[1] = 5;
-	_tmp2_[2] = 2;
-	_tmp2_[3] = 6;
-	_tmp2_[4] = 1;
-	_tmp2_[5] = 5;
-	_tmp2_[6] = 2;
-	_tmp2_[7] = 6;
-	_tmp2_[8] = 1;
-	_tmp2_[9] = 5;
-	_tmp2_[10] = 2;
-	_tmp2_[11] = 6;
-	_tmp2_[12] = 1;
-	_tmp2_[13] = 5;
-	_tmp2_[14] = 2;
-	_tmp2_[15] = 6;
-	_tmp2_[16] = 1;
-	_tmp2_[17] = 5;
-	_tmp2_[18] = 2;
-	_tmp2_[19] = 6;
-	_tmp2_[20] = 1;
-	_tmp2_[21] = 5;
-	_tmp2_[22] = 2;
-	_tmp2_[23] = 6;
-	g = _tmp2_;
+	_tmp0_ = g_new0 (gint, 24);
+	_tmp0_[0] = 1;
+	_tmp0_[1] = 5;
+	_tmp0_[2] = 2;
+	_tmp0_[3] = 6;
+	_tmp0_[4] = 1;
+	_tmp0_[5] = 5;
+	_tmp0_[6] = 2;
+	_tmp0_[7] = 6;
+	_tmp0_[8] = 1;
+	_tmp0_[9] = 5;
+	_tmp0_[10] = 2;
+	_tmp0_[11] = 6;
+	_tmp0_[12] = 1;
+	_tmp0_[13] = 5;
+	_tmp0_[14] = 2;
+	_tmp0_[15] = 6;
+	_tmp0_[16] = 1;
+	_tmp0_[17] = 5;
+	_tmp0_[18] = 2;
+	_tmp0_[19] = 6;
+	_tmp0_[20] = 1;
+	_tmp0_[21] = 5;
+	_tmp0_[22] = 2;
+	_tmp0_[23] = 6;
+	g = _tmp0_;
 	g_length1 = 24;
 	_g_size_ = g_length1;
-	_tmp3_ = c;
-	_tmp4_ = g;
-	_tmp4__length1 = g_length1;
-	cubo_genetico_cubo_cubo3x3_giraCaras (_tmp3_, _tmp4_, _tmp4__length1);
-	_tmp5_ = c;
-	_tmp8_ = cubo_genetico_cubo_cubo3x3_getActual (_tmp5_, &_tmp6_, &_tmp7_);
-	act = _tmp8_;
-	act_length1 = _tmp6_;
-	act_length2 = _tmp7_;
+	_tmp1_ = self->priv->c;
+	_tmp2_ = g;
+	_tmp2__length1 = g_length1;
+	cubo_genetico_cubo_cubo3x3_giraCaras (_tmp1_, _tmp2_, _tmp2__length1);
+	_tmp3_ = self->priv->c;
+	_tmp6_ = cubo_genetico_cubo_cubo3x3_getActual (_tmp3_, &_tmp4_, &_tmp5_);
+	act = _tmp6_;
+	act_length1 = _tmp4_;
+	act_length2 = _tmp5_;
 	{
 		gint i = 0;
 		i = 0;
 		{
-			gboolean _tmp9_ = FALSE;
-			_tmp9_ = TRUE;
+			gboolean _tmp7_ = FALSE;
+			_tmp7_ = TRUE;
 			while (TRUE) {
-				gint _tmp11_ = 0;
-				if (!_tmp9_) {
-					gint _tmp10_ = 0;
-					_tmp10_ = i;
-					i = _tmp10_ + 1;
+				gint _tmp9_ = 0;
+				if (!_tmp7_) {
+					gint _tmp8_ = 0;
+					_tmp8_ = i;
+					i = _tmp8_ + 1;
 				}
-				_tmp9_ = FALSE;
-				_tmp11_ = i;
-				if (!(_tmp11_ < 6)) {
+				_tmp7_ = FALSE;
+				_tmp9_ = i;
+				if (!(_tmp9_ < 6)) {
 					break;
 				}
 				{
 					gint j = 0;
 					j = 0;
 					{
-						gboolean _tmp12_ = FALSE;
-						_tmp12_ = TRUE;
+						gboolean _tmp10_ = FALSE;
+						_tmp10_ = TRUE;
 						while (TRUE) {
+							gint _tmp12_ = 0;
+							gint* _tmp13_ = NULL;
+							gint _tmp13__length1 = 0;
+							gint _tmp13__length2 = 0;
 							gint _tmp14_ = 0;
-							gint* _tmp15_ = NULL;
-							gint _tmp15__length1 = 0;
-							gint _tmp15__length2 = 0;
+							gint _tmp15_ = 0;
 							gint _tmp16_ = 0;
-							gint _tmp17_ = 0;
+							gint* _tmp17_ = NULL;
+							gint _tmp17__length1 = 0;
+							gint _tmp17__length2 = 0;
 							gint _tmp18_ = 0;
-							gint* _tmp19_ = NULL;
-							gint _tmp19__length1 = 0;
-							gint _tmp19__length2 = 0;
+							gint _tmp19_ = 0;
 							gint _tmp20_ = 0;
-							gint _tmp21_ = 0;
-							gint _tmp22_ = 0;
-							if (!_tmp12_) {
-								gint _tmp13_ = 0;
-								_tmp13_ = j;
-								j = _tmp13_ + 1;
+							if (!_tmp10_) {
+								gint _tmp11_ = 0;
+								_tmp11_ = j;
+								j = _tmp11_ + 1;
 							}
-							_tmp12_ = FALSE;
-							_tmp14_ = j;
-							if (!(_tmp14_ < 9)) {
+							_tmp10_ = FALSE;
+							_tmp12_ = j;
+							if (!(_tmp12_ < 9)) {
 								break;
 							}
-							_tmp15_ = act;
-							_tmp15__length1 = act_length1;
-							_tmp15__length2 = act_length2;
-							_tmp16_ = i;
-							_tmp17_ = j;
-							_tmp18_ = _tmp15_[(_tmp16_ * _tmp15__length2) + _tmp17_];
-							_tmp19_ = self->priv->cu;
-							_tmp19__length1 = self->priv->cu_length1;
-							_tmp19__length2 = self->priv->cu_length2;
-							_tmp20_ = i;
-							_tmp21_ = j;
-							_tmp22_ = _tmp19_[(_tmp20_ * _tmp19__length2) + _tmp21_];
-							_vala_assert (_tmp18_ == _tmp22_, "act[i,j]==this.cu[i,j]");
+							_tmp13_ = act;
+							_tmp13__length1 = act_length1;
+							_tmp13__length2 = act_length2;
+							_tmp14_ = i;
+							_tmp15_ = j;
+							_tmp16_ = _tmp13_[(_tmp14_ * _tmp13__length2) + _tmp15_];
+							_tmp17_ = self->priv->cu;
+							_tmp17__length1 = self->priv->cu_length1;
+							_tmp17__length2 = self->priv->cu_length2;
+							_tmp18_ = i;
+							_tmp19_ = j;
+							_tmp20_ = _tmp17_[(_tmp18_ * _tmp17__length2) + _tmp19_];
+							_vala_assert (_tmp16_ == _tmp20_, "act[i,j]==this.cu[i,j]");
 						}
 					}
 				}
 			}
 		}
 	}
+	_tmp21_ = self->priv->c;
+	cubo_genetico_cubo_cubo3x3_reset (_tmp21_);
 	act = (g_free (act), NULL);
 	g = (g_free (g), NULL);
-	_g_object_unref0 (c);
 }
 
 
 void cubo_genetico_test_test_cubo3x3_test_llpddp (CuboGeneticoTestTestCubo3x3* self) {
-	CuboGeneticoCuboCubo3x3* c = NULL;
-	gint* _tmp0_ = NULL;
-	gint _tmp0__length1 = 0;
-	gint _tmp0__length2 = 0;
-	CuboGeneticoCuboCubo3x3* _tmp1_ = NULL;
 	gint* g = NULL;
-	gint* _tmp2_ = NULL;
+	gint* _tmp0_ = NULL;
 	gint g_length1 = 0;
 	gint _g_size_ = 0;
-	CuboGeneticoCuboCubo3x3* _tmp3_ = NULL;
-	gint* _tmp4_ = NULL;
-	gint _tmp4__length1 = 0;
+	CuboGeneticoCuboCubo3x3* _tmp1_ = NULL;
+	gint* _tmp2_ = NULL;
+	gint _tmp2__length1 = 0;
 	gint* act = NULL;
-	CuboGeneticoCuboCubo3x3* _tmp5_ = NULL;
-	gint _tmp6_ = 0;
-	gint _tmp7_ = 0;
-	gint* _tmp8_ = NULL;
+	CuboGeneticoCuboCubo3x3* _tmp3_ = NULL;
+	gint _tmp4_ = 0;
+	gint _tmp5_ = 0;
+	gint* _tmp6_ = NULL;
 	gint act_length1 = 0;
 	gint act_length2 = 0;
+	CuboGeneticoCuboCubo3x3* _tmp21_ = NULL;
 	g_return_if_fail (self != NULL);
-	_tmp0_ = self->priv->cu;
-	_tmp0__length1 = self->priv->cu_length1;
-	_tmp0__length2 = self->priv->cu_length2;
-	_tmp1_ = cubo_genetico_cubo_cubo3x3_new (_tmp0_, _tmp0__length1, _tmp0__length2);
-	c = _tmp1_;
-	_tmp2_ = g_new0 (gint, 24);
-	_tmp2_[0] = 3;
-	_tmp2_[1] = 7;
-	_tmp2_[2] = 4;
-	_tmp2_[3] = 8;
-	_tmp2_[4] = 3;
-	_tmp2_[5] = 7;
-	_tmp2_[6] = 4;
-	_tmp2_[7] = 8;
-	_tmp2_[8] = 3;
-	_tmp2_[9] = 7;
-	_tmp2_[10] = 4;
-	_tmp2_[11] = 8;
-	_tmp2_[12] = 3;
-	_tmp2_[13] = 7;
-	_tmp2_[14] = 4;
-	_tmp2_[15] = 8;
-	_tmp2_[16] = 3;
-	_tmp2_[17] = 7;
-	_tmp2_[18] = 4;
-	_tmp2_[19] = 8;
-	_tmp2_[20] = 3;
-	_tmp2_[21] = 7;
-	_tmp2_[22] = 4;
-	_tmp2_[23] = 8;
-	g = _tmp2_;
+	_tmp0_ = g_new0 (gint, 24);
+	_tmp0_[0] = 3;
+	_tmp0_[1] = 7;
+	_tmp0_[2] = 4;
+	_tmp0_[3] = 8;
+	_tmp0_[4] = 3;
+	_tmp0_[5] = 7;
+	_tmp0_[6] = 4;
+	_tmp0_[7] = 8;
+	_tmp0_[8] = 3;
+	_tmp0_[9] = 7;
+	_tmp0_[10] = 4;
+	_tmp0_[11] = 8;
+	_tmp0_[12] = 3;
+	_tmp0_[13] = 7;
+	_tmp0_[14] = 4;
+	_tmp0_[15] = 8;
+	_tmp0_[16] = 3;
+	_tmp0_[17] = 7;
+	_tmp0_[18] = 4;
+	_tmp0_[19] = 8;
+	_tmp0_[20] = 3;
+	_tmp0_[21] = 7;
+	_tmp0_[22] = 4;
+	_tmp0_[23] = 8;
+	g = _tmp0_;
 	g_length1 = 24;
 	_g_size_ = g_length1;
-	_tmp3_ = c;
-	_tmp4_ = g;
-	_tmp4__length1 = g_length1;
-	cubo_genetico_cubo_cubo3x3_giraCaras (_tmp3_, _tmp4_, _tmp4__length1);
-	_tmp5_ = c;
-	_tmp8_ = cubo_genetico_cubo_cubo3x3_getActual (_tmp5_, &_tmp6_, &_tmp7_);
-	act = _tmp8_;
-	act_length1 = _tmp6_;
-	act_length2 = _tmp7_;
+	_tmp1_ = self->priv->c;
+	_tmp2_ = g;
+	_tmp2__length1 = g_length1;
+	cubo_genetico_cubo_cubo3x3_giraCaras (_tmp1_, _tmp2_, _tmp2__length1);
+	_tmp3_ = self->priv->c;
+	_tmp6_ = cubo_genetico_cubo_cubo3x3_getActual (_tmp3_, &_tmp4_, &_tmp5_);
+	act = _tmp6_;
+	act_length1 = _tmp4_;
+	act_length2 = _tmp5_;
 	{
 		gint i = 0;
 		i = 0;
 		{
-			gboolean _tmp9_ = FALSE;
-			_tmp9_ = TRUE;
+			gboolean _tmp7_ = FALSE;
+			_tmp7_ = TRUE;
 			while (TRUE) {
-				gint _tmp11_ = 0;
-				if (!_tmp9_) {
-					gint _tmp10_ = 0;
-					_tmp10_ = i;
-					i = _tmp10_ + 1;
+				gint _tmp9_ = 0;
+				if (!_tmp7_) {
+					gint _tmp8_ = 0;
+					_tmp8_ = i;
+					i = _tmp8_ + 1;
 				}
-				_tmp9_ = FALSE;
-				_tmp11_ = i;
-				if (!(_tmp11_ < 6)) {
+				_tmp7_ = FALSE;
+				_tmp9_ = i;
+				if (!(_tmp9_ < 6)) {
 					break;
 				}
 				{
 					gint j = 0;
 					j = 0;
 					{
-						gboolean _tmp12_ = FALSE;
-						_tmp12_ = TRUE;
+						gboolean _tmp10_ = FALSE;
+						_tmp10_ = TRUE;
 						while (TRUE) {
+							gint _tmp12_ = 0;
+							gint* _tmp13_ = NULL;
+							gint _tmp13__length1 = 0;
+							gint _tmp13__length2 = 0;
 							gint _tmp14_ = 0;
-							gint* _tmp15_ = NULL;
-							gint _tmp15__length1 = 0;
-							gint _tmp15__length2 = 0;
+							gint _tmp15_ = 0;
 							gint _tmp16_ = 0;
-							gint _tmp17_ = 0;
+							gint* _tmp17_ = NULL;
+							gint _tmp17__length1 = 0;
+							gint _tmp17__length2 = 0;
 							gint _tmp18_ = 0;
-							gint* _tmp19_ = NULL;
-							gint _tmp19__length1 = 0;
-							gint _tmp19__length2 = 0;
+							gint _tmp19_ = 0;
 							gint _tmp20_ = 0;
-							gint _tmp21_ = 0;
-							gint _tmp22_ = 0;
-							if (!_tmp12_) {
-								gint _tmp13_ = 0;
-								_tmp13_ = j;
-								j = _tmp13_ + 1;
+							if (!_tmp10_) {
+								gint _tmp11_ = 0;
+								_tmp11_ = j;
+								j = _tmp11_ + 1;
 							}
-							_tmp12_ = FALSE;
-							_tmp14_ = j;
-							if (!(_tmp14_ < 9)) {
+							_tmp10_ = FALSE;
+							_tmp12_ = j;
+							if (!(_tmp12_ < 9)) {
 								break;
 							}
-							_tmp15_ = act;
-							_tmp15__length1 = act_length1;
-							_tmp15__length2 = act_length2;
-							_tmp16_ = i;
-							_tmp17_ = j;
-							_tmp18_ = _tmp15_[(_tmp16_ * _tmp15__length2) + _tmp17_];
-							_tmp19_ = self->priv->cu;
-							_tmp19__length1 = self->priv->cu_length1;
-							_tmp19__length2 = self->priv->cu_length2;
-							_tmp20_ = i;
-							_tmp21_ = j;
-							_tmp22_ = _tmp19_[(_tmp20_ * _tmp19__length2) + _tmp21_];
-							_vala_assert (_tmp18_ == _tmp22_, "act[i,j]==this.cu[i,j]");
+							_tmp13_ = act;
+							_tmp13__length1 = act_length1;
+							_tmp13__length2 = act_length2;
+							_tmp14_ = i;
+							_tmp15_ = j;
+							_tmp16_ = _tmp13_[(_tmp14_ * _tmp13__length2) + _tmp15_];
+							_tmp17_ = self->priv->cu;
+							_tmp17__length1 = self->priv->cu_length1;
+							_tmp17__length2 = self->priv->cu_length2;
+							_tmp18_ = i;
+							_tmp19_ = j;
+							_tmp20_ = _tmp17_[(_tmp18_ * _tmp17__length2) + _tmp19_];
+							_vala_assert (_tmp16_ == _tmp20_, "act[i,j]==this.cu[i,j]");
 						}
 					}
 				}
 			}
 		}
 	}
+	_tmp21_ = self->priv->c;
+	cubo_genetico_cubo_cubo3x3_reset (_tmp21_);
 	act = (g_free (act), NULL);
 	g = (g_free (g), NULL);
-	_g_object_unref0 (c);
 }
 
 
@@ -530,6 +525,7 @@ static void cubo_genetico_test_test_cubo3x3_instance_init (CuboGeneticoTestTestC
 static void cubo_genetico_test_test_cubo3x3_finalize (GObject* obj) {
 	CuboGeneticoTestTestCubo3x3 * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, CUBO_GENETICO_TEST_TYPE_TEST_CUBO3X3, CuboGeneticoTestTestCubo3x3);
+	_g_object_unref0 (self->priv->c);
 	self->priv->cu = (g_free (self->priv->cu), NULL);
 	G_OBJECT_CLASS (cubo_genetico_test_test_cubo3x3_parent_class)->finalize (obj);
 }

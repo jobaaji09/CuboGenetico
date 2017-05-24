@@ -31,6 +31,16 @@ typedef struct _CuboGeneticoTestTestCuboGeneticoMainPrivate CuboGeneticoTestTest
 typedef struct _CuboGeneticoTestTestCubo3x3 CuboGeneticoTestTestCubo3x3;
 typedef struct _CuboGeneticoTestTestCubo3x3Class CuboGeneticoTestTestCubo3x3Class;
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
+
+#define CUBO_GENETICO_TEST_TYPE_TEST_CODIFICACION (cubo_genetico_test_test_codificacion_get_type ())
+#define CUBO_GENETICO_TEST_TEST_CODIFICACION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TEST_TYPE_TEST_CODIFICACION, CuboGeneticoTestTestCodificacion))
+#define CUBO_GENETICO_TEST_TEST_CODIFICACION_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TEST_TYPE_TEST_CODIFICACION, CuboGeneticoTestTestCodificacionClass))
+#define CUBO_GENETICO_TEST_IS_TEST_CODIFICACION(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TEST_TYPE_TEST_CODIFICACION))
+#define CUBO_GENETICO_TEST_IS_TEST_CODIFICACION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TEST_TYPE_TEST_CODIFICACION))
+#define CUBO_GENETICO_TEST_TEST_CODIFICACION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TEST_TYPE_TEST_CODIFICACION, CuboGeneticoTestTestCodificacionClass))
+
+typedef struct _CuboGeneticoTestTestCodificacion CuboGeneticoTestTestCodificacion;
+typedef struct _CuboGeneticoTestTestCodificacionClass CuboGeneticoTestTestCodificacionClass;
 typedef struct _CuboGeneticoTestParamSpecTestCuboGeneticoMain CuboGeneticoTestParamSpecTestCuboGeneticoMain;
 
 struct _CuboGeneticoTestTestCuboGeneticoMain {
@@ -65,6 +75,9 @@ gint cubo_genetico_test_test_cubo_genetico_main_main (gchar** args, int args_len
 CuboGeneticoTestTestCubo3x3* cubo_genetico_test_test_cubo3x3_new (void);
 CuboGeneticoTestTestCubo3x3* cubo_genetico_test_test_cubo3x3_construct (GType object_type);
 GType cubo_genetico_test_test_cubo3x3_get_type (void) G_GNUC_CONST;
+CuboGeneticoTestTestCodificacion* cubo_genetico_test_test_codificacion_new (void);
+CuboGeneticoTestTestCodificacion* cubo_genetico_test_test_codificacion_construct (GType object_type);
+GType cubo_genetico_test_test_codificacion_get_type (void) G_GNUC_CONST;
 CuboGeneticoTestTestCuboGeneticoMain* cubo_genetico_test_test_cubo_genetico_main_new (void);
 CuboGeneticoTestTestCuboGeneticoMain* cubo_genetico_test_test_cubo_genetico_main_construct (GType object_type);
 static void cubo_genetico_test_test_cubo_genetico_main_finalize (CuboGeneticoTestTestCuboGeneticoMain* obj);
@@ -76,7 +89,11 @@ gint cubo_genetico_test_test_cubo_genetico_main_main (gchar** args, int args_len
 	CuboGeneticoTestTestCubo3x3* _tmp1_ = NULL;
 	CuboGeneticoTestTestCubo3x3* _tmp2_ = NULL;
 	GTestSuite* _tmp3_ = NULL;
-	gint _tmp4_ = 0;
+	GTestSuite* _tmp4_ = NULL;
+	CuboGeneticoTestTestCodificacion* _tmp5_ = NULL;
+	CuboGeneticoTestTestCodificacion* _tmp6_ = NULL;
+	GTestSuite* _tmp7_ = NULL;
+	gint _tmp8_ = 0;
 	g_test_init (&args_length1, &args, NULL);
 	_tmp0_ = g_test_get_root ();
 	_tmp1_ = cubo_genetico_test_test_cubo3x3_new ();
@@ -84,8 +101,14 @@ gint cubo_genetico_test_test_cubo_genetico_main_main (gchar** args, int args_len
 	_tmp3_ = cubo_genetico_test_test_case_get_suite ((CuboGeneticoTestTestCase*) _tmp2_);
 	g_test_suite_add_suite (_tmp0_, _tmp3_);
 	_g_object_unref0 (_tmp2_);
-	_tmp4_ = g_test_run ();
-	result = _tmp4_;
+	_tmp4_ = g_test_get_root ();
+	_tmp5_ = cubo_genetico_test_test_codificacion_new ();
+	_tmp6_ = _tmp5_;
+	_tmp7_ = cubo_genetico_test_test_case_get_suite ((CuboGeneticoTestTestCase*) _tmp6_);
+	g_test_suite_add_suite (_tmp4_, _tmp7_);
+	_g_object_unref0 (_tmp6_);
+	_tmp8_ = g_test_run ();
+	result = _tmp8_;
 	return result;
 }
 

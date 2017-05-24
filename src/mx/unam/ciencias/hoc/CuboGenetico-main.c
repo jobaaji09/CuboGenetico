@@ -6,9 +6,6 @@
 #include <glib-object.h>
 #include <stdlib.h>
 #include <string.h>
-#include <gio/gio.h>
-#include <stdio.h>
-#include "cubo.h"
 
 
 #define CUBO_GENETICO_TYPE_MAIN (cubo_genetico_main_get_type ())
@@ -21,9 +18,6 @@
 typedef struct _CuboGeneticoMain CuboGeneticoMain;
 typedef struct _CuboGeneticoMainClass CuboGeneticoMainClass;
 typedef struct _CuboGeneticoMainPrivate CuboGeneticoMainPrivate;
-#define _g_free0(var) (var = (g_free (var), NULL))
-#define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
-#define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
 
 struct _CuboGeneticoMain {
 	GObject parent_instance;
@@ -41,7 +35,6 @@ GType cubo_genetico_main_get_type (void) G_GNUC_CONST;
 enum  {
 	CUBO_GENETICO_MAIN_DUMMY_PROPERTY
 };
-void cubo_genetico_main_archivo (const gchar* arc);
 gint cubo_genetico_main_main (gchar** args, int args_length1);
 CuboGeneticoMain* cubo_genetico_main_new (void);
 CuboGeneticoMain* cubo_genetico_main_construct (GType object_type);
@@ -49,315 +42,32 @@ CuboGeneticoMain* cubo_genetico_main_construct (GType object_type);
 
 /**
  * recibe el nombre de el archivo donde esta la entrada del programa
- */
-void cubo_genetico_main_archivo (const gchar* arc) {
-	GFile* file = NULL;
-	const gchar* _tmp0_ = NULL;
-	GFile* _tmp1_ = NULL;
-	GFile* _tmp2_ = NULL;
-	gboolean _tmp3_ = FALSE;
-	GError * _inner_error_ = NULL;
-	g_return_if_fail (arc != NULL);
-	_tmp0_ = arc;
-	_tmp1_ = g_file_new_for_path (_tmp0_);
-	file = _tmp1_;
-	_tmp2_ = file;
-	_tmp3_ = g_file_query_exists (_tmp2_, NULL);
-	if (!_tmp3_) {
-		FILE* _tmp4_ = NULL;
-		GFile* _tmp5_ = NULL;
-		gchar* _tmp6_ = NULL;
-		gchar* _tmp7_ = NULL;
-		_tmp4_ = stderr;
-		_tmp5_ = file;
-		_tmp6_ = g_file_get_path (_tmp5_);
-		_tmp7_ = _tmp6_;
-		fprintf (_tmp4_, "File '%s' doesn't exist.\n", _tmp7_);
-		_g_free0 (_tmp7_);
-	}
-	{
-		GFileInputStream* _tmp8_ = NULL;
-		GFile* _tmp9_ = NULL;
-		GFileInputStream* _tmp10_ = NULL;
-		GDataInputStream* dis = NULL;
-		GDataInputStream* _tmp11_ = NULL;
-		gchar* line = NULL;
-		_tmp9_ = file;
-		_tmp10_ = g_file_read (_tmp9_, NULL, &_inner_error_);
-		_tmp8_ = _tmp10_;
-		if (G_UNLIKELY (_inner_error_ != NULL)) {
-			goto __catch0_g_error;
-		}
-		_tmp11_ = g_data_input_stream_new ((GInputStream*) _tmp8_);
-		dis = _tmp11_;
-		while (TRUE) {
-			gchar* _tmp12_ = NULL;
-			GDataInputStream* _tmp13_ = NULL;
-			gchar* _tmp14_ = NULL;
-			gchar* _tmp15_ = NULL;
-			const gchar* _tmp16_ = NULL;
-			FILE* _tmp17_ = NULL;
-			const gchar* _tmp18_ = NULL;
-			_tmp13_ = dis;
-			_tmp14_ = g_data_input_stream_read_line (_tmp13_, NULL, NULL, &_inner_error_);
-			_tmp12_ = _tmp14_;
-			if (G_UNLIKELY (_inner_error_ != NULL)) {
-				_g_free0 (line);
-				_g_object_unref0 (dis);
-				_g_object_unref0 (_tmp8_);
-				goto __catch0_g_error;
-			}
-			_tmp15_ = _tmp12_;
-			_tmp12_ = NULL;
-			_g_free0 (line);
-			line = _tmp15_;
-			_tmp16_ = line;
-			if (!(_tmp16_ != NULL)) {
-				_g_free0 (_tmp12_);
-				break;
-			}
-			_tmp17_ = stdout;
-			_tmp18_ = line;
-			fprintf (_tmp17_, "%s\n", _tmp18_);
-			_g_free0 (_tmp12_);
-		}
-		_g_free0 (line);
-		_g_object_unref0 (dis);
-		_g_object_unref0 (_tmp8_);
-	}
-	goto __finally0;
-	__catch0_g_error:
-	{
-		GError* e = NULL;
-		const gchar* _tmp19_ = NULL;
-		e = _inner_error_;
-		_inner_error_ = NULL;
-		_tmp19_ = e->message;
-		g_error ("CuboGenetico-main.vala:24: %s", _tmp19_);
-		_g_error_free0 (e);
-	}
-	__finally0:
-	if (G_UNLIKELY (_inner_error_ != NULL)) {
-		_g_object_unref0 (file);
-		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
-		g_clear_error (&_inner_error_);
-		return;
-	}
-	_g_object_unref0 (file);
+ *
+public static void archivo(string arc){
+var file = File.new_for_path (arc);
+if (!file.query_exists ()) {
+stderr.printf ("File '%s' doesn't exist.\n", file.get_path ());
+
 }
 
+try {
+// Open file for reading and wrap returned FileInputStream into a
+// DataInputStream, so we can read line by line
+var dis = new DataInputStream (file.read ());
+string line;
+// Read lines until end of file (null) is reached
+while ((line = dis.read_line (null)) != null) {
+stdout.printf ("%s\n", line);
+}
+} catch (Error e) {
+error ("%s", e.message);
+}
 
+}
+*/
 gint cubo_genetico_main_main (gchar** args, int args_length1) {
 	gint result = 0;
-	gint* cu = NULL;
-	gint* _tmp0_ = NULL;
-	gint cu_length1 = 0;
-	gint cu_length2 = 0;
-	gchar** _tmp39_ = NULL;
-	gint _tmp39__length1 = 0;
-	const gchar* _tmp40_ = NULL;
-	CuboGeneticoCuboCubo3x3* c = NULL;
-	gint* _tmp41_ = NULL;
-	gint _tmp41__length1 = 0;
-	gint _tmp41__length2 = 0;
-	CuboGeneticoCuboCubo3x3* _tmp42_ = NULL;
-	gint* g = NULL;
-	gint* _tmp43_ = NULL;
-	gint g_length1 = 0;
-	gint _g_size_ = 0;
-	_tmp0_ = g_new0 (gint, 6 * 9);
-	cu = _tmp0_;
-	cu_length1 = 6;
-	cu_length2 = 9;
-	{
-		gint i = 0;
-		i = 0;
-		{
-			gboolean _tmp1_ = FALSE;
-			_tmp1_ = TRUE;
-			while (TRUE) {
-				gint _tmp3_ = 0;
-				if (!_tmp1_) {
-					gint _tmp2_ = 0;
-					_tmp2_ = i;
-					i = _tmp2_ + 1;
-				}
-				_tmp1_ = FALSE;
-				_tmp3_ = i;
-				if (!(_tmp3_ < 6)) {
-					break;
-				}
-				{
-					gint j = 0;
-					j = 0;
-					{
-						gboolean _tmp4_ = FALSE;
-						_tmp4_ = TRUE;
-						while (TRUE) {
-							gint _tmp6_ = 0;
-							gint _tmp7_ = 0;
-							if (!_tmp4_) {
-								gint _tmp5_ = 0;
-								_tmp5_ = j;
-								j = _tmp5_ + 1;
-							}
-							_tmp4_ = FALSE;
-							_tmp6_ = j;
-							if (!(_tmp6_ < 9)) {
-								break;
-							}
-							_tmp7_ = i;
-							if (_tmp7_ < 3) {
-								gint _tmp8_ = 0;
-								_tmp8_ = j;
-								if (_tmp8_ < 3) {
-									gint* _tmp9_ = NULL;
-									gint _tmp9__length1 = 0;
-									gint _tmp9__length2 = 0;
-									gint _tmp10_ = 0;
-									gint _tmp11_ = 0;
-									gint _tmp12_ = 0;
-									_tmp9_ = cu;
-									_tmp9__length1 = cu_length1;
-									_tmp9__length2 = cu_length2;
-									_tmp10_ = i;
-									_tmp11_ = j;
-									_tmp9_[(_tmp10_ * _tmp9__length2) + _tmp11_] = 0;
-									_tmp12_ = _tmp9_[(_tmp10_ * _tmp9__length2) + _tmp11_];
-								} else {
-									gint _tmp13_ = 0;
-									_tmp13_ = j;
-									if (_tmp13_ < 6) {
-										gint* _tmp14_ = NULL;
-										gint _tmp14__length1 = 0;
-										gint _tmp14__length2 = 0;
-										gint _tmp15_ = 0;
-										gint _tmp16_ = 0;
-										gint _tmp17_ = 0;
-										_tmp14_ = cu;
-										_tmp14__length1 = cu_length1;
-										_tmp14__length2 = cu_length2;
-										_tmp15_ = i;
-										_tmp16_ = j;
-										_tmp14_[(_tmp15_ * _tmp14__length2) + _tmp16_] = 1;
-										_tmp17_ = _tmp14_[(_tmp15_ * _tmp14__length2) + _tmp16_];
-									} else {
-										gint _tmp18_ = 0;
-										_tmp18_ = j;
-										if (_tmp18_ < 9) {
-											gint* _tmp19_ = NULL;
-											gint _tmp19__length1 = 0;
-											gint _tmp19__length2 = 0;
-											gint _tmp20_ = 0;
-											gint _tmp21_ = 0;
-											gint _tmp22_ = 0;
-											_tmp19_ = cu;
-											_tmp19__length1 = cu_length1;
-											_tmp19__length2 = cu_length2;
-											_tmp20_ = i;
-											_tmp21_ = j;
-											_tmp19_[(_tmp20_ * _tmp19__length2) + _tmp21_] = 2;
-											_tmp22_ = _tmp19_[(_tmp20_ * _tmp19__length2) + _tmp21_];
-										}
-									}
-								}
-							} else {
-								gint _tmp23_ = 0;
-								_tmp23_ = i;
-								if (_tmp23_ < 6) {
-									gint _tmp24_ = 0;
-									_tmp24_ = j;
-									if (_tmp24_ < 3) {
-										gint* _tmp25_ = NULL;
-										gint _tmp25__length1 = 0;
-										gint _tmp25__length2 = 0;
-										gint _tmp26_ = 0;
-										gint _tmp27_ = 0;
-										gint _tmp28_ = 0;
-										_tmp25_ = cu;
-										_tmp25__length1 = cu_length1;
-										_tmp25__length2 = cu_length2;
-										_tmp26_ = i;
-										_tmp27_ = j;
-										_tmp25_[(_tmp26_ * _tmp25__length2) + _tmp27_] = 3;
-										_tmp28_ = _tmp25_[(_tmp26_ * _tmp25__length2) + _tmp27_];
-									} else {
-										gint _tmp29_ = 0;
-										_tmp29_ = j;
-										if (_tmp29_ < 6) {
-											gint* _tmp30_ = NULL;
-											gint _tmp30__length1 = 0;
-											gint _tmp30__length2 = 0;
-											gint _tmp31_ = 0;
-											gint _tmp32_ = 0;
-											gint _tmp33_ = 0;
-											_tmp30_ = cu;
-											_tmp30__length1 = cu_length1;
-											_tmp30__length2 = cu_length2;
-											_tmp31_ = i;
-											_tmp32_ = j;
-											_tmp30_[(_tmp31_ * _tmp30__length2) + _tmp32_] = 4;
-											_tmp33_ = _tmp30_[(_tmp31_ * _tmp30__length2) + _tmp32_];
-										} else {
-											gint _tmp34_ = 0;
-											_tmp34_ = j;
-											if (_tmp34_ < 9) {
-												gint* _tmp35_ = NULL;
-												gint _tmp35__length1 = 0;
-												gint _tmp35__length2 = 0;
-												gint _tmp36_ = 0;
-												gint _tmp37_ = 0;
-												gint _tmp38_ = 0;
-												_tmp35_ = cu;
-												_tmp35__length1 = cu_length1;
-												_tmp35__length2 = cu_length2;
-												_tmp36_ = i;
-												_tmp37_ = j;
-												_tmp35_[(_tmp36_ * _tmp35__length2) + _tmp37_] = 5;
-												_tmp38_ = _tmp35_[(_tmp36_ * _tmp35__length2) + _tmp37_];
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	_tmp39_ = args;
-	_tmp39__length1 = args_length1;
-	_tmp40_ = _tmp39_[1];
-	cubo_genetico_main_archivo (_tmp40_);
-	_tmp41_ = cu;
-	_tmp41__length1 = cu_length1;
-	_tmp41__length2 = cu_length2;
-	_tmp42_ = cubo_genetico_cubo_cubo3x3_new (_tmp41_, _tmp41__length1, _tmp41__length2);
-	c = _tmp42_;
-	_tmp43_ = g_new0 (gint, 12);
-	_tmp43_[0] = 1;
-	_tmp43_[1] = 1;
-	_tmp43_[2] = 3;
-	_tmp43_[3] = 3;
-	_tmp43_[4] = 5;
-	_tmp43_[5] = 5;
-	_tmp43_[6] = 7;
-	_tmp43_[7] = 7;
-	_tmp43_[8] = 9;
-	_tmp43_[9] = 9;
-	_tmp43_[10] = 11;
-	_tmp43_[11] = 11;
-	g = _tmp43_;
-	g_length1 = 12;
-	_g_size_ = g_length1;
-	cubo_genetico_cubo_cubo3x3_giraCaras (c, g, g_length1);
-	cubo_genetico_cubo_cubo3x3_reset (c);
-	cubo_genetico_cubo_cubo3x3_dibuja (c);
 	result = 0;
-	g = (g_free (g), NULL);
-	_g_object_unref0 (c);
-	cu = (g_free (cu), NULL);
 	return result;
 }
 

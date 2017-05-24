@@ -48,6 +48,27 @@ lib_libcubo_la_LIBADD =		\
 	@GEE_LIBS@		\
 	@GIO_LIBS@	
 
+#libcodificacion
+noinst_LTLIBRARIES += lib/libcodificacion.la
+
+lib_libcodificacion_la_SOURCES =lib/codificacion/FenoGeno.vala	
+
+lib_libcodificacion_la_VALAFLAGS =			\
+	$(COMMON_VALAFLAGS)				\
+	@GEE_PACKAGES@					\
+	@GIO_PACKAGES@					\
+	--header lib/codificacion/codificacion.h	\
+	--vapi vapi/codificacion.vapi
+
+lib_libcodificacion_la_CFLAGS =	\
+	@GEE_CFLAGS@		\
+	@GIO_CFLAGS@		\
+	-w
+
+lib_libcodificacion_la_LIBADD =	\
+	@GEE_LIBS@		\
+	@GIO_LIBS@	
+
 
 #CuboGenetico
 bin_PROGRAMS = CuboGenetico
@@ -57,36 +78,41 @@ CUBOGENESOURCES =		\
 CuboGenetico_SOURCES = 		\
 	$(CUBOGENESOURCES)	\
 	src/mx/unam/ciencias/hoc/CuboGenetico-main.vala	\
-	vapi/cubo.vapi
+	vapi/cubo.vapi		\
+	vapi/codificacion.vapi
 
 CuboGenetico_VALAFLAGS =	        \
 	--target-glib=2.38	\
 	@GEE_PACKAGES@		\
 	@GIO_PACKAGES@	
 
-CuboGenetico_CFLAGS =		\
-	@GEE_CFLAGS@		\
-	@GIO_CFLAGS@		\
-	-I$(srcdir)/lib/cubo	\
+CuboGenetico_CFLAGS =			\
+	@GEE_CFLAGS@			\
+	@GIO_CFLAGS@			\
+	-I$(srcdir)/lib/cubo		\
+	-I$(srcdir)/lib/codificacion	\
 	-w
 
 CuboGenetico_LDADD =		\
 	@GEE_LIBS@		\
 	@GIO_LIBS@		\
-	lib/libcubo.la	
+	lib/libcubo.la		\
+	lib/libcodificacion.la
 
 
 # tests
 TESTS = test/test-cubogenetico
 
 TESTSOURCES =			\
-	test/test-cubo3x3.vala
+	test/test-cubo3x3.vala	\
+	test/test-codificacion.vala
 
 test_test_cubogenetico_SOURCES =			\
 	$(TESTSOURCES)				\
 	test/test-cubogenetico-main.vala		\
 	vapi/test.vapi				\
-	vapi/cubo.vapi
+	vapi/cubo.vapi				\
+	vapi/codificacion.vapi
 
 test_test_cubogenetico_VALAFLAGS =			\
 	$(COMMON_VALAFLAGS)			\
@@ -98,7 +124,8 @@ test_test_cubogenetico_CFLAGS =		\
 	@GEE_CFLAGS@			\
 	@GIO_CFLAGS@			\
 	-I$(srcdir)/lib/test		\
-	-I$(srcdir)/lib/cubo
+	-I$(srcdir)/lib/cubo		\
+	-I$(srcdir)/lib/codificacion
 	-w
 
 test_test_cubogenetico_LDADD =	\
@@ -106,6 +133,7 @@ test_test_cubogenetico_LDADD =	\
 	@GIO_LIBS@		\
 	lib/libtest.la		\
 	lib/libcubo.la		\
+	lib/libcodificacion.la	\
 	-lm
 
 check_PROGRAMS = $(TESTS)

@@ -4926,12 +4926,12 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 	gchar* _tmp29_ = NULL;
 	gchar* _tmp30_ = NULL;
 	gchar* _tmp31_ = NULL;
-	const gchar* _tmp48_ = NULL;
-	gchar* _tmp49_ = NULL;
+	const gchar* _tmp116_ = NULL;
+	gchar* _tmp117_ = NULL;
 	GError * _inner_error_ = NULL;
 	g_return_if_fail (self != NULL);
-	w = 900;
-	h = 600;
+	w = 1200;
+	h = 900;
 	_tmp0_ = w;
 	_tmp1_ = g_strdup_printf ("%i", _tmp0_);
 	_tmp2_ = _tmp1_;
@@ -5005,18 +5005,8 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 						_tmp35_ = TRUE;
 						while (TRUE) {
 							gint _tmp37_ = 0;
-							const gchar* _tmp38_ = NULL;
+							gboolean _tmp38_ = FALSE;
 							gint _tmp39_ = 0;
-							gint _tmp40_ = 0;
-							gint* _tmp41_ = NULL;
-							gint _tmp41__length1 = 0;
-							gint _tmp41__length2 = 0;
-							gint _tmp42_ = 0;
-							gint _tmp43_ = 0;
-							gint _tmp44_ = 0;
-							gchar* _tmp45_ = NULL;
-							gchar* _tmp46_ = NULL;
-							gchar* _tmp47_ = NULL;
 							if (!_tmp35_) {
 								gint _tmp36_ = 0;
 								_tmp36_ = j;
@@ -5027,91 +5017,313 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 							if (!(_tmp37_ < 9)) {
 								break;
 							}
-							_tmp38_ = s;
-							_tmp39_ = j;
-							_tmp40_ = i;
-							_tmp41_ = self->priv->actual;
-							_tmp41__length1 = self->priv->actual_length1;
-							_tmp41__length2 = self->priv->actual_length2;
-							_tmp42_ = i;
-							_tmp43_ = j;
-							_tmp44_ = _tmp41_[(_tmp42_ * _tmp41__length2) + _tmp43_];
-							_tmp45_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp39_, _tmp40_, _tmp44_);
-							_tmp46_ = _tmp45_;
-							_tmp47_ = g_strconcat (_tmp38_, _tmp46_, NULL);
-							_g_free0 (s);
-							s = _tmp47_;
-							_g_free0 (_tmp46_);
+							_tmp39_ = i;
+							if (_tmp39_ < 3) {
+								gint _tmp40_ = 0;
+								_tmp40_ = j;
+								_tmp38_ = _tmp40_ < 3;
+							} else {
+								_tmp38_ = FALSE;
+							}
+							if (_tmp38_) {
+								const gchar* _tmp41_ = NULL;
+								gint _tmp42_ = 0;
+								gint _tmp43_ = 0;
+								gint* _tmp44_ = NULL;
+								gint _tmp44__length1 = 0;
+								gint _tmp44__length2 = 0;
+								gint _tmp45_ = 0;
+								gint _tmp46_ = 0;
+								gint _tmp47_ = 0;
+								gchar* _tmp48_ = NULL;
+								gchar* _tmp49_ = NULL;
+								gchar* _tmp50_ = NULL;
+								_tmp41_ = s;
+								_tmp42_ = j;
+								_tmp43_ = i;
+								_tmp44_ = self->priv->actual;
+								_tmp44__length1 = self->priv->actual_length1;
+								_tmp44__length2 = self->priv->actual_length2;
+								_tmp45_ = i;
+								_tmp46_ = j;
+								_tmp47_ = _tmp44_[(_tmp45_ * _tmp44__length2) + _tmp46_];
+								_tmp48_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp42_ + 3, _tmp43_ + 3, _tmp47_);
+								_tmp49_ = _tmp48_;
+								_tmp50_ = g_strconcat (_tmp41_, _tmp49_, NULL);
+								_g_free0 (s);
+								s = _tmp50_;
+								_g_free0 (_tmp49_);
+							} else {
+								gboolean _tmp51_ = FALSE;
+								gint _tmp52_ = 0;
+								_tmp52_ = i;
+								if (_tmp52_ < 3) {
+									gint _tmp53_ = 0;
+									_tmp53_ = j;
+									_tmp51_ = _tmp53_ < 6;
+								} else {
+									_tmp51_ = FALSE;
+								}
+								if (_tmp51_) {
+									const gchar* _tmp54_ = NULL;
+									gint _tmp55_ = 0;
+									gint _tmp56_ = 0;
+									gint* _tmp57_ = NULL;
+									gint _tmp57__length1 = 0;
+									gint _tmp57__length2 = 0;
+									gint _tmp58_ = 0;
+									gint _tmp59_ = 0;
+									gint _tmp60_ = 0;
+									gchar* _tmp61_ = NULL;
+									gchar* _tmp62_ = NULL;
+									gchar* _tmp63_ = NULL;
+									_tmp54_ = s;
+									_tmp55_ = j;
+									_tmp56_ = i;
+									_tmp57_ = self->priv->actual;
+									_tmp57__length1 = self->priv->actual_length1;
+									_tmp57__length2 = self->priv->actual_length2;
+									_tmp58_ = i;
+									_tmp59_ = j;
+									_tmp60_ = _tmp57_[(_tmp58_ * _tmp57__length2) + _tmp59_];
+									_tmp61_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp55_ + 3, _tmp56_ + 3, _tmp60_);
+									_tmp62_ = _tmp61_;
+									_tmp63_ = g_strconcat (_tmp54_, _tmp62_, NULL);
+									_g_free0 (s);
+									s = _tmp63_;
+									_g_free0 (_tmp62_);
+								} else {
+									gboolean _tmp64_ = FALSE;
+									gint _tmp65_ = 0;
+									_tmp65_ = i;
+									if (_tmp65_ < 3) {
+										gint _tmp66_ = 0;
+										_tmp66_ = j;
+										_tmp64_ = _tmp66_ < 9;
+									} else {
+										_tmp64_ = FALSE;
+									}
+									if (_tmp64_) {
+										const gchar* _tmp67_ = NULL;
+										gint _tmp68_ = 0;
+										gint _tmp69_ = 0;
+										gint* _tmp70_ = NULL;
+										gint _tmp70__length1 = 0;
+										gint _tmp70__length2 = 0;
+										gint _tmp71_ = 0;
+										gint _tmp72_ = 0;
+										gint _tmp73_ = 0;
+										gchar* _tmp74_ = NULL;
+										gchar* _tmp75_ = NULL;
+										gchar* _tmp76_ = NULL;
+										_tmp67_ = s;
+										_tmp68_ = j;
+										_tmp69_ = i;
+										_tmp70_ = self->priv->actual;
+										_tmp70__length1 = self->priv->actual_length1;
+										_tmp70__length2 = self->priv->actual_length2;
+										_tmp71_ = i;
+										_tmp72_ = j;
+										_tmp73_ = _tmp70_[(_tmp71_ * _tmp70__length2) + _tmp72_];
+										_tmp74_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp68_ - 3, _tmp69_, _tmp73_);
+										_tmp75_ = _tmp74_;
+										_tmp76_ = g_strconcat (_tmp67_, _tmp75_, NULL);
+										_g_free0 (s);
+										s = _tmp76_;
+										_g_free0 (_tmp75_);
+									} else {
+										gboolean _tmp77_ = FALSE;
+										gint _tmp78_ = 0;
+										_tmp78_ = i;
+										if (_tmp78_ >= 3) {
+											gint _tmp79_ = 0;
+											_tmp79_ = j;
+											_tmp77_ = _tmp79_ < 3;
+										} else {
+											_tmp77_ = FALSE;
+										}
+										if (_tmp77_) {
+											const gchar* _tmp80_ = NULL;
+											gint _tmp81_ = 0;
+											gint _tmp82_ = 0;
+											gint* _tmp83_ = NULL;
+											gint _tmp83__length1 = 0;
+											gint _tmp83__length2 = 0;
+											gint _tmp84_ = 0;
+											gint _tmp85_ = 0;
+											gint _tmp86_ = 0;
+											gchar* _tmp87_ = NULL;
+											gchar* _tmp88_ = NULL;
+											gchar* _tmp89_ = NULL;
+											_tmp80_ = s;
+											_tmp81_ = j;
+											_tmp82_ = i;
+											_tmp83_ = self->priv->actual;
+											_tmp83__length1 = self->priv->actual_length1;
+											_tmp83__length2 = self->priv->actual_length2;
+											_tmp84_ = i;
+											_tmp85_ = j;
+											_tmp86_ = _tmp83_[(_tmp84_ * _tmp83__length2) + _tmp85_];
+											_tmp87_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp81_ + 3, _tmp82_ + 3, _tmp86_);
+											_tmp88_ = _tmp87_;
+											_tmp89_ = g_strconcat (_tmp80_, _tmp88_, NULL);
+											_g_free0 (s);
+											s = _tmp89_;
+											_g_free0 (_tmp88_);
+										} else {
+											gboolean _tmp90_ = FALSE;
+											gint _tmp91_ = 0;
+											_tmp91_ = i;
+											if (_tmp91_ >= 3) {
+												gint _tmp92_ = 0;
+												_tmp92_ = j;
+												_tmp90_ = _tmp92_ < 6;
+											} else {
+												_tmp90_ = FALSE;
+											}
+											if (_tmp90_) {
+												const gchar* _tmp93_ = NULL;
+												gint _tmp94_ = 0;
+												gint _tmp95_ = 0;
+												gint* _tmp96_ = NULL;
+												gint _tmp96__length1 = 0;
+												gint _tmp96__length2 = 0;
+												gint _tmp97_ = 0;
+												gint _tmp98_ = 0;
+												gint _tmp99_ = 0;
+												gchar* _tmp100_ = NULL;
+												gchar* _tmp101_ = NULL;
+												gchar* _tmp102_ = NULL;
+												_tmp93_ = s;
+												_tmp94_ = j;
+												_tmp95_ = i;
+												_tmp96_ = self->priv->actual;
+												_tmp96__length1 = self->priv->actual_length1;
+												_tmp96__length2 = self->priv->actual_length2;
+												_tmp97_ = i;
+												_tmp98_ = j;
+												_tmp99_ = _tmp96_[(_tmp97_ * _tmp96__length2) + _tmp98_];
+												_tmp100_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp94_ - 3, _tmp95_, _tmp99_);
+												_tmp101_ = _tmp100_;
+												_tmp102_ = g_strconcat (_tmp93_, _tmp101_, NULL);
+												_g_free0 (s);
+												s = _tmp102_;
+												_g_free0 (_tmp101_);
+											} else {
+												gboolean _tmp103_ = FALSE;
+												gint _tmp104_ = 0;
+												_tmp104_ = i;
+												if (_tmp104_ >= 3) {
+													gint _tmp105_ = 0;
+													_tmp105_ = j;
+													_tmp103_ = _tmp105_ < 9;
+												} else {
+													_tmp103_ = FALSE;
+												}
+												if (_tmp103_) {
+													const gchar* _tmp106_ = NULL;
+													gint _tmp107_ = 0;
+													gint _tmp108_ = 0;
+													gint* _tmp109_ = NULL;
+													gint _tmp109__length1 = 0;
+													gint _tmp109__length2 = 0;
+													gint _tmp110_ = 0;
+													gint _tmp111_ = 0;
+													gint _tmp112_ = 0;
+													gchar* _tmp113_ = NULL;
+													gchar* _tmp114_ = NULL;
+													gchar* _tmp115_ = NULL;
+													_tmp106_ = s;
+													_tmp107_ = j;
+													_tmp108_ = i;
+													_tmp109_ = self->priv->actual;
+													_tmp109__length1 = self->priv->actual_length1;
+													_tmp109__length2 = self->priv->actual_length2;
+													_tmp110_ = i;
+													_tmp111_ = j;
+													_tmp112_ = _tmp109_[(_tmp110_ * _tmp109__length2) + _tmp111_];
+													_tmp113_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp107_ + 3, _tmp108_, _tmp112_);
+													_tmp114_ = _tmp113_;
+													_tmp115_ = g_strconcat (_tmp106_, _tmp114_, NULL);
+													_g_free0 (s);
+													s = _tmp115_;
+													_g_free0 (_tmp114_);
+												}
+											}
+										}
+									}
+								}
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-	_tmp48_ = s;
-	_tmp49_ = g_strconcat (_tmp48_, "</g>" "</svg>", NULL);
+	_tmp116_ = s;
+	_tmp117_ = g_strconcat (_tmp116_, "</g>" "</svg>", NULL);
 	_g_free0 (s);
-	s = _tmp49_;
+	s = _tmp117_;
 	{
 		GFile* file = NULL;
-		GFile* _tmp50_ = NULL;
-		GFile* _tmp51_ = NULL;
-		gboolean _tmp52_ = FALSE;
-		GFileOutputStream* _tmp54_ = NULL;
-		GFile* _tmp55_ = NULL;
-		GFileOutputStream* _tmp56_ = NULL;
+		GFile* _tmp118_ = NULL;
+		GFile* _tmp119_ = NULL;
+		gboolean _tmp120_ = FALSE;
+		GFileOutputStream* _tmp122_ = NULL;
+		GFile* _tmp123_ = NULL;
+		GFileOutputStream* _tmp124_ = NULL;
 		GDataOutputStream* dos = NULL;
-		GDataOutputStream* _tmp57_ = NULL;
-		GDataOutputStream* _tmp58_ = NULL;
-		const gchar* _tmp59_ = NULL;
-		_tmp50_ = g_file_new_for_path ("experimentos/Cubosvg.svg");
-		file = _tmp50_;
-		_tmp51_ = file;
-		_tmp52_ = g_file_query_exists (_tmp51_, NULL);
-		if (_tmp52_) {
-			GFile* _tmp53_ = NULL;
-			_tmp53_ = file;
-			g_file_delete (_tmp53_, NULL, &_inner_error_);
+		GDataOutputStream* _tmp125_ = NULL;
+		GDataOutputStream* _tmp126_ = NULL;
+		const gchar* _tmp127_ = NULL;
+		_tmp118_ = g_file_new_for_path ("experimentos/Cubosvg.svg");
+		file = _tmp118_;
+		_tmp119_ = file;
+		_tmp120_ = g_file_query_exists (_tmp119_, NULL);
+		if (_tmp120_) {
+			GFile* _tmp121_ = NULL;
+			_tmp121_ = file;
+			g_file_delete (_tmp121_, NULL, &_inner_error_);
 			if (G_UNLIKELY (_inner_error_ != NULL)) {
 				_g_object_unref0 (file);
 				goto __catch0_g_error;
 			}
 		}
-		_tmp55_ = file;
-		_tmp56_ = g_file_create (_tmp55_, G_FILE_CREATE_REPLACE_DESTINATION, NULL, &_inner_error_);
-		_tmp54_ = _tmp56_;
+		_tmp123_ = file;
+		_tmp124_ = g_file_create (_tmp123_, G_FILE_CREATE_REPLACE_DESTINATION, NULL, &_inner_error_);
+		_tmp122_ = _tmp124_;
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
 			_g_object_unref0 (file);
 			goto __catch0_g_error;
 		}
-		_tmp57_ = g_data_output_stream_new ((GOutputStream*) _tmp54_);
-		dos = _tmp57_;
-		_tmp58_ = dos;
-		_tmp59_ = s;
-		g_data_output_stream_put_string (_tmp58_, _tmp59_, NULL, &_inner_error_);
+		_tmp125_ = g_data_output_stream_new ((GOutputStream*) _tmp122_);
+		dos = _tmp125_;
+		_tmp126_ = dos;
+		_tmp127_ = s;
+		g_data_output_stream_put_string (_tmp126_, _tmp127_, NULL, &_inner_error_);
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
 			_g_object_unref0 (dos);
-			_g_object_unref0 (_tmp54_);
+			_g_object_unref0 (_tmp122_);
 			_g_object_unref0 (file);
 			goto __catch0_g_error;
 		}
 		_g_object_unref0 (dos);
-		_g_object_unref0 (_tmp54_);
+		_g_object_unref0 (_tmp122_);
 		_g_object_unref0 (file);
 	}
 	goto __finally0;
 	__catch0_g_error:
 	{
 		GError* e = NULL;
-		FILE* _tmp60_ = NULL;
-		GError* _tmp61_ = NULL;
-		const gchar* _tmp62_ = NULL;
+		FILE* _tmp128_ = NULL;
+		GError* _tmp129_ = NULL;
+		const gchar* _tmp130_ = NULL;
 		e = _inner_error_;
 		_inner_error_ = NULL;
-		_tmp60_ = stderr;
-		_tmp61_ = e;
-		_tmp62_ = _tmp61_->message;
-		fprintf (_tmp60_, "%s\n", _tmp62_);
+		_tmp128_ = stderr;
+		_tmp129_ = e;
+		_tmp130_ = _tmp129_->message;
+		fprintf (_tmp128_, "%s\n", _tmp130_);
 		_g_error_free0 (e);
 	}
 	__finally0:

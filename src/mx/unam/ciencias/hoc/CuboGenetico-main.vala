@@ -27,8 +27,8 @@ namespace CuboGenetico{
 		}
 		*/
 		public static int main(string[] args){		
-			
-			
+			//int[,] i = new int[6,9];
+			//var c = new Cubo.Cubo3x3(i);
 			return 0;
 		}
 

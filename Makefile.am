@@ -69,6 +69,31 @@ lib_libcodificacion_la_LIBADD =	\
 	@GEE_LIBS@		\
 	@GIO_LIBS@	
 
+#libfuncion
+#noinst_LTLIBRARIES += lib/libfuncion.la
+
+#lib_libfuncion_la_SOURCES =		\
+#	lib/funcion/FFitness.vala	
+#	vapi/cubo.vapi			
+
+#lib_libfuncion_la_VALAFLAGS =		\
+#	$(COMMON_VALAFLAGS)		\
+#	@GEE_PACKAGES@			\
+#	@GIO_PACKAGES@			\
+#	--header lib/funcion/funcion.h	\
+#	--vapi vapi/funcion.vapi	
+
+#lib_libfuncion_la_CFLAGS =	\
+#	@GEE_CFLAGS@		\
+#	@GIO_CFLAGS@		\
+#	-I$(srcdir)/lib/cubo	\
+#	-w
+
+#lib_libfuncion_la_LIBADD =	\
+#	lib/libcubo.la		\
+#	@GEE_LIBS@		\
+#	@GIO_LIBS@	
+
 
 #CuboGenetico
 bin_PROGRAMS = CuboGenetico
@@ -78,10 +103,12 @@ CUBOGENESOURCES =		\
 CuboGenetico_SOURCES = 		\
 	$(CUBOGENESOURCES)	\
 	src/mx/unam/ciencias/hoc/CuboGenetico-main.vala	\
+	src/mx/unam/ciencias/hoc/FFitness.vala		\
 	vapi/cubo.vapi		\
-	vapi/codificacion.vapi
+	vapi/codificacion.vapi	
+#	vapi/funcion.vapi	
 
-CuboGenetico_VALAFLAGS =	        \
+CuboGenetico_VALAFLAGS =	\
 	--target-glib=2.38	\
 	@GEE_PACKAGES@		\
 	@GIO_PACKAGES@	

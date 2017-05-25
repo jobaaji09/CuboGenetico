@@ -6,6 +6,12 @@
 #include <glib-object.h>
 #include <stdlib.h>
 #include <string.h>
+#include <gio/gio.h>
+#include <stdio.h>
+#include "cubo.h"
+#include "codificacion.h"
+#include <float.h>
+#include <math.h>
 
 
 #define CUBO_GENETICO_TYPE_MAIN (cubo_genetico_main_get_type ())
@@ -18,6 +24,19 @@
 typedef struct _CuboGeneticoMain CuboGeneticoMain;
 typedef struct _CuboGeneticoMainClass CuboGeneticoMainClass;
 typedef struct _CuboGeneticoMainPrivate CuboGeneticoMainPrivate;
+#define _g_free0(var) (var = (g_free (var), NULL))
+#define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
+#define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
+
+#define CUBO_GENETICO_TYPE_FFITNESS (cubo_genetico_ffitness_get_type ())
+#define CUBO_GENETICO_FFITNESS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_FFITNESS, CuboGeneticoFFitness))
+#define CUBO_GENETICO_FFITNESS_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_FFITNESS, CuboGeneticoFFitnessClass))
+#define CUBO_GENETICO_IS_FFITNESS(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_FFITNESS))
+#define CUBO_GENETICO_IS_FFITNESS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_FFITNESS))
+#define CUBO_GENETICO_FFITNESS_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_FFITNESS, CuboGeneticoFFitnessClass))
+
+typedef struct _CuboGeneticoFFitness CuboGeneticoFFitness;
+typedef struct _CuboGeneticoFFitnessClass CuboGeneticoFFitnessClass;
 
 struct _CuboGeneticoMain {
 	GObject parent_instance;
@@ -35,39 +54,333 @@ GType cubo_genetico_main_get_type (void) G_GNUC_CONST;
 enum  {
 	CUBO_GENETICO_MAIN_DUMMY_PROPERTY
 };
+gint* cubo_genetico_main_archivo (const gchar* arc, int* result_length1, int* result_length2);
 gint cubo_genetico_main_main (gchar** args, int args_length1);
+GType cubo_genetico_ffitness_get_type (void) G_GNUC_CONST;
+CuboGeneticoFFitness* cubo_genetico_ffitness_new (CuboGeneticoCuboCubo3x3* c);
+CuboGeneticoFFitness* cubo_genetico_ffitness_construct (GType object_type, CuboGeneticoCuboCubo3x3* c);
+gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, gint* feno, int feno_length1);
 CuboGeneticoMain* cubo_genetico_main_new (void);
 CuboGeneticoMain* cubo_genetico_main_construct (GType object_type);
+static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func);
+static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify destroy_func);
+static gint _vala_array_length (gpointer array);
 
 
 /**
  * recibe el nombre de el archivo donde esta la entrada del programa
- *
-public static void archivo(string arc){
-var file = File.new_for_path (arc);
-if (!file.query_exists ()) {
-stderr.printf ("File '%s' doesn't exist.\n", file.get_path ());
-
+ */
+gint* cubo_genetico_main_archivo (const gchar* arc, int* result_length1, int* result_length2) {
+	gint* result = NULL;
+	gint* cubo = NULL;
+	gint* _tmp0_ = NULL;
+	gint cubo_length1 = 0;
+	gint cubo_length2 = 0;
+	GFile* file = NULL;
+	const gchar* _tmp1_ = NULL;
+	GFile* _tmp2_ = NULL;
+	GFile* _tmp3_ = NULL;
+	gboolean _tmp4_ = FALSE;
+	gint* _tmp37_ = NULL;
+	gint _tmp37__length1 = 0;
+	gint _tmp37__length2 = 0;
+	GError * _inner_error_ = NULL;
+	g_return_val_if_fail (arc != NULL, NULL);
+	_tmp0_ = g_new0 (gint, 6 * 9);
+	cubo = _tmp0_;
+	cubo_length1 = 6;
+	cubo_length2 = 9;
+	_tmp1_ = arc;
+	_tmp2_ = g_file_new_for_path (_tmp1_);
+	file = _tmp2_;
+	_tmp3_ = file;
+	_tmp4_ = g_file_query_exists (_tmp3_, NULL);
+	if (!_tmp4_) {
+		FILE* _tmp5_ = NULL;
+		GFile* _tmp6_ = NULL;
+		gchar* _tmp7_ = NULL;
+		gchar* _tmp8_ = NULL;
+		_tmp5_ = stderr;
+		_tmp6_ = file;
+		_tmp7_ = g_file_get_path (_tmp6_);
+		_tmp8_ = _tmp7_;
+		fprintf (_tmp5_, "File '%s' doesn't exist.\n", _tmp8_);
+		_g_free0 (_tmp8_);
+	}
+	{
+		GFileInputStream* _tmp9_ = NULL;
+		GFile* _tmp10_ = NULL;
+		GFileInputStream* _tmp11_ = NULL;
+		GDataInputStream* dis = NULL;
+		GDataInputStream* _tmp12_ = NULL;
+		gchar* line = NULL;
+		gint j = 0;
+		_tmp10_ = file;
+		_tmp11_ = g_file_read (_tmp10_, NULL, &_inner_error_);
+		_tmp9_ = _tmp11_;
+		if (G_UNLIKELY (_inner_error_ != NULL)) {
+			goto __catch0_g_error;
+		}
+		_tmp12_ = g_data_input_stream_new ((GInputStream*) _tmp9_);
+		dis = _tmp12_;
+		j = 0;
+		while (TRUE) {
+			gchar* _tmp13_ = NULL;
+			GDataInputStream* _tmp14_ = NULL;
+			gchar* _tmp15_ = NULL;
+			gchar* _tmp16_ = NULL;
+			const gchar* _tmp17_ = NULL;
+			gchar** s = NULL;
+			const gchar* _tmp18_ = NULL;
+			gchar** _tmp19_ = NULL;
+			gchar** _tmp20_ = NULL;
+			gint s_length1 = 0;
+			gint _s_size_ = 0;
+			gchar** _tmp21_ = NULL;
+			gint _tmp21__length1 = 0;
+			_tmp14_ = dis;
+			_tmp15_ = g_data_input_stream_read_line (_tmp14_, NULL, NULL, &_inner_error_);
+			_tmp13_ = _tmp15_;
+			if (G_UNLIKELY (_inner_error_ != NULL)) {
+				_g_free0 (line);
+				_g_object_unref0 (dis);
+				_g_object_unref0 (_tmp9_);
+				goto __catch0_g_error;
+			}
+			_tmp16_ = _tmp13_;
+			_tmp13_ = NULL;
+			_g_free0 (line);
+			line = _tmp16_;
+			_tmp17_ = line;
+			if (!(_tmp17_ != NULL)) {
+				_g_free0 (_tmp13_);
+				break;
+			}
+			_tmp18_ = line;
+			_tmp20_ = _tmp19_ = g_strsplit (_tmp18_, ",", 0);
+			s = _tmp20_;
+			s_length1 = _vala_array_length (_tmp19_);
+			_s_size_ = s_length1;
+			_tmp21_ = s;
+			_tmp21__length1 = s_length1;
+			if (_tmp21__length1 == 9) {
+				gint _tmp33_ = 0;
+				{
+					gint i = 0;
+					i = 0;
+					{
+						gboolean _tmp22_ = FALSE;
+						_tmp22_ = TRUE;
+						while (TRUE) {
+							gint _tmp24_ = 0;
+							gint* _tmp25_ = NULL;
+							gint _tmp25__length1 = 0;
+							gint _tmp25__length2 = 0;
+							gint _tmp26_ = 0;
+							gint _tmp27_ = 0;
+							gchar** _tmp28_ = NULL;
+							gint _tmp28__length1 = 0;
+							gint _tmp29_ = 0;
+							const gchar* _tmp30_ = NULL;
+							gint _tmp31_ = 0;
+							gint _tmp32_ = 0;
+							if (!_tmp22_) {
+								gint _tmp23_ = 0;
+								_tmp23_ = i;
+								i = _tmp23_ + 1;
+							}
+							_tmp22_ = FALSE;
+							_tmp24_ = i;
+							if (!(_tmp24_ < 9)) {
+								break;
+							}
+							_tmp25_ = cubo;
+							_tmp25__length1 = cubo_length1;
+							_tmp25__length2 = cubo_length2;
+							_tmp26_ = j;
+							_tmp27_ = i;
+							_tmp28_ = s;
+							_tmp28__length1 = s_length1;
+							_tmp29_ = i;
+							_tmp30_ = _tmp28_[_tmp29_];
+							_tmp31_ = atoi (_tmp30_);
+							_tmp25_[(_tmp26_ * _tmp25__length2) + _tmp27_] = _tmp31_;
+							_tmp32_ = _tmp25_[(_tmp26_ * _tmp25__length2) + _tmp27_];
+						}
+					}
+				}
+				_tmp33_ = j;
+				j = _tmp33_ + 1;
+			} else {
+				FILE* _tmp34_ = NULL;
+				const gchar* _tmp35_ = NULL;
+				_tmp34_ = stdout;
+				_tmp35_ = line;
+				fprintf (_tmp34_, "%s\n", _tmp35_);
+			}
+			s = (_vala_array_free (s, s_length1, (GDestroyNotify) g_free), NULL);
+			_g_free0 (_tmp13_);
+		}
+		_g_free0 (line);
+		_g_object_unref0 (dis);
+		_g_object_unref0 (_tmp9_);
+	}
+	goto __finally0;
+	__catch0_g_error:
+	{
+		GError* e = NULL;
+		const gchar* _tmp36_ = NULL;
+		e = _inner_error_;
+		_inner_error_ = NULL;
+		_tmp36_ = e->message;
+		g_error ("CuboGenetico-main.vala:35: %s", _tmp36_);
+		_g_error_free0 (e);
+	}
+	__finally0:
+	if (G_UNLIKELY (_inner_error_ != NULL)) {
+		_g_object_unref0 (file);
+		cubo = (g_free (cubo), NULL);
+		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
+		g_clear_error (&_inner_error_);
+		return NULL;
+	}
+	_tmp37_ = cubo;
+	_tmp37__length1 = cubo_length1;
+	_tmp37__length2 = cubo_length2;
+	if (result_length1) {
+		*result_length1 = _tmp37__length1;
+	}
+	if (result_length2) {
+		*result_length2 = _tmp37__length2;
+	}
+	result = _tmp37_;
+	_g_object_unref0 (file);
+	return result;
 }
 
-try {
-// Open file for reading and wrap returned FileInputStream into a
-// DataInputStream, so we can read line by line
-var dis = new DataInputStream (file.read ());
-string line;
-// Read lines until end of file (null) is reached
-while ((line = dis.read_line (null)) != null) {
-stdout.printf ("%s\n", line);
-}
-} catch (Error e) {
-error ("%s", e.message);
-}
 
-}
-*/
 gint cubo_genetico_main_main (gchar** args, int args_length1) {
 	gint result = 0;
+	CuboGeneticoCuboCubo3x3* cubo = NULL;
+	gchar** _tmp0_ = NULL;
+	gint _tmp0__length1 = 0;
+	CuboGeneticoCodificacionFenoGeno* fg = NULL;
+	CuboGeneticoCodificacionFenoGeno* _tmp8_ = NULL;
+	gint* g = NULL;
+	CuboGeneticoCodificacionFenoGeno* _tmp9_ = NULL;
+	gint _tmp10_ = 0;
+	gint* _tmp11_ = NULL;
+	gint g_length1 = 0;
+	gint _g_size_ = 0;
+	gchar** gf = NULL;
+	CuboGeneticoCodificacionFenoGeno* _tmp12_ = NULL;
+	gint* _tmp13_ = NULL;
+	gint _tmp13__length1 = 0;
+	gint _tmp14_ = 0;
+	gchar** _tmp15_ = NULL;
+	gint gf_length1 = 0;
+	gint _gf_size_ = 0;
+	gchar** _tmp16_ = NULL;
+	gint _tmp16__length1 = 0;
+	FILE* _tmp20_ = NULL;
+	CuboGeneticoFFitness* f = NULL;
+	CuboGeneticoCuboCubo3x3* _tmp21_ = NULL;
+	CuboGeneticoFFitness* _tmp22_ = NULL;
+	gdouble fd = 0.0;
+	gint* _tmp23_ = NULL;
+	gint _tmp23__length1 = 0;
+	gdouble _tmp24_ = 0.0;
+	FILE* _tmp25_ = NULL;
+	CuboGeneticoCuboCubo3x3* _tmp26_ = NULL;
+	cubo = NULL;
+	_tmp0_ = args;
+	_tmp0__length1 = args_length1;
+	if (_tmp0__length1 >= 2) {
+		gint* c = NULL;
+		gchar** _tmp1_ = NULL;
+		gint _tmp1__length1 = 0;
+		const gchar* _tmp2_ = NULL;
+		gint _tmp3_ = 0;
+		gint _tmp4_ = 0;
+		gint* _tmp5_ = NULL;
+		gint c_length1 = 0;
+		gint c_length2 = 0;
+		gint* _tmp6_ = NULL;
+		gint _tmp6__length1 = 0;
+		gint _tmp6__length2 = 0;
+		CuboGeneticoCuboCubo3x3* _tmp7_ = NULL;
+		_tmp1_ = args;
+		_tmp1__length1 = args_length1;
+		_tmp2_ = _tmp1_[1];
+		_tmp5_ = cubo_genetico_main_archivo (_tmp2_, &_tmp3_, &_tmp4_);
+		c = _tmp5_;
+		c_length1 = _tmp3_;
+		c_length2 = _tmp4_;
+		_tmp6_ = c;
+		_tmp6__length1 = c_length1;
+		_tmp6__length2 = c_length2;
+		_tmp7_ = cubo_genetico_cubo_cubo3x3_new (_tmp6_, _tmp6__length1, _tmp6__length2);
+		_g_object_unref0 (cubo);
+		cubo = _tmp7_;
+		c = (g_free (c), NULL);
+	}
+	_tmp8_ = cubo_genetico_codificacion_feno_geno_new (1);
+	fg = _tmp8_;
+	_tmp9_ = fg;
+	_tmp11_ = cubo_genetico_codificacion_feno_geno_genoAleatNuev (_tmp9_, 10, &_tmp10_);
+	g = _tmp11_;
+	g_length1 = _tmp10_;
+	_g_size_ = g_length1;
+	_tmp12_ = fg;
+	_tmp13_ = g;
+	_tmp13__length1 = g_length1;
+	_tmp15_ = cubo_genetico_codificacion_feno_geno_decodifica (_tmp12_, _tmp13_, _tmp13__length1, &_tmp14_);
+	gf = _tmp15_;
+	gf_length1 = _tmp14_;
+	_gf_size_ = gf_length1;
+	_tmp16_ = gf;
+	_tmp16__length1 = gf_length1;
+	{
+		gchar** i_collection = NULL;
+		gint i_collection_length1 = 0;
+		gint _i_collection_size_ = 0;
+		gint i_it = 0;
+		i_collection = _tmp16_;
+		i_collection_length1 = _tmp16__length1;
+		for (i_it = 0; i_it < _tmp16__length1; i_it = i_it + 1) {
+			gchar* _tmp17_ = NULL;
+			gchar* i = NULL;
+			_tmp17_ = g_strdup (i_collection[i_it]);
+			i = _tmp17_;
+			{
+				FILE* _tmp18_ = NULL;
+				const gchar* _tmp19_ = NULL;
+				_tmp18_ = stdout;
+				_tmp19_ = i;
+				fprintf (_tmp18_, "%s,", _tmp19_);
+				_g_free0 (i);
+			}
+		}
+	}
+	_tmp20_ = stdout;
+	fprintf (_tmp20_, "\n");
+	_tmp21_ = cubo;
+	_tmp22_ = cubo_genetico_ffitness_new (_tmp21_);
+	f = _tmp22_;
+	_tmp23_ = g;
+	_tmp23__length1 = g_length1;
+	_tmp24_ = cubo_genetico_ffitness_evaluacion (f, _tmp23_, _tmp23__length1);
+	fd = _tmp24_;
+	_tmp25_ = stdout;
+	fprintf (_tmp25_, "evaluacion = %2.9f\n", fd);
+	_tmp26_ = cubo;
+	cubo_genetico_cubo_cubo3x3_dibuja (_tmp26_);
 	result = 0;
+	_g_object_unref0 (f);
+	gf = (_vala_array_free (gf, gf_length1, (GDestroyNotify) g_free), NULL);
+	g = (g_free (g), NULL);
+	_g_object_unref0 (fg);
+	_g_object_unref0 (cubo);
 	return result;
 }
 
@@ -110,6 +423,36 @@ GType cubo_genetico_main_get_type (void) {
 		g_once_init_leave (&cubo_genetico_main_type_id__volatile, cubo_genetico_main_type_id);
 	}
 	return cubo_genetico_main_type_id__volatile;
+}
+
+
+static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func) {
+	if ((array != NULL) && (destroy_func != NULL)) {
+		int i;
+		for (i = 0; i < array_length; i = i + 1) {
+			if (((gpointer*) array)[i] != NULL) {
+				destroy_func (((gpointer*) array)[i]);
+			}
+		}
+	}
+}
+
+
+static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify destroy_func) {
+	_vala_array_destroy (array, array_length, destroy_func);
+	g_free (array);
+}
+
+
+static gint _vala_array_length (gpointer array) {
+	int length;
+	length = 0;
+	if (array) {
+		while (((gpointer*) array)[length]) {
+			length++;
+		}
+	}
+	return length;
 }
 
 

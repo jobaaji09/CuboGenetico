@@ -6,10 +6,10 @@
 
 #include <glib.h>
 #include <glib-object.h>
-#include <float.h>
-#include <math.h>
 #include <stdlib.h>
 #include <string.h>
+#include <float.h>
+#include <math.h>
 
 G_BEGIN_DECLS
 
@@ -25,16 +25,27 @@ typedef struct _CuboGeneticoAGeneticoCubo3x3 CuboGeneticoAGeneticoCubo3x3;
 typedef struct _CuboGeneticoAGeneticoCubo3x3Class CuboGeneticoAGeneticoCubo3x3Class;
 typedef struct _CuboGeneticoAGeneticoCubo3x3Private CuboGeneticoAGeneticoCubo3x3Private;
 
-#define CUBO_GENETICO_AGENETICO_TYPE_INDIVIDUO (cubo_genetico_agenetico_individuo_get_type ())
-#define CUBO_GENETICO_AGENETICO_INDIVIDUO(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_AGENETICO_TYPE_INDIVIDUO, CuboGeneticoAGeneticoIndividuo))
-#define CUBO_GENETICO_AGENETICO_INDIVIDUO_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_AGENETICO_TYPE_INDIVIDUO, CuboGeneticoAGeneticoIndividuoClass))
-#define CUBO_GENETICO_AGENETICO_IS_INDIVIDUO(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_AGENETICO_TYPE_INDIVIDUO))
-#define CUBO_GENETICO_AGENETICO_IS_INDIVIDUO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_AGENETICO_TYPE_INDIVIDUO))
-#define CUBO_GENETICO_AGENETICO_INDIVIDUO_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_AGENETICO_TYPE_INDIVIDUO, CuboGeneticoAGeneticoIndividuoClass))
+#define CUBO_GENETICO_AGENETICO_TYPE_GENOTIPO (cubo_genetico_agenetico_genotipo_get_type ())
+#define CUBO_GENETICO_AGENETICO_GENOTIPO(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_AGENETICO_TYPE_GENOTIPO, CuboGeneticoAGeneticoGenotipo))
+#define CUBO_GENETICO_AGENETICO_GENOTIPO_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_AGENETICO_TYPE_GENOTIPO, CuboGeneticoAGeneticoGenotipoClass))
+#define CUBO_GENETICO_AGENETICO_IS_GENOTIPO(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_AGENETICO_TYPE_GENOTIPO))
+#define CUBO_GENETICO_AGENETICO_IS_GENOTIPO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_AGENETICO_TYPE_GENOTIPO))
+#define CUBO_GENETICO_AGENETICO_GENOTIPO_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_AGENETICO_TYPE_GENOTIPO, CuboGeneticoAGeneticoGenotipoClass))
 
-typedef struct _CuboGeneticoAGeneticoIndividuo CuboGeneticoAGeneticoIndividuo;
-typedef struct _CuboGeneticoAGeneticoIndividuoClass CuboGeneticoAGeneticoIndividuoClass;
-typedef struct _CuboGeneticoAGeneticoIndividuoPrivate CuboGeneticoAGeneticoIndividuoPrivate;
+typedef struct _CuboGeneticoAGeneticoGenotipo CuboGeneticoAGeneticoGenotipo;
+typedef struct _CuboGeneticoAGeneticoGenotipoClass CuboGeneticoAGeneticoGenotipoClass;
+typedef struct _CuboGeneticoAGeneticoGenotipoPrivate CuboGeneticoAGeneticoGenotipoPrivate;
+
+#define CUBO_GENETICO_AGENETICO_TYPE_FENOTIPO (cubo_genetico_agenetico_fenotipo_get_type ())
+#define CUBO_GENETICO_AGENETICO_FENOTIPO(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_AGENETICO_TYPE_FENOTIPO, CuboGeneticoAGeneticoFenotipo))
+#define CUBO_GENETICO_AGENETICO_FENOTIPO_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_AGENETICO_TYPE_FENOTIPO, CuboGeneticoAGeneticoFenotipoClass))
+#define CUBO_GENETICO_AGENETICO_IS_FENOTIPO(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_AGENETICO_TYPE_FENOTIPO))
+#define CUBO_GENETICO_AGENETICO_IS_FENOTIPO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_AGENETICO_TYPE_FENOTIPO))
+#define CUBO_GENETICO_AGENETICO_FENOTIPO_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_AGENETICO_TYPE_FENOTIPO, CuboGeneticoAGeneticoFenotipoClass))
+
+typedef struct _CuboGeneticoAGeneticoFenotipo CuboGeneticoAGeneticoFenotipo;
+typedef struct _CuboGeneticoAGeneticoFenotipoClass CuboGeneticoAGeneticoFenotipoClass;
+typedef struct _CuboGeneticoAGeneticoFenotipoPrivate CuboGeneticoAGeneticoFenotipoPrivate;
 
 struct _CuboGeneticoAGeneticoCubo3x3 {
 	GObject parent_instance;
@@ -45,13 +56,26 @@ struct _CuboGeneticoAGeneticoCubo3x3Class {
 	GObjectClass parent_class;
 };
 
-struct _CuboGeneticoAGeneticoIndividuo {
-	GObject parent_instance;
-	CuboGeneticoAGeneticoIndividuoPrivate * priv;
+struct _CuboGeneticoAGeneticoGenotipo {
+	GTypeInstance parent_instance;
+	volatile int ref_count;
+	CuboGeneticoAGeneticoGenotipoPrivate * priv;
 };
 
-struct _CuboGeneticoAGeneticoIndividuoClass {
-	GObjectClass parent_class;
+struct _CuboGeneticoAGeneticoGenotipoClass {
+	GTypeClass parent_class;
+	void (*finalize) (CuboGeneticoAGeneticoGenotipo *self);
+};
+
+struct _CuboGeneticoAGeneticoFenotipo {
+	GTypeInstance parent_instance;
+	volatile int ref_count;
+	CuboGeneticoAGeneticoFenotipoPrivate * priv;
+};
+
+struct _CuboGeneticoAGeneticoFenotipoClass {
+	GTypeClass parent_class;
+	void (*finalize) (CuboGeneticoAGeneticoFenotipo *self);
 };
 
 
@@ -60,20 +84,32 @@ CuboGeneticoAGeneticoCubo3x3* cubo_genetico_agenetico_cubo3x3_new (gint* cubo, i
 CuboGeneticoAGeneticoCubo3x3* cubo_genetico_agenetico_cubo3x3_construct (GType object_type, gint* cubo, int cubo_length1, int cubo_length2);
 gint* cubo_genetico_agenetico_cubo3x3_getActual (CuboGeneticoAGeneticoCubo3x3* self, int* result_length1, int* result_length2);
 void cubo_genetico_agenetico_cubo3x3_reset (CuboGeneticoAGeneticoCubo3x3* self);
-void cubo_genetico_agenetico_cubo3x3_giraCaras (CuboGeneticoAGeneticoCubo3x3* self, gint* giros, int giros_length1);
-void cubo_genetico_agenetico_cubo3x3_giraCara (CuboGeneticoAGeneticoCubo3x3* self, gint i);
+void cubo_genetico_agenetico_cubo3x3_giraCaras (CuboGeneticoAGeneticoCubo3x3* self, gchar** giros, int giros_length1);
+void cubo_genetico_agenetico_cubo3x3_giraCara (CuboGeneticoAGeneticoCubo3x3* self, const gchar* i);
 void cubo_genetico_agenetico_cubo3x3_to_string (CuboGeneticoAGeneticoCubo3x3* self);
 void cubo_genetico_agenetico_cubo3x3_dibuja (CuboGeneticoAGeneticoCubo3x3* self, gdouble fit);
-GType cubo_genetico_agenetico_individuo_get_type (void) G_GNUC_CONST;
-gchar* cubo_genetico_agenetico_individuo_to_string (CuboGeneticoAGeneticoIndividuo* self);
-CuboGeneticoAGeneticoIndividuo* cubo_genetico_agenetico_individuo_new (void);
-CuboGeneticoAGeneticoIndividuo* cubo_genetico_agenetico_individuo_construct (GType object_type);
-gint* cubo_genetico_agenetico_individuo_get_genotipo (CuboGeneticoAGeneticoIndividuo* self, int* result_length1);
-void cubo_genetico_agenetico_individuo_set_genotipo (CuboGeneticoAGeneticoIndividuo* self, gint* value, int value_length1);
-gchar** cubo_genetico_agenetico_individuo_get_fenotipo (CuboGeneticoAGeneticoIndividuo* self, int* result_length1);
-void cubo_genetico_agenetico_individuo_set_fenotipo (CuboGeneticoAGeneticoIndividuo* self, gchar** value, int value_length1);
-gdouble cubo_genetico_agenetico_individuo_get_fitness (CuboGeneticoAGeneticoIndividuo* self);
-void cubo_genetico_agenetico_individuo_set_fitness (CuboGeneticoAGeneticoIndividuo* self, gdouble value);
+gpointer cubo_genetico_agenetico_genotipo_ref (gpointer instance);
+void cubo_genetico_agenetico_genotipo_unref (gpointer instance);
+GParamSpec* cubo_genetico_agenetico_param_spec_genotipo (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags);
+void cubo_genetico_agenetico_value_set_genotipo (GValue* value, gpointer v_object);
+void cubo_genetico_agenetico_value_take_genotipo (GValue* value, gpointer v_object);
+gpointer cubo_genetico_agenetico_value_get_genotipo (const GValue* value);
+GType cubo_genetico_agenetico_genotipo_get_type (void) G_GNUC_CONST;
+CuboGeneticoAGeneticoGenotipo* cubo_genetico_agenetico_genotipo_new (gint n);
+CuboGeneticoAGeneticoGenotipo* cubo_genetico_agenetico_genotipo_construct (GType object_type, gint n);
+gchar* cubo_genetico_agenetico_genotipo_to_string (CuboGeneticoAGeneticoGenotipo* self);
+gint* cubo_genetico_agenetico_genotipo_get_genotipo (CuboGeneticoAGeneticoGenotipo* self, int* result_length1);
+gpointer cubo_genetico_agenetico_fenotipo_ref (gpointer instance);
+void cubo_genetico_agenetico_fenotipo_unref (gpointer instance);
+GParamSpec* cubo_genetico_agenetico_param_spec_fenotipo (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags);
+void cubo_genetico_agenetico_value_set_fenotipo (GValue* value, gpointer v_object);
+void cubo_genetico_agenetico_value_take_fenotipo (GValue* value, gpointer v_object);
+gpointer cubo_genetico_agenetico_value_get_fenotipo (const GValue* value);
+GType cubo_genetico_agenetico_fenotipo_get_type (void) G_GNUC_CONST;
+CuboGeneticoAGeneticoFenotipo* cubo_genetico_agenetico_fenotipo_new (gint n);
+CuboGeneticoAGeneticoFenotipo* cubo_genetico_agenetico_fenotipo_construct (GType object_type, gint n);
+gchar* cubo_genetico_agenetico_fenotipo_to_string (CuboGeneticoAGeneticoFenotipo* self);
+gchar** cubo_genetico_agenetico_fenotipo_get_fenotipo (CuboGeneticoAGeneticoFenotipo* self, int* result_length1);
 
 
 G_END_DECLS

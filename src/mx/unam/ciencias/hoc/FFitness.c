@@ -7,6 +7,8 @@
 #include "agenetico.h"
 #include <float.h>
 #include <math.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 #define CUBO_GENETICO_TYPE_FFITNESS (cubo_genetico_ffitness_get_type ())
@@ -44,7 +46,7 @@ enum  {
 };
 CuboGeneticoFFitness* cubo_genetico_ffitness_new (CuboGeneticoAGeneticoCubo3x3* cubo);
 CuboGeneticoFFitness* cubo_genetico_ffitness_construct (GType object_type, CuboGeneticoAGeneticoCubo3x3* cubo);
-gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, gint* geno, int geno_length1);
+gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, CuboGeneticoAGeneticoFenotipo* feno);
 gdouble cubo_genetico_ffitness_caraFitness (CuboGeneticoFFitness* self, gint centro, gint x, gint y);
 static void cubo_genetico_ffitness_finalize (GObject* obj);
 
@@ -73,133 +75,135 @@ CuboGeneticoFFitness* cubo_genetico_ffitness_new (CuboGeneticoAGeneticoCubo3x3* 
 }
 
 
-gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, gint* geno, int geno_length1) {
+gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, CuboGeneticoAGeneticoFenotipo* feno) {
 	gdouble result = 0.0;
 	CuboGeneticoAGeneticoCubo3x3* _tmp0_ = NULL;
-	gint* _tmp1_ = NULL;
-	gint _tmp1__length1 = 0;
+	CuboGeneticoAGeneticoFenotipo* _tmp1_ = NULL;
+	gchar** _tmp2_ = NULL;
+	gint _tmp2__length1 = 0;
+	gchar** _tmp3_ = NULL;
+	gint _tmp3__length1 = 0;
 	gdouble fitness = 0.0;
-	CuboGeneticoAGeneticoCubo3x3* _tmp36_ = NULL;
-	gdouble _tmp37_ = 0.0;
-	gint* _tmp38_ = NULL;
-	gint _tmp38__length1 = 0;
-	CuboGeneticoAGeneticoCubo3x3* _tmp39_ = NULL;
-	gdouble _tmp40_ = 0.0;
+	CuboGeneticoAGeneticoCubo3x3* _tmp38_ = NULL;
+	gdouble _tmp39_ = 0.0;
 	g_return_val_if_fail (self != NULL, 0.0);
+	g_return_val_if_fail (feno != NULL, 0.0);
 	_tmp0_ = self->priv->cubo;
-	_tmp1_ = geno;
-	_tmp1__length1 = geno_length1;
-	cubo_genetico_agenetico_cubo3x3_giraCaras (_tmp0_, _tmp1_, _tmp1__length1);
+	_tmp1_ = feno;
+	_tmp2_ = cubo_genetico_agenetico_fenotipo_get_fenotipo (_tmp1_, &_tmp2__length1);
+	_tmp3_ = _tmp2_;
+	_tmp3__length1 = _tmp2__length1;
+	cubo_genetico_agenetico_cubo3x3_giraCaras (_tmp0_, _tmp3_, _tmp3__length1);
 	fitness = 0.0;
 	{
 		gint i = 0;
 		i = 0;
 		{
-			gboolean _tmp2_ = FALSE;
-			_tmp2_ = TRUE;
+			gboolean _tmp4_ = FALSE;
+			_tmp4_ = TRUE;
 			while (TRUE) {
-				gint _tmp4_ = 0;
-				gint _tmp5_ = 0;
-				if (!_tmp2_) {
-					gint _tmp3_ = 0;
-					_tmp3_ = i;
-					i = _tmp3_ + 1;
+				gint _tmp6_ = 0;
+				gint _tmp7_ = 0;
+				if (!_tmp4_) {
+					gint _tmp5_ = 0;
+					_tmp5_ = i;
+					i = _tmp5_ + 1;
 				}
-				_tmp2_ = FALSE;
-				_tmp4_ = i;
-				if (!(_tmp4_ < 6)) {
+				_tmp4_ = FALSE;
+				_tmp6_ = i;
+				if (!(_tmp6_ < 6)) {
 					break;
 				}
-				_tmp5_ = i;
-				switch (_tmp5_) {
+				_tmp7_ = i;
+				switch (_tmp7_) {
 					case 0:
 					{
-						gdouble _tmp6_ = 0.0;
-						gint _tmp7_ = 0;
-						gint _tmp8_ = 0;
+						gdouble _tmp8_ = 0.0;
 						gint _tmp9_ = 0;
-						gdouble _tmp10_ = 0.0;
-						_tmp6_ = fitness;
-						_tmp7_ = i;
-						_tmp8_ = i;
+						gint _tmp10_ = 0;
+						gint _tmp11_ = 0;
+						gdouble _tmp12_ = 0.0;
+						_tmp8_ = fitness;
 						_tmp9_ = i;
-						_tmp10_ = cubo_genetico_ffitness_caraFitness (self, _tmp7_, _tmp8_ + 1, _tmp9_ + 1);
-						fitness = _tmp6_ + _tmp10_;
+						_tmp10_ = i;
+						_tmp11_ = i;
+						_tmp12_ = cubo_genetico_ffitness_caraFitness (self, _tmp9_, _tmp10_ + 1, _tmp11_ + 1);
+						fitness = _tmp8_ + _tmp12_;
 						break;
 					}
 					case 1:
 					{
-						gdouble _tmp11_ = 0.0;
-						gint _tmp12_ = 0;
-						gint _tmp13_ = 0;
+						gdouble _tmp13_ = 0.0;
 						gint _tmp14_ = 0;
-						gdouble _tmp15_ = 0.0;
-						_tmp11_ = fitness;
-						_tmp12_ = i;
-						_tmp13_ = i;
+						gint _tmp15_ = 0;
+						gint _tmp16_ = 0;
+						gdouble _tmp17_ = 0.0;
+						_tmp13_ = fitness;
 						_tmp14_ = i;
-						_tmp15_ = cubo_genetico_ffitness_caraFitness (self, _tmp12_, _tmp13_, _tmp14_ + 3);
-						fitness = _tmp11_ + _tmp15_;
+						_tmp15_ = i;
+						_tmp16_ = i;
+						_tmp17_ = cubo_genetico_ffitness_caraFitness (self, _tmp14_, _tmp15_, _tmp16_ + 3);
+						fitness = _tmp13_ + _tmp17_;
 						break;
 					}
 					case 2:
 					{
-						gdouble _tmp16_ = 0.0;
-						gint _tmp17_ = 0;
-						gint _tmp18_ = 0;
+						gdouble _tmp18_ = 0.0;
 						gint _tmp19_ = 0;
-						gdouble _tmp20_ = 0.0;
-						_tmp16_ = fitness;
-						_tmp17_ = i;
-						_tmp18_ = i;
+						gint _tmp20_ = 0;
+						gint _tmp21_ = 0;
+						gdouble _tmp22_ = 0.0;
+						_tmp18_ = fitness;
 						_tmp19_ = i;
-						_tmp20_ = cubo_genetico_ffitness_caraFitness (self, _tmp17_, _tmp18_ - 1, _tmp19_ + 5);
-						fitness = _tmp16_ + _tmp20_;
+						_tmp20_ = i;
+						_tmp21_ = i;
+						_tmp22_ = cubo_genetico_ffitness_caraFitness (self, _tmp19_, _tmp20_ - 1, _tmp21_ + 5);
+						fitness = _tmp18_ + _tmp22_;
 						break;
 					}
 					case 3:
 					{
-						gdouble _tmp21_ = 0.0;
-						gint _tmp22_ = 0;
-						gint _tmp23_ = 0;
+						gdouble _tmp23_ = 0.0;
 						gint _tmp24_ = 0;
-						gdouble _tmp25_ = 0.0;
-						_tmp21_ = fitness;
-						_tmp22_ = i;
-						_tmp23_ = i;
+						gint _tmp25_ = 0;
+						gint _tmp26_ = 0;
+						gdouble _tmp27_ = 0.0;
+						_tmp23_ = fitness;
 						_tmp24_ = i;
-						_tmp25_ = cubo_genetico_ffitness_caraFitness (self, _tmp22_, _tmp23_ + 1, _tmp24_ - 2);
-						fitness = _tmp21_ + _tmp25_;
+						_tmp25_ = i;
+						_tmp26_ = i;
+						_tmp27_ = cubo_genetico_ffitness_caraFitness (self, _tmp24_, _tmp25_ + 1, _tmp26_ - 2);
+						fitness = _tmp23_ + _tmp27_;
 						break;
 					}
 					case 4:
 					{
-						gdouble _tmp26_ = 0.0;
-						gint _tmp27_ = 0;
-						gint _tmp28_ = 0;
+						gdouble _tmp28_ = 0.0;
 						gint _tmp29_ = 0;
-						gdouble _tmp30_ = 0.0;
-						_tmp26_ = fitness;
-						_tmp27_ = i;
-						_tmp28_ = i;
+						gint _tmp30_ = 0;
+						gint _tmp31_ = 0;
+						gdouble _tmp32_ = 0.0;
+						_tmp28_ = fitness;
 						_tmp29_ = i;
-						_tmp30_ = cubo_genetico_ffitness_caraFitness (self, _tmp27_, _tmp28_, _tmp29_);
-						fitness = _tmp26_ + _tmp30_;
+						_tmp30_ = i;
+						_tmp31_ = i;
+						_tmp32_ = cubo_genetico_ffitness_caraFitness (self, _tmp29_, _tmp30_, _tmp31_);
+						fitness = _tmp28_ + _tmp32_;
 						break;
 					}
 					case 5:
 					{
-						gdouble _tmp31_ = 0.0;
-						gint _tmp32_ = 0;
-						gint _tmp33_ = 0;
+						gdouble _tmp33_ = 0.0;
 						gint _tmp34_ = 0;
-						gdouble _tmp35_ = 0.0;
-						_tmp31_ = fitness;
-						_tmp32_ = i;
-						_tmp33_ = i;
+						gint _tmp35_ = 0;
+						gint _tmp36_ = 0;
+						gdouble _tmp37_ = 0.0;
+						_tmp33_ = fitness;
 						_tmp34_ = i;
-						_tmp35_ = cubo_genetico_ffitness_caraFitness (self, _tmp32_, _tmp33_ - 1, _tmp34_ + 2);
-						fitness = _tmp31_ + _tmp35_;
+						_tmp35_ = i;
+						_tmp36_ = i;
+						_tmp37_ = cubo_genetico_ffitness_caraFitness (self, _tmp34_, _tmp35_ - 1, _tmp36_ + 2);
+						fitness = _tmp33_ + _tmp37_;
 						break;
 					}
 					default:
@@ -208,15 +212,10 @@ gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, gint* gen
 			}
 		}
 	}
-	_tmp36_ = self->priv->cubo;
-	_tmp37_ = fitness;
-	_tmp38_ = geno;
-	_tmp38__length1 = geno_length1;
-	cubo_genetico_agenetico_cubo3x3_dibuja (_tmp36_, (_tmp37_ / 6) + _tmp38__length1);
-	_tmp39_ = self->priv->cubo;
-	cubo_genetico_agenetico_cubo3x3_reset (_tmp39_);
-	_tmp40_ = fitness;
-	result = _tmp40_ / 6;
+	_tmp38_ = self->priv->cubo;
+	cubo_genetico_agenetico_cubo3x3_reset (_tmp38_);
+	_tmp39_ = fitness;
+	result = _tmp39_ / 6;
 	return result;
 }
 
@@ -392,7 +391,7 @@ gdouble cubo_genetico_ffitness_caraFitness (CuboGeneticoFFitness* self, gint cen
 		f = _tmp51_ + 1;
 	}
 	_tmp52_ = f;
-	result = 1 - (_tmp52_ / 8);
+	result = 1.0 - (_tmp52_ / 8.0);
 	c = (g_free (c), NULL);
 	return result;
 }

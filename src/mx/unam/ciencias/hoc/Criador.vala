@@ -12,17 +12,17 @@ namespace CuboGenetico{
 			this.rand.set_seed(semilla);
 		   
 		}
-
-		public AGenetico.Individuo individuoNuevo(int[] geno){
+		
+		public Individuo individuoNuevo(AGenetico.Genotipo geno){
 			var feno = fenogeno.decodifica(geno);
-			var indi = new AGenetico.Individuo();
+			var indi = new Individuo();
 			indi.genotipo = geno;
 			indi.fenotipo = feno;
-			indi.fitness = fitness.evaluacion(geno);
+			indi.fitness = fitness.evaluacion(feno);
 			return indi;
 		}
 
-		public AGenetico.Individuo individuoNR(){
+		public Individuo individuoNR(){
 			return this.individuoNuevo(
 				fenogeno.genoAleatNuev(this.rand.int_range(1,21)));
 		}
@@ -33,6 +33,6 @@ namespace CuboGenetico{
 				po.agregaIndividuo(this.individuoNR());
 			}
 			return po;
-		}
+			}
 	}
 }

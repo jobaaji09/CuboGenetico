@@ -7,8 +7,8 @@ namespace CuboGenetico{
 			this.cubo=cubo;
 		}
 
-		public double evaluacion(int[] geno){
-			this.cubo.giraCaras(geno);
+		public double evaluacion(AGenetico.Fenotipo feno){
+			this.cubo.giraCaras(feno.fenotipo);
 			double fitness = 0.0;
 			for(int i=0;i<6;i++){
 				switch(i){
@@ -33,7 +33,7 @@ namespace CuboGenetico{
 					
 				}
 			}
-			this.cubo.dibuja(fitness/6+geno.length);
+			//this.cubo.dibuja(fitness/6+geno.genotipo.length);
 			this.cubo.reset();
 			return fitness/6;
 		}
@@ -66,7 +66,7 @@ namespace CuboGenetico{
 			if(centro == c[x+1,y+1] ){
 				f = f +1;
 			}
-			return 1 - (f/8);
+			return 1.0 - (f/8.0);
 		}
 
 		

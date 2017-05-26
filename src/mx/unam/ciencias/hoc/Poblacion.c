@@ -4,7 +4,8 @@
 
 #include <glib.h>
 #include <glib-object.h>
-#include "agenetico.h"
+#include <float.h>
+#include <math.h>
 #include <gobject/gvaluecollector.h>
 
 
@@ -18,6 +19,16 @@
 typedef struct _CuboGeneticoPoblacion CuboGeneticoPoblacion;
 typedef struct _CuboGeneticoPoblacionClass CuboGeneticoPoblacionClass;
 typedef struct _CuboGeneticoPoblacionPrivate CuboGeneticoPoblacionPrivate;
+
+#define CUBO_GENETICO_TYPE_INDIVIDUO (cubo_genetico_individuo_get_type ())
+#define CUBO_GENETICO_INDIVIDUO(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_INDIVIDUO, CuboGeneticoIndividuo))
+#define CUBO_GENETICO_INDIVIDUO_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_INDIVIDUO, CuboGeneticoIndividuoClass))
+#define CUBO_GENETICO_IS_INDIVIDUO(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_INDIVIDUO))
+#define CUBO_GENETICO_IS_INDIVIDUO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_INDIVIDUO))
+#define CUBO_GENETICO_INDIVIDUO_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_INDIVIDUO, CuboGeneticoIndividuoClass))
+
+typedef struct _CuboGeneticoIndividuo CuboGeneticoIndividuo;
+typedef struct _CuboGeneticoIndividuoClass CuboGeneticoIndividuoClass;
 #define __g_list_free__g_object_unref0_0(var) ((var == NULL) ? NULL : (var = (_g_list_free__g_object_unref0_ (var), NULL)))
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
 typedef struct _CuboGeneticoParamSpecPoblacion CuboGeneticoParamSpecPoblacion;
@@ -36,7 +47,7 @@ struct _CuboGeneticoPoblacionClass {
 struct _CuboGeneticoPoblacionPrivate {
 	GList* poblacion;
 	gint _generacion;
-	CuboGeneticoAGeneticoIndividuo* _mejorInd;
+	CuboGeneticoIndividuo* _mejorInd;
 };
 
 struct _CuboGeneticoParamSpecPoblacion {
@@ -53,6 +64,7 @@ void cubo_genetico_value_set_poblacion (GValue* value, gpointer v_object);
 void cubo_genetico_value_take_poblacion (GValue* value, gpointer v_object);
 gpointer cubo_genetico_value_get_poblacion (const GValue* value);
 GType cubo_genetico_poblacion_get_type (void) G_GNUC_CONST;
+GType cubo_genetico_individuo_get_type (void) G_GNUC_CONST;
 #define CUBO_GENETICO_POBLACION_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), CUBO_GENETICO_TYPE_POBLACION, CuboGeneticoPoblacionPrivate))
 enum  {
 	CUBO_GENETICO_POBLACION_DUMMY_PROPERTY
@@ -62,10 +74,11 @@ static void _g_list_free__g_object_unref0_ (GList* self);
 CuboGeneticoPoblacion* cubo_genetico_poblacion_new (void);
 CuboGeneticoPoblacion* cubo_genetico_poblacion_construct (GType object_type);
 void cubo_genetico_poblacion_set_generacion (CuboGeneticoPoblacion* self, gint value);
-void cubo_genetico_poblacion_agregaIndividuo (CuboGeneticoPoblacion* self, CuboGeneticoAGeneticoIndividuo* ind);
-CuboGeneticoAGeneticoIndividuo* cubo_genetico_poblacion_get_mejorInd (CuboGeneticoPoblacion* self);
-void cubo_genetico_poblacion_set_mejorInd (CuboGeneticoPoblacion* self, CuboGeneticoAGeneticoIndividuo* value);
-CuboGeneticoAGeneticoIndividuo* cubo_genetico_poblacion_getIndividuo (CuboGeneticoPoblacion* self, gint i);
+void cubo_genetico_poblacion_agregaIndividuo (CuboGeneticoPoblacion* self, CuboGeneticoIndividuo* ind);
+CuboGeneticoIndividuo* cubo_genetico_poblacion_get_mejorInd (CuboGeneticoPoblacion* self);
+void cubo_genetico_poblacion_set_mejorInd (CuboGeneticoPoblacion* self, CuboGeneticoIndividuo* value);
+gdouble cubo_genetico_individuo_get_fitness (CuboGeneticoIndividuo* self);
+CuboGeneticoIndividuo* cubo_genetico_poblacion_getIndividuo (CuboGeneticoPoblacion* self, gint i);
 gint cubo_genetico_poblacion_getTam (CuboGeneticoPoblacion* self);
 gint cubo_genetico_poblacion_get_generacion (CuboGeneticoPoblacion* self);
 static void cubo_genetico_poblacion_finalize (CuboGeneticoPoblacion* obj);
@@ -102,32 +115,32 @@ static gpointer _g_object_ref0 (gpointer self) {
 }
 
 
-void cubo_genetico_poblacion_agregaIndividuo (CuboGeneticoPoblacion* self, CuboGeneticoAGeneticoIndividuo* ind) {
-	CuboGeneticoAGeneticoIndividuo* _tmp0_ = NULL;
-	CuboGeneticoAGeneticoIndividuo* _tmp9_ = NULL;
-	CuboGeneticoAGeneticoIndividuo* _tmp10_ = NULL;
+void cubo_genetico_poblacion_agregaIndividuo (CuboGeneticoPoblacion* self, CuboGeneticoIndividuo* ind) {
+	CuboGeneticoIndividuo* _tmp0_ = NULL;
+	CuboGeneticoIndividuo* _tmp9_ = NULL;
+	CuboGeneticoIndividuo* _tmp10_ = NULL;
 	g_return_if_fail (self != NULL);
 	g_return_if_fail (ind != NULL);
 	_tmp0_ = self->priv->_mejorInd;
 	if (_tmp0_ == NULL) {
-		CuboGeneticoAGeneticoIndividuo* _tmp1_ = NULL;
+		CuboGeneticoIndividuo* _tmp1_ = NULL;
 		_tmp1_ = ind;
 		cubo_genetico_poblacion_set_mejorInd (self, _tmp1_);
 	} else {
-		CuboGeneticoAGeneticoIndividuo* _tmp2_ = NULL;
+		CuboGeneticoIndividuo* _tmp2_ = NULL;
 		gdouble _tmp3_ = 0.0;
 		gdouble _tmp4_ = 0.0;
-		CuboGeneticoAGeneticoIndividuo* _tmp5_ = NULL;
+		CuboGeneticoIndividuo* _tmp5_ = NULL;
 		gdouble _tmp6_ = 0.0;
 		gdouble _tmp7_ = 0.0;
 		_tmp2_ = self->priv->_mejorInd;
-		_tmp3_ = cubo_genetico_agenetico_individuo_get_fitness (_tmp2_);
+		_tmp3_ = cubo_genetico_individuo_get_fitness (_tmp2_);
 		_tmp4_ = _tmp3_;
 		_tmp5_ = ind;
-		_tmp6_ = cubo_genetico_agenetico_individuo_get_fitness (_tmp5_);
+		_tmp6_ = cubo_genetico_individuo_get_fitness (_tmp5_);
 		_tmp7_ = _tmp6_;
-		if (_tmp4_ < _tmp7_) {
-			CuboGeneticoAGeneticoIndividuo* _tmp8_ = NULL;
+		if (_tmp4_ >= _tmp7_) {
+			CuboGeneticoIndividuo* _tmp8_ = NULL;
 			_tmp8_ = ind;
 			cubo_genetico_poblacion_set_mejorInd (self, _tmp8_);
 		}
@@ -138,17 +151,17 @@ void cubo_genetico_poblacion_agregaIndividuo (CuboGeneticoPoblacion* self, CuboG
 }
 
 
-CuboGeneticoAGeneticoIndividuo* cubo_genetico_poblacion_getIndividuo (CuboGeneticoPoblacion* self, gint i) {
-	CuboGeneticoAGeneticoIndividuo* result = NULL;
+CuboGeneticoIndividuo* cubo_genetico_poblacion_getIndividuo (CuboGeneticoPoblacion* self, gint i) {
+	CuboGeneticoIndividuo* result = NULL;
 	GList* _tmp0_ = NULL;
 	gint _tmp1_ = 0;
 	gconstpointer _tmp2_ = NULL;
-	CuboGeneticoAGeneticoIndividuo* _tmp3_ = NULL;
+	CuboGeneticoIndividuo* _tmp3_ = NULL;
 	g_return_val_if_fail (self != NULL, NULL);
 	_tmp0_ = self->priv->poblacion;
 	_tmp1_ = i;
 	_tmp2_ = g_list_nth_data (_tmp0_, (guint) _tmp1_);
-	_tmp3_ = _g_object_ref0 ((CuboGeneticoAGeneticoIndividuo*) _tmp2_);
+	_tmp3_ = _g_object_ref0 ((CuboGeneticoIndividuo*) _tmp2_);
 	result = _tmp3_;
 	return result;
 }
@@ -184,9 +197,9 @@ void cubo_genetico_poblacion_set_generacion (CuboGeneticoPoblacion* self, gint v
 }
 
 
-CuboGeneticoAGeneticoIndividuo* cubo_genetico_poblacion_get_mejorInd (CuboGeneticoPoblacion* self) {
-	CuboGeneticoAGeneticoIndividuo* result;
-	CuboGeneticoAGeneticoIndividuo* _tmp0_ = NULL;
+CuboGeneticoIndividuo* cubo_genetico_poblacion_get_mejorInd (CuboGeneticoPoblacion* self) {
+	CuboGeneticoIndividuo* result;
+	CuboGeneticoIndividuo* _tmp0_ = NULL;
 	g_return_val_if_fail (self != NULL, NULL);
 	_tmp0_ = self->priv->_mejorInd;
 	result = _tmp0_;
@@ -194,9 +207,9 @@ CuboGeneticoAGeneticoIndividuo* cubo_genetico_poblacion_get_mejorInd (CuboGeneti
 }
 
 
-void cubo_genetico_poblacion_set_mejorInd (CuboGeneticoPoblacion* self, CuboGeneticoAGeneticoIndividuo* value) {
-	CuboGeneticoAGeneticoIndividuo* _tmp0_ = NULL;
-	CuboGeneticoAGeneticoIndividuo* _tmp1_ = NULL;
+void cubo_genetico_poblacion_set_mejorInd (CuboGeneticoPoblacion* self, CuboGeneticoIndividuo* value) {
+	CuboGeneticoIndividuo* _tmp0_ = NULL;
+	CuboGeneticoIndividuo* _tmp1_ = NULL;
 	g_return_if_fail (self != NULL);
 	_tmp0_ = value;
 	_tmp1_ = _g_object_ref0 (_tmp0_);

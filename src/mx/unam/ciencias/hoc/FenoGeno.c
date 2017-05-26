@@ -4,6 +4,7 @@
 
 #include <glib.h>
 #include <glib-object.h>
+#include "agenetico.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -19,7 +20,9 @@ typedef struct _CuboGeneticoFenoGeno CuboGeneticoFenoGeno;
 typedef struct _CuboGeneticoFenoGenoClass CuboGeneticoFenoGenoClass;
 typedef struct _CuboGeneticoFenoGenoPrivate CuboGeneticoFenoGenoPrivate;
 #define _g_rand_free0(var) ((var == NULL) ? NULL : (var = (g_rand_free (var), NULL)))
+#define _cubo_genetico_agenetico_genotipo_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_agenetico_genotipo_unref (var), NULL)))
 #define _g_free0(var) (var = (g_free (var), NULL))
+#define _cubo_genetico_agenetico_fenotipo_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_agenetico_fenotipo_unref (var), NULL)))
 
 struct _CuboGeneticoFenoGeno {
 	GObject parent_instance;
@@ -44,14 +47,12 @@ enum  {
 };
 CuboGeneticoFenoGeno* cubo_genetico_feno_geno_new (gint semilla);
 CuboGeneticoFenoGeno* cubo_genetico_feno_geno_construct (GType object_type, gint semilla);
-gint* cubo_genetico_feno_geno_codifica (CuboGeneticoFenoGeno* self, gchar** feno, int feno_length1, int* result_length1);
+CuboGeneticoAGeneticoGenotipo* cubo_genetico_feno_geno_codifica (CuboGeneticoFenoGeno* self, CuboGeneticoAGeneticoFenotipo* feno);
 static gint cubo_genetico_feno_geno_co (CuboGeneticoFenoGeno* self, const gchar* i);
-gchar** cubo_genetico_feno_geno_decodifica (CuboGeneticoFenoGeno* self, gint* geno, int geno_length1, int* result_length1);
+CuboGeneticoAGeneticoFenotipo* cubo_genetico_feno_geno_decodifica (CuboGeneticoFenoGeno* self, CuboGeneticoAGeneticoGenotipo* geno);
 static gchar* cubo_genetico_feno_geno_dc (CuboGeneticoFenoGeno* self, gint i);
-gint* cubo_genetico_feno_geno_genoAleatNuev (CuboGeneticoFenoGeno* self, gint n, int* result_length1);
+CuboGeneticoAGeneticoGenotipo* cubo_genetico_feno_geno_genoAleatNuev (CuboGeneticoFenoGeno* self, gint n);
 static void cubo_genetico_feno_geno_finalize (GObject* obj);
-static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func);
-static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify destroy_func);
 
 
 CuboGeneticoFenoGeno* cubo_genetico_feno_geno_construct (GType object_type, gint semilla) {
@@ -78,73 +79,83 @@ CuboGeneticoFenoGeno* cubo_genetico_feno_geno_new (gint semilla) {
 /**
  *Codifica el fenotipo en un genotipo
  */
-gint* cubo_genetico_feno_geno_codifica (CuboGeneticoFenoGeno* self, gchar** feno, int feno_length1, int* result_length1) {
-	gint* result = NULL;
-	gint* geno = NULL;
-	gchar** _tmp0_ = NULL;
-	gint _tmp0__length1 = 0;
-	gint* _tmp1_ = NULL;
-	gint geno_length1 = 0;
-	gint _geno_size_ = 0;
-	gint* _tmp13_ = NULL;
-	gint _tmp13__length1 = 0;
+CuboGeneticoAGeneticoGenotipo* cubo_genetico_feno_geno_codifica (CuboGeneticoFenoGeno* self, CuboGeneticoAGeneticoFenotipo* feno) {
+	CuboGeneticoAGeneticoGenotipo* result = NULL;
+	CuboGeneticoAGeneticoGenotipo* geno = NULL;
+	CuboGeneticoAGeneticoFenotipo* _tmp0_ = NULL;
+	gchar** _tmp1_ = NULL;
+	gint _tmp1__length1 = 0;
+	gchar** _tmp2_ = NULL;
+	gint _tmp2__length1 = 0;
+	CuboGeneticoAGeneticoGenotipo* _tmp3_ = NULL;
 	g_return_val_if_fail (self != NULL, NULL);
+	g_return_val_if_fail (feno != NULL, NULL);
 	_tmp0_ = feno;
-	_tmp0__length1 = feno_length1;
-	_tmp1_ = g_new0 (gint, _tmp0__length1);
-	geno = _tmp1_;
-	geno_length1 = _tmp0__length1;
-	_geno_size_ = geno_length1;
+	_tmp1_ = cubo_genetico_agenetico_fenotipo_get_fenotipo (_tmp0_, &_tmp1__length1);
+	_tmp2_ = _tmp1_;
+	_tmp2__length1 = _tmp1__length1;
+	_tmp3_ = cubo_genetico_agenetico_genotipo_new (_tmp2__length1);
+	geno = _tmp3_;
 	{
 		gint i = 0;
 		i = 0;
 		{
-			gboolean _tmp2_ = FALSE;
-			_tmp2_ = TRUE;
+			gboolean _tmp4_ = FALSE;
+			_tmp4_ = TRUE;
 			while (TRUE) {
-				gint _tmp4_ = 0;
-				gchar** _tmp5_ = NULL;
-				gint _tmp5__length1 = 0;
-				gint* _tmp6_ = NULL;
-				gint _tmp6__length1 = 0;
-				gint _tmp7_ = 0;
+				gint _tmp6_ = 0;
+				CuboGeneticoAGeneticoFenotipo* _tmp7_ = NULL;
 				gchar** _tmp8_ = NULL;
 				gint _tmp8__length1 = 0;
-				gint _tmp9_ = 0;
-				const gchar* _tmp10_ = NULL;
-				gint _tmp11_ = 0;
-				gint _tmp12_ = 0;
-				if (!_tmp2_) {
-					gint _tmp3_ = 0;
-					_tmp3_ = i;
-					i = _tmp3_ + 1;
+				gchar** _tmp9_ = NULL;
+				gint _tmp9__length1 = 0;
+				CuboGeneticoAGeneticoGenotipo* _tmp10_ = NULL;
+				gint* _tmp11_ = NULL;
+				gint _tmp11__length1 = 0;
+				gint* _tmp12_ = NULL;
+				gint _tmp12__length1 = 0;
+				gint _tmp13_ = 0;
+				CuboGeneticoAGeneticoFenotipo* _tmp14_ = NULL;
+				gchar** _tmp15_ = NULL;
+				gint _tmp15__length1 = 0;
+				gchar** _tmp16_ = NULL;
+				gint _tmp16__length1 = 0;
+				gint _tmp17_ = 0;
+				const gchar* _tmp18_ = NULL;
+				gint _tmp19_ = 0;
+				gint _tmp20_ = 0;
+				if (!_tmp4_) {
+					gint _tmp5_ = 0;
+					_tmp5_ = i;
+					i = _tmp5_ + 1;
 				}
-				_tmp2_ = FALSE;
-				_tmp4_ = i;
-				_tmp5_ = feno;
-				_tmp5__length1 = feno_length1;
-				if (!(_tmp4_ < _tmp5__length1)) {
+				_tmp4_ = FALSE;
+				_tmp6_ = i;
+				_tmp7_ = feno;
+				_tmp8_ = cubo_genetico_agenetico_fenotipo_get_fenotipo (_tmp7_, &_tmp8__length1);
+				_tmp9_ = _tmp8_;
+				_tmp9__length1 = _tmp8__length1;
+				if (!(_tmp6_ < _tmp9__length1)) {
 					break;
 				}
-				_tmp6_ = geno;
-				_tmp6__length1 = geno_length1;
-				_tmp7_ = i;
-				_tmp8_ = feno;
-				_tmp8__length1 = feno_length1;
-				_tmp9_ = i;
-				_tmp10_ = _tmp8_[_tmp9_];
-				_tmp11_ = cubo_genetico_feno_geno_co (self, _tmp10_);
-				_tmp6_[_tmp7_] = _tmp11_;
-				_tmp12_ = _tmp6_[_tmp7_];
+				_tmp10_ = geno;
+				_tmp11_ = cubo_genetico_agenetico_genotipo_get_genotipo (_tmp10_, &_tmp11__length1);
+				_tmp12_ = _tmp11_;
+				_tmp12__length1 = _tmp11__length1;
+				_tmp13_ = i;
+				_tmp14_ = feno;
+				_tmp15_ = cubo_genetico_agenetico_fenotipo_get_fenotipo (_tmp14_, &_tmp15__length1);
+				_tmp16_ = _tmp15_;
+				_tmp16__length1 = _tmp15__length1;
+				_tmp17_ = i;
+				_tmp18_ = _tmp16_[_tmp17_];
+				_tmp19_ = cubo_genetico_feno_geno_co (self, _tmp18_);
+				_tmp12_[_tmp13_] = _tmp19_;
+				_tmp20_ = _tmp12_[_tmp13_];
 			}
 		}
 	}
-	_tmp13_ = geno;
-	_tmp13__length1 = geno_length1;
-	if (result_length1) {
-		*result_length1 = _tmp13__length1;
-	}
-	result = _tmp13_;
+	result = geno;
 	return result;
 }
 
@@ -152,74 +163,84 @@ gint* cubo_genetico_feno_geno_codifica (CuboGeneticoFenoGeno* self, gchar** feno
 /**
  *Decodifica el genotipo en un fenotipo
  */
-gchar** cubo_genetico_feno_geno_decodifica (CuboGeneticoFenoGeno* self, gint* geno, int geno_length1, int* result_length1) {
-	gchar** result = NULL;
-	gchar** feno = NULL;
-	gint* _tmp0_ = NULL;
-	gint _tmp0__length1 = 0;
-	gchar** _tmp1_ = NULL;
-	gint feno_length1 = 0;
-	gint _feno_size_ = 0;
-	gchar** _tmp13_ = NULL;
-	gint _tmp13__length1 = 0;
+CuboGeneticoAGeneticoFenotipo* cubo_genetico_feno_geno_decodifica (CuboGeneticoFenoGeno* self, CuboGeneticoAGeneticoGenotipo* geno) {
+	CuboGeneticoAGeneticoFenotipo* result = NULL;
+	CuboGeneticoAGeneticoFenotipo* feno = NULL;
+	CuboGeneticoAGeneticoGenotipo* _tmp0_ = NULL;
+	gint* _tmp1_ = NULL;
+	gint _tmp1__length1 = 0;
+	gint* _tmp2_ = NULL;
+	gint _tmp2__length1 = 0;
+	CuboGeneticoAGeneticoFenotipo* _tmp3_ = NULL;
 	g_return_val_if_fail (self != NULL, NULL);
+	g_return_val_if_fail (geno != NULL, NULL);
 	_tmp0_ = geno;
-	_tmp0__length1 = geno_length1;
-	_tmp1_ = g_new0 (gchar*, _tmp0__length1 + 1);
-	feno = _tmp1_;
-	feno_length1 = _tmp0__length1;
-	_feno_size_ = feno_length1;
+	_tmp1_ = cubo_genetico_agenetico_genotipo_get_genotipo (_tmp0_, &_tmp1__length1);
+	_tmp2_ = _tmp1_;
+	_tmp2__length1 = _tmp1__length1;
+	_tmp3_ = cubo_genetico_agenetico_fenotipo_new (_tmp2__length1);
+	feno = _tmp3_;
 	{
 		gint i = 0;
 		i = 0;
 		{
-			gboolean _tmp2_ = FALSE;
-			_tmp2_ = TRUE;
+			gboolean _tmp4_ = FALSE;
+			_tmp4_ = TRUE;
 			while (TRUE) {
-				gint _tmp4_ = 0;
-				gint* _tmp5_ = NULL;
-				gint _tmp5__length1 = 0;
-				gchar** _tmp6_ = NULL;
-				gint _tmp6__length1 = 0;
-				gint _tmp7_ = 0;
+				gint _tmp6_ = 0;
+				CuboGeneticoAGeneticoGenotipo* _tmp7_ = NULL;
 				gint* _tmp8_ = NULL;
 				gint _tmp8__length1 = 0;
-				gint _tmp9_ = 0;
-				gint _tmp10_ = 0;
-				gchar* _tmp11_ = NULL;
-				gchar* _tmp12_ = NULL;
-				if (!_tmp2_) {
-					gint _tmp3_ = 0;
-					_tmp3_ = i;
-					i = _tmp3_ + 1;
+				gint* _tmp9_ = NULL;
+				gint _tmp9__length1 = 0;
+				CuboGeneticoAGeneticoFenotipo* _tmp10_ = NULL;
+				gchar** _tmp11_ = NULL;
+				gint _tmp11__length1 = 0;
+				gchar** _tmp12_ = NULL;
+				gint _tmp12__length1 = 0;
+				gint _tmp13_ = 0;
+				CuboGeneticoAGeneticoGenotipo* _tmp14_ = NULL;
+				gint* _tmp15_ = NULL;
+				gint _tmp15__length1 = 0;
+				gint* _tmp16_ = NULL;
+				gint _tmp16__length1 = 0;
+				gint _tmp17_ = 0;
+				gint _tmp18_ = 0;
+				gchar* _tmp19_ = NULL;
+				gchar* _tmp20_ = NULL;
+				if (!_tmp4_) {
+					gint _tmp5_ = 0;
+					_tmp5_ = i;
+					i = _tmp5_ + 1;
 				}
-				_tmp2_ = FALSE;
-				_tmp4_ = i;
-				_tmp5_ = geno;
-				_tmp5__length1 = geno_length1;
-				if (!(_tmp4_ < _tmp5__length1)) {
+				_tmp4_ = FALSE;
+				_tmp6_ = i;
+				_tmp7_ = geno;
+				_tmp8_ = cubo_genetico_agenetico_genotipo_get_genotipo (_tmp7_, &_tmp8__length1);
+				_tmp9_ = _tmp8_;
+				_tmp9__length1 = _tmp8__length1;
+				if (!(_tmp6_ < _tmp9__length1)) {
 					break;
 				}
-				_tmp6_ = feno;
-				_tmp6__length1 = feno_length1;
-				_tmp7_ = i;
-				_tmp8_ = geno;
-				_tmp8__length1 = geno_length1;
-				_tmp9_ = i;
-				_tmp10_ = _tmp8_[_tmp9_];
-				_tmp11_ = cubo_genetico_feno_geno_dc (self, _tmp10_);
-				_g_free0 (_tmp6_[_tmp7_]);
-				_tmp6_[_tmp7_] = _tmp11_;
-				_tmp12_ = _tmp6_[_tmp7_];
+				_tmp10_ = feno;
+				_tmp11_ = cubo_genetico_agenetico_fenotipo_get_fenotipo (_tmp10_, &_tmp11__length1);
+				_tmp12_ = _tmp11_;
+				_tmp12__length1 = _tmp11__length1;
+				_tmp13_ = i;
+				_tmp14_ = geno;
+				_tmp15_ = cubo_genetico_agenetico_genotipo_get_genotipo (_tmp14_, &_tmp15__length1);
+				_tmp16_ = _tmp15_;
+				_tmp16__length1 = _tmp15__length1;
+				_tmp17_ = i;
+				_tmp18_ = _tmp16_[_tmp17_];
+				_tmp19_ = cubo_genetico_feno_geno_dc (self, _tmp18_);
+				_g_free0 (_tmp12_[_tmp13_]);
+				_tmp12_[_tmp13_] = _tmp19_;
+				_tmp20_ = _tmp12_[_tmp13_];
 			}
 		}
 	}
-	_tmp13_ = feno;
-	_tmp13__length1 = feno_length1;
-	if (result_length1) {
-		*result_length1 = _tmp13__length1;
-	}
-	result = _tmp13_;
+	result = feno;
 	return result;
 }
 
@@ -228,21 +249,15 @@ gchar** cubo_genetico_feno_geno_decodifica (CuboGeneticoFenoGeno* self, gint* ge
  *Crea y regresa un nuevo genotipo de tamanio n 
  *con valores aleatorios
  */
-gint* cubo_genetico_feno_geno_genoAleatNuev (CuboGeneticoFenoGeno* self, gint n, int* result_length1) {
-	gint* result = NULL;
-	gint* geno = NULL;
+CuboGeneticoAGeneticoGenotipo* cubo_genetico_feno_geno_genoAleatNuev (CuboGeneticoFenoGeno* self, gint n) {
+	CuboGeneticoAGeneticoGenotipo* result = NULL;
+	CuboGeneticoAGeneticoGenotipo* geno = NULL;
 	gint _tmp0_ = 0;
-	gint* _tmp1_ = NULL;
-	gint geno_length1 = 0;
-	gint _geno_size_ = 0;
-	gint* _tmp11_ = NULL;
-	gint _tmp11__length1 = 0;
+	CuboGeneticoAGeneticoGenotipo* _tmp1_ = NULL;
 	g_return_val_if_fail (self != NULL, NULL);
 	_tmp0_ = n;
-	_tmp1_ = g_new0 (gint, _tmp0_);
+	_tmp1_ = cubo_genetico_agenetico_genotipo_new (_tmp0_);
 	geno = _tmp1_;
-	geno_length1 = _tmp0_;
-	_geno_size_ = geno_length1;
 	{
 		gint i = 0;
 		i = 0;
@@ -252,12 +267,15 @@ gint* cubo_genetico_feno_geno_genoAleatNuev (CuboGeneticoFenoGeno* self, gint n,
 			while (TRUE) {
 				gint _tmp4_ = 0;
 				gint _tmp5_ = 0;
-				gint* _tmp6_ = NULL;
-				gint _tmp6__length1 = 0;
-				gint _tmp7_ = 0;
-				GRand* _tmp8_ = NULL;
-				gint32 _tmp9_ = 0;
-				gint _tmp10_ = 0;
+				CuboGeneticoAGeneticoGenotipo* _tmp6_ = NULL;
+				gint* _tmp7_ = NULL;
+				gint _tmp7__length1 = 0;
+				gint* _tmp8_ = NULL;
+				gint _tmp8__length1 = 0;
+				gint _tmp9_ = 0;
+				GRand* _tmp10_ = NULL;
+				gint32 _tmp11_ = 0;
+				gint _tmp12_ = 0;
 				if (!_tmp2_) {
 					gint _tmp3_ = 0;
 					_tmp3_ = i;
@@ -270,21 +288,18 @@ gint* cubo_genetico_feno_geno_genoAleatNuev (CuboGeneticoFenoGeno* self, gint n,
 					break;
 				}
 				_tmp6_ = geno;
-				_tmp6__length1 = geno_length1;
-				_tmp7_ = i;
-				_tmp8_ = self->priv->rand;
-				_tmp9_ = g_rand_int_range (_tmp8_, (gint32) 1, (gint32) 13);
-				_tmp6_[_tmp7_] = (gint) _tmp9_;
-				_tmp10_ = _tmp6_[_tmp7_];
+				_tmp7_ = cubo_genetico_agenetico_genotipo_get_genotipo (_tmp6_, &_tmp7__length1);
+				_tmp8_ = _tmp7_;
+				_tmp8__length1 = _tmp7__length1;
+				_tmp9_ = i;
+				_tmp10_ = self->priv->rand;
+				_tmp11_ = g_rand_int_range (_tmp10_, (gint32) 1, (gint32) 13);
+				_tmp8_[_tmp9_] = (gint) _tmp11_;
+				_tmp12_ = _tmp8_[_tmp9_];
 			}
 		}
 	}
-	_tmp11_ = geno;
-	_tmp11__length1 = geno_length1;
-	if (result_length1) {
-		*result_length1 = _tmp11__length1;
-	}
-	result = _tmp11_;
+	result = geno;
 	return result;
 }
 
@@ -566,24 +581,6 @@ GType cubo_genetico_feno_geno_get_type (void) {
 		g_once_init_leave (&cubo_genetico_feno_geno_type_id__volatile, cubo_genetico_feno_geno_type_id);
 	}
 	return cubo_genetico_feno_geno_type_id__volatile;
-}
-
-
-static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func) {
-	if ((array != NULL) && (destroy_func != NULL)) {
-		int i;
-		for (i = 0; i < array_length; i = i + 1) {
-			if (((gpointer*) array)[i] != NULL) {
-				destroy_func (((gpointer*) array)[i]);
-			}
-		}
-	}
-}
-
-
-static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify destroy_func) {
-	_vala_array_destroy (array, array_length, destroy_func);
-	g_free (array);
 }
 
 

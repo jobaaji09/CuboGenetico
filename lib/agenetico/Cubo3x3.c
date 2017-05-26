@@ -4,11 +4,11 @@
 
 #include <glib.h>
 #include <glib-object.h>
+#include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include <float.h>
 #include <math.h>
-#include <stdlib.h>
-#include <string.h>
 #include <gio/gio.h>
 
 
@@ -58,8 +58,8 @@ static gint* _vala_array_dup1 (gint* self, int length);
 gint* cubo_genetico_agenetico_cubo3x3_getActual (CuboGeneticoAGeneticoCubo3x3* self, int* result_length1, int* result_length2);
 static gint* _vala_array_dup2 (gint* self, int length);
 void cubo_genetico_agenetico_cubo3x3_reset (CuboGeneticoAGeneticoCubo3x3* self);
-void cubo_genetico_agenetico_cubo3x3_giraCaras (CuboGeneticoAGeneticoCubo3x3* self, gint* giros, int giros_length1);
-void cubo_genetico_agenetico_cubo3x3_giraCara (CuboGeneticoAGeneticoCubo3x3* self, gint i);
+void cubo_genetico_agenetico_cubo3x3_giraCaras (CuboGeneticoAGeneticoCubo3x3* self, gchar** giros, int giros_length1);
+void cubo_genetico_agenetico_cubo3x3_giraCara (CuboGeneticoAGeneticoCubo3x3* self, const gchar* i);
 static void cubo_genetico_agenetico_cubo3x3_r (CuboGeneticoAGeneticoCubo3x3* self);
 static void cubo_genetico_agenetico_cubo3x3_rprima (CuboGeneticoAGeneticoCubo3x3* self);
 static void cubo_genetico_agenetico_cubo3x3_l (CuboGeneticoAGeneticoCubo3x3* self);
@@ -306,26 +306,29 @@ void cubo_genetico_agenetico_cubo3x3_reset (CuboGeneticoAGeneticoCubo3x3* self) 
 /**
  *Giramos mas de una cara dado la lista de giros
  */
-void cubo_genetico_agenetico_cubo3x3_giraCaras (CuboGeneticoAGeneticoCubo3x3* self, gint* giros, int giros_length1) {
-	gint* _tmp0_ = NULL;
+void cubo_genetico_agenetico_cubo3x3_giraCaras (CuboGeneticoAGeneticoCubo3x3* self, gchar** giros, int giros_length1) {
+	gchar** _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
 	g_return_if_fail (self != NULL);
 	_tmp0_ = giros;
 	_tmp0__length1 = giros_length1;
 	{
-		gint* i_collection = NULL;
+		gchar** i_collection = NULL;
 		gint i_collection_length1 = 0;
 		gint _i_collection_size_ = 0;
 		gint i_it = 0;
 		i_collection = _tmp0_;
 		i_collection_length1 = _tmp0__length1;
 		for (i_it = 0; i_it < _tmp0__length1; i_it = i_it + 1) {
-			gint i = 0;
-			i = i_collection[i_it];
+			gchar* _tmp1_ = NULL;
+			gchar* i = NULL;
+			_tmp1_ = g_strdup (i_collection[i_it]);
+			i = _tmp1_;
 			{
-				gint _tmp1_ = 0;
-				_tmp1_ = i;
-				cubo_genetico_agenetico_cubo3x3_giraCara (self, _tmp1_);
+				const gchar* _tmp2_ = NULL;
+				_tmp2_ = i;
+				cubo_genetico_agenetico_cubo3x3_giraCara (self, _tmp2_);
+				_g_free0 (i);
 			}
 		}
 	}
@@ -337,73 +340,123 @@ void cubo_genetico_agenetico_cubo3x3_giraCaras (CuboGeneticoAGeneticoCubo3x3* se
  * R=1 ,L=3 ,U=5 ,D=7 ,F=9  ,B =11 
  * R'=2,L'=4,U'=6,D'=8,F'=10,B'=12
  */
-void cubo_genetico_agenetico_cubo3x3_giraCara (CuboGeneticoAGeneticoCubo3x3* self, gint i) {
-	gint _tmp0_ = 0;
+void cubo_genetico_agenetico_cubo3x3_giraCara (CuboGeneticoAGeneticoCubo3x3* self, const gchar* i) {
+	const gchar* _tmp0_ = NULL;
+	const gchar* _tmp1_ = NULL;
+	GQuark _tmp3_ = 0U;
+	static GQuark _tmp2_label0 = 0;
+	static GQuark _tmp2_label1 = 0;
+	static GQuark _tmp2_label2 = 0;
+	static GQuark _tmp2_label3 = 0;
+	static GQuark _tmp2_label4 = 0;
+	static GQuark _tmp2_label5 = 0;
+	static GQuark _tmp2_label6 = 0;
+	static GQuark _tmp2_label7 = 0;
+	static GQuark _tmp2_label8 = 0;
+	static GQuark _tmp2_label9 = 0;
+	static GQuark _tmp2_label10 = 0;
+	static GQuark _tmp2_label11 = 0;
 	g_return_if_fail (self != NULL);
+	g_return_if_fail (i != NULL);
 	_tmp0_ = i;
-	switch (_tmp0_) {
-		case 1:
-		{
-			cubo_genetico_agenetico_cubo3x3_r (self);
-			break;
+	_tmp1_ = _tmp0_;
+	_tmp3_ = (NULL == _tmp1_) ? 0 : g_quark_from_string (_tmp1_);
+	if (_tmp3_ == ((0 != _tmp2_label0) ? _tmp2_label0 : (_tmp2_label0 = g_quark_from_static_string ("R")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_r (self);
+				break;
+			}
 		}
-		case 2:
-		{
-			cubo_genetico_agenetico_cubo3x3_rprima (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label1) ? _tmp2_label1 : (_tmp2_label1 = g_quark_from_static_string ("R'")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_rprima (self);
+				break;
+			}
 		}
-		case 3:
-		{
-			cubo_genetico_agenetico_cubo3x3_l (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label2) ? _tmp2_label2 : (_tmp2_label2 = g_quark_from_static_string ("L")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_l (self);
+				break;
+			}
 		}
-		case 4:
-		{
-			cubo_genetico_agenetico_cubo3x3_lprima (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label3) ? _tmp2_label3 : (_tmp2_label3 = g_quark_from_static_string ("L'")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_lprima (self);
+				break;
+			}
 		}
-		case 5:
-		{
-			cubo_genetico_agenetico_cubo3x3_u (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label4) ? _tmp2_label4 : (_tmp2_label4 = g_quark_from_static_string ("U")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_u (self);
+				break;
+			}
 		}
-		case 6:
-		{
-			cubo_genetico_agenetico_cubo3x3_uprima (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label5) ? _tmp2_label5 : (_tmp2_label5 = g_quark_from_static_string ("U'")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_uprima (self);
+				break;
+			}
 		}
-		case 7:
-		{
-			cubo_genetico_agenetico_cubo3x3_d (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label6) ? _tmp2_label6 : (_tmp2_label6 = g_quark_from_static_string ("D")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_d (self);
+				break;
+			}
 		}
-		case 8:
-		{
-			cubo_genetico_agenetico_cubo3x3_dprima (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label7) ? _tmp2_label7 : (_tmp2_label7 = g_quark_from_static_string ("D'")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_dprima (self);
+				break;
+			}
 		}
-		case 9:
-		{
-			cubo_genetico_agenetico_cubo3x3_f (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label8) ? _tmp2_label8 : (_tmp2_label8 = g_quark_from_static_string ("F")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_f (self);
+				break;
+			}
 		}
-		case 10:
-		{
-			cubo_genetico_agenetico_cubo3x3_fprima (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label9) ? _tmp2_label9 : (_tmp2_label9 = g_quark_from_static_string ("F'")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_fprima (self);
+				break;
+			}
 		}
-		case 11:
-		{
-			cubo_genetico_agenetico_cubo3x3_b (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label10) ? _tmp2_label10 : (_tmp2_label10 = g_quark_from_static_string ("B")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_b (self);
+				break;
+			}
 		}
-		case 12:
-		{
-			cubo_genetico_agenetico_cubo3x3_bprima (self);
-			break;
+	} else if (_tmp3_ == ((0 != _tmp2_label11) ? _tmp2_label11 : (_tmp2_label11 = g_quark_from_static_string ("B'")))) {
+		switch (0) {
+			default:
+			{
+				cubo_genetico_agenetico_cubo3x3_bprima (self);
+				break;
+			}
 		}
-		default:
-		break;
 	}
 }
 

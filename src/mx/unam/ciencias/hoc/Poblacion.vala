@@ -1,28 +1,28 @@
 namespace CuboGenetico{
 	public class Poblacion{
 
-		private List<AGenetico.Individuo> poblacion;
+		private List<Individuo> poblacion;
 		
 		public int generacion {get; set;}
 
-		public AGenetico.Individuo mejorInd {get; set;}
+		public Individuo mejorInd {get; set;}
 		
 		
 		public Poblacion(){
 			this.generacion = 0;
-			this.poblacion = new List<AGenetico.Individuo>();
+			this.poblacion = new List<Individuo>();
 		}
 
-		public void agregaIndividuo(AGenetico.Individuo ind){
+		public void agregaIndividuo(Individuo ind){
 			if(this.mejorInd == null){
 				this.mejorInd = ind;
-			}else if(this.mejorInd.fitness<ind.fitness){
+			}else if(this.mejorInd.fitness>=ind.fitness){
 				this.mejorInd = ind;
 			}
 			this.poblacion.append(ind);
 		}
 
-		public AGenetico.Individuo getIndividuo(int i){
+		public Individuo getIndividuo(int i){
 			return poblacion.nth_data (i);
 		}
 

@@ -32,7 +32,8 @@ noinst_LTLIBRARIES += lib/libagenetico.la
 
 lib_libagenetico_la_SOURCES =			\
 		lib/agenetico/Cubo3x3.vala	\
-		lib/agenetico/Individuo.vala	
+		lib/agenetico/Genotipo.vala	\
+		lib/agenetico/Fenotipo.vala
 
 lib_libagenetico_la_VALAFLAGS =		\
 	$(COMMON_VALAFLAGS)		\
@@ -61,7 +62,9 @@ CUBOGENESOURCES =					\
 	src/mx/unam/ciencias/hoc/Poblacion.vala		\
 	src/mx/unam/ciencias/hoc/Criador.vala		\
 	src/mx/unam/ciencias/hoc/CruzaUP.vala		\
-	src/mx/unam/ciencias/hoc/SRuleta.vala
+	src/mx/unam/ciencias/hoc/STorneo.vala		\
+	src/mx/unam/ciencias/hoc/Individuo.vala		\
+	src/mx/unam/ciencias/hoc/Mutacion.vala
 
 CuboGenetico_SOURCES = 		\
 	$(CUBOGENESOURCES)	\

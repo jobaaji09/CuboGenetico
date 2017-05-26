@@ -42,20 +42,25 @@ namespace CuboGenetico{
 			if(args.length >=2){
 				var c = archivo(args[1]);
 				var cubo = new AGenetico.Cubo3x3(c);
-				//cubo.dibuja(1.0);
+				cubo.dibuja(0.0);
+				
 				var ffitness = new FFitness(cubo);
-				var fenogeno = new FenoGeno(9);
-				var criador = new Criador(fenogeno,ffitness,1);
-				var poblacion  = criador.poblacionNuevaR(10);
-				for(int i=0;i<poblacion.getTam();i++){
-					stdout.printf("%s\n",poblacion.getIndividuo(i).to_string());
-				}
-				stdout.printf("Seleccionados\n");
-				var sr = new  SRuleta(1);
-				var ps = sr.selecciona(poblacion);
-				foreach(AGenetico.Individuo i in ps){
-					stdout.printf("%s\n",i.to_string());
-				}
+				var fenogeno = new FenoGeno(37);
+				var sr = new  STorneo(54);
+				var cruza = new CruzaUP(89,0.2);
+				var mutacion = new Mutacion(40 , 0.9);
+				var cubogene = new CuboGenetico(ffitness,
+												fenogeno,
+												sr,
+												cruza,
+												mutacion,
+												13,
+												200);
+				cubogene.run();
+				var mg = cubogene.mejor;
+				stdout.printf("Mejor de la generacion :\n%s",mg.to_string());
+				cubo.giraCaras(mg.fenotipo.fenotipo);
+				cubo.dibuja(mg.fitness);
 			}else{
 				stdout.printf("Falta el archov de entrada\n");
 			}

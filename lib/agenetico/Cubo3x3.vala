@@ -42,8 +42,8 @@ namespace CuboGenetico.AGenetico{
 		/**
 		 *Giramos mas de una cara dado la lista de giros
 		 */
-		public void giraCaras(int[] giros){
-			foreach(int i in giros){
+		public void giraCaras(string[] giros){
+			foreach(string i in giros){
 				this.giraCara(i);
 			}
 		}
@@ -52,43 +52,43 @@ namespace CuboGenetico.AGenetico{
 		 * R=1 ,L=3 ,U=5 ,D=7 ,F=9  ,B =11 
 		 * R'=2,L'=4,U'=6,D'=8,F'=10,B'=12
 		 */
-		public void giraCara(int i){
+		public void giraCara(string i){
 			switch (i) {
-			case 1:
+			case "R":
 				this.r();
 				break;
-			case 2:
+			case "R'":
 				this.rprima();
 				break;
-			case 3:
+			case "L":
 				this.l();
 				break;
-			case 4:
+			case "L'":
 				this.lprima();
 				break;
-			case 5:
+			case "U":
 				this.u();
 				break;
-			case 6:
+			case "U'":
 				this.uprima();
 				break;
 
-			case 7:
+			case "D":
 				this.d();
 				break;
-			case 8:
+			case "D'":
 				this.dprima();
 				break;
-			case 9:
+			case "F":
 				this.f();
 				break;
-			case 10:
+			case "F'":
 				this.fprima();
 				break;
-			case 11:
+			case "B":
 				this.b();
 				break;
-			case 12:
+			case "B'":
 				this.bprima();
 				break;
 			}

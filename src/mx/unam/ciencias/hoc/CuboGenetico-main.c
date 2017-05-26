@@ -9,6 +9,8 @@
 #include <gio/gio.h>
 #include <stdio.h>
 #include "agenetico.h"
+#include <float.h>
+#include <math.h>
 
 
 #define CUBO_GENETICO_TYPE_MAIN (cubo_genetico_main_get_type ())
@@ -45,39 +47,56 @@ typedef struct _CuboGeneticoFFitnessClass CuboGeneticoFFitnessClass;
 typedef struct _CuboGeneticoFenoGeno CuboGeneticoFenoGeno;
 typedef struct _CuboGeneticoFenoGenoClass CuboGeneticoFenoGenoClass;
 
-#define CUBO_GENETICO_TYPE_CRIADOR (cubo_genetico_criador_get_type ())
-#define CUBO_GENETICO_CRIADOR(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_CRIADOR, CuboGeneticoCriador))
-#define CUBO_GENETICO_CRIADOR_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_CRIADOR, CuboGeneticoCriadorClass))
-#define CUBO_GENETICO_IS_CRIADOR(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_CRIADOR))
-#define CUBO_GENETICO_IS_CRIADOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_CRIADOR))
-#define CUBO_GENETICO_CRIADOR_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_CRIADOR, CuboGeneticoCriadorClass))
+#define CUBO_GENETICO_TYPE_STORNEO (cubo_genetico_storneo_get_type ())
+#define CUBO_GENETICO_STORNEO(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_STORNEO, CuboGeneticoSTorneo))
+#define CUBO_GENETICO_STORNEO_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_STORNEO, CuboGeneticoSTorneoClass))
+#define CUBO_GENETICO_IS_STORNEO(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_STORNEO))
+#define CUBO_GENETICO_IS_STORNEO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_STORNEO))
+#define CUBO_GENETICO_STORNEO_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_STORNEO, CuboGeneticoSTorneoClass))
 
-typedef struct _CuboGeneticoCriador CuboGeneticoCriador;
-typedef struct _CuboGeneticoCriadorClass CuboGeneticoCriadorClass;
+typedef struct _CuboGeneticoSTorneo CuboGeneticoSTorneo;
+typedef struct _CuboGeneticoSTorneoClass CuboGeneticoSTorneoClass;
 
-#define CUBO_GENETICO_TYPE_POBLACION (cubo_genetico_poblacion_get_type ())
-#define CUBO_GENETICO_POBLACION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_POBLACION, CuboGeneticoPoblacion))
-#define CUBO_GENETICO_POBLACION_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_POBLACION, CuboGeneticoPoblacionClass))
-#define CUBO_GENETICO_IS_POBLACION(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_POBLACION))
-#define CUBO_GENETICO_IS_POBLACION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_POBLACION))
-#define CUBO_GENETICO_POBLACION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_POBLACION, CuboGeneticoPoblacionClass))
+#define CUBO_GENETICO_TYPE_CRUZA_UP (cubo_genetico_cruza_up_get_type ())
+#define CUBO_GENETICO_CRUZA_UP(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_CRUZA_UP, CuboGeneticoCruzaUP))
+#define CUBO_GENETICO_CRUZA_UP_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_CRUZA_UP, CuboGeneticoCruzaUPClass))
+#define CUBO_GENETICO_IS_CRUZA_UP(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_CRUZA_UP))
+#define CUBO_GENETICO_IS_CRUZA_UP_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_CRUZA_UP))
+#define CUBO_GENETICO_CRUZA_UP_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_CRUZA_UP, CuboGeneticoCruzaUPClass))
 
-typedef struct _CuboGeneticoPoblacion CuboGeneticoPoblacion;
-typedef struct _CuboGeneticoPoblacionClass CuboGeneticoPoblacionClass;
+typedef struct _CuboGeneticoCruzaUP CuboGeneticoCruzaUP;
+typedef struct _CuboGeneticoCruzaUPClass CuboGeneticoCruzaUPClass;
 
-#define CUBO_GENETICO_TYPE_SRULETA (cubo_genetico_sruleta_get_type ())
-#define CUBO_GENETICO_SRULETA(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_SRULETA, CuboGeneticoSRuleta))
-#define CUBO_GENETICO_SRULETA_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_SRULETA, CuboGeneticoSRuletaClass))
-#define CUBO_GENETICO_IS_SRULETA(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_SRULETA))
-#define CUBO_GENETICO_IS_SRULETA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_SRULETA))
-#define CUBO_GENETICO_SRULETA_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_SRULETA, CuboGeneticoSRuletaClass))
+#define CUBO_GENETICO_TYPE_MUTACION (cubo_genetico_mutacion_get_type ())
+#define CUBO_GENETICO_MUTACION(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_MUTACION, CuboGeneticoMutacion))
+#define CUBO_GENETICO_MUTACION_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_MUTACION, CuboGeneticoMutacionClass))
+#define CUBO_GENETICO_IS_MUTACION(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_MUTACION))
+#define CUBO_GENETICO_IS_MUTACION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_MUTACION))
+#define CUBO_GENETICO_MUTACION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_MUTACION, CuboGeneticoMutacionClass))
 
-typedef struct _CuboGeneticoSRuleta CuboGeneticoSRuleta;
-typedef struct _CuboGeneticoSRuletaClass CuboGeneticoSRuletaClass;
-#define __g_list_free__g_object_unref0_0(var) ((var == NULL) ? NULL : (var = (_g_list_free__g_object_unref0_ (var), NULL)))
-#define _cubo_genetico_sruleta_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_sruleta_unref (var), NULL)))
-#define _cubo_genetico_poblacion_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_poblacion_unref (var), NULL)))
-#define _cubo_genetico_criador_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_criador_unref (var), NULL)))
+typedef struct _CuboGeneticoMutacion CuboGeneticoMutacion;
+typedef struct _CuboGeneticoMutacionClass CuboGeneticoMutacionClass;
+
+#define CUBO_GENETICO_TYPE_CUBO_GENETICO (cubo_genetico_cubo_genetico_get_type ())
+#define CUBO_GENETICO_CUBO_GENETICO(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_CUBO_GENETICO, CuboGeneticoCuboGenetico))
+#define CUBO_GENETICO_CUBO_GENETICO_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_CUBO_GENETICO, CuboGeneticoCuboGeneticoClass))
+#define CUBO_GENETICO_IS_CUBO_GENETICO(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_CUBO_GENETICO))
+#define CUBO_GENETICO_IS_CUBO_GENETICO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_CUBO_GENETICO))
+#define CUBO_GENETICO_CUBO_GENETICO_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_CUBO_GENETICO, CuboGeneticoCuboGeneticoClass))
+
+typedef struct _CuboGeneticoCuboGenetico CuboGeneticoCuboGenetico;
+typedef struct _CuboGeneticoCuboGeneticoClass CuboGeneticoCuboGeneticoClass;
+
+#define CUBO_GENETICO_TYPE_INDIVIDUO (cubo_genetico_individuo_get_type ())
+#define CUBO_GENETICO_INDIVIDUO(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_INDIVIDUO, CuboGeneticoIndividuo))
+#define CUBO_GENETICO_INDIVIDUO_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_INDIVIDUO, CuboGeneticoIndividuoClass))
+#define CUBO_GENETICO_IS_INDIVIDUO(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_INDIVIDUO))
+#define CUBO_GENETICO_IS_INDIVIDUO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_INDIVIDUO))
+#define CUBO_GENETICO_INDIVIDUO_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_INDIVIDUO, CuboGeneticoIndividuoClass))
+
+typedef struct _CuboGeneticoIndividuo CuboGeneticoIndividuo;
+typedef struct _CuboGeneticoIndividuoClass CuboGeneticoIndividuoClass;
+#define _cubo_genetico_storneo_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_storneo_unref (var), NULL)))
 
 struct _CuboGeneticoMain {
 	GObject parent_instance;
@@ -103,37 +122,30 @@ CuboGeneticoFFitness* cubo_genetico_ffitness_construct (GType object_type, CuboG
 GType cubo_genetico_feno_geno_get_type (void) G_GNUC_CONST;
 CuboGeneticoFenoGeno* cubo_genetico_feno_geno_new (gint semilla);
 CuboGeneticoFenoGeno* cubo_genetico_feno_geno_construct (GType object_type, gint semilla);
-gpointer cubo_genetico_criador_ref (gpointer instance);
-void cubo_genetico_criador_unref (gpointer instance);
-GParamSpec* cubo_genetico_param_spec_criador (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags);
-void cubo_genetico_value_set_criador (GValue* value, gpointer v_object);
-void cubo_genetico_value_take_criador (GValue* value, gpointer v_object);
-gpointer cubo_genetico_value_get_criador (const GValue* value);
-GType cubo_genetico_criador_get_type (void) G_GNUC_CONST;
-CuboGeneticoCriador* cubo_genetico_criador_new (CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, gint semilla);
-CuboGeneticoCriador* cubo_genetico_criador_construct (GType object_type, CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, gint semilla);
-gpointer cubo_genetico_poblacion_ref (gpointer instance);
-void cubo_genetico_poblacion_unref (gpointer instance);
-GParamSpec* cubo_genetico_param_spec_poblacion (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags);
-void cubo_genetico_value_set_poblacion (GValue* value, gpointer v_object);
-void cubo_genetico_value_take_poblacion (GValue* value, gpointer v_object);
-gpointer cubo_genetico_value_get_poblacion (const GValue* value);
-GType cubo_genetico_poblacion_get_type (void) G_GNUC_CONST;
-CuboGeneticoPoblacion* cubo_genetico_criador_poblacionNuevaR (CuboGeneticoCriador* self, gint tam);
-gint cubo_genetico_poblacion_getTam (CuboGeneticoPoblacion* self);
-CuboGeneticoAGeneticoIndividuo* cubo_genetico_poblacion_getIndividuo (CuboGeneticoPoblacion* self, gint i);
-gpointer cubo_genetico_sruleta_ref (gpointer instance);
-void cubo_genetico_sruleta_unref (gpointer instance);
-GParamSpec* cubo_genetico_param_spec_sruleta (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags);
-void cubo_genetico_value_set_sruleta (GValue* value, gpointer v_object);
-void cubo_genetico_value_take_sruleta (GValue* value, gpointer v_object);
-gpointer cubo_genetico_value_get_sruleta (const GValue* value);
-GType cubo_genetico_sruleta_get_type (void) G_GNUC_CONST;
-CuboGeneticoSRuleta* cubo_genetico_sruleta_new (gint semilla);
-CuboGeneticoSRuleta* cubo_genetico_sruleta_construct (GType object_type, gint semilla);
-GList* cubo_genetico_sruleta_selecciona (CuboGeneticoSRuleta* self, CuboGeneticoPoblacion* p);
-static void _g_object_unref0_ (gpointer var);
-static void _g_list_free__g_object_unref0_ (GList* self);
+gpointer cubo_genetico_storneo_ref (gpointer instance);
+void cubo_genetico_storneo_unref (gpointer instance);
+GParamSpec* cubo_genetico_param_spec_storneo (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags);
+void cubo_genetico_value_set_storneo (GValue* value, gpointer v_object);
+void cubo_genetico_value_take_storneo (GValue* value, gpointer v_object);
+gpointer cubo_genetico_value_get_storneo (const GValue* value);
+GType cubo_genetico_storneo_get_type (void) G_GNUC_CONST;
+CuboGeneticoSTorneo* cubo_genetico_storneo_new (gint semilla);
+CuboGeneticoSTorneo* cubo_genetico_storneo_construct (GType object_type, gint semilla);
+GType cubo_genetico_cruza_up_get_type (void) G_GNUC_CONST;
+CuboGeneticoCruzaUP* cubo_genetico_cruza_up_new (gint semilla, gdouble prob);
+CuboGeneticoCruzaUP* cubo_genetico_cruza_up_construct (GType object_type, gint semilla, gdouble prob);
+GType cubo_genetico_mutacion_get_type (void) G_GNUC_CONST;
+CuboGeneticoMutacion* cubo_genetico_mutacion_new (gint semilla, gdouble prop);
+CuboGeneticoMutacion* cubo_genetico_mutacion_construct (GType object_type, gint semilla, gdouble prop);
+GType cubo_genetico_cubo_genetico_get_type (void) G_GNUC_CONST;
+CuboGeneticoCuboGenetico* cubo_genetico_cubo_genetico_new (CuboGeneticoFFitness* ffitness, CuboGeneticoFenoGeno* fenogeno, CuboGeneticoSTorneo* sr, CuboGeneticoCruzaUP* cruza, CuboGeneticoMutacion* mutacion, gint semilla, gint tamp);
+CuboGeneticoCuboGenetico* cubo_genetico_cubo_genetico_construct (GType object_type, CuboGeneticoFFitness* ffitness, CuboGeneticoFenoGeno* fenogeno, CuboGeneticoSTorneo* sr, CuboGeneticoCruzaUP* cruza, CuboGeneticoMutacion* mutacion, gint semilla, gint tamp);
+void cubo_genetico_cubo_genetico_run (CuboGeneticoCuboGenetico* self);
+GType cubo_genetico_individuo_get_type (void) G_GNUC_CONST;
+CuboGeneticoIndividuo* cubo_genetico_cubo_genetico_get_mejor (CuboGeneticoCuboGenetico* self);
+gchar* cubo_genetico_individuo_to_string (CuboGeneticoIndividuo* self);
+CuboGeneticoAGeneticoFenotipo* cubo_genetico_individuo_get_fenotipo (CuboGeneticoIndividuo* self);
+gdouble cubo_genetico_individuo_get_fitness (CuboGeneticoIndividuo* self);
 CuboGeneticoMain* cubo_genetico_main_new (void);
 CuboGeneticoMain* cubo_genetico_main_construct (GType object_type);
 static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func);
@@ -338,17 +350,6 @@ static gpointer _g_object_ref0 (gpointer self) {
 }
 
 
-static void _g_object_unref0_ (gpointer var) {
-	(var == NULL) ? NULL : (var = (g_object_unref (var), NULL));
-}
-
-
-static void _g_list_free__g_object_unref0_ (GList* self) {
-	g_list_foreach (self, (GFunc) _g_object_unref0_, NULL);
-	g_list_free (self);
-}
-
-
 gint cubo_genetico_main_main (gchar** args, int args_length1) {
 	gint result = 0;
 	gchar** _tmp0_ = NULL;
@@ -370,26 +371,47 @@ gint cubo_genetico_main_main (gchar** args, int args_length1) {
 		gint _tmp6__length1 = 0;
 		gint _tmp6__length2 = 0;
 		CuboGeneticoAGeneticoCubo3x3* _tmp7_ = NULL;
-		CuboGeneticoFFitness* ffitness = NULL;
 		CuboGeneticoAGeneticoCubo3x3* _tmp8_ = NULL;
-		CuboGeneticoFFitness* _tmp9_ = NULL;
+		CuboGeneticoFFitness* ffitness = NULL;
+		CuboGeneticoAGeneticoCubo3x3* _tmp9_ = NULL;
+		CuboGeneticoFFitness* _tmp10_ = NULL;
 		CuboGeneticoFenoGeno* fenogeno = NULL;
-		CuboGeneticoFenoGeno* _tmp10_ = NULL;
-		CuboGeneticoCriador* criador = NULL;
 		CuboGeneticoFenoGeno* _tmp11_ = NULL;
-		CuboGeneticoFFitness* _tmp12_ = NULL;
-		CuboGeneticoCriador* _tmp13_ = NULL;
-		CuboGeneticoPoblacion* poblacion = NULL;
-		CuboGeneticoCriador* _tmp14_ = NULL;
-		CuboGeneticoPoblacion* _tmp15_ = NULL;
-		FILE* _tmp28_ = NULL;
-		CuboGeneticoSRuleta* sr = NULL;
-		CuboGeneticoSRuleta* _tmp29_ = NULL;
-		GList* ps = NULL;
-		CuboGeneticoSRuleta* _tmp30_ = NULL;
-		CuboGeneticoPoblacion* _tmp31_ = NULL;
-		GList* _tmp32_ = NULL;
-		GList* _tmp33_ = NULL;
+		CuboGeneticoSTorneo* sr = NULL;
+		CuboGeneticoSTorneo* _tmp12_ = NULL;
+		CuboGeneticoCruzaUP* cruza = NULL;
+		CuboGeneticoCruzaUP* _tmp13_ = NULL;
+		CuboGeneticoMutacion* mutacion = NULL;
+		CuboGeneticoMutacion* _tmp14_ = NULL;
+		CuboGeneticoCuboGenetico* cubogene = NULL;
+		CuboGeneticoFFitness* _tmp15_ = NULL;
+		CuboGeneticoFenoGeno* _tmp16_ = NULL;
+		CuboGeneticoSTorneo* _tmp17_ = NULL;
+		CuboGeneticoCruzaUP* _tmp18_ = NULL;
+		CuboGeneticoMutacion* _tmp19_ = NULL;
+		CuboGeneticoCuboGenetico* _tmp20_ = NULL;
+		CuboGeneticoCuboGenetico* _tmp21_ = NULL;
+		CuboGeneticoIndividuo* mg = NULL;
+		CuboGeneticoCuboGenetico* _tmp22_ = NULL;
+		CuboGeneticoIndividuo* _tmp23_ = NULL;
+		CuboGeneticoIndividuo* _tmp24_ = NULL;
+		CuboGeneticoIndividuo* _tmp25_ = NULL;
+		FILE* _tmp26_ = NULL;
+		CuboGeneticoIndividuo* _tmp27_ = NULL;
+		gchar* _tmp28_ = NULL;
+		gchar* _tmp29_ = NULL;
+		CuboGeneticoAGeneticoCubo3x3* _tmp30_ = NULL;
+		CuboGeneticoIndividuo* _tmp31_ = NULL;
+		CuboGeneticoAGeneticoFenotipo* _tmp32_ = NULL;
+		CuboGeneticoAGeneticoFenotipo* _tmp33_ = NULL;
+		gchar** _tmp34_ = NULL;
+		gint _tmp34__length1 = 0;
+		gchar** _tmp35_ = NULL;
+		gint _tmp35__length1 = 0;
+		CuboGeneticoAGeneticoCubo3x3* _tmp36_ = NULL;
+		CuboGeneticoIndividuo* _tmp37_ = NULL;
+		gdouble _tmp38_ = 0.0;
+		gdouble _tmp39_ = 0.0;
 		_tmp1_ = args;
 		_tmp1__length1 = args_length1;
 		_tmp2_ = _tmp1_[1];
@@ -403,104 +425,64 @@ gint cubo_genetico_main_main (gchar** args, int args_length1) {
 		_tmp7_ = cubo_genetico_agenetico_cubo3x3_new (_tmp6_, _tmp6__length1, _tmp6__length2);
 		cubo = _tmp7_;
 		_tmp8_ = cubo;
-		_tmp9_ = cubo_genetico_ffitness_new (_tmp8_);
-		ffitness = _tmp9_;
-		_tmp10_ = cubo_genetico_feno_geno_new (9);
-		fenogeno = _tmp10_;
-		_tmp11_ = fenogeno;
-		_tmp12_ = ffitness;
-		_tmp13_ = cubo_genetico_criador_new (_tmp11_, _tmp12_, 1);
-		criador = _tmp13_;
-		_tmp14_ = criador;
-		_tmp15_ = cubo_genetico_criador_poblacionNuevaR (_tmp14_, 10);
-		poblacion = _tmp15_;
-		{
-			gint i = 0;
-			i = 0;
-			{
-				gboolean _tmp16_ = FALSE;
-				_tmp16_ = TRUE;
-				while (TRUE) {
-					gint _tmp18_ = 0;
-					CuboGeneticoPoblacion* _tmp19_ = NULL;
-					gint _tmp20_ = 0;
-					FILE* _tmp21_ = NULL;
-					CuboGeneticoPoblacion* _tmp22_ = NULL;
-					gint _tmp23_ = 0;
-					CuboGeneticoAGeneticoIndividuo* _tmp24_ = NULL;
-					CuboGeneticoAGeneticoIndividuo* _tmp25_ = NULL;
-					gchar* _tmp26_ = NULL;
-					gchar* _tmp27_ = NULL;
-					if (!_tmp16_) {
-						gint _tmp17_ = 0;
-						_tmp17_ = i;
-						i = _tmp17_ + 1;
-					}
-					_tmp16_ = FALSE;
-					_tmp18_ = i;
-					_tmp19_ = poblacion;
-					_tmp20_ = cubo_genetico_poblacion_getTam (_tmp19_);
-					if (!(_tmp18_ < _tmp20_)) {
-						break;
-					}
-					_tmp21_ = stdout;
-					_tmp22_ = poblacion;
-					_tmp23_ = i;
-					_tmp24_ = cubo_genetico_poblacion_getIndividuo (_tmp22_, _tmp23_);
-					_tmp25_ = _tmp24_;
-					_tmp26_ = cubo_genetico_agenetico_individuo_to_string (_tmp25_);
-					_tmp27_ = _tmp26_;
-					fprintf (_tmp21_, "%s\n", _tmp27_);
-					_g_free0 (_tmp27_);
-					_g_object_unref0 (_tmp25_);
-				}
-			}
-		}
-		_tmp28_ = stdout;
-		fprintf (_tmp28_, "Seleccionados\n");
-		_tmp29_ = cubo_genetico_sruleta_new (1);
-		sr = _tmp29_;
-		_tmp30_ = sr;
-		_tmp31_ = poblacion;
-		_tmp32_ = cubo_genetico_sruleta_selecciona (_tmp30_, _tmp31_);
-		ps = _tmp32_;
-		_tmp33_ = ps;
-		{
-			GList* i_collection = NULL;
-			GList* i_it = NULL;
-			i_collection = _tmp33_;
-			for (i_it = i_collection; i_it != NULL; i_it = i_it->next) {
-				CuboGeneticoAGeneticoIndividuo* _tmp34_ = NULL;
-				CuboGeneticoAGeneticoIndividuo* i = NULL;
-				_tmp34_ = _g_object_ref0 ((CuboGeneticoAGeneticoIndividuo*) i_it->data);
-				i = _tmp34_;
-				{
-					FILE* _tmp35_ = NULL;
-					CuboGeneticoAGeneticoIndividuo* _tmp36_ = NULL;
-					gchar* _tmp37_ = NULL;
-					gchar* _tmp38_ = NULL;
-					_tmp35_ = stdout;
-					_tmp36_ = i;
-					_tmp37_ = cubo_genetico_agenetico_individuo_to_string (_tmp36_);
-					_tmp38_ = _tmp37_;
-					fprintf (_tmp35_, "%s\n", _tmp38_);
-					_g_free0 (_tmp38_);
-					_g_object_unref0 (i);
-				}
-			}
-		}
-		__g_list_free__g_object_unref0_0 (ps);
-		_cubo_genetico_sruleta_unref0 (sr);
-		_cubo_genetico_poblacion_unref0 (poblacion);
-		_cubo_genetico_criador_unref0 (criador);
+		cubo_genetico_agenetico_cubo3x3_dibuja (_tmp8_, 0.0);
+		_tmp9_ = cubo;
+		_tmp10_ = cubo_genetico_ffitness_new (_tmp9_);
+		ffitness = _tmp10_;
+		_tmp11_ = cubo_genetico_feno_geno_new (37);
+		fenogeno = _tmp11_;
+		_tmp12_ = cubo_genetico_storneo_new (54);
+		sr = _tmp12_;
+		_tmp13_ = cubo_genetico_cruza_up_new (89, 0.2);
+		cruza = _tmp13_;
+		_tmp14_ = cubo_genetico_mutacion_new (40, 0.9);
+		mutacion = _tmp14_;
+		_tmp15_ = ffitness;
+		_tmp16_ = fenogeno;
+		_tmp17_ = sr;
+		_tmp18_ = cruza;
+		_tmp19_ = mutacion;
+		_tmp20_ = cubo_genetico_cubo_genetico_new (_tmp15_, _tmp16_, _tmp17_, _tmp18_, _tmp19_, 13, 200);
+		cubogene = _tmp20_;
+		_tmp21_ = cubogene;
+		cubo_genetico_cubo_genetico_run (_tmp21_);
+		_tmp22_ = cubogene;
+		_tmp23_ = cubo_genetico_cubo_genetico_get_mejor (_tmp22_);
+		_tmp24_ = _tmp23_;
+		_tmp25_ = _g_object_ref0 (_tmp24_);
+		mg = _tmp25_;
+		_tmp26_ = stdout;
+		_tmp27_ = mg;
+		_tmp28_ = cubo_genetico_individuo_to_string (_tmp27_);
+		_tmp29_ = _tmp28_;
+		fprintf (_tmp26_, "Mejor de la generacion :\n%s", _tmp29_);
+		_g_free0 (_tmp29_);
+		_tmp30_ = cubo;
+		_tmp31_ = mg;
+		_tmp32_ = cubo_genetico_individuo_get_fenotipo (_tmp31_);
+		_tmp33_ = _tmp32_;
+		_tmp34_ = cubo_genetico_agenetico_fenotipo_get_fenotipo (_tmp33_, &_tmp34__length1);
+		_tmp35_ = _tmp34_;
+		_tmp35__length1 = _tmp34__length1;
+		cubo_genetico_agenetico_cubo3x3_giraCaras (_tmp30_, _tmp35_, _tmp35__length1);
+		_tmp36_ = cubo;
+		_tmp37_ = mg;
+		_tmp38_ = cubo_genetico_individuo_get_fitness (_tmp37_);
+		_tmp39_ = _tmp38_;
+		cubo_genetico_agenetico_cubo3x3_dibuja (_tmp36_, _tmp39_);
+		_g_object_unref0 (mg);
+		_g_object_unref0 (cubogene);
+		_g_object_unref0 (mutacion);
+		_g_object_unref0 (cruza);
+		_cubo_genetico_storneo_unref0 (sr);
 		_g_object_unref0 (fenogeno);
 		_g_object_unref0 (ffitness);
 		_g_object_unref0 (cubo);
 		c = (g_free (c), NULL);
 	} else {
-		FILE* _tmp39_ = NULL;
-		_tmp39_ = stdout;
-		fprintf (_tmp39_, "Falta el archov de entrada\n");
+		FILE* _tmp40_ = NULL;
+		_tmp40_ = stdout;
+		fprintf (_tmp40_, "Falta el archov de entrada\n");
 	}
 	result = 0;
 	return result;

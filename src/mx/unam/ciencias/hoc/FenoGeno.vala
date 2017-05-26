@@ -18,10 +18,10 @@ namespace CuboGenetico{
 		/**
 		 *Codifica el fenotipo en un genotipo
 		 */
-		public int[] codifica(string[] feno){
-			var geno = new int[feno.length];
-			for(int i =0;i<feno.length;i++){
-				 geno[i]=this.co(feno[i]);
+		public AGenetico.Genotipo codifica(AGenetico.Fenotipo feno){
+			var geno = new AGenetico.Genotipo(feno.fenotipo.length);
+			for(int i =0;i<feno.fenotipo.length;i++){
+				 geno.genotipo[i]=this.co(feno.fenotipo[i]);
 			}
 			return geno;
 		}
@@ -29,10 +29,10 @@ namespace CuboGenetico{
 		/**
 		 *Decodifica el genotipo en un fenotipo
 		 */
-		public string[] decodifica(int[] geno){
-			var feno =  new string[geno.length];
-			for(int i =0;i<geno.length;i++){
-				feno[i] = this.dc(geno[i]);
+		public AGenetico.Fenotipo decodifica(AGenetico.Genotipo geno){
+			var feno =  new AGenetico.Fenotipo(geno.genotipo.length);
+			for(int i =0;i<geno.genotipo.length;i++){
+				feno.fenotipo[i] = this.dc(geno.genotipo[i]);
 			}
 			return feno;
 		}
@@ -41,10 +41,10 @@ namespace CuboGenetico{
 		 *Crea y regresa un nuevo genotipo de tamanio n 
 		 *con valores aleatorios
 		 */
-		public int[] genoAleatNuev(int n){
-			var geno = new int[n];
+		public AGenetico.Genotipo genoAleatNuev(int n){
+			var geno = new AGenetico.Genotipo(n);
 			for(int i =0;i<n;i++){
-				geno[i] = (int)this.rand.int_range(1,13);
+				geno.genotipo[i] = (int)this.rand.int_range(1,13);
 			}
 			return geno;
 		}

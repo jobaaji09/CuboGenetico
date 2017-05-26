@@ -3,7 +3,7 @@
  * Author:
  *    Jonathan Barragan <jonathan.barragan.j@ciencias.unam.mx>
  */
-namespace CuboGenetico.Cubo{
+namespace CuboGenetico.AGenetico{
     public class Cubo3x3 : GLib.Object{
 		
 		private int[,] inicial;
@@ -587,7 +587,7 @@ namespace CuboGenetico.Cubo{
 		/**
 		 *Dibuja un cubo 3x3x3 D2 en un svg 
 		 **/
-		public void dibuja(){
+		public void dibuja(double fit){
 			var w  =1200;
 			var h = 900;
 			string s = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
@@ -617,7 +617,7 @@ namespace CuboGenetico.Cubo{
 			
 			s+="</g>"+"</svg>";
 			try {
-				var file = File.new_for_path ("experimentos/Cubosvg.svg");
+				var file = File.new_for_path ("experimentos/Cubosvg"+fit.to_string()+".svg");
 				
 					// delete if file already exists
 				if (file.query_exists ()) {

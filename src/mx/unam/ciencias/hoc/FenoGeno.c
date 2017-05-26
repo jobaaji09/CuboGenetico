@@ -8,58 +8,58 @@
 #include <string.h>
 
 
-#define CUBO_GENETICO_CODIFICACION_TYPE_FENO_GENO (cubo_genetico_codificacion_feno_geno_get_type ())
-#define CUBO_GENETICO_CODIFICACION_FENO_GENO(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_CODIFICACION_TYPE_FENO_GENO, CuboGeneticoCodificacionFenoGeno))
-#define CUBO_GENETICO_CODIFICACION_FENO_GENO_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_CODIFICACION_TYPE_FENO_GENO, CuboGeneticoCodificacionFenoGenoClass))
-#define CUBO_GENETICO_CODIFICACION_IS_FENO_GENO(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_CODIFICACION_TYPE_FENO_GENO))
-#define CUBO_GENETICO_CODIFICACION_IS_FENO_GENO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_CODIFICACION_TYPE_FENO_GENO))
-#define CUBO_GENETICO_CODIFICACION_FENO_GENO_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_CODIFICACION_TYPE_FENO_GENO, CuboGeneticoCodificacionFenoGenoClass))
+#define CUBO_GENETICO_TYPE_FENO_GENO (cubo_genetico_feno_geno_get_type ())
+#define CUBO_GENETICO_FENO_GENO(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_FENO_GENO, CuboGeneticoFenoGeno))
+#define CUBO_GENETICO_FENO_GENO_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_FENO_GENO, CuboGeneticoFenoGenoClass))
+#define CUBO_GENETICO_IS_FENO_GENO(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_FENO_GENO))
+#define CUBO_GENETICO_IS_FENO_GENO_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_FENO_GENO))
+#define CUBO_GENETICO_FENO_GENO_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_FENO_GENO, CuboGeneticoFenoGenoClass))
 
-typedef struct _CuboGeneticoCodificacionFenoGeno CuboGeneticoCodificacionFenoGeno;
-typedef struct _CuboGeneticoCodificacionFenoGenoClass CuboGeneticoCodificacionFenoGenoClass;
-typedef struct _CuboGeneticoCodificacionFenoGenoPrivate CuboGeneticoCodificacionFenoGenoPrivate;
+typedef struct _CuboGeneticoFenoGeno CuboGeneticoFenoGeno;
+typedef struct _CuboGeneticoFenoGenoClass CuboGeneticoFenoGenoClass;
+typedef struct _CuboGeneticoFenoGenoPrivate CuboGeneticoFenoGenoPrivate;
 #define _g_rand_free0(var) ((var == NULL) ? NULL : (var = (g_rand_free (var), NULL)))
 #define _g_free0(var) (var = (g_free (var), NULL))
 
-struct _CuboGeneticoCodificacionFenoGeno {
+struct _CuboGeneticoFenoGeno {
 	GObject parent_instance;
-	CuboGeneticoCodificacionFenoGenoPrivate * priv;
+	CuboGeneticoFenoGenoPrivate * priv;
 };
 
-struct _CuboGeneticoCodificacionFenoGenoClass {
+struct _CuboGeneticoFenoGenoClass {
 	GObjectClass parent_class;
 };
 
-struct _CuboGeneticoCodificacionFenoGenoPrivate {
+struct _CuboGeneticoFenoGenoPrivate {
 	GRand* rand;
 };
 
 
-static gpointer cubo_genetico_codificacion_feno_geno_parent_class = NULL;
+static gpointer cubo_genetico_feno_geno_parent_class = NULL;
 
-GType cubo_genetico_codificacion_feno_geno_get_type (void) G_GNUC_CONST;
-#define CUBO_GENETICO_CODIFICACION_FENO_GENO_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), CUBO_GENETICO_CODIFICACION_TYPE_FENO_GENO, CuboGeneticoCodificacionFenoGenoPrivate))
+GType cubo_genetico_feno_geno_get_type (void) G_GNUC_CONST;
+#define CUBO_GENETICO_FENO_GENO_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), CUBO_GENETICO_TYPE_FENO_GENO, CuboGeneticoFenoGenoPrivate))
 enum  {
-	CUBO_GENETICO_CODIFICACION_FENO_GENO_DUMMY_PROPERTY
+	CUBO_GENETICO_FENO_GENO_DUMMY_PROPERTY
 };
-CuboGeneticoCodificacionFenoGeno* cubo_genetico_codificacion_feno_geno_new (gint semilla);
-CuboGeneticoCodificacionFenoGeno* cubo_genetico_codificacion_feno_geno_construct (GType object_type, gint semilla);
-gint* cubo_genetico_codificacion_feno_geno_codifica (CuboGeneticoCodificacionFenoGeno* self, gchar** feno, int feno_length1, int* result_length1);
-static gint cubo_genetico_codificacion_feno_geno_co (CuboGeneticoCodificacionFenoGeno* self, const gchar* i);
-gchar** cubo_genetico_codificacion_feno_geno_decodifica (CuboGeneticoCodificacionFenoGeno* self, gint* geno, int geno_length1, int* result_length1);
-static gchar* cubo_genetico_codificacion_feno_geno_dc (CuboGeneticoCodificacionFenoGeno* self, gint i);
-gint* cubo_genetico_codificacion_feno_geno_genoAleatNuev (CuboGeneticoCodificacionFenoGeno* self, gint n, int* result_length1);
-static void cubo_genetico_codificacion_feno_geno_finalize (GObject* obj);
+CuboGeneticoFenoGeno* cubo_genetico_feno_geno_new (gint semilla);
+CuboGeneticoFenoGeno* cubo_genetico_feno_geno_construct (GType object_type, gint semilla);
+gint* cubo_genetico_feno_geno_codifica (CuboGeneticoFenoGeno* self, gchar** feno, int feno_length1, int* result_length1);
+static gint cubo_genetico_feno_geno_co (CuboGeneticoFenoGeno* self, const gchar* i);
+gchar** cubo_genetico_feno_geno_decodifica (CuboGeneticoFenoGeno* self, gint* geno, int geno_length1, int* result_length1);
+static gchar* cubo_genetico_feno_geno_dc (CuboGeneticoFenoGeno* self, gint i);
+gint* cubo_genetico_feno_geno_genoAleatNuev (CuboGeneticoFenoGeno* self, gint n, int* result_length1);
+static void cubo_genetico_feno_geno_finalize (GObject* obj);
 static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func);
 static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify destroy_func);
 
 
-CuboGeneticoCodificacionFenoGeno* cubo_genetico_codificacion_feno_geno_construct (GType object_type, gint semilla) {
-	CuboGeneticoCodificacionFenoGeno * self = NULL;
+CuboGeneticoFenoGeno* cubo_genetico_feno_geno_construct (GType object_type, gint semilla) {
+	CuboGeneticoFenoGeno * self = NULL;
 	GRand* _tmp0_ = NULL;
 	GRand* _tmp1_ = NULL;
 	gint _tmp2_ = 0;
-	self = (CuboGeneticoCodificacionFenoGeno*) g_object_new (object_type, NULL);
+	self = (CuboGeneticoFenoGeno*) g_object_new (object_type, NULL);
 	_tmp0_ = g_rand_new ();
 	_g_rand_free0 (self->priv->rand);
 	self->priv->rand = _tmp0_;
@@ -70,15 +70,15 @@ CuboGeneticoCodificacionFenoGeno* cubo_genetico_codificacion_feno_geno_construct
 }
 
 
-CuboGeneticoCodificacionFenoGeno* cubo_genetico_codificacion_feno_geno_new (gint semilla) {
-	return cubo_genetico_codificacion_feno_geno_construct (CUBO_GENETICO_CODIFICACION_TYPE_FENO_GENO, semilla);
+CuboGeneticoFenoGeno* cubo_genetico_feno_geno_new (gint semilla) {
+	return cubo_genetico_feno_geno_construct (CUBO_GENETICO_TYPE_FENO_GENO, semilla);
 }
 
 
 /**
  *Codifica el fenotipo en un genotipo
  */
-gint* cubo_genetico_codificacion_feno_geno_codifica (CuboGeneticoCodificacionFenoGeno* self, gchar** feno, int feno_length1, int* result_length1) {
+gint* cubo_genetico_feno_geno_codifica (CuboGeneticoFenoGeno* self, gchar** feno, int feno_length1, int* result_length1) {
 	gint* result = NULL;
 	gint* geno = NULL;
 	gchar** _tmp0_ = NULL;
@@ -133,7 +133,7 @@ gint* cubo_genetico_codificacion_feno_geno_codifica (CuboGeneticoCodificacionFen
 				_tmp8__length1 = feno_length1;
 				_tmp9_ = i;
 				_tmp10_ = _tmp8_[_tmp9_];
-				_tmp11_ = cubo_genetico_codificacion_feno_geno_co (self, _tmp10_);
+				_tmp11_ = cubo_genetico_feno_geno_co (self, _tmp10_);
 				_tmp6_[_tmp7_] = _tmp11_;
 				_tmp12_ = _tmp6_[_tmp7_];
 			}
@@ -152,7 +152,7 @@ gint* cubo_genetico_codificacion_feno_geno_codifica (CuboGeneticoCodificacionFen
 /**
  *Decodifica el genotipo en un fenotipo
  */
-gchar** cubo_genetico_codificacion_feno_geno_decodifica (CuboGeneticoCodificacionFenoGeno* self, gint* geno, int geno_length1, int* result_length1) {
+gchar** cubo_genetico_feno_geno_decodifica (CuboGeneticoFenoGeno* self, gint* geno, int geno_length1, int* result_length1) {
 	gchar** result = NULL;
 	gchar** feno = NULL;
 	gint* _tmp0_ = NULL;
@@ -207,7 +207,7 @@ gchar** cubo_genetico_codificacion_feno_geno_decodifica (CuboGeneticoCodificacio
 				_tmp8__length1 = geno_length1;
 				_tmp9_ = i;
 				_tmp10_ = _tmp8_[_tmp9_];
-				_tmp11_ = cubo_genetico_codificacion_feno_geno_dc (self, _tmp10_);
+				_tmp11_ = cubo_genetico_feno_geno_dc (self, _tmp10_);
 				_g_free0 (_tmp6_[_tmp7_]);
 				_tmp6_[_tmp7_] = _tmp11_;
 				_tmp12_ = _tmp6_[_tmp7_];
@@ -228,7 +228,7 @@ gchar** cubo_genetico_codificacion_feno_geno_decodifica (CuboGeneticoCodificacio
  *Crea y regresa un nuevo genotipo de tamanio n 
  *con valores aleatorios
  */
-gint* cubo_genetico_codificacion_feno_geno_genoAleatNuev (CuboGeneticoCodificacionFenoGeno* self, gint n, int* result_length1) {
+gint* cubo_genetico_feno_geno_genoAleatNuev (CuboGeneticoFenoGeno* self, gint n, int* result_length1) {
 	gint* result = NULL;
 	gint* geno = NULL;
 	gint _tmp0_ = 0;
@@ -293,7 +293,7 @@ gint* cubo_genetico_codificacion_feno_geno_genoAleatNuev (CuboGeneticoCodificaci
  * R=1 ,L=3 ,U=5 ,D=7 ,F=9  ,B =11 
  * R'=2,L'=4,U'=6,D'=8,F'=10,B'=12
  */
-static gchar* cubo_genetico_codificacion_feno_geno_dc (CuboGeneticoCodificacionFenoGeno* self, gint i) {
+static gchar* cubo_genetico_feno_geno_dc (CuboGeneticoFenoGeno* self, gint i) {
 	gchar* result = NULL;
 	gchar* g = NULL;
 	gchar* _tmp0_ = NULL;
@@ -411,7 +411,7 @@ static gchar* cubo_genetico_codificacion_feno_geno_dc (CuboGeneticoCodificacionF
  * R=1 ,L=3 ,U=5 ,D=7 ,F=9  ,B =11 
  * R'=2,L'=4,U'=6,D'=8,F'=10,B'=12
  */
-static gint cubo_genetico_codificacion_feno_geno_co (CuboGeneticoCodificacionFenoGeno* self, const gchar* i) {
+static gint cubo_genetico_feno_geno_co (CuboGeneticoFenoGeno* self, const gchar* i) {
 	gint result = 0;
 	gint f = 0;
 	const gchar* _tmp0_ = NULL;
@@ -537,35 +537,35 @@ static gint cubo_genetico_codificacion_feno_geno_co (CuboGeneticoCodificacionFen
 }
 
 
-static void cubo_genetico_codificacion_feno_geno_class_init (CuboGeneticoCodificacionFenoGenoClass * klass) {
-	cubo_genetico_codificacion_feno_geno_parent_class = g_type_class_peek_parent (klass);
-	g_type_class_add_private (klass, sizeof (CuboGeneticoCodificacionFenoGenoPrivate));
-	G_OBJECT_CLASS (klass)->finalize = cubo_genetico_codificacion_feno_geno_finalize;
+static void cubo_genetico_feno_geno_class_init (CuboGeneticoFenoGenoClass * klass) {
+	cubo_genetico_feno_geno_parent_class = g_type_class_peek_parent (klass);
+	g_type_class_add_private (klass, sizeof (CuboGeneticoFenoGenoPrivate));
+	G_OBJECT_CLASS (klass)->finalize = cubo_genetico_feno_geno_finalize;
 }
 
 
-static void cubo_genetico_codificacion_feno_geno_instance_init (CuboGeneticoCodificacionFenoGeno * self) {
-	self->priv = CUBO_GENETICO_CODIFICACION_FENO_GENO_GET_PRIVATE (self);
+static void cubo_genetico_feno_geno_instance_init (CuboGeneticoFenoGeno * self) {
+	self->priv = CUBO_GENETICO_FENO_GENO_GET_PRIVATE (self);
 }
 
 
-static void cubo_genetico_codificacion_feno_geno_finalize (GObject* obj) {
-	CuboGeneticoCodificacionFenoGeno * self;
-	self = G_TYPE_CHECK_INSTANCE_CAST (obj, CUBO_GENETICO_CODIFICACION_TYPE_FENO_GENO, CuboGeneticoCodificacionFenoGeno);
+static void cubo_genetico_feno_geno_finalize (GObject* obj) {
+	CuboGeneticoFenoGeno * self;
+	self = G_TYPE_CHECK_INSTANCE_CAST (obj, CUBO_GENETICO_TYPE_FENO_GENO, CuboGeneticoFenoGeno);
 	_g_rand_free0 (self->priv->rand);
-	G_OBJECT_CLASS (cubo_genetico_codificacion_feno_geno_parent_class)->finalize (obj);
+	G_OBJECT_CLASS (cubo_genetico_feno_geno_parent_class)->finalize (obj);
 }
 
 
-GType cubo_genetico_codificacion_feno_geno_get_type (void) {
-	static volatile gsize cubo_genetico_codificacion_feno_geno_type_id__volatile = 0;
-	if (g_once_init_enter (&cubo_genetico_codificacion_feno_geno_type_id__volatile)) {
-		static const GTypeInfo g_define_type_info = { sizeof (CuboGeneticoCodificacionFenoGenoClass), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) cubo_genetico_codificacion_feno_geno_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (CuboGeneticoCodificacionFenoGeno), 0, (GInstanceInitFunc) cubo_genetico_codificacion_feno_geno_instance_init, NULL };
-		GType cubo_genetico_codificacion_feno_geno_type_id;
-		cubo_genetico_codificacion_feno_geno_type_id = g_type_register_static (G_TYPE_OBJECT, "CuboGeneticoCodificacionFenoGeno", &g_define_type_info, 0);
-		g_once_init_leave (&cubo_genetico_codificacion_feno_geno_type_id__volatile, cubo_genetico_codificacion_feno_geno_type_id);
+GType cubo_genetico_feno_geno_get_type (void) {
+	static volatile gsize cubo_genetico_feno_geno_type_id__volatile = 0;
+	if (g_once_init_enter (&cubo_genetico_feno_geno_type_id__volatile)) {
+		static const GTypeInfo g_define_type_info = { sizeof (CuboGeneticoFenoGenoClass), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) cubo_genetico_feno_geno_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (CuboGeneticoFenoGeno), 0, (GInstanceInitFunc) cubo_genetico_feno_geno_instance_init, NULL };
+		GType cubo_genetico_feno_geno_type_id;
+		cubo_genetico_feno_geno_type_id = g_type_register_static (G_TYPE_OBJECT, "CuboGeneticoFenoGeno", &g_define_type_info, 0);
+		g_once_init_leave (&cubo_genetico_feno_geno_type_id__volatile, cubo_genetico_feno_geno_type_id);
 	}
-	return cubo_genetico_codificacion_feno_geno_type_id__volatile;
+	return cubo_genetico_feno_geno_type_id__volatile;
 }
 
 

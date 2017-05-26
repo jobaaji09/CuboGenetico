@@ -3,13 +3,13 @@ namespace CuboGenetico.Test{
      * Test cases for {@link Cubo3x3}.
      */
     public class TestCodificacion : CuboGenetico.Test.TestCase{
-		private Codificacion.FenoGeno c;
+		private FenoGeno c;
 		
         public TestCodificacion(){
             base("TestCodificacion");
             add_test("test_coDecoR",test_coDecoR);
 			add_test("test_coDecoR",test_coDeco);
-			this.c = new Codificacion.FenoGeno(9);
+			this.c = new FenoGeno(9);
         }
         
         public  void test_coDecoR() {

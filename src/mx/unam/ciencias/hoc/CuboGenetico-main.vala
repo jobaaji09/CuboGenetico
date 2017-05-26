@@ -38,24 +38,21 @@ namespace CuboGenetico{
 		}
 		
 		public static int main(string[] args){		
-			Cubo.Cubo3x3 cubo = null;
+			
 			if(args.length >=2){
 				var c = archivo(args[1]);
-				cubo = new Cubo.Cubo3x3(c);
+				var cubo = new AGenetico.Cubo3x3(c);
+				//cubo.dibuja(1.0);
+				var ffitness = new FFitness(cubo);
+				var fenogeno = new FenoGeno(9);
+				var criador = new Criador(fenogeno,ffitness,1);
+				var poblacion  = criador.poblacionNuevaR(10);
+				for(int i=0;i<poblacion.getTam();i++){
+					stdout.printf("%s\n",poblacion.getIndividuo(i).to_string());
+				}
+			}else{
+				stdout.printf("Falta el archov de entrada\n");
 			}
-			var fg = new Codificacion.FenoGeno(1);
-			var g = fg.genoAleatNuev(10);
-			var gf = fg.decodifica(g);
-			foreach(string i in gf){
-				stdout.printf("%s,",i);
-			}
-			stdout.printf("\n");
-			var f = new FFitness(cubo);
-			
-			double fd = f.evaluacion(g);
-			stdout.printf("evaluacion = %2.9f\n",fd);
-		    
-			cubo.dibuja();
 			
 			return 0;
 		}

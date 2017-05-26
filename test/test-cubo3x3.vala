@@ -3,7 +3,7 @@ namespace CuboGenetico.Test{
      * Test cases for {@link Cubo3x3}.
      */
     public class TestCubo3x3 : CuboGenetico.Test.TestCase{
-		private Cubo.Cubo3x3 c;
+		private AGenetico.Cubo3x3 c;
 		private int[,] cu;
 		
         public TestCubo3x3(){
@@ -33,7 +33,7 @@ namespace CuboGenetico.Test{
 					}
 				}
 			}
-			this.c = new Cubo.Cubo3x3(this.cu);
+			this.c = new AGenetico.Cubo3x3(this.cu);
         }
         
         public  void test_rrpuup () {

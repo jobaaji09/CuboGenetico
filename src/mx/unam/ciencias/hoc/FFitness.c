@@ -4,7 +4,7 @@
 
 #include <glib.h>
 #include <glib-object.h>
-#include "cubo.h"
+#include "agenetico.h"
 #include <float.h>
 #include <math.h>
 
@@ -31,7 +31,7 @@ struct _CuboGeneticoFFitnessClass {
 };
 
 struct _CuboGeneticoFFitnessPrivate {
-	CuboGeneticoCuboCubo3x3* cubo;
+	CuboGeneticoAGeneticoCubo3x3* cubo;
 };
 
 
@@ -42,9 +42,9 @@ GType cubo_genetico_ffitness_get_type (void) G_GNUC_CONST;
 enum  {
 	CUBO_GENETICO_FFITNESS_DUMMY_PROPERTY
 };
-CuboGeneticoFFitness* cubo_genetico_ffitness_new (CuboGeneticoCuboCubo3x3* c);
-CuboGeneticoFFitness* cubo_genetico_ffitness_construct (GType object_type, CuboGeneticoCuboCubo3x3* c);
-gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, gint* feno, int feno_length1);
+CuboGeneticoFFitness* cubo_genetico_ffitness_new (CuboGeneticoAGeneticoCubo3x3* cubo);
+CuboGeneticoFFitness* cubo_genetico_ffitness_construct (GType object_type, CuboGeneticoAGeneticoCubo3x3* cubo);
+gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, gint* geno, int geno_length1);
 gdouble cubo_genetico_ffitness_caraFitness (CuboGeneticoFFitness* self, gint centro, gint x, gint y);
 static void cubo_genetico_ffitness_finalize (GObject* obj);
 
@@ -54,13 +54,13 @@ static gpointer _g_object_ref0 (gpointer self) {
 }
 
 
-CuboGeneticoFFitness* cubo_genetico_ffitness_construct (GType object_type, CuboGeneticoCuboCubo3x3* c) {
+CuboGeneticoFFitness* cubo_genetico_ffitness_construct (GType object_type, CuboGeneticoAGeneticoCubo3x3* cubo) {
 	CuboGeneticoFFitness * self = NULL;
-	CuboGeneticoCuboCubo3x3* _tmp0_ = NULL;
-	CuboGeneticoCuboCubo3x3* _tmp1_ = NULL;
-	g_return_val_if_fail (c != NULL, NULL);
+	CuboGeneticoAGeneticoCubo3x3* _tmp0_ = NULL;
+	CuboGeneticoAGeneticoCubo3x3* _tmp1_ = NULL;
+	g_return_val_if_fail (cubo != NULL, NULL);
 	self = (CuboGeneticoFFitness*) g_object_new (object_type, NULL);
-	_tmp0_ = c;
+	_tmp0_ = cubo;
 	_tmp1_ = _g_object_ref0 (_tmp0_);
 	_g_object_unref0 (self->priv->cubo);
 	self->priv->cubo = _tmp1_;
@@ -68,23 +68,28 @@ CuboGeneticoFFitness* cubo_genetico_ffitness_construct (GType object_type, CuboG
 }
 
 
-CuboGeneticoFFitness* cubo_genetico_ffitness_new (CuboGeneticoCuboCubo3x3* c) {
-	return cubo_genetico_ffitness_construct (CUBO_GENETICO_TYPE_FFITNESS, c);
+CuboGeneticoFFitness* cubo_genetico_ffitness_new (CuboGeneticoAGeneticoCubo3x3* cubo) {
+	return cubo_genetico_ffitness_construct (CUBO_GENETICO_TYPE_FFITNESS, cubo);
 }
 
 
-gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, gint* feno, int feno_length1) {
+gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, gint* geno, int geno_length1) {
 	gdouble result = 0.0;
-	CuboGeneticoCuboCubo3x3* _tmp0_ = NULL;
+	CuboGeneticoAGeneticoCubo3x3* _tmp0_ = NULL;
 	gint* _tmp1_ = NULL;
 	gint _tmp1__length1 = 0;
 	gdouble fitness = 0.0;
-	gdouble _tmp36_ = 0.0;
+	CuboGeneticoAGeneticoCubo3x3* _tmp36_ = NULL;
+	gdouble _tmp37_ = 0.0;
+	gint* _tmp38_ = NULL;
+	gint _tmp38__length1 = 0;
+	CuboGeneticoAGeneticoCubo3x3* _tmp39_ = NULL;
+	gdouble _tmp40_ = 0.0;
 	g_return_val_if_fail (self != NULL, 0.0);
 	_tmp0_ = self->priv->cubo;
-	_tmp1_ = feno;
-	_tmp1__length1 = feno_length1;
-	cubo_genetico_cubo_cubo3x3_giraCaras (_tmp0_, _tmp1_, _tmp1__length1);
+	_tmp1_ = geno;
+	_tmp1__length1 = geno_length1;
+	cubo_genetico_agenetico_cubo3x3_giraCaras (_tmp0_, _tmp1_, _tmp1__length1);
 	fitness = 0.0;
 	{
 		gint i = 0;
@@ -203,8 +208,15 @@ gdouble cubo_genetico_ffitness_evaluacion (CuboGeneticoFFitness* self, gint* fen
 			}
 		}
 	}
-	_tmp36_ = fitness;
-	result = _tmp36_ / 6;
+	_tmp36_ = self->priv->cubo;
+	_tmp37_ = fitness;
+	_tmp38_ = geno;
+	_tmp38__length1 = geno_length1;
+	cubo_genetico_agenetico_cubo3x3_dibuja (_tmp36_, (_tmp37_ / 6) + _tmp38__length1);
+	_tmp39_ = self->priv->cubo;
+	cubo_genetico_agenetico_cubo3x3_reset (_tmp39_);
+	_tmp40_ = fitness;
+	result = _tmp40_ / 6;
 	return result;
 }
 
@@ -213,7 +225,7 @@ gdouble cubo_genetico_ffitness_caraFitness (CuboGeneticoFFitness* self, gint cen
 	gdouble result = 0.0;
 	gdouble f = 0.0;
 	gint* c = NULL;
-	CuboGeneticoCuboCubo3x3* _tmp0_ = NULL;
+	CuboGeneticoAGeneticoCubo3x3* _tmp0_ = NULL;
 	gint _tmp1_ = 0;
 	gint _tmp2_ = 0;
 	gint* _tmp3_ = NULL;
@@ -279,7 +291,7 @@ gdouble cubo_genetico_ffitness_caraFitness (CuboGeneticoFFitness* self, gint cen
 	g_return_val_if_fail (self != NULL, 0.0);
 	f = 0.0;
 	_tmp0_ = self->priv->cubo;
-	_tmp3_ = cubo_genetico_cubo_cubo3x3_getActual (_tmp0_, &_tmp1_, &_tmp2_);
+	_tmp3_ = cubo_genetico_agenetico_cubo3x3_getActual (_tmp0_, &_tmp1_, &_tmp2_);
 	c = _tmp3_;
 	c_length1 = _tmp1_;
 	c_length2 = _tmp2_;

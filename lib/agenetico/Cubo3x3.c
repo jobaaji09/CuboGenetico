@@ -5,35 +5,37 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <stdio.h>
+#include <float.h>
+#include <math.h>
 #include <stdlib.h>
 #include <string.h>
 #include <gio/gio.h>
 
 
-#define CUBO_GENETICO_CUBO_TYPE_CUBO3X3 (cubo_genetico_cubo_cubo3x3_get_type ())
-#define CUBO_GENETICO_CUBO_CUBO3X3(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_CUBO_TYPE_CUBO3X3, CuboGeneticoCuboCubo3x3))
-#define CUBO_GENETICO_CUBO_CUBO3X3_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_CUBO_TYPE_CUBO3X3, CuboGeneticoCuboCubo3x3Class))
-#define CUBO_GENETICO_CUBO_IS_CUBO3X3(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_CUBO_TYPE_CUBO3X3))
-#define CUBO_GENETICO_CUBO_IS_CUBO3X3_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_CUBO_TYPE_CUBO3X3))
-#define CUBO_GENETICO_CUBO_CUBO3X3_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_CUBO_TYPE_CUBO3X3, CuboGeneticoCuboCubo3x3Class))
+#define CUBO_GENETICO_AGENETICO_TYPE_CUBO3X3 (cubo_genetico_agenetico_cubo3x3_get_type ())
+#define CUBO_GENETICO_AGENETICO_CUBO3X3(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_AGENETICO_TYPE_CUBO3X3, CuboGeneticoAGeneticoCubo3x3))
+#define CUBO_GENETICO_AGENETICO_CUBO3X3_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_AGENETICO_TYPE_CUBO3X3, CuboGeneticoAGeneticoCubo3x3Class))
+#define CUBO_GENETICO_AGENETICO_IS_CUBO3X3(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_AGENETICO_TYPE_CUBO3X3))
+#define CUBO_GENETICO_AGENETICO_IS_CUBO3X3_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_AGENETICO_TYPE_CUBO3X3))
+#define CUBO_GENETICO_AGENETICO_CUBO3X3_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_AGENETICO_TYPE_CUBO3X3, CuboGeneticoAGeneticoCubo3x3Class))
 
-typedef struct _CuboGeneticoCuboCubo3x3 CuboGeneticoCuboCubo3x3;
-typedef struct _CuboGeneticoCuboCubo3x3Class CuboGeneticoCuboCubo3x3Class;
-typedef struct _CuboGeneticoCuboCubo3x3Private CuboGeneticoCuboCubo3x3Private;
+typedef struct _CuboGeneticoAGeneticoCubo3x3 CuboGeneticoAGeneticoCubo3x3;
+typedef struct _CuboGeneticoAGeneticoCubo3x3Class CuboGeneticoAGeneticoCubo3x3Class;
+typedef struct _CuboGeneticoAGeneticoCubo3x3Private CuboGeneticoAGeneticoCubo3x3Private;
 #define _g_free0(var) (var = (g_free (var), NULL))
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
 #define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
 
-struct _CuboGeneticoCuboCubo3x3 {
+struct _CuboGeneticoAGeneticoCubo3x3 {
 	GObject parent_instance;
-	CuboGeneticoCuboCubo3x3Private * priv;
+	CuboGeneticoAGeneticoCubo3x3Private * priv;
 };
 
-struct _CuboGeneticoCuboCubo3x3Class {
+struct _CuboGeneticoAGeneticoCubo3x3Class {
 	GObjectClass parent_class;
 };
 
-struct _CuboGeneticoCuboCubo3x3Private {
+struct _CuboGeneticoAGeneticoCubo3x3Private {
 	gint* inicial;
 	gint inicial_length1;
 	gint inicial_length2;
@@ -43,38 +45,38 @@ struct _CuboGeneticoCuboCubo3x3Private {
 };
 
 
-static gpointer cubo_genetico_cubo_cubo3x3_parent_class = NULL;
+static gpointer cubo_genetico_agenetico_cubo3x3_parent_class = NULL;
 
-GType cubo_genetico_cubo_cubo3x3_get_type (void) G_GNUC_CONST;
-#define CUBO_GENETICO_CUBO_CUBO3X3_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), CUBO_GENETICO_CUBO_TYPE_CUBO3X3, CuboGeneticoCuboCubo3x3Private))
+GType cubo_genetico_agenetico_cubo3x3_get_type (void) G_GNUC_CONST;
+#define CUBO_GENETICO_AGENETICO_CUBO3X3_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), CUBO_GENETICO_AGENETICO_TYPE_CUBO3X3, CuboGeneticoAGeneticoCubo3x3Private))
 enum  {
-	CUBO_GENETICO_CUBO_CUBO3X3_DUMMY_PROPERTY
+	CUBO_GENETICO_AGENETICO_CUBO3X3_DUMMY_PROPERTY
 };
-CuboGeneticoCuboCubo3x3* cubo_genetico_cubo_cubo3x3_new (gint* cubo, int cubo_length1, int cubo_length2);
-CuboGeneticoCuboCubo3x3* cubo_genetico_cubo_cubo3x3_construct (GType object_type, gint* cubo, int cubo_length1, int cubo_length2);
+CuboGeneticoAGeneticoCubo3x3* cubo_genetico_agenetico_cubo3x3_new (gint* cubo, int cubo_length1, int cubo_length2);
+CuboGeneticoAGeneticoCubo3x3* cubo_genetico_agenetico_cubo3x3_construct (GType object_type, gint* cubo, int cubo_length1, int cubo_length2);
 static gint* _vala_array_dup1 (gint* self, int length);
-gint* cubo_genetico_cubo_cubo3x3_getActual (CuboGeneticoCuboCubo3x3* self, int* result_length1, int* result_length2);
+gint* cubo_genetico_agenetico_cubo3x3_getActual (CuboGeneticoAGeneticoCubo3x3* self, int* result_length1, int* result_length2);
 static gint* _vala_array_dup2 (gint* self, int length);
-void cubo_genetico_cubo_cubo3x3_reset (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_giraCaras (CuboGeneticoCuboCubo3x3* self, gint* giros, int giros_length1);
-void cubo_genetico_cubo_cubo3x3_giraCara (CuboGeneticoCuboCubo3x3* self, gint i);
-static void cubo_genetico_cubo_cubo3x3_r (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_rprima (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_l (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_lprima (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_u (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_uprima (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_d (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_dprima (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_f (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_fprima (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_b (CuboGeneticoCuboCubo3x3* self);
-static void cubo_genetico_cubo_cubo3x3_bprima (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_to_string (CuboGeneticoCuboCubo3x3* self);
-void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self);
-static gchar* cubo_genetico_cubo_cubo3x3_cuadro (CuboGeneticoCuboCubo3x3* self, gint x, gint y, gint c);
-static gchar* cubo_genetico_cubo_cubo3x3_color (CuboGeneticoCuboCubo3x3* self, gint c);
-static void cubo_genetico_cubo_cubo3x3_finalize (GObject* obj);
+void cubo_genetico_agenetico_cubo3x3_reset (CuboGeneticoAGeneticoCubo3x3* self);
+void cubo_genetico_agenetico_cubo3x3_giraCaras (CuboGeneticoAGeneticoCubo3x3* self, gint* giros, int giros_length1);
+void cubo_genetico_agenetico_cubo3x3_giraCara (CuboGeneticoAGeneticoCubo3x3* self, gint i);
+static void cubo_genetico_agenetico_cubo3x3_r (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_rprima (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_l (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_lprima (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_u (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_uprima (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_d (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_dprima (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_f (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_fprima (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_b (CuboGeneticoAGeneticoCubo3x3* self);
+static void cubo_genetico_agenetico_cubo3x3_bprima (CuboGeneticoAGeneticoCubo3x3* self);
+void cubo_genetico_agenetico_cubo3x3_to_string (CuboGeneticoAGeneticoCubo3x3* self);
+void cubo_genetico_agenetico_cubo3x3_dibuja (CuboGeneticoAGeneticoCubo3x3* self, gdouble fit);
+static gchar* cubo_genetico_agenetico_cubo3x3_cuadro (CuboGeneticoAGeneticoCubo3x3* self, gint x, gint y, gint c);
+static gchar* cubo_genetico_agenetico_cubo3x3_color (CuboGeneticoAGeneticoCubo3x3* self, gint c);
+static void cubo_genetico_agenetico_cubo3x3_finalize (GObject* obj);
 
 
 /**
@@ -85,8 +87,8 @@ static gint* _vala_array_dup1 (gint* self, int length) {
 }
 
 
-CuboGeneticoCuboCubo3x3* cubo_genetico_cubo_cubo3x3_construct (GType object_type, gint* cubo, int cubo_length1, int cubo_length2) {
-	CuboGeneticoCuboCubo3x3 * self = NULL;
+CuboGeneticoAGeneticoCubo3x3* cubo_genetico_agenetico_cubo3x3_construct (GType object_type, gint* cubo, int cubo_length1, int cubo_length2) {
+	CuboGeneticoAGeneticoCubo3x3 * self = NULL;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
 	gint _tmp0__length2 = 0;
@@ -94,7 +96,7 @@ CuboGeneticoCuboCubo3x3* cubo_genetico_cubo_cubo3x3_construct (GType object_type
 	gint _tmp1__length1 = 0;
 	gint _tmp1__length2 = 0;
 	gint* _tmp2_ = NULL;
-	self = (CuboGeneticoCuboCubo3x3*) g_object_new (object_type, NULL);
+	self = (CuboGeneticoAGeneticoCubo3x3*) g_object_new (object_type, NULL);
 	_tmp0_ = cubo;
 	_tmp0__length1 = cubo_length1;
 	_tmp0__length2 = cubo_length2;
@@ -181,8 +183,8 @@ CuboGeneticoCuboCubo3x3* cubo_genetico_cubo_cubo3x3_construct (GType object_type
 }
 
 
-CuboGeneticoCuboCubo3x3* cubo_genetico_cubo_cubo3x3_new (gint* cubo, int cubo_length1, int cubo_length2) {
-	return cubo_genetico_cubo_cubo3x3_construct (CUBO_GENETICO_CUBO_TYPE_CUBO3X3, cubo, cubo_length1, cubo_length2);
+CuboGeneticoAGeneticoCubo3x3* cubo_genetico_agenetico_cubo3x3_new (gint* cubo, int cubo_length1, int cubo_length2) {
+	return cubo_genetico_agenetico_cubo3x3_construct (CUBO_GENETICO_AGENETICO_TYPE_CUBO3X3, cubo, cubo_length1, cubo_length2);
 }
 
 
@@ -194,7 +196,7 @@ static gint* _vala_array_dup2 (gint* self, int length) {
 }
 
 
-gint* cubo_genetico_cubo_cubo3x3_getActual (CuboGeneticoCuboCubo3x3* self, int* result_length1, int* result_length2) {
+gint* cubo_genetico_agenetico_cubo3x3_getActual (CuboGeneticoAGeneticoCubo3x3* self, int* result_length1, int* result_length2) {
 	gint* result = NULL;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -229,7 +231,7 @@ gint* cubo_genetico_cubo_cubo3x3_getActual (CuboGeneticoCuboCubo3x3* self, int* 
 /**
  * regresa el cubo al estado inicial
  */
-void cubo_genetico_cubo_cubo3x3_reset (CuboGeneticoCuboCubo3x3* self) {
+void cubo_genetico_agenetico_cubo3x3_reset (CuboGeneticoAGeneticoCubo3x3* self) {
 	g_return_if_fail (self != NULL);
 	{
 		gint i = 0;
@@ -304,7 +306,7 @@ void cubo_genetico_cubo_cubo3x3_reset (CuboGeneticoCuboCubo3x3* self) {
 /**
  *Giramos mas de una cara dado la lista de giros
  */
-void cubo_genetico_cubo_cubo3x3_giraCaras (CuboGeneticoCuboCubo3x3* self, gint* giros, int giros_length1) {
+void cubo_genetico_agenetico_cubo3x3_giraCaras (CuboGeneticoAGeneticoCubo3x3* self, gint* giros, int giros_length1) {
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
 	g_return_if_fail (self != NULL);
@@ -323,7 +325,7 @@ void cubo_genetico_cubo_cubo3x3_giraCaras (CuboGeneticoCuboCubo3x3* self, gint* 
 			{
 				gint _tmp1_ = 0;
 				_tmp1_ = i;
-				cubo_genetico_cubo_cubo3x3_giraCara (self, _tmp1_);
+				cubo_genetico_agenetico_cubo3x3_giraCara (self, _tmp1_);
 			}
 		}
 	}
@@ -335,69 +337,69 @@ void cubo_genetico_cubo_cubo3x3_giraCaras (CuboGeneticoCuboCubo3x3* self, gint* 
  * R=1 ,L=3 ,U=5 ,D=7 ,F=9  ,B =11 
  * R'=2,L'=4,U'=6,D'=8,F'=10,B'=12
  */
-void cubo_genetico_cubo_cubo3x3_giraCara (CuboGeneticoCuboCubo3x3* self, gint i) {
+void cubo_genetico_agenetico_cubo3x3_giraCara (CuboGeneticoAGeneticoCubo3x3* self, gint i) {
 	gint _tmp0_ = 0;
 	g_return_if_fail (self != NULL);
 	_tmp0_ = i;
 	switch (_tmp0_) {
 		case 1:
 		{
-			cubo_genetico_cubo_cubo3x3_r (self);
+			cubo_genetico_agenetico_cubo3x3_r (self);
 			break;
 		}
 		case 2:
 		{
-			cubo_genetico_cubo_cubo3x3_rprima (self);
+			cubo_genetico_agenetico_cubo3x3_rprima (self);
 			break;
 		}
 		case 3:
 		{
-			cubo_genetico_cubo_cubo3x3_l (self);
+			cubo_genetico_agenetico_cubo3x3_l (self);
 			break;
 		}
 		case 4:
 		{
-			cubo_genetico_cubo_cubo3x3_lprima (self);
+			cubo_genetico_agenetico_cubo3x3_lprima (self);
 			break;
 		}
 		case 5:
 		{
-			cubo_genetico_cubo_cubo3x3_u (self);
+			cubo_genetico_agenetico_cubo3x3_u (self);
 			break;
 		}
 		case 6:
 		{
-			cubo_genetico_cubo_cubo3x3_uprima (self);
+			cubo_genetico_agenetico_cubo3x3_uprima (self);
 			break;
 		}
 		case 7:
 		{
-			cubo_genetico_cubo_cubo3x3_d (self);
+			cubo_genetico_agenetico_cubo3x3_d (self);
 			break;
 		}
 		case 8:
 		{
-			cubo_genetico_cubo_cubo3x3_dprima (self);
+			cubo_genetico_agenetico_cubo3x3_dprima (self);
 			break;
 		}
 		case 9:
 		{
-			cubo_genetico_cubo_cubo3x3_f (self);
+			cubo_genetico_agenetico_cubo3x3_f (self);
 			break;
 		}
 		case 10:
 		{
-			cubo_genetico_cubo_cubo3x3_fprima (self);
+			cubo_genetico_agenetico_cubo3x3_fprima (self);
 			break;
 		}
 		case 11:
 		{
-			cubo_genetico_cubo_cubo3x3_b (self);
+			cubo_genetico_agenetico_cubo3x3_b (self);
 			break;
 		}
 		case 12:
 		{
-			cubo_genetico_cubo_cubo3x3_bprima (self);
+			cubo_genetico_agenetico_cubo3x3_bprima (self);
 			break;
 		}
 		default:
@@ -409,7 +411,7 @@ void cubo_genetico_cubo_cubo3x3_giraCara (CuboGeneticoCuboCubo3x3* self, gint i)
 /**
  *Gira la cara derecha 90 grados sentido horario
  */
-static void cubo_genetico_cubo_cubo3x3_r (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_r (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -777,7 +779,7 @@ static void cubo_genetico_cubo_cubo3x3_r (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara derecha 90 grados sentido antihorario
  */
-static void cubo_genetico_cubo_cubo3x3_rprima (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_rprima (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -1145,7 +1147,7 @@ static void cubo_genetico_cubo_cubo3x3_rprima (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara izquierda 90 grados sentido horario
  */
-static void cubo_genetico_cubo_cubo3x3_l (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_l (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -1513,7 +1515,7 @@ static void cubo_genetico_cubo_cubo3x3_l (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara izquierda 90 grados sentido antihorario
  */
-static void cubo_genetico_cubo_cubo3x3_lprima (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_lprima (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -1881,7 +1883,7 @@ static void cubo_genetico_cubo_cubo3x3_lprima (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara superior 90 grados sentido horario
  */
-static void cubo_genetico_cubo_cubo3x3_u (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_u (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -2249,7 +2251,7 @@ static void cubo_genetico_cubo_cubo3x3_u (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara superior 90 grados sentido antihorario
  */
-static void cubo_genetico_cubo_cubo3x3_uprima (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_uprima (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -2617,7 +2619,7 @@ static void cubo_genetico_cubo_cubo3x3_uprima (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara frontal 90 grados sentido horario
  */
-static void cubo_genetico_cubo_cubo3x3_f (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_f (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -2985,7 +2987,7 @@ static void cubo_genetico_cubo_cubo3x3_f (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara frontal 90 grados sentido antihorario
  */
-static void cubo_genetico_cubo_cubo3x3_fprima (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_fprima (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -3353,7 +3355,7 @@ static void cubo_genetico_cubo_cubo3x3_fprima (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara posterior 90 grados sentido horario
  */
-static void cubo_genetico_cubo_cubo3x3_b (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_b (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -3721,7 +3723,7 @@ static void cubo_genetico_cubo_cubo3x3_b (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara posterior 90 grados sentido antihorario
  */
-static void cubo_genetico_cubo_cubo3x3_bprima (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_bprima (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -4089,7 +4091,7 @@ static void cubo_genetico_cubo_cubo3x3_bprima (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara inferior 90 grados sentido horario
  */
-static void cubo_genetico_cubo_cubo3x3_d (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_d (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -4457,7 +4459,7 @@ static void cubo_genetico_cubo_cubo3x3_d (CuboGeneticoCuboCubo3x3* self) {
 /**
  * Gira la cara inferior 90 grados sentido antihorario
  */
-static void cubo_genetico_cubo_cubo3x3_dprima (CuboGeneticoCuboCubo3x3* self) {
+static void cubo_genetico_agenetico_cubo3x3_dprima (CuboGeneticoAGeneticoCubo3x3* self) {
 	gint i = 0;
 	gint* _tmp0_ = NULL;
 	gint _tmp0__length1 = 0;
@@ -4822,7 +4824,7 @@ static void cubo_genetico_cubo_cubo3x3_dprima (CuboGeneticoCuboCubo3x3* self) {
 }
 
 
-void cubo_genetico_cubo_cubo3x3_to_string (CuboGeneticoCuboCubo3x3* self) {
+void cubo_genetico_agenetico_cubo3x3_to_string (CuboGeneticoAGeneticoCubo3x3* self) {
 	g_return_if_fail (self != NULL);
 	{
 		gint i = 0;
@@ -4890,7 +4892,27 @@ void cubo_genetico_cubo_cubo3x3_to_string (CuboGeneticoCuboCubo3x3* self) {
 /**
  *Dibuja un cubo 3x3x3 D2 en un svg 
  **/
-void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
+static gchar* double_to_string (gdouble self) {
+	gchar* result = NULL;
+	gchar* _tmp0_ = NULL;
+	gchar* _tmp1_ = NULL;
+	gint _tmp1__length1 = 0;
+	const gchar* _tmp2_ = NULL;
+	gchar* _tmp3_ = NULL;
+	gchar* _tmp4_ = NULL;
+	_tmp0_ = g_new0 (gchar, G_ASCII_DTOSTR_BUF_SIZE);
+	_tmp1_ = _tmp0_;
+	_tmp1__length1 = G_ASCII_DTOSTR_BUF_SIZE;
+	_tmp2_ = g_ascii_dtostr (_tmp1_, G_ASCII_DTOSTR_BUF_SIZE, self);
+	_tmp3_ = g_strdup (_tmp2_);
+	_tmp4_ = _tmp3_;
+	_tmp1_ = (g_free (_tmp1_), NULL);
+	result = _tmp4_;
+	return result;
+}
+
+
+void cubo_genetico_agenetico_cubo3x3_dibuja (CuboGeneticoAGeneticoCubo3x3* self, gdouble fit) {
 	gint w = 0;
 	gint h = 0;
 	gchar* s = NULL;
@@ -5047,7 +5069,7 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 								_tmp45_ = i;
 								_tmp46_ = j;
 								_tmp47_ = _tmp44_[(_tmp45_ * _tmp44__length2) + _tmp46_];
-								_tmp48_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp42_ + 3, _tmp43_ + 3, _tmp47_);
+								_tmp48_ = cubo_genetico_agenetico_cubo3x3_cuadro (self, _tmp42_ + 3, _tmp43_ + 3, _tmp47_);
 								_tmp49_ = _tmp48_;
 								_tmp50_ = g_strconcat (_tmp41_, _tmp49_, NULL);
 								_g_free0 (s);
@@ -5086,7 +5108,7 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 									_tmp58_ = i;
 									_tmp59_ = j;
 									_tmp60_ = _tmp57_[(_tmp58_ * _tmp57__length2) + _tmp59_];
-									_tmp61_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp55_ + 3, _tmp56_ + 3, _tmp60_);
+									_tmp61_ = cubo_genetico_agenetico_cubo3x3_cuadro (self, _tmp55_ + 3, _tmp56_ + 3, _tmp60_);
 									_tmp62_ = _tmp61_;
 									_tmp63_ = g_strconcat (_tmp54_, _tmp62_, NULL);
 									_g_free0 (s);
@@ -5125,7 +5147,7 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 										_tmp71_ = i;
 										_tmp72_ = j;
 										_tmp73_ = _tmp70_[(_tmp71_ * _tmp70__length2) + _tmp72_];
-										_tmp74_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp68_ - 3, _tmp69_, _tmp73_);
+										_tmp74_ = cubo_genetico_agenetico_cubo3x3_cuadro (self, _tmp68_ - 3, _tmp69_, _tmp73_);
 										_tmp75_ = _tmp74_;
 										_tmp76_ = g_strconcat (_tmp67_, _tmp75_, NULL);
 										_g_free0 (s);
@@ -5164,7 +5186,7 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 											_tmp84_ = i;
 											_tmp85_ = j;
 											_tmp86_ = _tmp83_[(_tmp84_ * _tmp83__length2) + _tmp85_];
-											_tmp87_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp81_ + 3, _tmp82_ + 3, _tmp86_);
+											_tmp87_ = cubo_genetico_agenetico_cubo3x3_cuadro (self, _tmp81_ + 3, _tmp82_ + 3, _tmp86_);
 											_tmp88_ = _tmp87_;
 											_tmp89_ = g_strconcat (_tmp80_, _tmp88_, NULL);
 											_g_free0 (s);
@@ -5203,7 +5225,7 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 												_tmp97_ = i;
 												_tmp98_ = j;
 												_tmp99_ = _tmp96_[(_tmp97_ * _tmp96__length2) + _tmp98_];
-												_tmp100_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp94_ - 3, _tmp95_, _tmp99_);
+												_tmp100_ = cubo_genetico_agenetico_cubo3x3_cuadro (self, _tmp94_ - 3, _tmp95_, _tmp99_);
 												_tmp101_ = _tmp100_;
 												_tmp102_ = g_strconcat (_tmp93_, _tmp101_, NULL);
 												_g_free0 (s);
@@ -5242,7 +5264,7 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 													_tmp110_ = i;
 													_tmp111_ = j;
 													_tmp112_ = _tmp109_[(_tmp110_ * _tmp109__length2) + _tmp111_];
-													_tmp113_ = cubo_genetico_cubo_cubo3x3_cuadro (self, _tmp107_ + 3, _tmp108_, _tmp112_);
+													_tmp113_ = cubo_genetico_agenetico_cubo3x3_cuadro (self, _tmp107_ + 3, _tmp108_, _tmp112_);
 													_tmp114_ = _tmp113_;
 													_tmp115_ = g_strconcat (_tmp106_, _tmp114_, NULL);
 													_g_free0 (s);
@@ -5266,64 +5288,83 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 	s = _tmp117_;
 	{
 		GFile* file = NULL;
-		GFile* _tmp118_ = NULL;
-		GFile* _tmp119_ = NULL;
-		gboolean _tmp120_ = FALSE;
-		GFileOutputStream* _tmp122_ = NULL;
-		GFile* _tmp123_ = NULL;
-		GFileOutputStream* _tmp124_ = NULL;
+		gdouble _tmp118_ = 0.0;
+		gchar* _tmp119_ = NULL;
+		gchar* _tmp120_ = NULL;
+		gchar* _tmp121_ = NULL;
+		gchar* _tmp122_ = NULL;
+		gchar* _tmp123_ = NULL;
+		gchar* _tmp124_ = NULL;
+		GFile* _tmp125_ = NULL;
+		GFile* _tmp126_ = NULL;
+		GFile* _tmp127_ = NULL;
+		gboolean _tmp128_ = FALSE;
+		GFileOutputStream* _tmp130_ = NULL;
+		GFile* _tmp131_ = NULL;
+		GFileOutputStream* _tmp132_ = NULL;
 		GDataOutputStream* dos = NULL;
-		GDataOutputStream* _tmp125_ = NULL;
-		GDataOutputStream* _tmp126_ = NULL;
-		const gchar* _tmp127_ = NULL;
-		_tmp118_ = g_file_new_for_path ("experimentos/Cubosvg.svg");
-		file = _tmp118_;
-		_tmp119_ = file;
-		_tmp120_ = g_file_query_exists (_tmp119_, NULL);
-		if (_tmp120_) {
-			GFile* _tmp121_ = NULL;
-			_tmp121_ = file;
-			g_file_delete (_tmp121_, NULL, &_inner_error_);
+		GDataOutputStream* _tmp133_ = NULL;
+		GDataOutputStream* _tmp134_ = NULL;
+		const gchar* _tmp135_ = NULL;
+		_tmp118_ = fit;
+		_tmp119_ = double_to_string (_tmp118_);
+		_tmp120_ = _tmp119_;
+		_tmp121_ = g_strconcat ("experimentos/Cubosvg", _tmp120_, NULL);
+		_tmp122_ = _tmp121_;
+		_tmp123_ = g_strconcat (_tmp122_, ".svg", NULL);
+		_tmp124_ = _tmp123_;
+		_tmp125_ = g_file_new_for_path (_tmp124_);
+		_tmp126_ = _tmp125_;
+		_g_free0 (_tmp124_);
+		_g_free0 (_tmp122_);
+		_g_free0 (_tmp120_);
+		file = _tmp126_;
+		_tmp127_ = file;
+		_tmp128_ = g_file_query_exists (_tmp127_, NULL);
+		if (_tmp128_) {
+			GFile* _tmp129_ = NULL;
+			_tmp129_ = file;
+			g_file_delete (_tmp129_, NULL, &_inner_error_);
 			if (G_UNLIKELY (_inner_error_ != NULL)) {
 				_g_object_unref0 (file);
 				goto __catch0_g_error;
 			}
 		}
-		_tmp123_ = file;
-		_tmp124_ = g_file_create (_tmp123_, G_FILE_CREATE_REPLACE_DESTINATION, NULL, &_inner_error_);
-		_tmp122_ = _tmp124_;
+		_tmp131_ = file;
+		_tmp132_ = g_file_create (_tmp131_, G_FILE_CREATE_REPLACE_DESTINATION, NULL, &_inner_error_);
+		_tmp130_ = _tmp132_;
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
 			_g_object_unref0 (file);
 			goto __catch0_g_error;
 		}
-		_tmp125_ = g_data_output_stream_new ((GOutputStream*) _tmp122_);
-		dos = _tmp125_;
-		_tmp126_ = dos;
-		_tmp127_ = s;
-		g_data_output_stream_put_string (_tmp126_, _tmp127_, NULL, &_inner_error_);
+		_tmp133_ = g_data_output_stream_new ((GOutputStream*) _tmp130_);
+		dos = _tmp133_;
+		_tmp134_ = dos;
+		_tmp135_ = s;
+		g_data_output_stream_put_string (_tmp134_, _tmp135_, NULL, &_inner_error_);
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
 			_g_object_unref0 (dos);
-			_g_object_unref0 (_tmp122_);
+			_g_object_unref0 (_tmp130_);
 			_g_object_unref0 (file);
 			goto __catch0_g_error;
 		}
 		_g_object_unref0 (dos);
-		_g_object_unref0 (_tmp122_);
+		_g_object_unref0 (_tmp130_);
 		_g_object_unref0 (file);
 	}
 	goto __finally0;
 	__catch0_g_error:
 	{
 		GError* e = NULL;
-		FILE* _tmp128_ = NULL;
-		GError* _tmp129_ = NULL;
-		const gchar* _tmp130_ = NULL;
+		FILE* _tmp136_ = NULL;
+		GError* _tmp137_ = NULL;
+		const gchar* _tmp138_ = NULL;
 		e = _inner_error_;
 		_inner_error_ = NULL;
-		_tmp128_ = stderr;
-		_tmp129_ = e;
-		_tmp130_ = _tmp129_->message;
-		fprintf (_tmp128_, "%s\n", _tmp130_);
+		_tmp136_ = stderr;
+		_tmp137_ = e;
+		_tmp138_ = _tmp137_->message;
+		fprintf (_tmp136_, "%s\n", _tmp138_);
 		_g_error_free0 (e);
 	}
 	__finally0:
@@ -5340,7 +5381,7 @@ void cubo_genetico_cubo_cubo3x3_dibuja (CuboGeneticoCuboCubo3x3* self) {
 /**
  *Regresa el color segun el numero que le corresponde
  */
-static gchar* cubo_genetico_cubo_cubo3x3_color (CuboGeneticoCuboCubo3x3* self, gint c) {
+static gchar* cubo_genetico_agenetico_cubo3x3_color (CuboGeneticoAGeneticoCubo3x3* self, gint c) {
 	gchar* result = NULL;
 	gchar* ou = NULL;
 	gchar* _tmp0_ = NULL;
@@ -5409,7 +5450,7 @@ static gchar* cubo_genetico_cubo_cubo3x3_color (CuboGeneticoCuboCubo3x3* self, g
 /**
  *Dubuja linea
  */
-static gchar* cubo_genetico_cubo_cubo3x3_cuadro (CuboGeneticoCuboCubo3x3* self, gint x, gint y, gint c) {
+static gchar* cubo_genetico_agenetico_cubo3x3_cuadro (CuboGeneticoAGeneticoCubo3x3* self, gint x, gint y, gint c) {
 	gchar* result = NULL;
 	gint _tmp0_ = 0;
 	gint _tmp1_ = 0;
@@ -5440,7 +5481,7 @@ static gchar* cubo_genetico_cubo_cubo3x3_cuadro (CuboGeneticoCuboCubo3x3* self, 
 	_tmp1_ = y;
 	y = _tmp1_ * 100;
 	_tmp2_ = c;
-	_tmp3_ = cubo_genetico_cubo_cubo3x3_color (self, _tmp2_);
+	_tmp3_ = cubo_genetico_agenetico_cubo3x3_color (self, _tmp2_);
 	cl = _tmp3_;
 	_tmp4_ = x;
 	_tmp5_ = g_strdup_printf ("%i", _tmp4_);
@@ -5473,36 +5514,36 @@ static gchar* cubo_genetico_cubo_cubo3x3_cuadro (CuboGeneticoCuboCubo3x3* self, 
 }
 
 
-static void cubo_genetico_cubo_cubo3x3_class_init (CuboGeneticoCuboCubo3x3Class * klass) {
-	cubo_genetico_cubo_cubo3x3_parent_class = g_type_class_peek_parent (klass);
-	g_type_class_add_private (klass, sizeof (CuboGeneticoCuboCubo3x3Private));
-	G_OBJECT_CLASS (klass)->finalize = cubo_genetico_cubo_cubo3x3_finalize;
+static void cubo_genetico_agenetico_cubo3x3_class_init (CuboGeneticoAGeneticoCubo3x3Class * klass) {
+	cubo_genetico_agenetico_cubo3x3_parent_class = g_type_class_peek_parent (klass);
+	g_type_class_add_private (klass, sizeof (CuboGeneticoAGeneticoCubo3x3Private));
+	G_OBJECT_CLASS (klass)->finalize = cubo_genetico_agenetico_cubo3x3_finalize;
 }
 
 
-static void cubo_genetico_cubo_cubo3x3_instance_init (CuboGeneticoCuboCubo3x3 * self) {
-	self->priv = CUBO_GENETICO_CUBO_CUBO3X3_GET_PRIVATE (self);
+static void cubo_genetico_agenetico_cubo3x3_instance_init (CuboGeneticoAGeneticoCubo3x3 * self) {
+	self->priv = CUBO_GENETICO_AGENETICO_CUBO3X3_GET_PRIVATE (self);
 }
 
 
-static void cubo_genetico_cubo_cubo3x3_finalize (GObject* obj) {
-	CuboGeneticoCuboCubo3x3 * self;
-	self = G_TYPE_CHECK_INSTANCE_CAST (obj, CUBO_GENETICO_CUBO_TYPE_CUBO3X3, CuboGeneticoCuboCubo3x3);
+static void cubo_genetico_agenetico_cubo3x3_finalize (GObject* obj) {
+	CuboGeneticoAGeneticoCubo3x3 * self;
+	self = G_TYPE_CHECK_INSTANCE_CAST (obj, CUBO_GENETICO_AGENETICO_TYPE_CUBO3X3, CuboGeneticoAGeneticoCubo3x3);
 	self->priv->inicial = (g_free (self->priv->inicial), NULL);
 	self->priv->actual = (g_free (self->priv->actual), NULL);
-	G_OBJECT_CLASS (cubo_genetico_cubo_cubo3x3_parent_class)->finalize (obj);
+	G_OBJECT_CLASS (cubo_genetico_agenetico_cubo3x3_parent_class)->finalize (obj);
 }
 
 
-GType cubo_genetico_cubo_cubo3x3_get_type (void) {
-	static volatile gsize cubo_genetico_cubo_cubo3x3_type_id__volatile = 0;
-	if (g_once_init_enter (&cubo_genetico_cubo_cubo3x3_type_id__volatile)) {
-		static const GTypeInfo g_define_type_info = { sizeof (CuboGeneticoCuboCubo3x3Class), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) cubo_genetico_cubo_cubo3x3_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (CuboGeneticoCuboCubo3x3), 0, (GInstanceInitFunc) cubo_genetico_cubo_cubo3x3_instance_init, NULL };
-		GType cubo_genetico_cubo_cubo3x3_type_id;
-		cubo_genetico_cubo_cubo3x3_type_id = g_type_register_static (G_TYPE_OBJECT, "CuboGeneticoCuboCubo3x3", &g_define_type_info, 0);
-		g_once_init_leave (&cubo_genetico_cubo_cubo3x3_type_id__volatile, cubo_genetico_cubo_cubo3x3_type_id);
+GType cubo_genetico_agenetico_cubo3x3_get_type (void) {
+	static volatile gsize cubo_genetico_agenetico_cubo3x3_type_id__volatile = 0;
+	if (g_once_init_enter (&cubo_genetico_agenetico_cubo3x3_type_id__volatile)) {
+		static const GTypeInfo g_define_type_info = { sizeof (CuboGeneticoAGeneticoCubo3x3Class), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) cubo_genetico_agenetico_cubo3x3_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (CuboGeneticoAGeneticoCubo3x3), 0, (GInstanceInitFunc) cubo_genetico_agenetico_cubo3x3_instance_init, NULL };
+		GType cubo_genetico_agenetico_cubo3x3_type_id;
+		cubo_genetico_agenetico_cubo3x3_type_id = g_type_register_static (G_TYPE_OBJECT, "CuboGeneticoAGeneticoCubo3x3", &g_define_type_info, 0);
+		g_once_init_leave (&cubo_genetico_agenetico_cubo3x3_type_id__volatile, cubo_genetico_agenetico_cubo3x3_type_id);
 	}
-	return cubo_genetico_cubo_cubo3x3_type_id__volatile;
+	return cubo_genetico_agenetico_cubo3x3_type_id__volatile;
 }
 
 

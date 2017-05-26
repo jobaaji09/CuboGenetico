@@ -5,7 +5,7 @@
  *    Jonathan Barragan <jonathan.barragan.j@ciencias.unam.mx>
  */
 
-namespace CuboGenetico.Codificacion{
+namespace CuboGenetico{
 	public class FenoGeno : GLib.Object{
 		//semilla
 		private GLib.Rand rand;

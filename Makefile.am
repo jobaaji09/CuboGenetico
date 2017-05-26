@@ -27,86 +27,44 @@ lib_libtest_la_LIBADD = 	\
 	@GEE_LIBS@		\
 	@GIO_LIBS@		
 
-#libcubo
-noinst_LTLIBRARIES += lib/libcubo.la
+#libagenetico
+noinst_LTLIBRARIES += lib/libagenetico.la
 
-lib_libcubo_la_SOURCES =lib/cubo/Cubo3x3.vala	
+lib_libagenetico_la_SOURCES =			\
+		lib/agenetico/Cubo3x3.vala	\
+		lib/agenetico/Individuo.vala	
 
-lib_libcubo_la_VALAFLAGS =		\
+lib_libagenetico_la_VALAFLAGS =		\
 	$(COMMON_VALAFLAGS)		\
 	@GEE_PACKAGES@			\
 	@GIO_PACKAGES@			\
-	--header lib/cubo/cubo.h	\
-	--vapi vapi/cubo.vapi
+	--header lib/agenetico/agenetico.h	\
+	--vapi vapi/agenetico.vapi
 
-lib_libcubo_la_CFLAGS =		\
+lib_libagenetico_la_CFLAGS =	\
 	@GEE_CFLAGS@		\
 	@GIO_CFLAGS@		\
 	-w
 
-lib_libcubo_la_LIBADD =		\
+lib_libagenetico_la_LIBADD =	\
 	@GEE_LIBS@		\
 	@GIO_LIBS@	
 
-#libcodificacion
-noinst_LTLIBRARIES += lib/libcodificacion.la
-
-lib_libcodificacion_la_SOURCES =lib/codificacion/FenoGeno.vala	
-
-lib_libcodificacion_la_VALAFLAGS =			\
-	$(COMMON_VALAFLAGS)				\
-	@GEE_PACKAGES@					\
-	@GIO_PACKAGES@					\
-	--header lib/codificacion/codificacion.h	\
-	--vapi vapi/codificacion.vapi
-
-lib_libcodificacion_la_CFLAGS =	\
-	@GEE_CFLAGS@		\
-	@GIO_CFLAGS@		\
-	-w
-
-lib_libcodificacion_la_LIBADD =	\
-	@GEE_LIBS@		\
-	@GIO_LIBS@	
-
-#libfuncion
-#noinst_LTLIBRARIES += lib/libfuncion.la
-
-#lib_libfuncion_la_SOURCES =		\
-#	lib/funcion/FFitness.vala	
-#	vapi/cubo.vapi			
-
-#lib_libfuncion_la_VALAFLAGS =		\
-#	$(COMMON_VALAFLAGS)		\
-#	@GEE_PACKAGES@			\
-#	@GIO_PACKAGES@			\
-#	--header lib/funcion/funcion.h	\
-#	--vapi vapi/funcion.vapi	
-
-#lib_libfuncion_la_CFLAGS =	\
-#	@GEE_CFLAGS@		\
-#	@GIO_CFLAGS@		\
-#	-I$(srcdir)/lib/cubo	\
-#	-w
-
-#lib_libfuncion_la_LIBADD =	\
-#	lib/libcubo.la		\
-#	@GEE_LIBS@		\
-#	@GIO_LIBS@	
 
 
 #CuboGenetico
 bin_PROGRAMS = CuboGenetico
 CUBOGENESOURCES =		\
-	src/mx/unam/ciencias/hoc/CuboGenetico.vala
+	src/mx/unam/ciencias/hoc/CuboGenetico.vala \
+	src/mx/unam/ciencias/hoc/FenoGeno.vala 	   \
+	src/mx/unam/ciencias/hoc/FFitness.vala 	   \
+	src/mx/unam/ciencias/hoc/Poblacion.vala	\
+	src/mx/unam/ciencias/hoc/Criador.vala
 
 CuboGenetico_SOURCES = 		\
 	$(CUBOGENESOURCES)	\
 	src/mx/unam/ciencias/hoc/CuboGenetico-main.vala	\
-	src/mx/unam/ciencias/hoc/FFitness.vala		\
-	vapi/cubo.vapi		\
-	vapi/codificacion.vapi	
-#	vapi/funcion.vapi	
+	vapi/agenetico.vapi	
 
 CuboGenetico_VALAFLAGS =	\
 	--target-glib=2.38	\
@@ -116,15 +74,13 @@ CuboGenetico_VALAFLAGS =	\
 CuboGenetico_CFLAGS =			\
 	@GEE_CFLAGS@			\
 	@GIO_CFLAGS@			\
-	-I$(srcdir)/lib/cubo		\
-	-I$(srcdir)/lib/codificacion	\
+	-I$(srcdir)/lib/agenetico	\
 	-w
 
 CuboGenetico_LDADD =		\
 	@GEE_LIBS@		\
 	@GIO_LIBS@		\
-	lib/libcubo.la		\
-	lib/libcodificacion.la
+	lib/libagenetico.la		
 
 
 # tests
@@ -138,8 +94,7 @@ test_test_cubogenetico_SOURCES =			\
 	$(TESTSOURCES)				\
 	test/test-cubogenetico-main.vala		\
 	vapi/test.vapi				\
-	vapi/cubo.vapi				\
-	vapi/codificacion.vapi
+	vapi/agenetico.vapi
 
 test_test_cubogenetico_VALAFLAGS =			\
 	$(COMMON_VALAFLAGS)			\
@@ -151,16 +106,14 @@ test_test_cubogenetico_CFLAGS =		\
 	@GEE_CFLAGS@			\
 	@GIO_CFLAGS@			\
 	-I$(srcdir)/lib/test		\
-	-I$(srcdir)/lib/cubo		\
-	-I$(srcdir)/lib/codificacion
+	-I$(srcdir)/lib/agenetico	\
 	-w
 
 test_test_cubogenetico_LDADD =	\
 	@GEE_LIBS@		\
 	@GIO_LIBS@		\
 	lib/libtest.la		\
-	lib/libcubo.la		\
-	lib/libcodificacion.la	\
+	lib/libagenetico.la	\
 	-lm
 
 check_PROGRAMS = $(TESTS)

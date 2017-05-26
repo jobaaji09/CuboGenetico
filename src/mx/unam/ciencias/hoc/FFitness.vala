@@ -1,14 +1,14 @@
 namespace CuboGenetico{
 	public class FFitness : GLib.Object{
 		
-		private Cubo.Cubo3x3 cubo;
+		private AGenetico.Cubo3x3 cubo;
 
-		public FFitness(Cubo.Cubo3x3 c){
-			this.cubo = c;
+		public FFitness(AGenetico.Cubo3x3 cubo){
+			this.cubo=cubo;
 		}
 
-		public double evaluacion(int[] feno){
-			this.cubo.giraCaras(feno);
+		public double evaluacion(int[] geno){
+			this.cubo.giraCaras(geno);
 			double fitness = 0.0;
 			for(int i=0;i<6;i++){
 				switch(i){
@@ -33,6 +33,8 @@ namespace CuboGenetico{
 					
 				}
 			}
+			this.cubo.dibuja(fitness/6+geno.length);
+			this.cubo.reset();
 			return fitness/6;
 		}
 

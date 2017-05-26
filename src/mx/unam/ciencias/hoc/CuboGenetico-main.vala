@@ -50,6 +50,12 @@ namespace CuboGenetico{
 				for(int i=0;i<poblacion.getTam();i++){
 					stdout.printf("%s\n",poblacion.getIndividuo(i).to_string());
 				}
+				stdout.printf("Seleccionados\n");
+				var sr = new  SRuleta(1);
+				var ps = sr.selecciona(poblacion);
+				foreach(AGenetico.Individuo i in ps){
+					stdout.printf("%s\n",i.to_string());
+				}
 			}else{
 				stdout.printf("Falta el archov de entrada\n");
 			}

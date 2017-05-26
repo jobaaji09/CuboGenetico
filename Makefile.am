@@ -54,12 +54,14 @@ lib_libagenetico_la_LIBADD =	\
 
 #CuboGenetico
 bin_PROGRAMS = CuboGenetico
-CUBOGENESOURCES =		\
-	src/mx/unam/ciencias/hoc/CuboGenetico.vala \
-	src/mx/unam/ciencias/hoc/FenoGeno.vala 	   \
-	src/mx/unam/ciencias/hoc/FFitness.vala 	   \
-	src/mx/unam/ciencias/hoc/Poblacion.vala	\
-	src/mx/unam/ciencias/hoc/Criador.vala
+CUBOGENESOURCES =					\
+	src/mx/unam/ciencias/hoc/CuboGenetico.vala 	\
+	src/mx/unam/ciencias/hoc/FenoGeno.vala 	   	\
+	src/mx/unam/ciencias/hoc/FFitness.vala 	   	\
+	src/mx/unam/ciencias/hoc/Poblacion.vala		\
+	src/mx/unam/ciencias/hoc/Criador.vala		\
+	src/mx/unam/ciencias/hoc/CruzaUP.vala		\
+	src/mx/unam/ciencias/hoc/SRuleta.vala
 
 CuboGenetico_SOURCES = 		\
 	$(CUBOGENESOURCES)	\

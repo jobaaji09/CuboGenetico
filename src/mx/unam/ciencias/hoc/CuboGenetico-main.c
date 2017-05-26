@@ -64,6 +64,18 @@ typedef struct _CuboGeneticoCriadorClass CuboGeneticoCriadorClass;
 
 typedef struct _CuboGeneticoPoblacion CuboGeneticoPoblacion;
 typedef struct _CuboGeneticoPoblacionClass CuboGeneticoPoblacionClass;
+
+#define CUBO_GENETICO_TYPE_SRULETA (cubo_genetico_sruleta_get_type ())
+#define CUBO_GENETICO_SRULETA(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_SRULETA, CuboGeneticoSRuleta))
+#define CUBO_GENETICO_SRULETA_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_SRULETA, CuboGeneticoSRuletaClass))
+#define CUBO_GENETICO_IS_SRULETA(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_SRULETA))
+#define CUBO_GENETICO_IS_SRULETA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_SRULETA))
+#define CUBO_GENETICO_SRULETA_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_SRULETA, CuboGeneticoSRuletaClass))
+
+typedef struct _CuboGeneticoSRuleta CuboGeneticoSRuleta;
+typedef struct _CuboGeneticoSRuletaClass CuboGeneticoSRuletaClass;
+#define __g_list_free__g_object_unref0_0(var) ((var == NULL) ? NULL : (var = (_g_list_free__g_object_unref0_ (var), NULL)))
+#define _cubo_genetico_sruleta_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_sruleta_unref (var), NULL)))
 #define _cubo_genetico_poblacion_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_poblacion_unref (var), NULL)))
 #define _cubo_genetico_criador_unref0(var) ((var == NULL) ? NULL : (var = (cubo_genetico_criador_unref (var), NULL)))
 
@@ -110,6 +122,18 @@ GType cubo_genetico_poblacion_get_type (void) G_GNUC_CONST;
 CuboGeneticoPoblacion* cubo_genetico_criador_poblacionNuevaR (CuboGeneticoCriador* self, gint tam);
 gint cubo_genetico_poblacion_getTam (CuboGeneticoPoblacion* self);
 CuboGeneticoAGeneticoIndividuo* cubo_genetico_poblacion_getIndividuo (CuboGeneticoPoblacion* self, gint i);
+gpointer cubo_genetico_sruleta_ref (gpointer instance);
+void cubo_genetico_sruleta_unref (gpointer instance);
+GParamSpec* cubo_genetico_param_spec_sruleta (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags);
+void cubo_genetico_value_set_sruleta (GValue* value, gpointer v_object);
+void cubo_genetico_value_take_sruleta (GValue* value, gpointer v_object);
+gpointer cubo_genetico_value_get_sruleta (const GValue* value);
+GType cubo_genetico_sruleta_get_type (void) G_GNUC_CONST;
+CuboGeneticoSRuleta* cubo_genetico_sruleta_new (gint semilla);
+CuboGeneticoSRuleta* cubo_genetico_sruleta_construct (GType object_type, gint semilla);
+GList* cubo_genetico_sruleta_selecciona (CuboGeneticoSRuleta* self, CuboGeneticoPoblacion* p);
+static void _g_object_unref0_ (gpointer var);
+static void _g_list_free__g_object_unref0_ (GList* self);
 CuboGeneticoMain* cubo_genetico_main_new (void);
 CuboGeneticoMain* cubo_genetico_main_construct (GType object_type);
 static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func);
@@ -309,6 +333,22 @@ gint* cubo_genetico_main_archivo (const gchar* arc, int* result_length1, int* re
 }
 
 
+static gpointer _g_object_ref0 (gpointer self) {
+	return self ? g_object_ref (self) : NULL;
+}
+
+
+static void _g_object_unref0_ (gpointer var) {
+	(var == NULL) ? NULL : (var = (g_object_unref (var), NULL));
+}
+
+
+static void _g_list_free__g_object_unref0_ (GList* self) {
+	g_list_foreach (self, (GFunc) _g_object_unref0_, NULL);
+	g_list_free (self);
+}
+
+
 gint cubo_genetico_main_main (gchar** args, int args_length1) {
 	gint result = 0;
 	gchar** _tmp0_ = NULL;
@@ -342,6 +382,14 @@ gint cubo_genetico_main_main (gchar** args, int args_length1) {
 		CuboGeneticoPoblacion* poblacion = NULL;
 		CuboGeneticoCriador* _tmp14_ = NULL;
 		CuboGeneticoPoblacion* _tmp15_ = NULL;
+		FILE* _tmp28_ = NULL;
+		CuboGeneticoSRuleta* sr = NULL;
+		CuboGeneticoSRuleta* _tmp29_ = NULL;
+		GList* ps = NULL;
+		CuboGeneticoSRuleta* _tmp30_ = NULL;
+		CuboGeneticoPoblacion* _tmp31_ = NULL;
+		GList* _tmp32_ = NULL;
+		GList* _tmp33_ = NULL;
 		_tmp1_ = args;
 		_tmp1__length1 = args_length1;
 		_tmp2_ = _tmp1_[1];
@@ -408,6 +456,41 @@ gint cubo_genetico_main_main (gchar** args, int args_length1) {
 				}
 			}
 		}
+		_tmp28_ = stdout;
+		fprintf (_tmp28_, "Seleccionados\n");
+		_tmp29_ = cubo_genetico_sruleta_new (1);
+		sr = _tmp29_;
+		_tmp30_ = sr;
+		_tmp31_ = poblacion;
+		_tmp32_ = cubo_genetico_sruleta_selecciona (_tmp30_, _tmp31_);
+		ps = _tmp32_;
+		_tmp33_ = ps;
+		{
+			GList* i_collection = NULL;
+			GList* i_it = NULL;
+			i_collection = _tmp33_;
+			for (i_it = i_collection; i_it != NULL; i_it = i_it->next) {
+				CuboGeneticoAGeneticoIndividuo* _tmp34_ = NULL;
+				CuboGeneticoAGeneticoIndividuo* i = NULL;
+				_tmp34_ = _g_object_ref0 ((CuboGeneticoAGeneticoIndividuo*) i_it->data);
+				i = _tmp34_;
+				{
+					FILE* _tmp35_ = NULL;
+					CuboGeneticoAGeneticoIndividuo* _tmp36_ = NULL;
+					gchar* _tmp37_ = NULL;
+					gchar* _tmp38_ = NULL;
+					_tmp35_ = stdout;
+					_tmp36_ = i;
+					_tmp37_ = cubo_genetico_agenetico_individuo_to_string (_tmp36_);
+					_tmp38_ = _tmp37_;
+					fprintf (_tmp35_, "%s\n", _tmp38_);
+					_g_free0 (_tmp38_);
+					_g_object_unref0 (i);
+				}
+			}
+		}
+		__g_list_free__g_object_unref0_0 (ps);
+		_cubo_genetico_sruleta_unref0 (sr);
 		_cubo_genetico_poblacion_unref0 (poblacion);
 		_cubo_genetico_criador_unref0 (criador);
 		_g_object_unref0 (fenogeno);
@@ -415,9 +498,9 @@ gint cubo_genetico_main_main (gchar** args, int args_length1) {
 		_g_object_unref0 (cubo);
 		c = (g_free (c), NULL);
 	} else {
-		FILE* _tmp28_ = NULL;
-		_tmp28_ = stdout;
-		fprintf (_tmp28_, "Falta el archov de entrada\n");
+		FILE* _tmp39_ = NULL;
+		_tmp39_ = stdout;
+		fprintf (_tmp39_, "Falta el archov de entrada\n");
 	}
 	result = 0;
 	return result;

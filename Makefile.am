@@ -64,7 +64,8 @@ CUBOGENESOURCES =					\
 	src/mx/unam/ciencias/hoc/CruzaUP.vala		\
 	src/mx/unam/ciencias/hoc/STorneo.vala		\
 	src/mx/unam/ciencias/hoc/Individuo.vala		\
-	src/mx/unam/ciencias/hoc/Mutacion.vala
+	src/mx/unam/ciencias/hoc/Mutacion.vala		\
+	src/mx/unam/ciencias/hoc/Corrector.vala
 
 CuboGenetico_SOURCES = 		\
 	$(CUBOGENESOURCES)	\

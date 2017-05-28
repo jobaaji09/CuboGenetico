@@ -35,7 +35,9 @@ namespace CuboGenetico{
 			}
 			//this.cubo.dibuja(fitness/6+geno.genotipo.length);
 			this.cubo.reset();
-			return fitness/6;
+			//double g = feno.fenotipo.length/10.0;
+			//stdout.printf("%2.3f\n",(fitness/6)*g);
+			return (fitness/6);
 		}
 
 		public double caraFitness(int centro,int x,int y){

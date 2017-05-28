@@ -1,0 +1,12 @@
+namespace CuboGenetico{
+	public class Corrector:GLib.Object{
+
+		private GLib.Rand rand;
+		
+		public Corrector(int semilla){
+			this.rand = new GLib.Rand();
+			this.rand.set_seed(semilla);
+		}
+	}
+
+}

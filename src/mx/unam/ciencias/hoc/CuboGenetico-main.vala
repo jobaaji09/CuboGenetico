@@ -43,24 +43,39 @@ namespace CuboGenetico{
 				var c = archivo(args[1]);
 				var cubo = new AGenetico.Cubo3x3(c);
 				cubo.dibuja(0.0);
-				
-				var ffitness = new FFitness(cubo);
-				var fenogeno = new FenoGeno(37);
-				var sr = new  STorneo(54);
-				var cruza = new CruzaUP(89,0.2);
-				var mutacion = new Mutacion(40 , 0.9);
-				var cubogene = new CuboGenetico(ffitness,
-												fenogeno,
-												sr,
-												cruza,
-												mutacion,
-												13,
-												200);
-				cubogene.run();
-				var mg = cubogene.mejor;
-				stdout.printf("Mejor de la generacion :\n%s",mg.to_string());
-				cubo.giraCaras(mg.fenotipo.fenotipo);
-				cubo.dibuja(mg.fitness);
+
+			    for(int i =0; i<200;i++){
+					var rand = new GLib.Rand();
+					rand.set_seed(i);
+					int fg = (int)rand.int_range(0,200);
+					int st = (int)rand.int_range (0,200);
+					int cr = (int)rand.int_range (0,200);
+					int mt = (int)rand.int_range (0,200);
+					int cd = (int)rand.int_range (0,200);
+					int co = (int)rand.int_range (0,200);
+					var ffitness = new FFitness(cubo);
+					var fenogeno = new FenoGeno(fg);
+					var corrector = new Corrector(co);
+					var storneo = new  STorneo(st);
+					var cruza = new CruzaUP(cr,0.5);
+					var mutacion = new Mutacion(mt , 0.5);
+					var cubogene = new CuboGenetico(ffitness,
+													fenogeno,
+													corrector,
+													storneo,
+													cruza,
+													mutacion,
+													cd,
+													500);
+					cubogene.run();
+					var mg = cubogene.mejor;
+					stdout.printf("Mejor de la generacion :\n%s",mg.to_string());
+					stdout.printf("sm: %d,fg: %d,st: %d,cr: %d,mt: %d,cd: %d\n",i,fg,st,cr,mt,cd);
+					//stdout.printf("sm: %d\n",i);
+					cubo.giraCaras(mg.fenotipo.fenotipo);
+					cubo.dibuja(mg.fitness+i);
+					cubo.reset();
+				}
 			}else{
 				stdout.printf("Falta el archov de entrada\n");
 			}

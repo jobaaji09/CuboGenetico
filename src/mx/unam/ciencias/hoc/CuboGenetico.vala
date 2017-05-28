@@ -8,12 +8,13 @@ namespace CuboGenetico{
 		private Individuo mejorg;
 		public CuboGenetico(FFitness ffitness,
 							FenoGeno fenogeno,
+							Corrector corrector,
 							STorneo sr,
 							CruzaUP cruza,
 							Mutacion mutacion,
 							int semilla,
 							int tamp){
-			this.criador = new Criador(fenogeno,ffitness,semilla);
+			this.criador = new Criador(fenogeno,ffitness,corrector,semilla);
 			this.sr = sr;
 			this.cruza = cruza;
 			this.mutacion = mutacion;
@@ -26,7 +27,7 @@ namespace CuboGenetico{
 		public Poblacion iteracion(Poblacion actual){
 			Poblacion pnueva = new Poblacion();
 			pnueva.generacion = actual.generacion +1;
-			pnueva.agregaIndividuo(actual.mejorInd);
+			//pnueva.agregaIndividuo(actual.mejorInd);
 			while (pnueva.getTam() < actual.getTam()){
 				//seleccion
 				var select = this.sr.selecciona(actual);

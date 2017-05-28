@@ -40,6 +40,16 @@ typedef struct _CuboGeneticoFenoGenoClass CuboGeneticoFenoGenoClass;
 
 typedef struct _CuboGeneticoFFitness CuboGeneticoFFitness;
 typedef struct _CuboGeneticoFFitnessClass CuboGeneticoFFitnessClass;
+
+#define CUBO_GENETICO_TYPE_CORRECTOR (cubo_genetico_corrector_get_type ())
+#define CUBO_GENETICO_CORRECTOR(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CUBO_GENETICO_TYPE_CORRECTOR, CuboGeneticoCorrector))
+#define CUBO_GENETICO_CORRECTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CUBO_GENETICO_TYPE_CORRECTOR, CuboGeneticoCorrectorClass))
+#define CUBO_GENETICO_IS_CORRECTOR(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CUBO_GENETICO_TYPE_CORRECTOR))
+#define CUBO_GENETICO_IS_CORRECTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CUBO_GENETICO_TYPE_CORRECTOR))
+#define CUBO_GENETICO_CORRECTOR_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CUBO_GENETICO_TYPE_CORRECTOR, CuboGeneticoCorrectorClass))
+
+typedef struct _CuboGeneticoCorrector CuboGeneticoCorrector;
+typedef struct _CuboGeneticoCorrectorClass CuboGeneticoCorrectorClass;
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
 #define _g_rand_free0(var) ((var == NULL) ? NULL : (var = (g_rand_free (var), NULL)))
 
@@ -81,6 +91,7 @@ struct _CuboGeneticoCriadorClass {
 struct _CuboGeneticoCriadorPrivate {
 	CuboGeneticoFenoGeno* fenogeno;
 	CuboGeneticoFFitness* fitness;
+	CuboGeneticoCorrector* corrector;
 	GRand* rand;
 };
 
@@ -100,14 +111,16 @@ gpointer cubo_genetico_value_get_criador (const GValue* value);
 GType cubo_genetico_criador_get_type (void) G_GNUC_CONST;
 GType cubo_genetico_feno_geno_get_type (void) G_GNUC_CONST;
 GType cubo_genetico_ffitness_get_type (void) G_GNUC_CONST;
+GType cubo_genetico_corrector_get_type (void) G_GNUC_CONST;
 #define CUBO_GENETICO_CRIADOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), CUBO_GENETICO_TYPE_CRIADOR, CuboGeneticoCriadorPrivate))
 enum  {
 	CUBO_GENETICO_CRIADOR_DUMMY_PROPERTY
 };
-CuboGeneticoCriador* cubo_genetico_criador_new (CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, gint semilla);
-CuboGeneticoCriador* cubo_genetico_criador_construct (GType object_type, CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, gint semilla);
+CuboGeneticoCriador* cubo_genetico_criador_new (CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, CuboGeneticoCorrector* corrector, gint semilla);
+CuboGeneticoCriador* cubo_genetico_criador_construct (GType object_type, CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, CuboGeneticoCorrector* corrector, gint semilla);
 GType cubo_genetico_individuo_get_type (void) G_GNUC_CONST;
 CuboGeneticoIndividuo* cubo_genetico_criador_individuoNuevo (CuboGeneticoCriador* self, CuboGeneticoAGeneticoGenotipo* geno);
+CuboGeneticoAGeneticoGenotipo* cubo_genetico_corrector_reparaG (CuboGeneticoCorrector* self, CuboGeneticoAGeneticoGenotipo* gene);
 CuboGeneticoAGeneticoFenotipo* cubo_genetico_feno_geno_decodifica (CuboGeneticoFenoGeno* self, CuboGeneticoAGeneticoGenotipo* geno);
 CuboGeneticoIndividuo* cubo_genetico_individuo_new (void);
 CuboGeneticoIndividuo* cubo_genetico_individuo_construct (GType object_type);
@@ -136,17 +149,20 @@ static gpointer _g_object_ref0 (gpointer self) {
 }
 
 
-CuboGeneticoCriador* cubo_genetico_criador_construct (GType object_type, CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, gint semilla) {
+CuboGeneticoCriador* cubo_genetico_criador_construct (GType object_type, CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, CuboGeneticoCorrector* corrector, gint semilla) {
 	CuboGeneticoCriador* self = NULL;
 	CuboGeneticoFenoGeno* _tmp0_ = NULL;
 	CuboGeneticoFenoGeno* _tmp1_ = NULL;
 	CuboGeneticoFFitness* _tmp2_ = NULL;
 	CuboGeneticoFFitness* _tmp3_ = NULL;
-	GRand* _tmp4_ = NULL;
-	GRand* _tmp5_ = NULL;
-	gint _tmp6_ = 0;
+	CuboGeneticoCorrector* _tmp4_ = NULL;
+	CuboGeneticoCorrector* _tmp5_ = NULL;
+	GRand* _tmp6_ = NULL;
+	GRand* _tmp7_ = NULL;
+	gint _tmp8_ = 0;
 	g_return_val_if_fail (fenogeno != NULL, NULL);
 	g_return_val_if_fail (fitness != NULL, NULL);
+	g_return_val_if_fail (corrector != NULL, NULL);
 	self = (CuboGeneticoCriador*) g_type_create_instance (object_type);
 	_tmp0_ = fenogeno;
 	_tmp1_ = _g_object_ref0 (_tmp0_);
@@ -156,48 +172,57 @@ CuboGeneticoCriador* cubo_genetico_criador_construct (GType object_type, CuboGen
 	_tmp3_ = _g_object_ref0 (_tmp2_);
 	_g_object_unref0 (self->priv->fitness);
 	self->priv->fitness = _tmp3_;
-	_tmp4_ = g_rand_new ();
+	_tmp4_ = corrector;
+	_tmp5_ = _g_object_ref0 (_tmp4_);
+	_g_object_unref0 (self->priv->corrector);
+	self->priv->corrector = _tmp5_;
+	_tmp6_ = g_rand_new ();
 	_g_rand_free0 (self->priv->rand);
-	self->priv->rand = _tmp4_;
-	_tmp5_ = self->priv->rand;
-	_tmp6_ = semilla;
-	g_rand_set_seed (_tmp5_, (guint32) _tmp6_);
+	self->priv->rand = _tmp6_;
+	_tmp7_ = self->priv->rand;
+	_tmp8_ = semilla;
+	g_rand_set_seed (_tmp7_, (guint32) _tmp8_);
 	return self;
 }
 
 
-CuboGeneticoCriador* cubo_genetico_criador_new (CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, gint semilla) {
-	return cubo_genetico_criador_construct (CUBO_GENETICO_TYPE_CRIADOR, fenogeno, fitness, semilla);
+CuboGeneticoCriador* cubo_genetico_criador_new (CuboGeneticoFenoGeno* fenogeno, CuboGeneticoFFitness* fitness, CuboGeneticoCorrector* corrector, gint semilla) {
+	return cubo_genetico_criador_construct (CUBO_GENETICO_TYPE_CRIADOR, fenogeno, fitness, corrector, semilla);
 }
 
 
 CuboGeneticoIndividuo* cubo_genetico_criador_individuoNuevo (CuboGeneticoCriador* self, CuboGeneticoAGeneticoGenotipo* geno) {
 	CuboGeneticoIndividuo* result = NULL;
-	CuboGeneticoAGeneticoFenotipo* feno = NULL;
-	CuboGeneticoFenoGeno* _tmp0_ = NULL;
+	CuboGeneticoAGeneticoGenotipo* ngeno = NULL;
+	CuboGeneticoCorrector* _tmp0_ = NULL;
 	CuboGeneticoAGeneticoGenotipo* _tmp1_ = NULL;
-	CuboGeneticoAGeneticoFenotipo* _tmp2_ = NULL;
+	CuboGeneticoAGeneticoGenotipo* _tmp2_ = NULL;
+	CuboGeneticoAGeneticoFenotipo* feno = NULL;
+	CuboGeneticoFenoGeno* _tmp3_ = NULL;
+	CuboGeneticoAGeneticoFenotipo* _tmp4_ = NULL;
 	CuboGeneticoIndividuo* indi = NULL;
-	CuboGeneticoIndividuo* _tmp3_ = NULL;
-	CuboGeneticoAGeneticoGenotipo* _tmp4_ = NULL;
-	CuboGeneticoFFitness* _tmp5_ = NULL;
-	gdouble _tmp6_ = 0.0;
+	CuboGeneticoIndividuo* _tmp5_ = NULL;
+	CuboGeneticoFFitness* _tmp6_ = NULL;
+	gdouble _tmp7_ = 0.0;
 	g_return_val_if_fail (self != NULL, NULL);
 	g_return_val_if_fail (geno != NULL, NULL);
-	_tmp0_ = self->priv->fenogeno;
+	_tmp0_ = self->priv->corrector;
 	_tmp1_ = geno;
-	_tmp2_ = cubo_genetico_feno_geno_decodifica (_tmp0_, _tmp1_);
-	feno = _tmp2_;
-	_tmp3_ = cubo_genetico_individuo_new ();
-	indi = _tmp3_;
-	_tmp4_ = geno;
-	cubo_genetico_individuo_set_genotipo (indi, _tmp4_);
+	_tmp2_ = cubo_genetico_corrector_reparaG (_tmp0_, _tmp1_);
+	ngeno = _tmp2_;
+	_tmp3_ = self->priv->fenogeno;
+	_tmp4_ = cubo_genetico_feno_geno_decodifica (_tmp3_, ngeno);
+	feno = _tmp4_;
+	_tmp5_ = cubo_genetico_individuo_new ();
+	indi = _tmp5_;
+	cubo_genetico_individuo_set_genotipo (indi, ngeno);
 	cubo_genetico_individuo_set_fenotipo (indi, feno);
-	_tmp5_ = self->priv->fitness;
-	_tmp6_ = cubo_genetico_ffitness_evaluacion (_tmp5_, feno);
-	cubo_genetico_individuo_set_fitness (indi, _tmp6_);
+	_tmp6_ = self->priv->fitness;
+	_tmp7_ = cubo_genetico_ffitness_evaluacion (_tmp6_, feno);
+	cubo_genetico_individuo_set_fitness (indi, _tmp7_);
 	result = indi;
 	_cubo_genetico_agenetico_fenotipo_unref0 (feno);
+	_cubo_genetico_agenetico_genotipo_unref0 (ngeno);
 	return result;
 }
 
@@ -397,6 +422,7 @@ static void cubo_genetico_criador_finalize (CuboGeneticoCriador* obj) {
 	g_signal_handlers_destroy (self);
 	_g_object_unref0 (self->priv->fenogeno);
 	_g_object_unref0 (self->priv->fitness);
+	_g_object_unref0 (self->priv->corrector);
 	_g_rand_free0 (self->priv->rand);
 }
 

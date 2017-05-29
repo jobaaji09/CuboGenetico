@@ -179,15 +179,15 @@ CuboGeneticoPoblacion* cubo_genetico_poblacion_new (void);
 CuboGeneticoPoblacion* cubo_genetico_poblacion_construct (GType object_type);
 gint cubo_genetico_poblacion_get_generacion (CuboGeneticoPoblacion* self);
 void cubo_genetico_poblacion_set_generacion (CuboGeneticoPoblacion* self, gint value);
+void cubo_genetico_poblacion_agregaIndividuo (CuboGeneticoPoblacion* self, CuboGeneticoIndividuo* ind);
+CuboGeneticoIndividuo* cubo_genetico_poblacion_get_mejorInd (CuboGeneticoPoblacion* self);
 gint cubo_genetico_poblacion_getTam (CuboGeneticoPoblacion* self);
 GList* cubo_genetico_storneo_selecciona (CuboGeneticoSTorneo* self, CuboGeneticoPoblacion* p);
 GList* cubo_genetico_cruza_up_cruza (CuboGeneticoCruzaUP* self, GList* padres);
 CuboGeneticoAGeneticoGenotipo* cubo_genetico_mutacion_muta (CuboGeneticoMutacion* self, CuboGeneticoAGeneticoGenotipo* g);
-void cubo_genetico_poblacion_agregaIndividuo (CuboGeneticoPoblacion* self, CuboGeneticoIndividuo* ind);
 CuboGeneticoIndividuo* cubo_genetico_criador_individuoNuevo (CuboGeneticoCriador* self, CuboGeneticoAGeneticoGenotipo* geno);
 static void _cubo_genetico_agenetico_genotipo_unref0_ (gpointer var);
 static void _g_list_free__cubo_genetico_agenetico_genotipo_unref0_ (GList* self);
-CuboGeneticoIndividuo* cubo_genetico_poblacion_get_mejorInd (CuboGeneticoPoblacion* self);
 gdouble cubo_genetico_individuo_get_fitness (CuboGeneticoIndividuo* self);
 void cubo_genetico_cubo_genetico_run (CuboGeneticoCuboGenetico* self);
 CuboGeneticoPoblacion* cubo_genetico_criador_poblacionNuevaR (CuboGeneticoCriador* self, gint tam);
@@ -281,17 +281,21 @@ CuboGeneticoPoblacion* cubo_genetico_cubo_genetico_iteracion (CuboGeneticoCuboGe
 	CuboGeneticoPoblacion* _tmp2_ = NULL;
 	gint _tmp3_ = 0;
 	gint _tmp4_ = 0;
+	CuboGeneticoPoblacion* _tmp5_ = NULL;
+	CuboGeneticoPoblacion* _tmp6_ = NULL;
+	CuboGeneticoIndividuo* _tmp7_ = NULL;
+	CuboGeneticoIndividuo* _tmp8_ = NULL;
 	CuboGeneticoIndividuo* m = NULL;
-	CuboGeneticoPoblacion* _tmp27_ = NULL;
-	CuboGeneticoIndividuo* _tmp28_ = NULL;
-	CuboGeneticoIndividuo* _tmp29_ = NULL;
-	CuboGeneticoIndividuo* _tmp30_ = NULL;
-	CuboGeneticoIndividuo* _tmp31_ = NULL;
-	gdouble _tmp32_ = 0.0;
-	gdouble _tmp33_ = 0.0;
+	CuboGeneticoPoblacion* _tmp31_ = NULL;
+	CuboGeneticoIndividuo* _tmp32_ = NULL;
+	CuboGeneticoIndividuo* _tmp33_ = NULL;
 	CuboGeneticoIndividuo* _tmp34_ = NULL;
-	gdouble _tmp35_ = 0.0;
+	CuboGeneticoIndividuo* _tmp35_ = NULL;
 	gdouble _tmp36_ = 0.0;
+	gdouble _tmp37_ = 0.0;
+	CuboGeneticoIndividuo* _tmp38_ = NULL;
+	gdouble _tmp39_ = 0.0;
+	gdouble _tmp40_ = 0.0;
 	g_return_val_if_fail (self != NULL, NULL);
 	g_return_val_if_fail (actual != NULL, NULL);
 	_tmp0_ = cubo_genetico_poblacion_new ();
@@ -301,83 +305,88 @@ CuboGeneticoPoblacion* cubo_genetico_cubo_genetico_iteracion (CuboGeneticoCuboGe
 	_tmp3_ = cubo_genetico_poblacion_get_generacion (_tmp2_);
 	_tmp4_ = _tmp3_;
 	cubo_genetico_poblacion_set_generacion (_tmp1_, _tmp4_ + 1);
+	_tmp5_ = pnueva;
+	_tmp6_ = actual;
+	_tmp7_ = cubo_genetico_poblacion_get_mejorInd (_tmp6_);
+	_tmp8_ = _tmp7_;
+	cubo_genetico_poblacion_agregaIndividuo (_tmp5_, _tmp8_);
 	while (TRUE) {
-		CuboGeneticoPoblacion* _tmp5_ = NULL;
-		gint _tmp6_ = 0;
-		CuboGeneticoPoblacion* _tmp7_ = NULL;
-		gint _tmp8_ = 0;
+		CuboGeneticoPoblacion* _tmp9_ = NULL;
+		gint _tmp10_ = 0;
+		CuboGeneticoPoblacion* _tmp11_ = NULL;
+		gint _tmp12_ = 0;
 		GList* select = NULL;
-		CuboGeneticoSTorneo* _tmp9_ = NULL;
-		CuboGeneticoPoblacion* _tmp10_ = NULL;
-		GList* _tmp11_ = NULL;
-		GList* cross = NULL;
-		CuboGeneticoCruzaUP* _tmp12_ = NULL;
-		GList* _tmp13_ = NULL;
-		GList* _tmp14_ = NULL;
-		GList* mut = NULL;
+		CuboGeneticoSTorneo* _tmp13_ = NULL;
+		CuboGeneticoPoblacion* _tmp14_ = NULL;
 		GList* _tmp15_ = NULL;
-		GList* _tmp20_ = NULL;
-		_tmp5_ = pnueva;
-		_tmp6_ = cubo_genetico_poblacion_getTam (_tmp5_);
-		_tmp7_ = actual;
-		_tmp8_ = cubo_genetico_poblacion_getTam (_tmp7_);
-		if (!(_tmp6_ < _tmp8_)) {
+		GList* cross = NULL;
+		CuboGeneticoCruzaUP* _tmp16_ = NULL;
+		GList* _tmp17_ = NULL;
+		GList* _tmp18_ = NULL;
+		GList* mut = NULL;
+		GList* _tmp19_ = NULL;
+		GList* _tmp24_ = NULL;
+		_tmp9_ = pnueva;
+		_tmp10_ = cubo_genetico_poblacion_getTam (_tmp9_);
+		_tmp11_ = actual;
+		_tmp12_ = cubo_genetico_poblacion_getTam (_tmp11_);
+		if (!(_tmp10_ < _tmp12_)) {
 			break;
 		}
-		_tmp9_ = self->priv->sr;
-		_tmp10_ = actual;
-		_tmp11_ = cubo_genetico_storneo_selecciona (_tmp9_, _tmp10_);
-		select = _tmp11_;
-		_tmp12_ = self->priv->cruza;
-		_tmp13_ = select;
-		_tmp14_ = cubo_genetico_cruza_up_cruza (_tmp12_, _tmp13_);
-		cross = _tmp14_;
+		_tmp13_ = self->priv->sr;
+		_tmp14_ = actual;
+		_tmp15_ = cubo_genetico_storneo_selecciona (_tmp13_, _tmp14_);
+		select = _tmp15_;
+		_tmp16_ = self->priv->cruza;
+		_tmp17_ = select;
+		_tmp18_ = cubo_genetico_cruza_up_cruza (_tmp16_, _tmp17_);
+		cross = _tmp18_;
 		mut = NULL;
-		_tmp15_ = cross;
+		_tmp19_ = cross;
 		{
 			GList* g_collection = NULL;
 			GList* g_it = NULL;
-			g_collection = _tmp15_;
+			g_collection = _tmp19_;
 			for (g_it = g_collection; g_it != NULL; g_it = g_it->next) {
-				CuboGeneticoAGeneticoGenotipo* _tmp16_ = NULL;
+				CuboGeneticoAGeneticoGenotipo* _tmp20_ = NULL;
 				CuboGeneticoAGeneticoGenotipo* g = NULL;
-				_tmp16_ = _cubo_genetico_agenetico_genotipo_ref0 ((CuboGeneticoAGeneticoGenotipo*) g_it->data);
-				g = _tmp16_;
+				_tmp20_ = _cubo_genetico_agenetico_genotipo_ref0 ((CuboGeneticoAGeneticoGenotipo*) g_it->data);
+				g = _tmp20_;
 				{
-					CuboGeneticoMutacion* _tmp17_ = NULL;
-					CuboGeneticoAGeneticoGenotipo* _tmp18_ = NULL;
-					CuboGeneticoAGeneticoGenotipo* _tmp19_ = NULL;
-					_tmp17_ = self->priv->mutacion;
-					_tmp18_ = g;
-					_tmp19_ = cubo_genetico_mutacion_muta (_tmp17_, _tmp18_);
-					mut = g_list_append (mut, _tmp19_);
+					CuboGeneticoMutacion* _tmp21_ = NULL;
+					CuboGeneticoAGeneticoGenotipo* _tmp22_ = NULL;
+					CuboGeneticoAGeneticoGenotipo* _tmp23_ = NULL;
+					_tmp21_ = self->priv->mutacion;
+					_tmp22_ = g;
+					_tmp23_ = cubo_genetico_mutacion_muta (_tmp21_, _tmp22_);
+					mut = g_list_append (mut, _tmp23_);
 					_cubo_genetico_agenetico_genotipo_unref0 (g);
 				}
 			}
 		}
-		_tmp20_ = mut;
+		_tmp24_ = mut;
 		{
 			GList* g_collection = NULL;
 			GList* g_it = NULL;
-			g_collection = _tmp20_;
+			g_collection = _tmp24_;
 			for (g_it = g_collection; g_it != NULL; g_it = g_it->next) {
-				CuboGeneticoAGeneticoGenotipo* _tmp21_ = NULL;
+				CuboGeneticoAGeneticoGenotipo* _tmp25_ = NULL;
 				CuboGeneticoAGeneticoGenotipo* g = NULL;
-				_tmp21_ = _cubo_genetico_agenetico_genotipo_ref0 ((CuboGeneticoAGeneticoGenotipo*) g_it->data);
-				g = _tmp21_;
+				_tmp25_ = _cubo_genetico_agenetico_genotipo_ref0 ((CuboGeneticoAGeneticoGenotipo*) g_it->data);
+				g = _tmp25_;
 				{
-					CuboGeneticoPoblacion* _tmp22_ = NULL;
-					CuboGeneticoCriador* _tmp23_ = NULL;
-					CuboGeneticoAGeneticoGenotipo* _tmp24_ = NULL;
-					CuboGeneticoIndividuo* _tmp25_ = NULL;
-					CuboGeneticoIndividuo* _tmp26_ = NULL;
-					_tmp22_ = pnueva;
-					_tmp23_ = self->priv->criador;
-					_tmp24_ = g;
-					_tmp25_ = cubo_genetico_criador_individuoNuevo (_tmp23_, _tmp24_);
-					_tmp26_ = _tmp25_;
-					cubo_genetico_poblacion_agregaIndividuo (_tmp22_, _tmp26_);
-					_g_object_unref0 (_tmp26_);
+					CuboGeneticoPoblacion* _tmp26_ = NULL;
+					CuboGeneticoCriador* _tmp27_ = NULL;
+					CuboGeneticoAGeneticoGenotipo* _tmp28_ = NULL;
+					CuboGeneticoIndividuo* _tmp29_ = NULL;
+					CuboGeneticoIndividuo* _tmp30_ = NULL;
+					_tmp26_ = pnueva;
+					_tmp27_ = self->priv->criador;
+					_tmp28_ = g;
+					_tmp29_ = cubo_genetico_criador_individuoNuevo (_tmp27_, _tmp28_);
+					_tmp30_ = _tmp29_;
+					cubo_genetico_poblacion_agregaIndividuo (_tmp26_, _tmp30_);
+					_g_object_unref0 (_tmp30_);
 					_cubo_genetico_agenetico_genotipo_unref0 (g);
 				}
 			}
@@ -386,24 +395,24 @@ CuboGeneticoPoblacion* cubo_genetico_cubo_genetico_iteracion (CuboGeneticoCuboGe
 		__g_list_free__cubo_genetico_agenetico_genotipo_unref0_0 (cross);
 		__g_list_free__cubo_genetico_agenetico_genotipo_unref0_0 (select);
 	}
-	_tmp27_ = pnueva;
-	_tmp28_ = cubo_genetico_poblacion_get_mejorInd (_tmp27_);
-	_tmp29_ = _tmp28_;
-	_tmp30_ = _g_object_ref0 (_tmp29_);
-	m = _tmp30_;
-	_tmp31_ = m;
-	_tmp32_ = cubo_genetico_individuo_get_fitness (_tmp31_);
+	_tmp31_ = pnueva;
+	_tmp32_ = cubo_genetico_poblacion_get_mejorInd (_tmp31_);
 	_tmp33_ = _tmp32_;
-	_tmp34_ = self->priv->mejorg;
-	_tmp35_ = cubo_genetico_individuo_get_fitness (_tmp34_);
-	_tmp36_ = _tmp35_;
-	if (_tmp33_ <= _tmp36_) {
-		CuboGeneticoIndividuo* _tmp37_ = NULL;
-		CuboGeneticoIndividuo* _tmp38_ = NULL;
-		_tmp37_ = m;
-		_tmp38_ = _g_object_ref0 (_tmp37_);
+	_tmp34_ = _g_object_ref0 (_tmp33_);
+	m = _tmp34_;
+	_tmp35_ = m;
+	_tmp36_ = cubo_genetico_individuo_get_fitness (_tmp35_);
+	_tmp37_ = _tmp36_;
+	_tmp38_ = self->priv->mejorg;
+	_tmp39_ = cubo_genetico_individuo_get_fitness (_tmp38_);
+	_tmp40_ = _tmp39_;
+	if (_tmp37_ <= _tmp40_) {
+		CuboGeneticoIndividuo* _tmp41_ = NULL;
+		CuboGeneticoIndividuo* _tmp42_ = NULL;
+		_tmp41_ = m;
+		_tmp42_ = _g_object_ref0 (_tmp41_);
 		_g_object_unref0 (self->priv->mejorg);
-		self->priv->mejorg = _tmp38_;
+		self->priv->mejorg = _tmp42_;
 	}
 	result = pnueva;
 	_g_object_unref0 (m);
@@ -440,7 +449,7 @@ void cubo_genetico_cubo_genetico_run (CuboGeneticoCuboGenetico* self) {
 		_tmp7_ = p;
 		_tmp8_ = cubo_genetico_poblacion_get_generacion (_tmp7_);
 		_tmp9_ = _tmp8_;
-		if (!(_tmp9_ <= 1000)) {
+		if (!(_tmp9_ <= 500)) {
 			break;
 		}
 		_tmp10_ = p;

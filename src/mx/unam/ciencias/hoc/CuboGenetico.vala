@@ -54,7 +54,7 @@ namespace CuboGenetico{
 		public void run(){
 			Poblacion p = this.criador.poblacionNuevaR(this.tamp);
 			this.mejorg = p.mejorInd;
-			while(p.generacion<=1000){
+			while(p.generacion<=500){
 				p = this.iteracion(p);
 				//stdout.printf("%s\n",p.mejorInd.to_string());
 			}

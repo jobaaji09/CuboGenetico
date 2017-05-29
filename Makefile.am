@@ -33,7 +33,8 @@ noinst_LTLIBRARIES += lib/libagenetico.la
 lib_libagenetico_la_SOURCES =			\
 		lib/agenetico/Cubo3x3.vala	\
 		lib/agenetico/Genotipo.vala	\
-		lib/agenetico/Fenotipo.vala
+		lib/agenetico/Fenotipo.vala	\
+		lib/agenetico/Cubo2x2.vala
 
 lib_libagenetico_la_VALAFLAGS =		\
 	$(COMMON_VALAFLAGS)		\

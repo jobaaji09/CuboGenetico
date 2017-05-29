@@ -574,13 +574,15 @@ namespace CuboGenetico.AGenetico{
 			
 		}
 
-		public void to_string(){
+		public string to_string(){
+			string s="";
 			for(int i =0;i<6;i++){
 				for(int j = 0;j<9;j++){
-					stdout.printf("%d",this.actual[i,j]);
+					s += this.actual[i,j].to_string()+",";
 				}
-				stdout.printf("\n");
+				s+="\n";
 			}
+			return s;
 		}
 
 

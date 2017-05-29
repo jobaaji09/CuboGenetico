@@ -27,7 +27,7 @@ namespace CuboGenetico{
 		public Poblacion iteracion(Poblacion actual){
 			Poblacion pnueva = new Poblacion();
 			pnueva.generacion = actual.generacion +1;
-			//pnueva.agregaIndividuo(actual.mejorInd);
+			pnueva.agregaIndividuo(actual.mejorInd);
 			while (pnueva.getTam() < actual.getTam()){
 				//seleccion
 				var select = this.sr.selecciona(actual);

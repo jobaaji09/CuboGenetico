@@ -44,7 +44,7 @@ namespace CuboGenetico{
 				var cubo = new AGenetico.Cubo3x3(c);
 				cubo.dibuja(0.0);
 
-			    for(int i =0; i<200;i++){
+			    for(int i =0; i<100;i++){
 					var rand = new GLib.Rand();
 					rand.set_seed(i);
 					int fg = (int)rand.int_range(0,200);
@@ -66,7 +66,7 @@ namespace CuboGenetico{
 													cruza,
 													mutacion,
 													cd,
-													500);
+													200);
 					cubogene.run();
 					var mg = cubogene.mejor;
 					stdout.printf("Mejor de la generacion :\n%s",mg.to_string());

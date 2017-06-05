@@ -589,7 +589,7 @@ namespace CuboGenetico.AGenetico{
 		/**
 		 *Dibuja un cubo 3x3x3 D2 en un svg 
 		 **/
-		public void dibuja(double fit){
+		public void dibuja(string name){
 			var w  =1200;
 			var h = 900;
 			string s = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
@@ -619,7 +619,7 @@ namespace CuboGenetico.AGenetico{
 			
 			s+="</g>"+"</svg>";
 			try {
-				var file = File.new_for_path ("experimentos/Cubosvg"+fit.to_string()+".svg");
+				var file = File.new_for_path ("experimentos/Cubosvg="+name+".svg");
 				
 					// delete if file already exists
 				if (file.query_exists ()) {
@@ -643,10 +643,10 @@ namespace CuboGenetico.AGenetico{
 			string ou ="";
 			switch (c) {
 			case 0:
-				ou = "blue";
+				ou = "deepskyblue";
 				break;
 			case 1:
-				ou = "red";
+				ou = "hotpink";
 				break;
 			case 2:
 				ou= "yellow";
@@ -658,7 +658,7 @@ namespace CuboGenetico.AGenetico{
 				ou = "orange";
 				break;
 			case 5:
-				ou = "green";
+				ou = "chartreuse";
 				break;
 			}
 			return ou;

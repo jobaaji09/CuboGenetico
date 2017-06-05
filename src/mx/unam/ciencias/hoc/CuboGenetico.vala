@@ -48,6 +48,7 @@ namespace CuboGenetico{
 			if(m.fitness <= this.mejorg.fitness){
 				this.mejorg = m;
 			}
+			//stdout.printf("%s\n",pnueva.mejorInd.to_string());
 			return pnueva;
 		}
 
@@ -56,7 +57,7 @@ namespace CuboGenetico{
 			this.mejorg = p.mejorInd;
 			while(p.generacion<=2500){
 				p = this.iteracion(p);
-				//stdout.printf("%s\n",p.mejorInd.to_string());
+				
 			}
 		}
 		

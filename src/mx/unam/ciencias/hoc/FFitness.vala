@@ -37,17 +37,19 @@ namespace CuboGenetico{
 			this.cubo.reset();
 			//double g = feno.fenotipo.length/10.0;
 			//stdout.printf("%2.3f\n",(fitness/6)*g);
-			return (fitness/6);
+			return (fitness/6.0);
 		}
 
 		public double caraFitness(int centro,int x,int y){
-			double f = 0.0;
+			//double esq = 0.0;
+			//double art = 0.0;
+			double f =0.0;
 			var c = this.cubo.getActual();
 			if(centro == c[x-1,y-1] ){
 				f = f +1;
 			}
 			if(centro == c[x-1,y] ){
-				f = f +1;
+			   f = f +1;
 			}
 			if(centro == c[x-1,y+1] ){
 				f = f +1;
@@ -68,6 +70,8 @@ namespace CuboGenetico{
 			if(centro == c[x+1,y+1] ){
 				f = f +1;
 			}
+			//var f = (art/4.0) + (esq/4.0);
+			
 			return 1.0 - (f/8.0);
 		}
 

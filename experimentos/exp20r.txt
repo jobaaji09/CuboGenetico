@@ -1,0 +1,1000 @@
+Mejor de la generacion :
+Fenotipo: B',F',R,
+Genotipo: 12,10,1,
+Fitness : 0.54166666666666663
+sm: 0
+Mejor de la generacion :
+Fenotipo: D,F',B,
+Genotipo: 7,10,11,
+Fitness : 0.54166666666666663
+sm: 1
+Mejor de la generacion :
+Fenotipo: F',R,D',
+Genotipo: 10,1,8,
+Fitness : 0.54166666666666663
+sm: 2
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 3
+Mejor de la generacion :
+Fenotipo: B',B',D,F',B,
+Genotipo: 12,12,7,10,11,
+Fitness : 0.41666666666666669
+sm: 4
+Mejor de la generacion :
+Fenotipo: B',F',B',D,B,
+Genotipo: 12,10,12,7,11,
+Fitness : 0.5
+sm: 5
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 6
+Mejor de la generacion :
+Fenotipo: L',D,L,R',U,B',B',B',L,R,L',D,F',
+Genotipo: 4,7,3,2,5,12,12,12,3,1,4,7,10,
+Fitness : 0.375
+sm: 7
+Mejor de la generacion :
+Fenotipo: D,L,U,F',R',B',D',R,U,B',R',L,F,D,L,F,D',F,R,R,
+Genotipo: 7,3,5,10,2,12,8,1,5,12,2,3,9,7,3,9,8,9,1,1,
+Fitness : 0.5
+sm: 8
+Mejor de la generacion :
+Fenotipo: B',B',D,B,F',
+Genotipo: 12,12,7,11,10,
+Fitness : 0.41666666666666669
+sm: 9
+Mejor de la generacion :
+Fenotipo: B,D,B,F',D,
+Genotipo: 11,7,11,10,7,
+Fitness : 0.4375
+sm: 10
+Mejor de la generacion :
+Fenotipo: D,F',D',B',B',D,L,L,R',L,R,L,B,
+Genotipo: 7,10,8,12,12,7,3,3,2,3,1,3,11,
+Fitness : 0.39583333333333331
+sm: 11
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 12
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 13
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 14
+Mejor de la generacion :
+Fenotipo: F',R,D',
+Genotipo: 10,1,8,
+Fitness : 0.54166666666666663
+sm: 15
+Mejor de la generacion :
+Fenotipo: F',B',R,
+Genotipo: 10,12,1,
+Fitness : 0.54166666666666663
+sm: 16
+Mejor de la generacion :
+Fenotipo: F',L,B,R,B,F',D',D',L,D',F,D,U',D',D',F,D,
+Genotipo: 10,3,11,1,11,10,8,8,3,8,9,7,6,8,8,9,7,
+Fitness : 0.58333333333333337
+sm: 17
+Mejor de la generacion :
+Fenotipo: B',D,U,F',R',L',R,
+Genotipo: 12,7,5,10,2,4,1,
+Fitness : 0.41666666666666669
+sm: 18
+Mejor de la generacion :
+Fenotipo: F',D',B,D,B',R,
+Genotipo: 10,8,11,7,12,1,
+Fitness : 0.5
+sm: 19
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 20
+Mejor de la generacion :
+Fenotipo: R,D,B,R',U,U,F,D,B,R,U',D,U,B,R,B,F',U,
+Genotipo: 1,7,11,2,5,5,9,7,11,1,6,7,5,11,1,11,10,5,
+Fitness : 0.5
+sm: 21
+Mejor de la generacion :
+Fenotipo: B',D,F',B,
+Genotipo: 12,7,10,11,
+Fitness : 0.47916666666666669
+sm: 22
+Mejor de la generacion :
+Fenotipo: B',D,U,F',L',
+Genotipo: 12,7,5,10,4,
+Fitness : 0.41666666666666669
+sm: 23
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 24
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 25
+Mejor de la generacion :
+Fenotipo: L',B',U,F,U',B',R',B',R',U',U',F',R,L',U',U',D',B,U,F',
+Genotipo: 4,12,5,9,6,12,2,12,2,6,6,10,1,4,6,6,8,11,5,10,
+Fitness : 0.47916666666666669
+sm: 26
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 27
+Mejor de la generacion :
+Fenotipo: F,B',F',D,U,F',L',
+Genotipo: 9,12,10,7,5,10,4,
+Fitness : 0.41666666666666669
+sm: 28
+Mejor de la generacion :
+Fenotipo: D,F',B,D',
+Genotipo: 7,10,11,8,
+Fitness : 0.52083333333333337
+sm: 29
+Mejor de la generacion :
+Fenotipo: D,F',B,D',
+Genotipo: 7,10,11,8,
+Fitness : 0.52083333333333337
+sm: 30
+Mejor de la generacion :
+Fenotipo: D,F',B,
+Genotipo: 7,10,11,
+Fitness : 0.54166666666666663
+sm: 31
+Mejor de la generacion :
+Fenotipo: B',F',R,
+Genotipo: 12,10,1,
+Fitness : 0.54166666666666663
+sm: 32
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 33
+Mejor de la generacion :
+Fenotipo: B,B,D,B,F',
+Genotipo: 11,11,7,11,10,
+Fitness : 0.41666666666666669
+sm: 34
+Mejor de la generacion :
+Fenotipo: D,R',U,R,F',L',R',L,B,R,
+Genotipo: 7,2,5,1,10,4,2,3,11,1,
+Fitness : 0.375
+sm: 35
+Mejor de la generacion :
+Fenotipo: B,D,F',B,D,
+Genotipo: 11,7,10,11,7,
+Fitness : 0.4375
+sm: 36
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 37
+Mejor de la generacion :
+Fenotipo: U,D,L',U',U',F',D',L,
+Genotipo: 5,7,4,6,6,10,8,3,
+Fitness : 0.47916666666666669
+sm: 38
+Mejor de la generacion :
+Fenotipo: B',D,F',B,
+Genotipo: 12,7,10,11,
+Fitness : 0.47916666666666669
+sm: 39
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 40
+Mejor de la generacion :
+Fenotipo: R',B,U,R,F',
+Genotipo: 2,11,5,1,10,
+Fitness : 0.45833333333333331
+sm: 41
+Mejor de la generacion :
+Fenotipo: R',U,R,F',B',F,B',D,B,F',
+Genotipo: 2,5,1,10,12,9,12,7,11,10,
+Fitness : 0.3125
+sm: 42
+Mejor de la generacion :
+Fenotipo: B',D,B,L',F',L,B',U',U',U',D',B',D,U',
+Genotipo: 12,7,11,4,10,3,12,6,6,6,8,12,7,6,
+Fitness : 0.4375
+sm: 43
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 44
+Mejor de la generacion :
+Fenotipo: B,D,F',B,D',D,
+Genotipo: 11,7,10,11,8,7,
+Fitness : 0.47916666666666669
+sm: 45
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 46
+Mejor de la generacion :
+Fenotipo: B,D,B,F',
+Genotipo: 11,7,11,10,
+Fitness : 0.47916666666666669
+sm: 47
+Mejor de la generacion :
+Fenotipo: B',F',B',R,D,B,
+Genotipo: 12,10,12,1,7,11,
+Fitness : 0.45833333333333331
+sm: 48
+Mejor de la generacion :
+Fenotipo: B',D,F',B,
+Genotipo: 12,7,10,11,
+Fitness : 0.47916666666666669
+sm: 49
+Mejor de la generacion :
+Fenotipo: B',D,F',
+Genotipo: 12,7,10,
+Fitness : 0.54166666666666663
+sm: 50
+Mejor de la generacion :
+Fenotipo: B',D,R',U,R,F',
+Genotipo: 12,7,2,5,1,10,
+Fitness : 0.41666666666666669
+sm: 51
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 52
+Mejor de la generacion :
+Fenotipo: B',D,U,F',L',B,R',B',R,
+Genotipo: 12,7,5,10,4,11,2,12,1,
+Fitness : 0.27083333333333331
+sm: 53
+Mejor de la generacion :
+Fenotipo: D,B,F',
+Genotipo: 7,11,10,
+Fitness : 0.54166666666666663
+sm: 54
+Mejor de la generacion :
+Fenotipo: L',B,L,U',D,B,F',L,B,B,
+Genotipo: 4,11,3,6,7,11,10,3,11,11,
+Fitness : 0.39583333333333331
+sm: 55
+Mejor de la generacion :
+Fenotipo: D,B,F',D,B,D,
+Genotipo: 7,11,10,7,11,7,
+Fitness : 0.41666666666666669
+sm: 56
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 57
+Mejor de la generacion :
+Fenotipo: F',D,B',B',L,F,D',L,D',B',L',U',D',F',U,
+Genotipo: 10,7,12,12,3,9,8,3,8,12,4,6,8,10,5,
+Fitness : 0.47916666666666669
+sm: 58
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 59
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 60
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 61
+Mejor de la generacion :
+Fenotipo: B,D,F',B,R',B,R,
+Genotipo: 11,7,10,11,2,11,1,
+Fitness : 0.39583333333333331
+sm: 62
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 63
+Mejor de la generacion :
+Fenotipo: D,B,F',
+Genotipo: 7,11,10,
+Fitness : 0.54166666666666663
+sm: 64
+Mejor de la generacion :
+Fenotipo: U,F',B',R,
+Genotipo: 5,10,12,1,
+Fitness : 0.52083333333333337
+sm: 65
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 66
+Mejor de la generacion :
+Fenotipo: U',U,B',D,F',
+Genotipo: 6,5,12,7,10,
+Fitness : 0.54166666666666663
+sm: 67
+Mejor de la generacion :
+Fenotipo: D,B,F',
+Genotipo: 7,11,10,
+Fitness : 0.54166666666666663
+sm: 68
+Mejor de la generacion :
+Fenotipo: B,D,F',B,
+Genotipo: 11,7,10,11,
+Fitness : 0.47916666666666669
+sm: 69
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 70
+Mejor de la generacion :
+Fenotipo: B,D,R',L,R,B,F',R',B,R,
+Genotipo: 11,7,2,3,1,11,10,2,11,1,
+Fitness : 0.20833333333333334
+sm: 71
+Mejor de la generacion :
+Fenotipo: D,U',D',U,B,D,R,D,U',R',D,L,
+Genotipo: 7,6,8,5,11,7,1,7,6,2,7,3,
+Fitness : 0.33333333333333331
+sm: 72
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 73
+Mejor de la generacion :
+Fenotipo: F',F',B',F,R,
+Genotipo: 10,10,12,9,1,
+Fitness : 0.54166666666666663
+sm: 74
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 75
+Mejor de la generacion :
+Fenotipo: B',D,F',B,
+Genotipo: 12,7,10,11,
+Fitness : 0.47916666666666669
+sm: 76
+Mejor de la generacion :
+Fenotipo: R',B,U,D',F',B,F,R,D,B,R,F',
+Genotipo: 2,11,5,8,10,11,9,1,7,11,1,10,
+Fitness : 0.375
+sm: 77
+Mejor de la generacion :
+Fenotipo: B',F',R,D,
+Genotipo: 12,10,1,7,
+Fitness : 0.5625
+sm: 78
+Mejor de la generacion :
+Fenotipo: R',B,U,B,R,D,F',R',B,
+Genotipo: 2,11,5,11,1,7,10,2,11,
+Fitness : 0.25
+sm: 79
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 80
+Mejor de la generacion :
+Fenotipo: D,L,R',L,U,R,F',
+Genotipo: 7,3,2,3,5,1,10,
+Fitness : 0.41666666666666669
+sm: 81
+Mejor de la generacion :
+Fenotipo: B',D,U,B,F',B',L',
+Genotipo: 12,7,5,11,10,12,4,
+Fitness : 0.41666666666666669
+sm: 82
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 83
+Mejor de la generacion :
+Fenotipo: R',U,R,D',F',D,B,D',B,
+Genotipo: 2,5,1,8,10,7,11,8,11,
+Fitness : 0.3125
+sm: 84
+Mejor de la generacion :
+Fenotipo: D,B,F',
+Genotipo: 7,11,10,
+Fitness : 0.54166666666666663
+sm: 85
+Mejor de la generacion :
+Fenotipo: F',B',B',R,D,D,
+Genotipo: 10,12,12,1,7,7,
+Fitness : 0.52083333333333337
+sm: 86
+Mejor de la generacion :
+Fenotipo: B',D,F',
+Genotipo: 12,7,10,
+Fitness : 0.54166666666666663
+sm: 87
+Mejor de la generacion :
+Fenotipo: U,F',B,F,U',D,B,L',L',F,F,F,D',
+Genotipo: 5,10,11,9,6,7,11,4,4,9,9,9,8,
+Fitness : 0.4375
+sm: 88
+Mejor de la generacion :
+Fenotipo: U',L,U,L',B',F',R,
+Genotipo: 6,3,5,4,12,10,1,
+Fitness : 0.4375
+sm: 89
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 90
+Mejor de la generacion :
+Fenotipo: B',F',R,
+Genotipo: 12,10,1,
+Fitness : 0.54166666666666663
+sm: 91
+Mejor de la generacion :
+Fenotipo: F',B',R,
+Genotipo: 10,12,1,
+Fitness : 0.54166666666666663
+sm: 92
+Mejor de la generacion :
+Fenotipo: B',D,U,F',L',
+Genotipo: 12,7,5,10,4,
+Fitness : 0.41666666666666669
+sm: 93
+Mejor de la generacion :
+Fenotipo: D,L,B,L,F',B,
+Genotipo: 7,3,11,3,10,11,
+Fitness : 0.4375
+sm: 94
+Mejor de la generacion :
+Fenotipo: D,B,F',
+Genotipo: 7,11,10,
+Fitness : 0.54166666666666663
+sm: 95
+Mejor de la generacion :
+Fenotipo: D,F,F,B,F,D,B,D,
+Genotipo: 7,9,9,11,9,7,11,7,
+Fitness : 0.41666666666666669
+sm: 96
+Mejor de la generacion :
+Fenotipo: B,D,R,U,R',F',B,D,F',
+Genotipo: 11,7,1,5,2,10,11,7,10,
+Fitness : 0.41666666666666669
+sm: 97
+Mejor de la generacion :
+Fenotipo: B',D,L,R,D,B,L',B',L',R',F',
+Genotipo: 12,7,3,1,7,11,4,12,4,2,10,
+Fitness : 0.54166666666666663
+sm: 98
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 99
+Mejor de la generacion :
+Fenotipo: B',B',D,B,F',
+Genotipo: 12,12,7,11,10,
+Fitness : 0.41666666666666669
+sm: 100
+Mejor de la generacion :
+Fenotipo: B',F',R,
+Genotipo: 12,10,1,
+Fitness : 0.54166666666666663
+sm: 101
+Mejor de la generacion :
+Fenotipo: D,B,F',
+Genotipo: 7,11,10,
+Fitness : 0.54166666666666663
+sm: 102
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 103
+Mejor de la generacion :
+Fenotipo: F',L,U,R,B',D',U',D,L,U,R,B',D',U',R,
+Genotipo: 10,3,5,1,12,8,6,7,3,5,1,12,8,6,1,
+Fitness : 0.47916666666666669
+sm: 104
+Mejor de la generacion :
+Fenotipo: B,F',U',D,U,F',B',B',B',F,R',D,R,B,
+Genotipo: 11,10,6,7,5,10,12,12,12,9,2,7,1,11,
+Fitness : 0.47916666666666669
+sm: 105
+Mejor de la generacion :
+Fenotipo: B,B,D,F',B,
+Genotipo: 11,11,7,10,11,
+Fitness : 0.41666666666666669
+sm: 106
+Mejor de la generacion :
+Fenotipo: B,D,F',B,D,
+Genotipo: 11,7,10,11,7,
+Fitness : 0.4375
+sm: 107
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 108
+Mejor de la generacion :
+Fenotipo: B,D,F',B,
+Genotipo: 11,7,10,11,
+Fitness : 0.47916666666666669
+sm: 109
+Mejor de la generacion :
+Fenotipo: U,B,B,D,F',B,
+Genotipo: 5,11,11,7,10,11,
+Fitness : 0.4375
+sm: 110
+Mejor de la generacion :
+Fenotipo: D,B,F',
+Genotipo: 7,11,10,
+Fitness : 0.54166666666666663
+sm: 111
+Mejor de la generacion :
+Fenotipo: L',B',F',U,L,D,R,B,L',U',
+Genotipo: 4,12,10,5,3,7,1,11,4,6,
+Fitness : 0.375
+sm: 112
+Mejor de la generacion :
+Fenotipo: D,F',U',L',L',U,F',B,F,
+Genotipo: 7,10,6,4,4,5,10,11,9,
+Fitness : 0.39583333333333331
+sm: 113
+Mejor de la generacion :
+Fenotipo: R',L,R',D',R,B',L,R,D,U,B,L',L',L',L',F',B,D',B,
+Genotipo: 2,3,2,8,1,12,3,1,7,5,11,4,4,4,4,10,11,8,11,
+Fitness : 0.5
+sm: 114
+Mejor de la generacion :
+Fenotipo: D,B',L,R',L',U',B,F',L,L,U,B',B',
+Genotipo: 7,12,3,2,4,6,11,10,3,3,5,12,12,
+Fitness : 0.54166666666666663
+sm: 115
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 116
+Mejor de la generacion :
+Fenotipo: U,F',B',R,
+Genotipo: 5,10,12,1,
+Fitness : 0.52083333333333337
+sm: 117
+Mejor de la generacion :
+Fenotipo: F',R,L',B',L',L,D',B,R,L,
+Genotipo: 10,1,4,12,4,3,8,11,1,3,
+Fitness : 0.5625
+sm: 118
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 119
+Mejor de la generacion :
+Fenotipo: D,L,L,U,F',D,R',D',B',F',B,L,R',L',F,B,F,
+Genotipo: 7,3,3,5,10,7,2,8,12,10,11,3,2,4,9,11,9,
+Fitness : 0.41666666666666669
+sm: 120
+Mejor de la generacion :
+Fenotipo: D,F',B,D',
+Genotipo: 7,10,11,8,
+Fitness : 0.52083333333333337
+sm: 121
+Mejor de la generacion :
+Fenotipo: R',U,R,D,F',B,B,D,B,D',
+Genotipo: 2,5,1,7,10,11,11,7,11,8,
+Fitness : 0.33333333333333331
+sm: 122
+Mejor de la generacion :
+Fenotipo: F',B,F,B,D,F',B,
+Genotipo: 10,11,9,11,7,10,11,
+Fitness : 0.41666666666666669
+sm: 123
+Mejor de la generacion :
+Fenotipo: B',D,U,F',L',
+Genotipo: 12,7,5,10,4,
+Fitness : 0.41666666666666669
+sm: 124
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 125
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 126
+Mejor de la generacion :
+Fenotipo: F,F,B',D,F,L',B,
+Genotipo: 9,9,12,7,9,4,11,
+Fitness : 0.4375
+sm: 127
+Mejor de la generacion :
+Fenotipo: D,B,L',L',F',D',
+Genotipo: 7,11,4,4,10,8,
+Fitness : 0.45833333333333331
+sm: 128
+Mejor de la generacion :
+Fenotipo: B',U,B,B,D,U',B,F',
+Genotipo: 12,5,11,11,7,6,11,10,
+Fitness : 0.39583333333333331
+sm: 129
+Mejor de la generacion :
+Fenotipo: D,R',U,F,R,B,F',R,D',F,L,B',F',B',D',L',B,
+Genotipo: 7,2,5,9,1,11,10,1,8,9,3,12,10,12,8,4,11,
+Fitness : 0.5
+sm: 130
+Mejor de la generacion :
+Fenotipo: B,D',D',D',L,F,B,F,F,R',B,R,
+Genotipo: 11,8,8,8,3,9,11,9,9,2,11,1,
+Fitness : 0.20833333333333334
+sm: 131
+Mejor de la generacion :
+Fenotipo: B',U,B',B',D,U',B,F',
+Genotipo: 12,5,12,12,7,6,11,10,
+Fitness : 0.39583333333333331
+sm: 132
+Mejor de la generacion :
+Fenotipo: D,F',B,
+Genotipo: 7,10,11,
+Fitness : 0.54166666666666663
+sm: 133
+Mejor de la generacion :
+Fenotipo: F',L',R,L,D',
+Genotipo: 10,4,1,3,8,
+Fitness : 0.54166666666666663
+sm: 134
+Mejor de la generacion :
+Fenotipo: B,U,B,U',B,D,U,F',B,
+Genotipo: 11,5,11,6,11,7,5,10,11,
+Fitness : 0.375
+sm: 135
+Mejor de la generacion :
+Fenotipo: R',U,R,D,F',B,
+Genotipo: 2,5,1,7,10,11,
+Fitness : 0.375
+sm: 136
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 137
+Mejor de la generacion :
+Fenotipo: B',D,B,L',F',L,F',D',F,
+Genotipo: 12,7,11,4,10,3,10,8,9,
+Fitness : 0.375
+sm: 138
+Mejor de la generacion :
+Fenotipo: F',L,B',B',L',R,D,
+Genotipo: 10,3,12,12,4,1,7,
+Fitness : 0.47916666666666669
+sm: 139
+Mejor de la generacion :
+Fenotipo: F',B',R,
+Genotipo: 10,12,1,
+Fitness : 0.54166666666666663
+sm: 140
+Mejor de la generacion :
+Fenotipo: B,D,F',B,
+Genotipo: 11,7,10,11,
+Fitness : 0.47916666666666669
+sm: 141
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 142
+Mejor de la generacion :
+Fenotipo: B,D,B,F',D,
+Genotipo: 11,7,11,10,7,
+Fitness : 0.4375
+sm: 143
+Mejor de la generacion :
+Fenotipo: U',L,U,L',B',F',R,
+Genotipo: 6,3,5,4,12,10,1,
+Fitness : 0.4375
+sm: 144
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 145
+Mejor de la generacion :
+Fenotipo: D,L,B,L,F',
+Genotipo: 7,3,11,3,10,
+Fitness : 0.5
+sm: 146
+Mejor de la generacion :
+Fenotipo: D,F',B,
+Genotipo: 7,10,11,
+Fitness : 0.54166666666666663
+sm: 147
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 148
+Mejor de la generacion :
+Fenotipo: B',D,B,F',
+Genotipo: 12,7,11,10,
+Fitness : 0.47916666666666669
+sm: 149
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 150
+Mejor de la generacion :
+Fenotipo: R,B,L,D',U',L,F',
+Genotipo: 1,11,3,8,6,3,10,
+Fitness : 0.52083333333333337
+sm: 151
+Mejor de la generacion :
+Fenotipo: B',F,U,R,U',F',F',R,
+Genotipo: 12,9,5,1,6,10,10,1,
+Fitness : 0.4375
+sm: 152
+Mejor de la generacion :
+Fenotipo: B',F',R,
+Genotipo: 12,10,1,
+Fitness : 0.54166666666666663
+sm: 153
+Mejor de la generacion :
+Fenotipo: R',U,D,B,R,F,D',F,F,B,B,
+Genotipo: 2,5,7,11,1,9,8,9,9,11,11,
+Fitness : 0.33333333333333331
+sm: 154
+Mejor de la generacion :
+Fenotipo: F',F',B',F,R,
+Genotipo: 10,10,12,9,1,
+Fitness : 0.54166666666666663
+sm: 155
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 156
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 157
+Mejor de la generacion :
+Fenotipo: D,L,B',L,F',B',D,
+Genotipo: 7,3,12,3,10,12,7,
+Fitness : 0.4375
+sm: 158
+Mejor de la generacion :
+Fenotipo: B,D,F',B,D,B,
+Genotipo: 11,7,10,11,7,11,
+Fitness : 0.39583333333333331
+sm: 159
+Mejor de la generacion :
+Fenotipo: D,L,B',F',B',D,
+Genotipo: 7,3,12,10,12,7,
+Fitness : 0.45833333333333331
+sm: 160
+Mejor de la generacion :
+Fenotipo: U,D,D,D,F',F',F',L,B,L',B',D',D',R',F',F',D',B',R',
+Genotipo: 5,7,7,7,10,10,10,3,11,4,12,8,8,2,10,10,8,12,2,
+Fitness : 0.58333333333333337
+sm: 161
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 162
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 163
+Mejor de la generacion :
+Fenotipo: D,B,L,U',F',D,D,L,U,B',
+Genotipo: 7,11,3,6,10,7,7,3,5,12,
+Fitness : 0.35416666666666669
+sm: 164
+Mejor de la generacion :
+Fenotipo: D,B,F',
+Genotipo: 7,11,10,
+Fitness : 0.54166666666666663
+sm: 165
+Mejor de la generacion :
+Fenotipo: B',D,F',B,
+Genotipo: 12,7,10,11,
+Fitness : 0.47916666666666669
+sm: 166
+Mejor de la generacion :
+Fenotipo: B,B,D,F',B,
+Genotipo: 11,11,7,10,11,
+Fitness : 0.41666666666666669
+sm: 167
+Mejor de la generacion :
+Fenotipo: L',U',D,U,L',B,B,B,D,F,L,D',F',R',L',L',U,B',
+Genotipo: 4,6,7,5,4,11,11,11,7,9,3,8,10,2,4,4,5,12,
+Fitness : 0.47916666666666669
+sm: 168
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 169
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 170
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 171
+Mejor de la generacion :
+Fenotipo: B',U,B',D,F',L',
+Genotipo: 12,5,12,7,10,4,
+Fitness : 0.47916666666666669
+sm: 172
+Mejor de la generacion :
+Fenotipo: B',B',D,B,L,F',L',
+Genotipo: 12,12,7,11,3,10,4,
+Fitness : 0.41666666666666669
+sm: 173
+Mejor de la generacion :
+Fenotipo: B,D,F',B,D',D',
+Genotipo: 11,7,10,11,8,8,
+Fitness : 0.39583333333333331
+sm: 174
+Mejor de la generacion :
+Fenotipo: F',D',R,F',D',F,
+Genotipo: 10,8,1,10,8,9,
+Fitness : 0.5
+sm: 175
+Mejor de la generacion :
+Fenotipo: L',R',B,U,B,R,D,F',
+Genotipo: 4,2,11,5,11,1,7,10,
+Fitness : 0.41666666666666669
+sm: 176
+Mejor de la generacion :
+Fenotipo: F',B',R,D,
+Genotipo: 10,12,1,7,
+Fitness : 0.5625
+sm: 177
+Mejor de la generacion :
+Fenotipo: B,D,F',B,
+Genotipo: 11,7,10,11,
+Fitness : 0.47916666666666669
+sm: 178
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 179
+Mejor de la generacion :
+Fenotipo: F',B',R',U,R,R,
+Genotipo: 10,12,2,5,1,1,
+Fitness : 0.47916666666666669
+sm: 180
+Mejor de la generacion :
+Fenotipo: F',R,D',
+Genotipo: 10,1,8,
+Fitness : 0.54166666666666663
+sm: 181
+Mejor de la generacion :
+Fenotipo: B,F',U',F,U,B,R,D,R',F',B,
+Genotipo: 11,10,6,9,5,11,1,7,2,10,11,
+Fitness : 0.39583333333333331
+sm: 182
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 183
+Mejor de la generacion :
+Fenotipo: B,D,F',B,D,
+Genotipo: 11,7,10,11,7,
+Fitness : 0.4375
+sm: 184
+Mejor de la generacion :
+Fenotipo: B',F,F,U,B',F,D,B,
+Genotipo: 12,9,9,5,12,9,7,11,
+Fitness : 0.41666666666666669
+sm: 185
+Mejor de la generacion :
+Fenotipo: F,U',L',U,F',D,U,F',L',
+Genotipo: 9,6,4,5,10,7,5,10,4,
+Fitness : 0.41666666666666669
+sm: 186
+Mejor de la generacion :
+Fenotipo: D,B,F',
+Genotipo: 7,11,10,
+Fitness : 0.54166666666666663
+sm: 187
+Mejor de la generacion :
+Fenotipo: R',B,B,U',L',U',B,L,F',L,R,D,F,U,F',R,
+Genotipo: 2,11,11,6,4,6,11,3,10,3,1,7,9,5,10,1,
+Fitness : 0.45833333333333331
+sm: 188
+Mejor de la generacion :
+Fenotipo: B',D,B,F',L',D',B',R',L',B',R,B',D',D',B',L',L',L',
+Genotipo: 12,7,11,10,4,8,12,2,4,12,1,12,8,8,12,4,4,4,
+Fitness : 0.47916666666666669
+sm: 189
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 190
+Mejor de la generacion :
+Fenotipo: F',
+Genotipo: 10,
+Fitness : 0.64583333333333337
+sm: 191
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 192
+Mejor de la generacion :
+Fenotipo: L,F',L',R',B',D,U,F',
+Genotipo: 3,10,4,2,12,7,5,10,
+Fitness : 0.41666666666666669
+sm: 193
+Mejor de la generacion :
+Fenotipo: F',R,
+Genotipo: 10,1,
+Fitness : 0.58333333333333337
+sm: 194
+Mejor de la generacion :
+Fenotipo: D,F',B,
+Genotipo: 7,10,11,
+Fitness : 0.54166666666666663
+sm: 195
+Mejor de la generacion :
+Fenotipo: B',B',D,F',B',D',B',B',
+Genotipo: 12,12,7,10,12,8,12,12,
+Fitness : 0.45833333333333331
+sm: 196
+Mejor de la generacion :
+Fenotipo: R',L,L,U,R,D,B,D',F',B,
+Genotipo: 2,3,3,5,1,7,11,8,10,11,
+Fitness : 0.35416666666666669
+sm: 197
+Mejor de la generacion :
+Fenotipo: U,B,B,D,F',B,
+Genotipo: 5,11,11,7,10,11,
+Fitness : 0.4375
+sm: 198
+Mejor de la generacion :
+Fenotipo: D,F',
+Genotipo: 7,10,
+Fitness : 0.58333333333333337
+sm: 199

@@ -22,6 +22,7 @@ namespace CuboGenetico.AGenetico{
 			}
 			
 		}
+
 		/**
 		 *Regresa el estado actual del cubo
 		 */

@@ -74,18 +74,13 @@ namespace CuboGenetico{
 				
 				*/
 				
-				for(int i =0; i<300;i++){
+				Individuo msemilla = null;
+				int sm =0;
+				for(int i =0; i<10;i++){
 					
 					var rand = new GLib.Rand();
 					rand.set_seed(i);
-					/*
-					int fg = (int)rand.int_range(0,200);
-					int st = (int)rand.int_range (0,200);
-					int cr = (int)rand.int_range (0,200);
-					int mt = (int)rand.int_range (0,200);
-					int cd = (int)rand.int_range (0,200);
-					int co = (int)rand.int_range (0,200);
-					*/
+					
 					var ffitness = new FFitness(cubo);
 					var fenogeno = new FenoGeno(i);
 					var corrector = new Corrector(i);
@@ -101,13 +96,20 @@ namespace CuboGenetico{
 													i,
 													40);
 					cubogene.run();
-					var mg = cubogene.mejor;
-					stdout.printf("Mejor de la generacion :\n%s",mg.to_string());
-					stdout.printf("sm: %d\n",i);
-					cubo.giraCaras(mg.fenotipo.fenotipo);
-					cubo.dibuja(i.to_string());
-					cubo.reset();
+					if(msemilla ==null){
+						msemilla =  cubogene.mejor;
+					}else if(msemilla.fitness <=  cubogene.mejor.fitness){
+						sm =i;
+						msemilla = cubogene.mejor;
+					}
+					
+					
 				}
+
+				
+				cubo.giraCaras(msemilla.fenotipo.fenotipo);
+				cubo.dibuja(sm.to_string());
+				cubo.reset();
 			}else{
 				stdout.printf("Falta el archov de entrada\n");
 			}

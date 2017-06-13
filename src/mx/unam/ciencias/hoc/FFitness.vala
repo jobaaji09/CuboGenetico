@@ -37,7 +37,9 @@ namespace CuboGenetico{
 			this.cubo.reset();
 			//double g = feno.fenotipo.length/10.0;
 			//stdout.printf("%2.3f\n",(fitness/6)*g);
-			return (fitness/6.0);
+			var e = (fitness/6.0);
+			var j = Math.exp2(f((e-(2*GLib.Math.PI))-GLib.Math.PI));
+			return e/j;
 		}
 
 		public double caraFitness(int centro,int x,int y){
@@ -75,6 +77,11 @@ namespace CuboGenetico{
 			return 1.0 - (f/8.0);
 		}
 
+
+		private double f (double e){
+			var r = (- GLib.Math.cos(e))/2;
+			return r + 0.5;
+		}
 		
 
 		
@@ -82,3 +89,5 @@ namespace CuboGenetico{
 	}
 
 }
+
+

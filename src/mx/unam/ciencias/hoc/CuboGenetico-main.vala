@@ -74,8 +74,8 @@ namespace CuboGenetico{
 				
 				*/
 				
-				Individuo msemilla = null;
-				int sm =0;
+				//Individuo msemilla = null;
+				//int sm =0;
 				for(int i =0; i<10;i++){
 					
 					var rand = new GLib.Rand();
@@ -96,20 +96,25 @@ namespace CuboGenetico{
 													i,
 													40);
 					cubogene.run();
+					/*
 					if(msemilla ==null){
 						msemilla =  cubogene.mejor;
 					}else if(msemilla.fitness <=  cubogene.mejor.fitness){
 						sm =i;
 						msemilla = cubogene.mejor;
-					}
-					
-					
+						}*/
+					stdout.printf("%d\n",i);
+					stdout.printf("%s\n",cubogene.mejor.to_string());
+
+					cubo.giraCaras(cubogene.mejor.fenotipo.fenotipo);
+					cubo.dibuja(i.to_string());
+					cubo.reset();
 				}
 
 				
-				cubo.giraCaras(msemilla.fenotipo.fenotipo);
-				cubo.dibuja(sm.to_string());
-				cubo.reset();
+				//cubo.giraCaras(msemilla.fenotipo.fenotipo);
+				//cubo.dibuja(sm.to_string());
+				//cubo.reset();*/
 			}else{
 				stdout.printf("Falta el archov de entrada\n");
 			}

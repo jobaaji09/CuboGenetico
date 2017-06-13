@@ -3,7 +3,8 @@ AUTOMAKE_OPTIONS = subdir-objects
 COMMON_VALAFLAGS =			\
 	--enable-experimental		\
 	--target-glib=2.48		\
-	--vapidir=$(srcdir)/vapi
+	--vapidir=$(srcdir)/vapi	\
+	-lm
 
 # libtest
 noinst_LTLIBRARIES = lib/libtest.la
@@ -50,7 +51,7 @@ lib_libagenetico_la_CFLAGS =	\
 
 lib_libagenetico_la_LIBADD =	\
 	@GEE_LIBS@		\
-	@GIO_LIBS@	
+	@GIO_LIBS@		
 
 
 
@@ -76,13 +77,14 @@ CuboGenetico_SOURCES = 		\
 CuboGenetico_VALAFLAGS =	\
 	--target-glib=2.38	\
 	@GEE_PACKAGES@		\
-	@GIO_PACKAGES@	
+	@GIO_PACKAGES@		
 
 CuboGenetico_CFLAGS =			\
 	@GEE_CFLAGS@			\
 	@GIO_CFLAGS@			\
 	-I$(srcdir)/lib/agenetico	\
-	-w
+	-w				\
+	-lm
 
 CuboGenetico_LDADD =		\
 	@GEE_LIBS@		\

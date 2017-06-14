@@ -3,8 +3,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 COMMON_VALAFLAGS =			\
 	--enable-experimental		\
 	--target-glib=2.48		\
-	--vapidir=$(srcdir)/vapi	\
-	-lm
+	--vapidir=$(srcdir)/vapi	
 
 # libtest
 noinst_LTLIBRARIES = lib/libtest.la

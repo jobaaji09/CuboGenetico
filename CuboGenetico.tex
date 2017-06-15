@@ -1,0 +1,34 @@
+\documentclass[oneside,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage[papersize={148mm, 199.5mm}, top=7mm, bottom=13mm, left=13mm, right=13mm]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{blindtext}
+
+\begin{document}
+\author{Barragán Jim\'enez Jonathan}
+\date{14 junio 2017\\ Facultad de Ciencias UNAM}
+\title{Cubo Gen\'etico }
+\maketitle
+
+
+\section{Introducción}
+
+El cubo de Rubik o cubo m\'agico fue inventado  por el escultor y profesor de arquitectura h\'ungaro Erno Rubik en 1974. El cubo de Rubik original (Existen muchas variaciones pero solo nos centraremos en el 3x3x3) tiene 8 v\'ertices y doce aristas. El problema consiste en encontrar el minimo n\'umero de movimientos que se necesitan para llegar de un estado no resuelto al resuelto, partiendo del supuesto que  \textsl{El n\'umero de dios es 20}\cite{god20}  es decir cualquier posici\'on del cubo de Rubik se puede resolver en 20 movimientos o menos. \\ 
+
+Hoy en d\'ia ya se conoce mucho sobre como resolver el cubo m\'agico o el cubo de 3x3x3, pero no existe un algortimo que pueda resolver el cubo de Rubik en 20 movimientos, ya que aunque se pueda hacer, estos movimeintos ser\'an totalmente distintos para cada posici\'on y tomando encuenta que el cubo tiene un total de :  \[ \frac{8! \cdot 12! \cdot 3^{7} \cdot 2^{11} }{2} = 43,252,003,274,489,856,000 \] permutaciones utilizaremos el algoritmo gen\'etico para tratar este problema.
+
+Un algoritmo genetico es una metaheuristica inspirada por el proceso de seleccion natural que pertenece al la clase de algoritmos evolutivos. En este reporte se muestra una implimentaci\'on del algorimo genetico mostrando la codificaci\'on y los operadores (seleccion, cruza, mutaci\'on) 
+
+%%% Referencias simples
+\begin{thebibliography}{99}
+\bibitem{god20}
+ "God's Number Is 20". Cube20.org. N.p., 2017. Web. 15 June 2017.
+
+
+\end{thebibliography}
+
+\end{document}

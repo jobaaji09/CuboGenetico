@@ -591,8 +591,8 @@ namespace CuboGenetico.AGenetico{
 		 *Dibuja un cubo 3x3x3 D2 en un svg 
 		 **/
 		public void dibuja(string name){
-			var w  =1200;
-			var h = 900;
+			var w  =1260;
+			var h = 960;
 			string s = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
 			+"<svg width=\""+w.to_string()+"\" height=\""+h.to_string()+"\">\n"
 			+"<g>\n";
@@ -644,10 +644,10 @@ namespace CuboGenetico.AGenetico{
 			string ou ="";
 			switch (c) {
 			case 0:
-				ou = "deepskyblue";
+				ou = "blue";
 				break;
 			case 1:
-				ou = "hotpink";
+				ou = "red";
 				break;
 			case 2:
 				ou= "yellow";
@@ -659,7 +659,7 @@ namespace CuboGenetico.AGenetico{
 				ou = "orange";
 				break;
 			case 5:
-				ou = "chartreuse";
+				ou = "green";
 				break;
 			}
 			return ou;
@@ -669,8 +669,8 @@ namespace CuboGenetico.AGenetico{
 		 *Dubuja linea
 		 */
 		private string cuadro(int x, int y,int c){
-			x=x*100;
-			y=y*100;
+			x=x*105;
+			y=y*105;
 			string cl = color(c);
 
 			return 	"<rect x='"+x.to_string()+"' y='"+y.to_string()+"' width='100' height='100' style='fill:"+cl+";stroke:black;stroke-width:1' />\n";

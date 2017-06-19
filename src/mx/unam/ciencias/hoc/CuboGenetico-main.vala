@@ -76,7 +76,7 @@ namespace CuboGenetico{
 				
 				Individuo msemilla = null;
 				int sm =0;
-				for(int i =0; i<200;i++){
+				for(int i =0; i<20;i++){
 					
 					var rand = new GLib.Rand();
 					rand.set_seed(i);
@@ -111,7 +111,7 @@ namespace CuboGenetico{
 					//cubo.reset();
 				}
 
-				stdout.printf("Mejor /n%d\n",sm);
+				stdout.printf("Mejor \n%d\n",sm);
 				stdout.printf("%s\n",msemilla.to_string());
 				cubo.giraCaras(msemilla.fenotipo.fenotipo);
 				cubo.dibuja(sm.to_string());
